@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Cabane de Pré Peyret",
+    "key": "cabane-de-pre-peyret",
+    "massif": "Vercors",
+    "longitude": 5.48280,
+    "latitude": 44.82698,
+    "images": []
+  },
+  {
+    "name": "Cabane des Aiguillettes",
+    "key": "cabane-des-aiguillettes",
+    "massif": "Vercors",
+    "longitude": 5.52026,
+    "latitude": 44.85368,
+    "images": []
+  },
+  {
+    "name": "Cabane des Chaumailloux",
+    "key": "cabane-des-chaumailloux",
+    "massif": "Vercors",
+    "longitude": 5.51194,
+    "latitude": 44.80543,
+    "images": []
+  },
+  {
+    "name": "Abri de l'Essaure",
+    "key": "abri-de-l-essaure",
+    "massif": "Vercors",
+    "longitude": 5.55792,
+    "latitude": 44.78709,
+    "images": []
+  }
+]

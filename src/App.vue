@@ -1,19 +1,22 @@
 <template>
-  <v-app>
+  <v-app id="app">
+    <!-- navigation -->
+    <navigation></navigation>
+    <!-- content -->
     <v-content>
-      <HelloWorld/>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import Navigation from '@/components/Navigation.vue';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    Navigation,
   },
 
   data: () => ({
