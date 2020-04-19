@@ -2,33 +2,49 @@
   {
     "name": "Cabane de Pré Peyret",
     "key": "cabane-de-pre-peyret",
+    "type": "cabane non gardée", 
     "massif": "Vercors",
+    "altitude": 1600,
     "longitude": 5.48280,
     "latitude": 44.82698,
-    "images": []
+    "images": [
+      "vercors/cabane-pre-peyret.jpeg"
+    ]
   },
   {
     "name": "Cabane des Aiguillettes",
     "key": "cabane-des-aiguillettes",
+    "type": "cabane non gardée",
     "massif": "Vercors",
+    "altitude": 1880,
     "longitude": 5.52026,
     "latitude": 44.85368,
-    "images": []
+    "images": [
+      "vercors/cabanes-des-aiguillettes.jpeg"
+    ]
   },
   {
     "name": "Cabane des Chaumailloux",
     "key": "cabane-des-chaumailloux",
+    "type": "cabane non gardée",
     "massif": "Vercors",
+    "altitude": 1665,
     "longitude": 5.51194,
     "latitude": 44.80543,
-    "images": []
+    "images": [
+      "vercors/cabane-des-chaumailloux.jpeg"
+    ]
   },
   {
     "name": "Abri de l'Essaure",
     "key": "abri-de-l-essaure",
+    "type": "cabane non gardée",
     "massif": "Vercors",
+    "altitude": 1653,
     "longitude": 5.55792,
     "latitude": 44.78709,
-    "images": []
+    "images": [
+      "vercors/abris-de-l-essaure.jpeg"
+    ]
   }
 ]
