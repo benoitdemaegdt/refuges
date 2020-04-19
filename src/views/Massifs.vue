@@ -36,7 +36,7 @@
           </v-col>
           <v-col cols="5" class="map-col pa-0 hidden-sm-and-down">
             <div class="map-container">
-              <Map></Map>
+              <Map :cabanes="getCabanes"></Map>
             </div>
           </v-col>
         </v-row>
