@@ -28,10 +28,10 @@ export default {
     LTileLayer,
   },
   data: () =>  ({
-    zoom: 13,
+    zoom: 11,
     center: latLng(44.82698, 5.48280),
-    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     currentZoom: 11.5,
     currentCenter: latLng(44.82698, 5.48280),
     mapOptions: {
