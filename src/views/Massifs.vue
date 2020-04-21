@@ -22,8 +22,12 @@
             <div
               v-for="(cabane, index) in getCabanes"
               :key="cabane.key"
+              @mouseenter="onMouseEnter(cabane)"
+              @mouseleave="onMouseLeave"
             >
-              <v-row class="text-center">
+              <v-row
+                class="text-center"
+              >
                 <v-col cols="5">
                   <v-img height="200px" class="cabane-img" :src="require('@/assets/images/' + cabane.images[0])"></v-img>
                 </v-col>
@@ -36,7 +40,7 @@
           </v-col>
           <v-col cols="5" class="map-col pa-0 hidden-sm-and-down">
             <div class="map-container">
-              <Map :cabanes="getCabanes"></Map>
+              <Map :cabanes="getCabanes" :mouseOveredCabaneKey="mouseOveredCabaneKey"></Map>
             </div>
           </v-col>
         </v-row>
@@ -60,6 +64,7 @@ export default {
   },
   data: () => ({
     massifName: undefined,
+    mouseOveredCabaneKey: undefined
   }),
   watch: {
     $route: {
@@ -78,6 +83,14 @@ export default {
       return cabanes.filter(cabane => cabane.massif === this.getMassifName);
     },
   },
+  methods: {
+    onMouseEnter(cabane) {
+      this.mouseOveredCabaneKey = cabane.key;
+    },
+    onMouseLeave() {
+      this.mouseOveredCabaneKey = undefined;
+    }
+  }
 };
 </script>
 

@@ -16,9 +16,9 @@
         :key="index"
         :lat-lng="[cabane.latitude, cabane.longitude]"
         :radius="6"
-        fillColor="red"
+        :fillColor="getColor(cabane)"
+        :color="getColor(cabane)"
         :fillOpacity="0.5"
-        color="red"
       >
         <l-popup :options="popupOptions">
           <Tooltip :cabane="cabane"></Tooltip>
@@ -49,6 +49,9 @@ export default {
       type: Array,
       required: true,
     },
+    mouseOveredCabaneKey: {
+      type: String,
+    }
   },
   data: () =>  ({
     zoom: 11,
@@ -74,7 +77,10 @@ export default {
     centerUpdate(center) {
       this.currentCenter = center;
     },
-  }
+    getColor(cabane) {
+      return cabane.key === this.mouseOveredCabaneKey ? 'red' : 'blue';
+    },
+  },
 }
 </script>
 
