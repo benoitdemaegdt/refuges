@@ -29,7 +29,12 @@
                 class="text-center"
               >
                 <v-col cols="5">
-                  <v-img height="200px" class="cabane-img" :src="require('@/assets/images/' + cabane.images[0])"></v-img>
+                  <v-img
+                    height="200px"
+                    class="cabane-img"
+                    :key="cabane.key"
+                    :src="require('@/assets/images/' + cabane.images[0] + '?vuetify-preload')">
+                  </v-img>
                 </v-col>
                 <v-col cols="7">
                   <p>{{ cabane.name }}</p>
@@ -64,7 +69,7 @@ export default {
   },
   data: () => ({
     massifName: undefined,
-    mouseOveredCabaneKey: undefined
+    mouseOveredCabaneKey: undefined,
   }),
   watch: {
     $route: {
@@ -89,7 +94,7 @@ export default {
     },
     onMouseLeave() {
       this.mouseOveredCabaneKey = undefined;
-    }
+    },
   }
 };
 </script>
