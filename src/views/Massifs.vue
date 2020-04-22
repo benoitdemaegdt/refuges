@@ -29,12 +29,28 @@
                 class="text-center"
               >
                 <v-col cols="5">
-                  <v-img
-                    height="200px"
-                    class="cabane-img"
-                    :key="cabane.key"
-                    :src="require('@/assets/images/' + cabane.images[0] + '?vuetify-preload')">
-                  </v-img>
+                  <template v-if="cabane.images.length === 1">
+                    <v-img
+                      height="200px"
+                      class="cabane-img"
+                      :key="cabane.key"
+                      :src="require('@/assets/images/' + cabane.images[0] + '?vuetify-preload')">
+                    </v-img>
+                  </template>
+                  <template v-else>
+                    <v-carousel
+                      height="200px"
+                      hide-delimiters
+                      show-arrows-on-hover
+                    >
+                      <v-carousel-item
+                        v-for="(image, i) in cabane.images"
+                        :key="i"
+                        :src="require('@/assets/images/' + image + '?vuetify-preload')"
+                      >
+                      </v-carousel-item>
+                    </v-carousel>
+                  </template>
                 </v-col>
                 <v-col cols="7">
                   <p>{{ cabane.name }}</p>
