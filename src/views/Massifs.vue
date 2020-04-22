@@ -128,4 +128,8 @@ export default {
 .cabane-img {
   border-radius: 8px;
 }
+
+.v-carousel {
+  border-radius: 8px !important;
+}
 </style>
