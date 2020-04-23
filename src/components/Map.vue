@@ -17,6 +17,7 @@
         :key="index"
         :lat-lng="[cabane.latitude, cabane.longitude]"
         :icon="getIcon(cabane)"
+        :z-index-offset="cabane.key === mouseOveredCabaneKey ? 100 : 0"
         >
           <l-popup :options="popupOptions">
             <Tooltip :cabane="cabane"></Tooltip>
