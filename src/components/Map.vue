@@ -1,6 +1,7 @@
 <template>
   <div style="height: 100%; width: 100%">
     <l-map
+      ref="map"
       :zoom="zoom"
       :center="center"
       :options="mapOptions"
@@ -75,6 +76,10 @@ export default {
       minWidth: 249,
     }
   }),
+  mounted() {
+    const map = this.$refs.map.mapObject;
+    map.addControl(new L.Control.Fullscreen());
+  },
   methods: {
     zoomUpdate(zoom) {
       this.currentZoom = zoom;

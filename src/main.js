@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router';
 import vuetify from './plugins/vuetify';
 import 'leaflet/dist/leaflet.css';
+import 'leaflet-fullscreen/dist/leaflet.fullscreen.css';
+import 'leaflet-fullscreen/dist/Leaflet.fullscreen';
 
 Vue.config.productionTip = false
 
