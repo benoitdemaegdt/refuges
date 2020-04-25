@@ -2,7 +2,7 @@
   {
     "name": "Cabane de Pré Peyret",
     "key": "cabane-de-pre-peyret",
-    "type": "cabane non gardée", 
+    "type": "refuge non gardé", 
     "massif": "Vercors",
     "beds": 15, 
     "stove": true,
@@ -17,7 +17,7 @@
   {
     "name": "Cabane des Aiguillettes",
     "key": "cabane-des-aiguillettes",
-    "type": "cabane non gardée",
+    "type": "refuge non gardé",
     "massif": "Vercors",
     "beds": 4,
     "stove": false,
@@ -33,7 +33,7 @@
   {
     "name": "Cabane des Chaumailloux",
     "key": "cabane-des-chaumailloux",
-    "type": "cabane non gardée",
+    "type": "refuge non gardé",
     "massif": "Vercors",
     "beds": 19,
     "stove": true,
@@ -48,7 +48,7 @@
   {
     "name": "Abri de l'Essaure",
     "key": "abri-de-l-essaure",
-    "type": "cabane non gardée",
+    "type": "refuge non gardé",
     "massif": "Vercors",
     "beds": 6,
     "stove": true,
