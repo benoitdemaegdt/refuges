@@ -1,5 +1,5 @@
 [
-  { "name": "Vercors", "key": "vercors" },
-  { "name": "Belledonne", "key": "belledonne" },
-  { "name": "Chartreuse", "key": "chartreuse" }
+  { "name": "Vercors", "key": "vercors", "connector": "du" },
+  { "name": "Belledonne", "key": "belledonne", "connector": "de" },
+  { "name": "Chartreuse", "key": "chartreuse", "connector": "de" }
 ]

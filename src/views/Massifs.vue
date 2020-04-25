@@ -17,14 +17,19 @@
       </template>
 
       <template v-else>
-        <v-row class="text-center">
-          <v-col cols="12" md="7" class="pb-0">
+        <v-row>
+          <v-col cols="12" md="7" class="cabane-list">
+            <div class="py-10 pl-24">
+              <p class="massif-subtitle mb-0">{{ getSubtitle }}</p>
+              <h1 class="massif-title">{{ getTitle }}</h1>
+            </div>
             <div
-              v-for="(cabane, index) in getCabanes"
+              v-for="(cabane) in getCabanes"
               :key="cabane.key"
               @mouseenter="onMouseEnter(cabane)"
               @mouseleave="onMouseLeave"
             >
+              <v-divider></v-divider>
               <v-row
                 class="text-center"
               >
@@ -56,7 +61,6 @@
                   <p>{{ cabane.name }}</p>
                 </v-col>
               </v-row>
-              <v-divider v-if="index !== getCabanes.length - 1"></v-divider>
             </div>
           </v-col>
           <v-col cols="5" class="map-col pa-0 hidden-sm-and-down">
@@ -100,6 +104,13 @@ export default {
       const massif = massifs.find(massif => massif.key === this.$route.params.name);
       return massif && massif.name;
     },
+    getTitle() {
+      const massif = massifs.find(massif => massif.key === this.$route.params.name);
+      return `Cabanes ${massif.connector} ${massif.name}`;
+    },
+    getSubtitle() {
+      return `${this.getCabanes.length} refuges, cabanes ou abris dans ce massif`;
+    },
     getCabanes() {
       return cabanes.filter(cabane => cabane.massif === this.getMassifName);
     },
@@ -116,13 +127,21 @@ export default {
 </script>
 
 <style scoped>
-.map-col {
-  position: fixed;
-  right: 0;
+
+/** left column : list */
+.cabane-list {
+  padding-left: 24px !important;
+  padding-right: 24px !important;
 }
 
-.map-container {
-  height: calc(100vh - 48px);
+.massif-title {
+  font-size: 32px;
+  color: #222222;
+}
+
+.massif-subtitle {
+  font-size: 16px;
+  color: #222222;
 }
 
 .cabane-img {
@@ -131,5 +150,15 @@ export default {
 
 .v-carousel {
   border-radius: 8px !important;
+}
+
+/** right column : map */
+.map-col {
+  position: fixed;
+  right: 0;
+}
+
+.map-container {
+  height: calc(100vh - 48px);
 }
 </style>
