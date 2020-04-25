@@ -3,24 +3,21 @@
     <!-- app bar -->
     <v-app-bar
       :clipped-left="$vuetify.breakpoint.lgAndUp"
-      dense
       app
-      color="primary"
-      dark
+      elevation="1"
+      color="white"
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title
-        style="width: 300px"
-        class="ml-0 pl-4"
-      >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" color="primary"/>
+      <v-toolbar-title>
         <router-link :to="{ name: 'home'}" class='toolbar-title'>Refuges</router-link>
       </v-toolbar-title>
       <v-spacer />
-      <a href="https://github.com/benoitdemaegdt/refuges" target="_blank">
-        <v-btn icon class="d-none d-sm-flex">
-          <v-icon size="27">mdi-github</v-icon>
-        </v-btn>
-      </a>
+      <v-btn
+        href="https://github.com/benoitdemaegdt/refuges" target="_blank"
+        icon
+        class="d-none d-sm-flex">
+        <v-icon large color="primary">mdi-github</v-icon>
+      </v-btn>
     </v-app-bar>
 
     <!-- navigation drawer -->
@@ -74,7 +71,7 @@ export default {
 
 <style scoped>
 .toolbar-title {
-  color: white;
+  color: #222222;
   text-decoration: none;
 }
 </style>
