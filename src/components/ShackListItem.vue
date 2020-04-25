@@ -3,7 +3,7 @@
     <v-row>
 
       <!-- image -->
-      <v-col cols="5">
+      <v-col cols="5" class="pl-0">
         <template v-if="shack.images.length === 1">
           <v-img
             height="200px"
