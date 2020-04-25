@@ -1,67 +1,75 @@
 <template>
-  <v-row>
-    <v-col cols="5">
-      <template v-if="shack.images.length === 1">
-        <v-img
-          height="200px"
-          class="shack-img"
-          :key="shack.key"
-          :src="require('@/assets/images/' + shack.images[0] + '?vuetify-preload')">
-        </v-img>
-      </template>
-      <template v-else>
-        <v-carousel
-          height="200px"
-          hide-delimiters
-          show-arrows-on-hover
-        >
-          <v-carousel-item
-            v-for="(image, i) in shack.images"
-            :key="i"
-            :src="require('@/assets/images/' + image + '?vuetify-preload')"
+  <v-container>
+    <v-row>
+
+      <!-- image -->
+      <v-col cols="5">
+        <template v-if="shack.images.length === 1">
+          <v-img
+            height="200px"
+            class="shack-img"
+            :key="shack.key"
+            :src="require('@/assets/images/' + shack.images[0] + '?vuetify-preload')">
+          </v-img>
+        </template>
+        <template v-else>
+          <v-carousel
+            height="200px"
+            hide-delimiters
+            show-arrows-on-hover
           >
-          </v-carousel-item>
-        </v-carousel>
-      </template>
-    </v-col>
-    <v-col cols="7">
-      <div class="shack-type mb-1">{{ shack.type }}</div>
-      <div class="shack-name">{{ shack.name }}</div>
-      <div class="shack-divider"></div>
-      <v-row>
-        <!-- altitude -->
-        <v-col cols="5">
-          <div class="flex-container">
-            <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/mountain.png')"></v-img></div>
-            <div class="flex-child">Altitude : {{ shack.altitude }}m</div>
-          </div>
-        </v-col>
-        <!-- beds -->
-        <v-col cols="7">
-          <div class="flex-container">
-            <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
-            <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
-          </div>
-        </v-col>
-      </v-row>
-      <v-row>
-        <!-- stove -->
-        <v-col cols="5">
-          <div class="flex-container">
-            <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
-            <div class="flex-child">Poêle : {{ shack.stove ? 'oui' : 'non' }}</div>
-          </div>
-        </v-col>
-        <!-- water -->
-        <v-col cols="7">
-          <div class="flex-container">
-            <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
-            <div class="flex-child">Source : {{ shack.water ? 'oui' : 'non' }}</div>
-          </div>
-        </v-col>
-      </v-row>
-    </v-col>
-  </v-row>
+            <v-carousel-item
+              v-for="(image, i) in shack.images"
+              :key="i"
+              :src="require('@/assets/images/' + image + '?vuetify-preload')"
+            >
+            </v-carousel-item>
+          </v-carousel>
+        </template>
+      </v-col>
+
+      <!-- info -->
+      <v-col cols="7">
+        <div class="shack-type mb-1">{{ shack.type }}</div>
+        <div class="shack-name">{{ shack.name }}</div>
+        <div class="shack-divider"></div>
+        <v-row>
+          <!-- altitude -->
+          <v-col cols="5">
+            <div class="flex-container">
+              <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/mountain.png')"></v-img></div>
+              <div class="flex-child">Altitude : {{ shack.altitude }}m</div>
+            </div>
+          </v-col>
+          <!-- beds -->
+          <v-col cols="7">
+            <div class="flex-container">
+              <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
+              <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
+            </div>
+          </v-col>
+        </v-row>
+        <v-row>
+          <!-- stove -->
+          <v-col cols="5">
+            <div class="flex-container">
+              <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
+              <div class="flex-child">Poêle : {{ shack.stove ? 'oui' : 'non' }}</div>
+            </div>
+          </v-col>
+          <!-- water -->
+          <v-col cols="7">
+            <div class="flex-container">
+              <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
+              <div class="flex-child">Source : {{ shack.water ? 'oui' : 'non' }}</div>
+            </div>
+          </v-col>
+        </v-row>
+
+      </v-col>
+    </v-row>
+  </v-container>
+
 </template>
 
 <script>
