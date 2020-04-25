@@ -30,7 +30,7 @@
               @mouseleave="onMouseLeave"
             >
               <v-divider></v-divider>
-              <ShackListItem :shack="cabane"></ShackListItem>
+              <ShackListItem :massifKey="getMassifKey" :shack="cabane"></ShackListItem>
             </div>
           </v-col>
           <v-col cols="5" class="map-col pa-0 hidden-sm-and-down">
@@ -75,6 +75,10 @@ export default {
     getMassifName() {
       const massif = massifs.find(massif => massif.key === this.$route.params.name);
       return massif && massif.name;
+    },
+    getMassifKey() {
+      const massif = massifs.find(massif => massif.key === this.$route.params.name);
+      return massif && massif.key;
     },
     getTitle() {
       const massif = massifs.find(massif => massif.key === this.$route.params.name);

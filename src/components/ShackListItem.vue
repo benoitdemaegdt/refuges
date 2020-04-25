@@ -30,41 +30,51 @@
 
       <!-- info -->
       <v-col cols="7">
-        <div class="shack-type mb-1">{{ shack.type }}</div>
-        <div class="shack-name">{{ shack.name }}</div>
-        <div class="shack-divider"></div>
-        <v-row>
-          <!-- altitude -->
-          <v-col cols="5">
-            <div class="flex-container">
-              <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/mountain.png')"></v-img></div>
-              <div class="flex-child">Altitude : {{ shack.altitude }}m</div>
-            </div>
-          </v-col>
-          <!-- beds -->
-          <v-col cols="7">
-            <div class="flex-container">
-              <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
-              <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
-            </div>
-          </v-col>
-        </v-row>
-        <v-row>
-          <!-- stove -->
-          <v-col cols="5">
-            <div class="flex-container">
-              <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
-              <div class="flex-child">Poêle : {{ shack.stove ? 'oui' : 'non' }}</div>
-            </div>
-          </v-col>
-          <!-- water -->
-          <v-col cols="7">
-            <div class="flex-container">
-              <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
-              <div class="flex-child">Source : {{ shack.water ? 'oui' : 'non' }}</div>
-            </div>
-          </v-col>
-        </v-row>
+        <v-card flat>
+          <v-card-text class="shack-info">
+          <div class="shack-type mb-1">{{ shack.type }}</div>
+          <div class="shack-name">{{ shack.name }}</div>
+          <div class="shack-divider"></div>
+          <v-row>
+            <!-- altitude -->
+            <v-col cols="5">
+              <div class="flex-container">
+                <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/mountain.png')"></v-img></div>
+                <div class="flex-child">Altitude : {{ shack.altitude }}m</div>
+              </div>
+            </v-col>
+            <!-- beds -->
+            <v-col cols="7">
+              <div class="flex-container">
+                <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
+                <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
+              </div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <!-- stove -->
+            <v-col cols="5">
+              <div class="flex-container">
+                <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
+                <div class="flex-child">Poêle : {{ shack.stove ? 'oui' : 'non' }}</div>
+              </div>
+            </v-col>
+            <!-- water -->
+            <v-col cols="7">
+              <div class="flex-container">
+                <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
+                <div class="flex-child">Source : {{ shack.water ? 'oui' : 'non' }}</div>
+              </div>
+            </v-col>
+          </v-row>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn
+            text
+            @click="$router.push({ name: 'shacks', params: { massif: massifKey, cabane: shack.key }})"
+          >détails</v-btn>
+        </v-card-actions>
+      </v-card>
 
       </v-col>
     </v-row>
@@ -76,6 +86,10 @@
 export default {
   name: 'ShackListItem',
   props: {
+    massifKey: {
+      type: String,
+      required: true,      
+    },
     shack: {
       type: Object,
       required: true,
@@ -94,7 +108,15 @@ export default {
   border-radius: 8px !important;
 }
 
-/* shack info */
+.v-card__text {
+  padding-bottom: 0px !important;
+  padding-top: 0px !important;
+}
+
+.v-card__actions {
+  padding-bottom: 0px !important;
+}
+
 .shack-type {
   color: #71717E;
   font-size: 14px;
