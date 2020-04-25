@@ -18,7 +18,7 @@
 
       <template v-else>
         <v-row>
-          <v-col cols="12" md="7" class="cabane-list">
+          <v-col cols="12" md="7" class="shack-list">
             <div class="py-10 pl-24">
               <p class="massif-subtitle mb-0">{{ getSubtitle }}</p>
               <h1 class="massif-title">{{ getTitle }}</h1>
@@ -30,37 +30,7 @@
               @mouseleave="onMouseLeave"
             >
               <v-divider></v-divider>
-              <v-row
-                class="text-center"
-              >
-                <v-col cols="5">
-                  <template v-if="cabane.images.length === 1">
-                    <v-img
-                      height="200px"
-                      class="cabane-img"
-                      :key="cabane.key"
-                      :src="require('@/assets/images/' + cabane.images[0] + '?vuetify-preload')">
-                    </v-img>
-                  </template>
-                  <template v-else>
-                    <v-carousel
-                      height="200px"
-                      hide-delimiters
-                      show-arrows-on-hover
-                    >
-                      <v-carousel-item
-                        v-for="(image, i) in cabane.images"
-                        :key="i"
-                        :src="require('@/assets/images/' + image + '?vuetify-preload')"
-                      >
-                      </v-carousel-item>
-                    </v-carousel>
-                  </template>
-                </v-col>
-                <v-col cols="7">
-                  <p>{{ cabane.name }}</p>
-                </v-col>
-              </v-row>
+              <ShackListItem :shack="cabane"></ShackListItem>
             </div>
           </v-col>
           <v-col cols="5" class="map-col pa-0 hidden-sm-and-down">
@@ -80,11 +50,13 @@ import massifs from '@/data/massifs.json';
 import cabanes from '@/data/cabanes.json';
 
 // components
+import ShackListItem from '@/components/ShackListItem'
 import Map from '@/components/Map'
 
 export default {
   name: 'Massifs',
   components: {
+    ShackListItem,
     Map,
   },
   data: () => ({
@@ -128,8 +100,8 @@ export default {
 
 <style scoped>
 
-/** left column : list */
-.cabane-list {
+/** left column : shack list */
+.shack-list {
   padding-left: 24px !important;
   padding-right: 24px !important;
 }
@@ -142,14 +114,6 @@ export default {
 .massif-subtitle {
   font-size: 16px;
   color: #222222;
-}
-
-.cabane-img {
-  border-radius: 8px;
-}
-
-.v-carousel {
-  border-radius: 8px !important;
 }
 
 /** right column : map */
