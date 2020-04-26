@@ -33,7 +33,7 @@
     <!-- amenities -->
     <v-row>
       <v-col cols="12">
-        <h2 class="section-title">Équipement</h2>
+        <h2 class="section-title">Équipements</h2>
         <div class="amenities-container">
           <v-row>
             <!-- altitude -->
@@ -108,6 +108,8 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans');
+
 .container {
   width: 50%;
 }
@@ -117,19 +119,23 @@ export default {
 }
 
 .main-title {
+  font-family: 'Open Sans', sans-serif;
   font-size: 32px;
   font-weight: 700;
 }
 .main-subtitle {
+  font-family: 'Open Sans', sans-serif;
   font-size: 15px;
   color: #71717E;
 }
 
 .section-title {
+  font-family: 'Open Sans', sans-serif;
   margin-top: 4px;
   font-size: 22px;
 }
 .section-paragraph {
+  font-family: 'Open Sans', sans-serif;
   font-size: 17px;
   margin-top: 16px;
 }
