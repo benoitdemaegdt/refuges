@@ -63,7 +63,7 @@ export default {
   data: () =>  ({
     zoom: 11,
     center: latLng(44.82698, 5.48280),
-    url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+    url: undefined,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     currentZoom: 11.5,
     currentCenter: latLng(44.82698, 5.48280),
@@ -77,6 +77,11 @@ export default {
       minWidth: 249,
     }
   }),
+  created() {
+    this.url = process.env.VUE_APP_MAPBOX_TOKEN
+      ? `https://api.mapbox.com/styles/v1/mapbox/outdoors-v9/tiles/{z}/{x}/{y}?access_token=${process.env.VUE_APP_MAPBOX_TOKEN}`
+      : 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png';
+  },
   mounted() {
     const map = this.$refs.map.mapObject;
     map.addControl(new L.Control.Fullscreen());

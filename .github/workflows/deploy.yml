@@ -16,6 +16,8 @@ jobs:
         run: npm ci
 
       - name: Run deploy script
+        env:
+          VUE_APP_MAPBOX_TOKEN: ${{ secrets.MAPBOX_TOKEN }}
         run: |
           git config --global user.name 'benoitdemaegdt'
           git config --global user.email 'benoit.demaegdt@gmail.com'
