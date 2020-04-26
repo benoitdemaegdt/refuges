@@ -4,11 +4,27 @@
     <!-- images -->
     <v-row>
       <v-col cols="12">
-        <v-img
-          class="shack-img"
-          :key="shack.key"
-          :src="require('@/assets/images/' + shack.images[0] + '?vuetify-preload')">
-        </v-img>
+        <template v-if="shack.images.length === 1">
+          <v-img
+            class="shack-img"
+            :key="shack.key"
+            :src="require('@/assets/images/' + shack.images[0] + '?vuetify-preload')">
+          </v-img>
+        </template>
+        <template v-else>
+          <v-carousel
+            class="shack-img"
+            hide-delimiters
+            show-arrows-on-hover
+          >
+            <v-carousel-item
+              v-for="(image, i) in shack.images"
+              :key="i"
+              :src="require('@/assets/images/' + image + '?vuetify-preload')"
+            >
+            </v-carousel-item>
+          </v-carousel>
+        </template>
       </v-col>
     </v-row>
 
