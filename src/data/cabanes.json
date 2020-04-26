@@ -2,7 +2,13 @@
   {
     "name": "Cabane de Pré Peyret",
     "key": "cabane-de-pre-peyret",
-    "type": "refuge non gardé", 
+    "type": "refuge non gardé",
+    "description": "Cabane exceptionnellement située au beau milieu de la réserve des Hauts Plateaux du Vercors.",
+    "accesses": [
+      {
+        "description": "Environ 2h de marche depuis le col du Rousset."
+      }
+    ],
     "massif": "Vercors",
     "beds": 15, 
     "stove": true,
@@ -18,6 +24,15 @@
     "name": "Cabane des Aiguillettes",
     "key": "cabane-des-aiguillettes",
     "type": "refuge non gardé",
+    "description": "Petite cabane située au pied du point culminant du Vercors, le Grand Veymont.",
+    "accesses": [
+      {
+        "description": "Environ 4h de marche depuis le col de Rousset."
+      },
+      {
+        "description": "Environ 3h de marche depuis le hammeau de la Richardière en passant par le Pas de la Selle."
+      }
+    ],
     "massif": "Vercors",
     "beds": 4,
     "stove": false,
@@ -34,6 +49,12 @@
     "name": "Cabane des Chaumailloux",
     "key": "cabane-des-chaumailloux",
     "type": "refuge non gardé",
+    "description": "Grande cabane avec vue inégalable sur le Mont Aiguille.",
+    "accesses": [
+      {
+        "description": "Environ 3h de marche depuis le hammeau de la Richardière en passant par le Pas de l'Aiguille."
+      }
+    ],
     "massif": "Vercors",
     "beds": 19,
     "stove": true,
@@ -49,6 +70,12 @@
     "name": "Abri de l'Essaure",
     "key": "abri-de-l-essaure",
     "type": "refuge non gardé",
+    "description": "Cabane perdue au milieu de l'immensité des Hauts Plateaux du Vercors.",
+    "accesses": [
+      {
+        "description": "Environ 3h de marche depuis Chichiliannee en passant par le Pas de l'Essaure."
+      }
+    ],
     "massif": "Vercors",
     "beds": 6,
     "stove": true,
