@@ -4,7 +4,7 @@
     <v-img
       class="white--text align-end"
       height="150px"
-      :src="require('@/assets/images/' + cabane.images[0] + '?vuetify-preload')"
+      :src="require('@/assets/images/' + cabane.images[0])"
     >
     </v-img>
 
