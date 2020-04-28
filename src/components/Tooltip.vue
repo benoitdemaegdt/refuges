@@ -2,6 +2,7 @@
   <v-card class="mx-auto" max-width="250" min-width="250" flat
   >
     <v-img
+      v-if="cabane.images.length !== 0"
       class="white--text align-end"
       height="150px"
       :src="require('@/assets/images/' + cabane.images[0])"

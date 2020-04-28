@@ -4,7 +4,10 @@
 
       <!-- image -->
       <v-col cols="5" class="pl-0">
-        <template v-if="shack.images.length === 1">
+        <template v-if="shack.images.length === 0">
+          <v-sheet height="200px" color="#E0E0E0"></v-sheet>
+        </template>
+        <template v-else-if="shack.images.length === 1">
           <v-img
             height="200px"
             class="shack-img"
@@ -100,7 +103,7 @@ export default {
 
 <style scoped>
 /* shack image */
-.shack-img {
+.shack-img, .v-sheet {
   border-radius: 8px;
 }
 
