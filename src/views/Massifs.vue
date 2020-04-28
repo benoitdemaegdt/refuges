@@ -1,5 +1,5 @@
 <template>
-  <v-container fill-height fluid class="pt-0">
+  <v-container fluid class="pt-0">
       <template v-if="!getMassifName">
         <v-row class="text-center">
           <v-col cols="12">
@@ -8,7 +8,7 @@
         </v-row>
       </template>
 
-      <template v-else-if="getCabanes.length === 0">
+      <template v-else-if="getAllCabanes.length === 0">
         <v-row class="text-center">
           <v-col cols="12">
             <h1 class="display-2">Les cabanes de ce massif seront bientôt disponibles 😁</h1>
@@ -24,7 +24,7 @@
               <h1 class="massif-title">{{ getTitle }}</h1>
             </div>
             <div
-              v-for="(cabane) in getCabanes"
+              v-for="(cabane) in getPageCabanes"
               :key="cabane.key"
               @mouseenter="onMouseEnter(cabane)"
               @mouseleave="onMouseLeave"
@@ -32,10 +32,13 @@
               <v-divider></v-divider>
               <ShackListItem :massifKey="getMassifKey" :shack="cabane"></ShackListItem>
             </div>
+            <div v-if="getAllCabanes.length > cabanesPerPage" class="text-center mt-4">
+              <v-pagination v-model="page" circle color="#78909C" :length="getPages"></v-pagination>
+            </div>
           </v-col>
           <v-col cols="5" class="map-col pa-0 hidden-sm-and-down">
             <div class="map-container">
-              <Map :cabanes="getCabanes" :mouseOveredCabaneKey="mouseOveredCabaneKey"></Map>
+              <Map :cabanes="getPageCabanes" :mouseOveredCabaneKey="mouseOveredCabaneKey"></Map>
             </div>
           </v-col>
         </v-row>
@@ -62,6 +65,8 @@ export default {
   data: () => ({
     massifName: undefined,
     mouseOveredCabaneKey: undefined,
+    cabanesPerPage: 20,
+    page: 1,
   }),
   watch: {
     $route: {
@@ -85,11 +90,20 @@ export default {
       return `Cabanes ${massif.connector} ${massif.name}`;
     },
     getSubtitle() {
-      return `${this.getCabanes.length} refuges, cabanes ou abris dans ce massif`;
+      return `${this.getAllCabanes.length} refuges, cabanes ou abris dans ce massif`;
     },
-    getCabanes() {
+    getAllCabanes() {
       return cabanes.filter(cabane => cabane.massif === this.getMassifName);
     },
+    getPageCabanes() {
+      const startIdx = (this.page - 1) * this.cabanesPerPage;
+      const endIdx = startIdx + this.cabanesPerPage;
+      return this.getAllCabanes.slice(startIdx, endIdx);
+    },
+    getPages() {
+      const modulo = this.getAllCabanes.length % this.cabanesPerPage;
+      return Math.floor(this.getAllCabanes.length / this.cabanesPerPage) + (modulo && 1);
+    }
   },
   methods: {
     onMouseEnter(cabane) {
@@ -128,5 +142,9 @@ export default {
 
 .map-container {
   height: calc(100vh - 64px);
+}
+
+/deep/ .v-pagination__item, /deep/ .v-pagination__navigation {
+  outline: none !important;
 }
 </style>
