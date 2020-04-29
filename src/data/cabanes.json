@@ -1,7 +1,111 @@
 [
     {
+        "name": "Cabane des Aiguillettes",
+        "key": "cabane-des-aiguillettes",
+        "type": "cabane non gardée",
+        "massif": "Vercors",
+        "beds": 4,
+        "altitude": 1880,
+        "longitude": 5.52026,
+        "latitude": 44.85368,
+        "water": true,
+        "toilets": false,
+        "wood": false,
+        "stove": false,
+        "mattresses": 0,
+        "blankets": false,
+        "description": "Petite cabane située au pied du point culminant du Vercors, le Grand Veymont.",
+        "accesses": [
+            {
+              "description": "Environ 4h de marche depuis le col de Rousset."
+            },
+            {
+              "description": "Environ 3h de marche depuis le hammeau de la Richardière en passant par le Pas de la Selle."
+            }
+          ],
+          "images": [
+            "vercors/cabane-des-aiguillettes.jpeg",
+            "vercors/cabane-des-aiguillettes-hiver.jpg"
+          ]
+    },
+    {
+        "name": "Cabane PNRV des Chaumailloux",
+        "key": "cabane-pnrv-des-chaumailloux",
+        "type": "cabane non gardée",
+        "massif": "Vercors",
+        "beds": 19,
+        "altitude": 1665,
+        "longitude": 5.51194,
+        "latitude": 44.80543,
+        "water": true,
+        "toilets": false,
+        "wood": true,
+        "stove": true,
+        "mattresses": 0,
+        "blankets": false,
+        "description": "Grande cabane avec vue inégalable sur le Mont Aiguille.",
+        "accesses": [
+            {
+              "description": "Environ 3h de marche depuis le hammeau de la Richardière en passant par le Pas de l'Aiguille."
+            }
+          ],
+          "images": [
+            "vercors/cabane-des-chaumailloux.jpeg"
+          ]
+    },
+    {
+        "name": "Abri de l'Essaure",
+        "key": "abri-de-l-essaure",
+        "type": "cabane non gardée",
+        "massif": "Vercors",
+        "beds": 6,
+        "altitude": 1653,
+        "longitude": 5.55792,
+        "latitude": 44.78709,
+        "water": false,
+        "toilets": false,
+        "wood": true,
+        "stove": true,
+        "mattresses": 0,
+        "blankets": false,
+        "description": "Cabane perdue au milieu de l'immensité des Hauts Plateaux du Vercors.",
+        "accesses": [
+            {
+              "description": "Environ 3h de marche depuis Chichiliannee en passant par le Pas de l'Essaure."
+            }
+          ],
+          "images": [
+            "vercors/abris-de-l-essaure.jpeg"
+          ]
+    },
+    {
+        "name": "Cabane de Pré Peyret",
+        "key": "cabane-de-pre-peyret",
+        "type": "cabane non gardée",
+        "massif": "Vercors",
+        "beds": 15,
+        "altitude": 1600,
+        "longitude": 5.4828,
+        "latitude": 44.82698,
+        "water": true,
+        "toilets": false,
+        "wood": true,
+        "stove": true,
+        "mattresses": 0,
+        "blankets": false,
+        "description": "Cabane exceptionnellement située au beau milieu de la réserve des Hauts Plateaux du Vercors.",
+        "accesses": [
+            {
+              "description": "Environ 2h de marche depuis le col du Rousset."
+            }
+          ],
+          "images": [
+            "vercors/cabane-pre-peyret.jpeg"
+          ]
+    },
+    {
         "name": "Cabane des Clots (ou de Roybon)",
-        "key": "cabane-des-clots-(ou-de-roybon)",
+        "key": "cabane-des-clots-ou-de-roybon",
         "type": "cabane non gardée",
         "massif": "Vercors",
         "beds": 15,
@@ -86,7 +190,7 @@
     },
     {
         "name": "Refuge d'Ambel",
-        "key": "refuge-d'ambel",
+        "key": "refuge-d-ambel",
         "type": "cabane non gardée",
         "massif": "Vercors",
         "beds": 19,
@@ -136,31 +240,6 @@
         "images": []
     },
     {
-        "name": "Abri de l'Essaure",
-        "key": "abri-de-l'essaure",
-        "type": "cabane non gardée",
-        "massif": "Vercors",
-        "beds": 6,
-        "altitude": 1653,
-        "longitude": 5.55792,
-        "latitude": 44.78709,
-        "water": false,
-        "toilets": false,
-        "wood": true,
-        "stove": true,
-        "mattresses": 0,
-        "blankets": false,
-        "description": "Cabane perdue au milieu de l'immensité des Hauts Plateaux du Vercors.",
-        "accesses": [
-            {
-              "description": "Environ 3h de marche depuis Chichiliannee en passant par le Pas de l'Essaure."
-            }
-          ],
-        "images": [
-            "vercors/abris-de-l-essaure.jpeg"
-          ]
-    },
-    {
         "name": "Refuge du Col de Vassieux",
         "key": "refuge-du-col-de-vassieux",
         "type": "cabane non gardée",
@@ -179,7 +258,7 @@
     },
     {
         "name": "Baraque forestière G. Guillet",
-        "key": "baraque-forestiere-g.-guillet",
+        "key": "baraque-forestiere-g-guillet",
         "type": "cabane non gardée",
         "massif": "Vercors",
         "beds": 2,
@@ -230,7 +309,7 @@
     },
     {
         "name": "Bergerie de Laval d'Aix",
-        "key": "bergerie-de-laval-d'aix",
+        "key": "bergerie-de-laval-d-aix",
         "type": "cabane non gardée",
         "massif": "Vercors",
         "beds": 5,
@@ -247,7 +326,7 @@
     },
     {
         "name": "Refuge du Grand Couloir (Pte Moucherolle)",
-        "key": "refuge-du-grand-couloir-(pte-moucherolle)",
+        "key": "refuge-du-grand-couloir-pte-moucherolle",
         "type": "cabane non gardée",
         "massif": "Vercors",
         "beds": 3,
@@ -363,56 +442,6 @@
         "mattresses": 0,
         "blankets": false,
         "images": []
-    },
-    {
-        "name": "Cabane de Pré Peyret",
-        "key": "cabane-de-pre-peyret",
-        "type": "cabane non gardée",
-        "massif": "Vercors",
-        "beds": 15,
-        "altitude": 1600,
-        "longitude": 5.4828,
-        "latitude": 44.82698,
-        "water": true,
-        "toilets": false,
-        "wood": true,
-        "stove": true,
-        "mattresses": 0,
-        "blankets": false,
-        "description": "Cabane exceptionnellement située au beau milieu de la réserve des Hauts Plateaux du Vercors.",
-        "accesses": [
-            {
-              "description": "Environ 2h de marche depuis le col du Rousset."
-            }
-          ],
-        "images": [
-            "vercors/cabane-pre-peyret.jpeg"
-        ]
-    },
-    {
-        "name": "Cabane PNRV des Chaumailloux",
-        "key": "cabane-pnrv-des-chaumailloux",
-        "type": "cabane non gardée",
-        "massif": "Vercors",
-        "beds": 19,
-        "altitude": 1665,
-        "longitude": 5.51194,
-        "latitude": 44.80543,
-        "water": true,
-        "toilets": false,
-        "wood": true,
-        "stove": true,
-        "mattresses": 0,
-        "blankets": false,
-        "description": "Grande cabane avec vue inégalable sur le Mont Aiguille.",
-        "accesses": [
-            {
-              "description": "Environ 3h de marche depuis le hammeau de la Richardière en passant par le Pas de l'Aiguille."
-            }
-          ],
-        "images": [
-            "vercors/cabane-des-chaumailloux.jpeg"
-          ]
     },
     {
         "name": "2ème Borie de Chamousset",
@@ -583,35 +612,6 @@
         "mattresses": 0,
         "blankets": false,
         "images": []
-    },
-    {
-        "name": "Cabane des Aiguillettes",
-        "key": "cabane-des-aiguillettes",
-        "type": "cabane non gardée",
-        "massif": "Vercors",
-        "beds": 4,
-        "altitude": 1880,
-        "longitude": 5.52026,
-        "latitude": 44.85368,
-        "water": true,
-        "toilets": false,
-        "wood": false,
-        "stove": false,
-        "mattresses": 0,
-        "blankets": false,
-        "description": "Petite cabane située au pied du point culminant du Vercors, le Grand Veymont.",
-        "accesses": [
-            {
-              "description": "Environ 4h de marche depuis le col de Rousset."
-            },
-            {
-              "description": "Environ 3h de marche depuis le hammeau de la Richardière en passant par le Pas de la Selle."
-            }
-          ],
-        "images": [
-            "vercors/cabane-des-aiguillettes.jpeg",
-            "vercors/cabane-des-aiguillettes-hiver.jpg"
-          ]
     },
     {
         "name": "1er Borie de Chamousset",
