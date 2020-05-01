@@ -1,6 +1,6 @@
 <template>
   <v-container fluid class="pt-0">
-      <template v-if="!getMassifName">
+      <template v-if="!massif.name">
         <v-row class="text-center">
           <v-col cols="12">
             <h1 class="display-2">Nous n'avons pas encore ajouté ce massif 😢</h1>
@@ -8,7 +8,7 @@
         </v-row>
       </template>
 
-      <template v-else-if="getAllCabanes.length === 0">
+      <template v-else-if="shacks.length === 0">
         <v-row class="text-center">
           <v-col cols="12">
             <h1 class="display-2">Les cabanes de ce massif seront bientôt disponibles 😁</h1>
@@ -30,9 +30,9 @@
               @mouseleave="onMouseLeave"
             >
               <v-divider></v-divider>
-              <ShackListItem :massifKey="getMassifKey" :shack="cabane"></ShackListItem>
+              <ShackListItem :massifKey="massif.key" :shack="cabane"></ShackListItem>
             </div>
-            <div v-if="getAllCabanes.length > cabanesPerPage" class="text-center mt-4">
+            <div v-if="shacks.length > cabanesPerPage" class="text-center mt-4">
               <v-pagination v-model="page" circle color="#78909C" :length="getPages"></v-pagination>
             </div>
           </v-col>
@@ -50,7 +50,9 @@
 <script>
 // data
 import massifs from '@/data/massifs.json';
-import cabanes from '@/data/cabanes.json';
+
+// services
+import { getShacksByMassif } from '@/services/MassifService';
 
 // components
 import ShackListItem from '@/components/ShackListItem'
@@ -63,46 +65,39 @@ export default {
     Map,
   },
   data: () => ({
-    massifName: undefined,
+    isLoading: true,
+    massif: undefined,
+    shacks: [],
     mouseOveredCabaneKey: undefined,
     cabanesPerPage: 20,
     page: 1,
   }),
   watch: {
     $route: {
-      handler() {
-        this.massifName = this.getMassifName;
+      async handler() {
+        this.isLoading = true;
+        this.massif = massifs.find(massif => massif.key === this.$route.params.name);
+        this.shacks = await getShacksByMassif(this.massif);
+        this.isLoading = false;
       },
       immediate: true,
     }
   },
   computed: {
-    getMassifName() {
-      const massif = massifs.find(massif => massif.key === this.$route.params.name);
-      return massif && massif.name;
-    },
-    getMassifKey() {
-      const massif = massifs.find(massif => massif.key === this.$route.params.name);
-      return massif && massif.key;
-    },
     getTitle() {
-      const massif = massifs.find(massif => massif.key === this.$route.params.name);
-      return `Cabanes ${massif.connector} ${massif.name}`;
+      return `Cabanes ${this.massif.connector} ${this.massif.name}`;
     },
     getSubtitle() {
-      return `${this.getAllCabanes.length} refuges, cabanes ou abris dans ce massif`;
-    },
-    getAllCabanes() {
-      return cabanes.filter(cabane => cabane.massif === this.getMassifName);
+      return `${this.shacks.length} refuges, cabanes ou abris dans ce massif`;
     },
     getPageCabanes() {
       const startIdx = (this.page - 1) * this.cabanesPerPage;
       const endIdx = startIdx + this.cabanesPerPage;
-      return this.getAllCabanes.slice(startIdx, endIdx);
+      return this.shacks.slice(startIdx, endIdx);
     },
     getPages() {
-      const modulo = this.getAllCabanes.length % this.cabanesPerPage;
-      return Math.floor(this.getAllCabanes.length / this.cabanesPerPage) + (modulo && 1);
+      const modulo = this.shacks.length % this.cabanesPerPage;
+      return Math.floor(this.shacks.length / this.cabanesPerPage) + (modulo && 1);
     }
   },
   methods: {

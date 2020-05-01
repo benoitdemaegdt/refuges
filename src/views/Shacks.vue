@@ -108,7 +108,10 @@
 
 <script>
 // data
-import cabanes from '@/data/cabanes.json';
+import massifs from '@/data/massifs.json';
+
+// services
+import { getShacksByMassif } from '@/services/MassifService';
 
 export default {
   name: 'Shack',
@@ -117,8 +120,10 @@ export default {
   }),
   watch: {
     $route: {
-      handler() {
-        this.shack = cabanes.find(cabane => cabane.key === this.$route.params.cabane);
+      async handler() {
+        const massif = massifs.find(massif => massif.key === this.$route.params.massif);
+        const shacks = await getShacksByMassif(massif);
+        this.shack = shacks.find(shack => shack.key === this.$route.params.cabane);
       },
       immediate: true,
     }

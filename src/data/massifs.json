@@ -1,5 +1,32 @@
 [
-  { "name": "Vercors", "key": "vercors", "connector": "du" },
-  { "name": "Belledonne", "key": "belledonne", "connector": "de" },
-  { "name": "Chartreuse", "key": "chartreuse", "connector": "de" }
+  {
+    "name": "Vercors",
+    "key": "vercors",
+    "connector": "du",
+    "data": {
+      "sheetId": "2PACX-1vQ2XkHB35RZ3gSdKB7skqoSEJCKleKGhHQfruLugKELIq0fOjelwtDeivZ2s3icD2fMXaNmHjLw8FsR",
+      "shackTabId": "1125012792",
+      "sourceTabId": "1082649207"
+    }
+  },
+  {
+    "name": "Belledonne",
+    "key": "belledonne",
+    "connector": "de",
+    "data": {
+      "sheetId": "2PACX-1vRcXtV2MS9yM_vRJlRjhOsfL7_0xd5u-w3XVN_Bg8h5Zjk4K8Ixn6z1CItU2Uob9T1T6a9b38DNKS80",
+      "shackTabId": "0",
+      "sourceTabId": "177727433"
+    }
+  },
+  { 
+    "name": "Chartreuse",
+    "key": "chartreuse",
+    "connector": "de",
+    "data": {
+      "sheetId": "2PACX-1vQYIfN_WnPlI249lGX6aW__L-_7m2MT76Bj0rjd3kMtkgMqZ2oZaa6dR3efAuQPpWMU-jY3IQsqhe-9",
+      "shackTabId": "0",
+      "sourceTabId": "1030956970"
+    }
+  }
 ]
