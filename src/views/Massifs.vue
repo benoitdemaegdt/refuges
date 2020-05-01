@@ -8,7 +8,7 @@
         </v-row>
       </template>
 
-      <template v-else-if="shacks.length === 0">
+      <template v-else-if="shacks.length === 0 && !isLoading">
         <v-row class="text-center">
           <v-col cols="12">
             <h1 class="display-2">Les cabanes de ce massif seront bientôt disponibles 😁</h1>
@@ -19,22 +19,30 @@
       <template v-else>
         <v-row>
           <v-col cols="12" md="7" class="shack-list">
-            <div class="py-10 pl-24">
-              <p class="massif-subtitle mb-0">{{ getSubtitle }}</p>
-              <h1 class="massif-title">{{ getTitle }}</h1>
-            </div>
-            <div
-              v-for="(cabane) in getPageCabanes"
-              :key="cabane.key"
-              @mouseenter="onMouseEnter(cabane)"
-              @mouseleave="onMouseLeave"
-            >
-              <v-divider></v-divider>
-              <ShackListItem :massifKey="massif.key" :shack="cabane"></ShackListItem>
-            </div>
-            <div v-if="shacks.length > cabanesPerPage" class="text-center mt-4">
-              <v-pagination v-model="page" circle color="#78909C" :length="getPages"></v-pagination>
-            </div>
+            <template v-if="isLoading">
+              <v-skeleton-loader class="mb-6" type="list-item-two-line"></v-skeleton-loader>
+              <v-skeleton-loader class="mb-6" type="image"></v-skeleton-loader>
+              <v-skeleton-loader class="mb-6" type="image"></v-skeleton-loader>
+              <v-skeleton-loader type="image"></v-skeleton-loader>
+            </template>
+            <template v-else>
+              <div class="py-10 pl-24">
+                <p class="massif-subtitle mb-0">{{ getSubtitle }}</p>
+                <h1 class="massif-title">{{ getTitle }}</h1>
+              </div>
+              <div
+                v-for="(cabane) in getPageCabanes"
+                :key="cabane.key"
+                @mouseenter="onMouseEnter(cabane)"
+                @mouseleave="onMouseLeave"
+              >
+                <v-divider></v-divider>
+                <ShackListItem :massifKey="massif.key" :shack="cabane"></ShackListItem>
+              </div>
+              <div v-if="shacks.length > cabanesPerPage" class="text-center mt-4">
+                <v-pagination v-model="page" circle color="#78909C" :length="getPages"></v-pagination>
+              </div>
+            </template>
           </v-col>
           <v-col cols="5" class="map-col pa-0 hidden-sm-and-down">
             <div class="map-container">
