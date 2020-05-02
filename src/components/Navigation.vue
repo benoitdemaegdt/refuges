@@ -31,7 +31,14 @@
         item-text="name"
         item-value="path"
         return-object
-      />
+      >
+        <template v-slot:item="data">
+          <v-list-item-content>
+            <v-list-item-title v-html="data.item.name"></v-list-item-title>
+            <v-list-item-subtitle v-html="data.item.type"></v-list-item-subtitle>
+          </v-list-item-content>
+        </template>
+      </v-autocomplete>
       <v-spacer />
       <v-btn
         href="https://github.com/benoitdemaegdt/refuges" target="_blank"
