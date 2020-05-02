@@ -61,12 +61,13 @@ export default {
     }
   },
   data: () =>  ({
-    zoom: 11,
-    center: latLng(44.82698, 5.48280),
+    map: undefined,
+    zoom: 8,
+    center: latLng(45.1667, 5.7167),
     url: undefined,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    currentZoom: 11.5,
-    currentCenter: latLng(44.82698, 5.48280),
+    currentZoom: undefined,
+    currentCenter: undefined,
     mapOptions: {
       zoomControl: false,
       zoomSnap: 0.5
@@ -83,8 +84,22 @@ export default {
       : 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png';
   },
   mounted() {
-    const map = this.$refs.map.mapObject;
-    map.addControl(new L.Control.Fullscreen());
+    this.map = this.$refs.map.mapObject;
+    this.map.addControl(new L.Control.Fullscreen());
+  },
+  watch: {
+    cabanes: {
+      handler(newCabanes) {
+        if (newCabanes) {
+          const markers = [];
+          for (const cabane of newCabanes) {
+            markers.push(L.marker([cabane.latitude, cabane.longitude]));
+          }
+          const group = new L.featureGroup(markers);
+          this.map.fitBounds(group.getBounds().pad(0.1));
+        }
+      },
+    },
   },
   methods: {
     zoomUpdate(zoom) {
