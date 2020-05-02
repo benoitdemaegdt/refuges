@@ -8,9 +8,30 @@
       color="white"
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" color="primary"/>
-      <v-toolbar-title>
+      <v-toolbar-title
+        style="width: 300px"
+        class="ml-0 pl-4"
+      >
         <router-link :to="{ name: 'home'}" class='toolbar-title'>Refuges</router-link>
       </v-toolbar-title>
+
+      <!-- search bar -->
+      <v-autocomplete
+        v-model="searchNavigation"
+        flat
+        solo
+        background-color="#EEEEEE"
+        hide-details
+        no-data-text="Nous ne connaissons pas encore cet endroit  😢"
+        clearable
+        prepend-inner-icon="mdi-magnify"
+        label="Chercher un massif, une cabane ..."
+        class="hidden-sm-and-down"
+        :items="search"
+        item-text="name"
+        item-value="path"
+        return-object
+      />
       <v-spacer />
       <v-btn
         href="https://github.com/benoitdemaegdt/refuges" target="_blank"
@@ -59,14 +80,26 @@
 <script>
 // data
 import massifs from '@/data/massifs.json';
+import search from '@/data/search.json'
 
 export default {
   name: 'Navigation',
   data: () => ({
     drawer: false,
+    searchNavigation: undefined,
+    search,
     massifs,
-  })
-}
+  }),
+  watch: {
+    searchNavigation: {
+      handler(newRoute) {
+        if (newRoute) {
+          this.$router.push({ path: newRoute.path });
+        }
+      },
+    },
+  },
+};
 </script>
 
 <style scoped>

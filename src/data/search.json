@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Vercors",
+    "type": "massif",
+    "path": "/refuges/massifs/vercors"
+  },
+  {
+    "name": "Belledonne",
+    "type": "massif",
+    "path": "/refuges/massifs/belledonne"
+  },
+  {
+    "name": "Chartreuse",
+    "type": "massif",
+    "path": "/refuges/massifs/chartreuse"
+  }
+]
