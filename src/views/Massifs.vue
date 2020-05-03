@@ -46,8 +46,8 @@
           </v-col>
           <v-col cols="5" class="map-col pa-0 hidden-sm-and-down">
             <div class="map-container">
-              <!-- <Map :cabanes="getPageCabanes" :mouseOveredCabaneKey="mouseOveredCabaneKey"></Map> -->
-              <Mapbox></Mapbox>
+              <Map :cabanes="getPageCabanes" :mouseOveredCabaneKey="mouseOveredCabaneKey"></Map>
+              <!-- <Mapbox :shacks="getPageCabanes"></Mapbox> -->
             </div>
           </v-col>
         </v-row>
@@ -65,15 +65,15 @@ import { getShacksByMassif } from '@/services/MassifService';
 
 // components
 import ShackListItem from '@/components/ShackListItem'
-// import Map from '@/components/Map'
-import Mapbox from '@/components/Mapbox'
+import Map from '@/components/Map'
+// import Mapbox from '@/components/Mapbox'
 
 export default {
   name: 'Massifs',
   components: {
     ShackListItem,
-    // Map,
-    Mapbox,
+    Map,
+    // Mapbox,
   },
   data: () => ({
     isLoading: true,

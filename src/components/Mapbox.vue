@@ -4,31 +4,86 @@
 
 <script>
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
+import Vue from 'vue';
+import Tooltip from '@/components/Tooltip.vue';
+// import Popup from '@/components/Popup.vue';
 
 export default {
   name: 'Mapbox',
+  props: {
+    shacks: {
+      type: Array,
+      required: true,
+    },
+  },
   data: () => ({
-
+    map: undefined,
+    markers: [],
+    popups: [],
   }),
   mounted() {
     mapboxgl.accessToken = '';
-    var map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/outdoors-v11',
       center: [5.51194, 44.80543],
       zoom: 11,
     });
-    map.addControl(new mapboxgl.NavigationControl({ showCompass: false }));
-    map.addControl(new mapboxgl.FullscreenControl(), 'top-left');
+    this.map.addControl(new mapboxgl.NavigationControl({ showCompass: false }));
+    this.map.addControl(new mapboxgl.FullscreenControl(), 'top-left');
 
-    // markers
-    var el = document.createElement('div');
-    el.className = 'mapbox-marker';
-    el.innerHTML = 'test';
-    new mapboxgl.Marker(el)
-      .setLngLat([5.51194, 44.80543])
-      .addTo(map);
-  }
+
+  },
+  watch: {
+    shacks: {
+      handler(newShacks) {
+        if (newShacks) {
+          this.clearMarkers();
+          newShacks.forEach((shack) => {
+            // create marker
+            const el = document.createElement('div');
+            el.className = 'mapbox-marker';
+            el.innerHTML = `<b>${shack.beds}</b>&nbsp<i class="v-icon notranslate mdi mdi-bed-outline theme--light" style="font-size:18px; color: rgb(34,34,34);"></i>`;
+
+            // create popup
+            const MapboxPopup = Vue.extend(Tooltip)
+
+            const popup = new mapboxgl.Popup()
+              .setLngLat([shack.longitude, shack.latitude])
+              .setHTML(`<div id="mapbox-popup-content-${shack.key}"></div>`)
+              .addTo(this.map)
+
+            const MapboxPopupInstance = new MapboxPopup({
+              propsData: { cabane: shack }
+            });
+
+            MapboxPopupInstance.$mount(`#mapbox-popup-content-${shack.key}`);
+            popup._update();
+
+            // attach marker and popup to map
+            const marker = new mapboxgl.Marker(el)
+              .setLngLat([shack.longitude, shack.latitude])
+              .setPopup(popup)
+              .addTo(this.map);
+
+            // keep track of markers and popups
+            this.markers.push(marker);
+            this.popups.push(popup)
+          });
+        }
+      },
+    },
+  },
+  methods: {
+    clearMarkers() {
+      if (this.markers.length > 0) {
+        for (let i = 0; i < this.markers.length; i++) {
+          this.markers[i].remove();
+          this.popups[i].remove();
+        }
+      }
+    },
+  },
 }
 </script>
 
@@ -45,4 +100,17 @@ export default {
   box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.18) 0px 1px 2px;
   font-size: 13px;
 }
+
+.mapboxgl-popup-content {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.mapboxgl-popup-tip {
+  border-top-color: transparent !important;
+  border-right-color: transparent !important;
+  border-bottom-color: transparent !important;
+  border-left-color: transparent !important;
+}
+
 </style>
