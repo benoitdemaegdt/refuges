@@ -41,7 +41,7 @@ export default {
             // create marker
             const el = document.createElement('div');
             el.className = 'mapbox-marker';
-            el.innerHTML = `<span class="mapbox-marker-content"><b>${shack.beds}</b>&nbsp<i class="v-icon mdi mdi-bed-outline" style="font-size:18px;"></i></span>`;
+            el.innerHTML = `<span class="mapbox-marker-content"><b>${shack.beds}</b>&nbsp<i class="v-icon mdi mdi-bed-outline" style="font-size:18px; transition-property: none;"></i></span>`;
 
             // create popup
             const MapboxPopup = Vue.extend(Tooltip)
