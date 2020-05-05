@@ -31,9 +31,9 @@
                 <h1 class="massif-title">{{ getTitle }}</h1>
               </div>
               <div
-                v-for="(cabane) in getPageCabanes"
+                v-for="(cabane, index) in getPageCabanes"
                 :key="cabane.key"
-                @mouseenter="onMouseEnter(cabane)"
+                @mouseenter="onMouseEnter(cabane, index)"
                 @mouseleave="onMouseLeave"
               >
                 <v-divider></v-divider>
@@ -47,7 +47,7 @@
           <v-col cols="5" class="map-col pa-0 hidden-sm-and-down">
             <div class="map-container">
               <Map :cabanes="getPageCabanes" :mouseOveredCabaneKey="mouseOveredCabaneKey"></Map>
-              <!-- <Mapbox :shacks="getPageCabanes"></Mapbox> -->
+              <!-- <Mapbox :shacks="getPageCabanes" :mouseOveredShackIndex="mouseOveredCabaneIndex"></Mapbox> -->
             </div>
           </v-col>
         </v-row>
@@ -80,6 +80,7 @@ export default {
     massif: undefined,
     shacks: [],
     mouseOveredCabaneKey: undefined,
+    mouseOveredCabaneIndex: undefined,
     cabanesPerPage: 20,
     page: 1,
   }),
@@ -112,11 +113,13 @@ export default {
     }
   },
   methods: {
-    onMouseEnter(cabane) {
+    onMouseEnter(cabane, index) {
       this.mouseOveredCabaneKey = cabane.key;
+      this.mouseOveredCabaneIndex = index;
     },
     onMouseLeave() {
       this.mouseOveredCabaneKey = undefined;
+      this.mouseOveredCabaneIndex = undefined;
     },
   }
 };

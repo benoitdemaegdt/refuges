@@ -11,10 +11,8 @@ import Tooltip from '@/components/Tooltip.vue';
 export default {
   name: 'Mapbox',
   props: {
-    shacks: {
-      type: Array,
-      required: true,
-    },
+    shacks: { type: Array, required: true },
+    mouseOveredShackIndex: { type: Number },
   },
   data: () => ({
     map: undefined,
@@ -73,6 +71,18 @@ export default {
         }
       },
     },
+    mouseOveredShackIndex: {
+      handler(newShack, oldShack) {
+        if (oldShack !== undefined) {
+          const el = this.markers[oldShack].getElement();
+          el.classList.remove('mapbox-marker-hover');
+        }
+        if (newShack !== undefined) {
+          const el = this.markers[newShack].getElement();
+          el.classList.add('mapbox-marker-hover');
+        }
+      },
+    },
   },
   methods: {
     clearMarkers() {
@@ -99,6 +109,14 @@ export default {
   color: rgb(34, 34, 34);
   box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.18) 0px 1px 2px;
   font-size: 13px;
+}
+
+.mapbox-marker-hover, .mapbox-marker-hover > i {
+  color: white !important;
+}
+
+.mapbox-marker-hover {
+  background-color: rgb(34, 34, 34) !important;
 }
 
 .mapboxgl-popup-content {
