@@ -12,7 +12,9 @@ function getData(sheetId, gid) {
       skipEmptyLines: true,
       transform(value, column) {
         if (['images', 'accesses'].includes(column)) {
-          return value ? value.split(',') : [];
+          return value
+            ? value.split('@@').map(element => element.trim())
+            : [];
         }
         return value;
       },
