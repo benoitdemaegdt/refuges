@@ -41,7 +41,7 @@ export default {
             // create marker
             const el = document.createElement('div');
             el.className = 'mapbox-marker';
-            el.innerHTML = `<b>${shack.beds}</b>&nbsp<i class="v-icon notranslate mdi mdi-bed-outline theme--light" style="font-size:18px; color: rgb(34,34,34);"></i>`;
+            el.innerHTML = `<span class="mapbox-marker-content"><b>${shack.beds}</b>&nbsp<i class="v-icon mdi mdi-bed-outline" style="font-size:18px;"></i></span>`;
 
             // create popup
             const MapboxPopup = Vue.extend(Tooltip)
@@ -75,11 +75,15 @@ export default {
       handler(newShack, oldShack) {
         if (oldShack !== undefined) {
           const el = this.markers[oldShack].getElement();
+          const content = el.querySelector('.mapbox-marker-content');
           el.classList.remove('mapbox-marker-hover');
+          content.classList.remove('mapbox-marker-content-hover');
         }
         if (newShack !== undefined) {
           const el = this.markers[newShack].getElement();
+          const content = el.querySelector('.mapbox-marker-content');
           el.classList.add('mapbox-marker-hover');
+          content.classList.add('mapbox-marker-content-hover');
         }
       },
     },
@@ -111,7 +115,11 @@ export default {
   font-size: 13px;
 }
 
-.mapbox-marker-hover, .mapbox-marker-hover > i {
+.mapbox-marker-content {
+  color: rgb(34, 34, 34);
+}
+
+.mapbox-marker-content-hover {
   color: white !important;
 }
 
