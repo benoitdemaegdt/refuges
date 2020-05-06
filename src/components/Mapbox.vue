@@ -20,11 +20,11 @@ export default {
     popups: [],
   }),
   mounted() {
-    mapboxgl.accessToken = '';
+    mapboxgl.accessToken = process.env.VUE_APP_MAPBOX_GL_TOKEN;
     this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/outdoors-v11',
-      center: [5.51194, 44.80543],
+      center: [5.7167, 45.1667],
       zoom: 11,
     });
     this.map.addControl(new mapboxgl.NavigationControl({ showCompass: false }));
