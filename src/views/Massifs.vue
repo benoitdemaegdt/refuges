@@ -97,6 +97,7 @@ export default {
     $route: {
       async handler() {
         this.isLoading = true;
+        this.page = 1;
         this.massif = massifs.find(massif => massif.key === this.$route.params.name);
         this.shacks = await getShacksByMassif(this.massif);
         this.isLoading = false;
