@@ -73,10 +73,16 @@ export default {
           });
           
           // fit map to markers
-          this.map.fitBounds(bounds, { padding: 100 });
+          if (newShacks.length > 1) {
+            this.map.fitBounds(bounds, { padding: 100 });
+          } else if (newShacks.length === 1) {
+            this.map.flyTo({
+              center: [newShacks[0].longitude, newShacks[0].latitude],
+              essential: true,
+            });
+          }
         }
       },
-      immediate: true,
     },
     mouseOveredShackIndex: {
       handler(newShack, oldShack) {
