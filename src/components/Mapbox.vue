@@ -85,6 +85,9 @@ export default {
     },
     mouseOveredShackIndex: {
       handler(newShack, oldShack) {
+        console.log('mouseOveredShackIndex')
+        console.log('newShack :>> ', newShack);
+        console.log('oldShack :>> ', oldShack);
         if (oldShack !== undefined) {
           const el = this.markers[oldShack].getElement();
           const content = el.querySelector('.mapbox-marker-content');
@@ -98,7 +101,6 @@ export default {
           content.classList.add('mapbox-marker-content-hover');
         }
       },
-      immediate: true,
     },
   },
   methods: {

@@ -124,6 +124,9 @@ export default {
   },
   methods: {
     onMouseEnter(cabane, index) {
+      console.log('onMouseEnter')
+      console.log('cabane :>> ', cabane);
+      console.log('index :>> ', index);
       this.mouseOveredCabaneKey = cabane.key;
       this.mouseOveredCabaneIndex = index;
     },
