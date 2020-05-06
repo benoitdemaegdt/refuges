@@ -41,7 +41,7 @@ export default {
             // create marker
             const el = document.createElement('div');
             el.className = 'mapbox-marker';
-            el.innerHTML = `<span class="mapbox-marker-content"><b>${shack.beds}</b>&nbsp<i class="v-icon mdi mdi-bed-outline" style="font-size:18px; transition-property: none;"></i></span>`;
+            el.innerHTML = `<span class="mapbox-marker-content"><b>${shack.beds}</b>&nbsp<i class="v-icon mdi mdi-bed-outline mapbox-marker-content-icon" style="transition-property: none;"></i></span>`;
 
             // create popup
             const MapboxPopup = Vue.extend(Tooltip)
@@ -109,6 +109,9 @@ export default {
 </script>
 
 <style>
+/**
+ * markers default rules
+ */
 .mapbox-marker {
   display: flex;
   align-items: center;
@@ -126,14 +129,39 @@ export default {
   color: rgb(34, 34, 34);
 }
 
+.mapbox-marker-content-icon {
+  font-size: 18px !important;
+}
+
+/**
+ * rules when a marker is :hover
+ */
+.mapbox-marker:hover {
+  height: 29px;
+  font-size: 14px;
+  z-index: 10;
+}
+
+.mapbox-marker:hover .mapbox-marker-content-icon {
+  font-size: 20px !important;
+}
+
+/**
+ * rules when a shackListItem is being :hover
+ */
+.mapbox-marker-hover {
+  background-color: rgb(34, 34, 34) !important;
+  height: 30px;
+  z-index: 10;
+}
+
 .mapbox-marker-content-hover {
   color: white !important;
 }
 
-.mapbox-marker-hover {
-  background-color: rgb(34, 34, 34) !important;
-}
-
+/**
+ * modify mapbox default css rules
+ */
 .mapboxgl-popup-content {
   background-color: transparent;
   box-shadow: none;
