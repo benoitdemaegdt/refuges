@@ -107,7 +107,7 @@
             v-for="(access, index) in shack.accesses"
             :key="index"
             class="section-paragraph"
-          >{{ access.description }}</p>
+          >{{ access }}</p>
         </v-col>
       </v-row>
     </template>
