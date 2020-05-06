@@ -37,6 +37,7 @@ export default {
       handler(newShacks) {
         if (newShacks) {
           this.clearMarkers();
+          const bounds = new mapboxgl.LngLatBounds();
           newShacks.forEach((shack) => {
             // create marker
             const el = document.createElement('div');
@@ -67,9 +68,15 @@ export default {
             // keep track of markers and popups
             this.markers.push(marker);
             this.popups.push(popup)
+            // add marker to map bounds
+            bounds.extend([shack.longitude, shack.latitude]);
           });
+          
+          // fit map to markers
+          this.map.fitBounds(bounds, { padding: 100 });
         }
       },
+      immediate: true,
     },
     mouseOveredShackIndex: {
       handler(newShack, oldShack) {
