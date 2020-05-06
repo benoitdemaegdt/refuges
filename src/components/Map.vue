@@ -28,8 +28,9 @@
 </template>
 
 <script>
-import { latLng } from "leaflet";
 import L from "leaflet";
+import { latLng } from "leaflet";
+import 'leaflet-fullscreen/dist/Leaflet.fullscreen';
 import {
   LMap,
   LTileLayer,

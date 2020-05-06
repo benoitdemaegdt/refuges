@@ -1,6 +1,5 @@
 <template>
-  <v-card class="mx-auto" max-width="250" min-width="250" flat
-  >
+  <v-card class="mx-auto" max-width="250" min-width="250" flat>
     <v-img
       v-if="cabane.images.length !== 0"
       class="white--text align-end"
@@ -55,10 +54,7 @@
 export default {
   name: 'Tooltip',
   props: {
-    cabane: {
-      type: Object,
-      required: true,
-    },
+    cabane: { type: Object, required: true },
   },
 }
 </script>
@@ -66,10 +62,6 @@ export default {
 <style scoped>
 .v-card {
   border-radius: 12px !important;
-}
-
-.v-card__text {
-  padding-bottom: 0px !important;
 }
 
 .card-title {

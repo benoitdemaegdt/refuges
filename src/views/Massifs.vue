@@ -31,9 +31,9 @@
                 <h1 class="massif-title">{{ getTitle }}</h1>
               </div>
               <div
-                v-for="(cabane) in getPageCabanes"
+                v-for="(cabane, index) in getPageCabanes"
                 :key="cabane.key"
-                @mouseenter="onMouseEnter(cabane)"
+                @mouseenter="onMouseEnter(cabane, index)"
                 @mouseleave="onMouseLeave"
               >
                 <v-divider></v-divider>
@@ -46,7 +46,16 @@
           </v-col>
           <v-col cols="5" class="map-col pa-0 hidden-sm-and-down">
             <div class="map-container">
-              <Map :cabanes="getPageCabanes" :mouseOveredCabaneKey="mouseOveredCabaneKey"></Map>
+              <Mapbox
+                v-if="useMapboxGlMap"
+                :shacks="getPageCabanes"
+                :mouseOveredShackIndex="mouseOveredCabaneIndex"
+              ></Mapbox>
+              <Map 
+                v-else
+                :cabanes="getPageCabanes"
+                :mouseOveredCabaneKey="mouseOveredCabaneKey"
+              ></Map>
             </div>
           </v-col>
         </v-row>
@@ -63,20 +72,24 @@ import massifs from '@/data/massifs.json';
 import { getShacksByMassif } from '@/services/MassifService';
 
 // components
-import ShackListItem from '@/components/ShackListItem'
-import Map from '@/components/Map'
+import ShackListItem from '@/components/ShackListItem';
+import Map from '@/components/Map';
+import Mapbox from '@/components/Mapbox';
 
 export default {
   name: 'Massifs',
   components: {
     ShackListItem,
     Map,
+    Mapbox,
   },
   data: () => ({
+    useMapboxGlMap: process.env.VUE_APP_MAPBOX_GL_TOKEN,
     isLoading: true,
     massif: undefined,
     shacks: [],
     mouseOveredCabaneKey: undefined,
+    mouseOveredCabaneIndex: undefined,
     cabanesPerPage: 20,
     page: 1,
   }),
@@ -109,11 +122,13 @@ export default {
     }
   },
   methods: {
-    onMouseEnter(cabane) {
+    onMouseEnter(cabane, index) {
       this.mouseOveredCabaneKey = cabane.key;
+      this.mouseOveredCabaneIndex = index;
     },
     onMouseLeave() {
       this.mouseOveredCabaneKey = undefined;
+      this.mouseOveredCabaneIndex = undefined;
     },
   }
 };
