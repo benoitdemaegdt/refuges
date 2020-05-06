@@ -29,8 +29,7 @@ export default {
     });
     this.map.addControl(new mapboxgl.NavigationControl({ showCompass: false }));
     this.map.addControl(new mapboxgl.FullscreenControl(), 'top-left');
-
-
+    this.map.addControl(new mapboxgl.ScaleControl(), 'bottom-left');
   },
   watch: {
     shacks: {
@@ -68,6 +67,7 @@ export default {
             // keep track of markers and popups
             this.markers.push(marker);
             this.popups.push(popup)
+
             // add marker to map bounds
             bounds.extend([shack.longitude, shack.latitude]);
           });
@@ -144,6 +144,10 @@ export default {
   border-right-color: transparent !important;
   border-bottom-color: transparent !important;
   border-left-color: transparent !important;
+}
+
+.mapboxgl-ctrl-logo {
+  display: none !important;
 }
 
 </style>
