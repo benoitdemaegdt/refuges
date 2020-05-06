@@ -98,6 +98,7 @@ export default {
           content.classList.add('mapbox-marker-content-hover');
         }
       },
+      immediate: true,
     },
   },
   methods: {
