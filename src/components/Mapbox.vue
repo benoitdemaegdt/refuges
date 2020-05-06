@@ -6,7 +6,6 @@
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 import Vue from 'vue';
 import Tooltip from '@/components/Tooltip.vue';
-// import Popup from '@/components/Popup.vue';
 
 export default {
   name: 'Mapbox',
