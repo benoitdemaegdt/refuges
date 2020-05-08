@@ -17,6 +17,7 @@
 
       <!-- search bar -->
       <v-autocomplete
+        v-if="!isHomePage"
         v-model="searchNavigation"
         flat
         solo
@@ -104,6 +105,11 @@ export default {
           this.$router.push({ path: newRoute.path });
         }
       },
+    },
+  },
+  computed: {
+    isHomePage() {
+      return this.$route.name === 'home';
     },
   },
 };
