@@ -85,9 +85,6 @@ export default {
     },
     mouseOveredShackIndex: {
       handler(newShack, oldShack) {
-        console.log('mouseOveredShackIndex')
-        console.log('newShack :>> ', newShack);
-        console.log('oldShack :>> ', oldShack);
         if (oldShack !== undefined) {
           const el = this.markers[oldShack].getElement();
           const content = el.querySelector('.mapbox-marker-content');
@@ -110,6 +107,8 @@ export default {
           this.markers[i].remove();
           this.popups[i].remove();
         }
+        this.markers = [];
+        this.popups = [];
       }
     },
   },
