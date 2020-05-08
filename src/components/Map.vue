@@ -92,10 +92,14 @@ export default {
     cabanes: {
       handler(newCabanes) {
         if (newCabanes) {
+          // close all existing tooltips
+          this.map.closePopup();
+          // add new markers
           const markers = [];
           for (const cabane of newCabanes) {
             markers.push(L.marker([cabane.latitude, cabane.longitude]));
           }
+          // fit map to new markers bounds
           const group = new L.featureGroup(markers);
           this.map.fitBounds(group.getBounds().pad(0.1));
         }
