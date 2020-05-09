@@ -11,7 +11,7 @@ function getData(sheetId, gid) {
       dynamicTyping: true,
       skipEmptyLines: true,
       transform(value, column) {
-        if (['images', 'accesses'].includes(column)) {
+        if (['images', 'accesses', 'transports'].includes(column)) {
           return value
             ? value.split('@@').map(element => element.trim())
             : [];

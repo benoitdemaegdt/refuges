@@ -124,16 +124,27 @@
       </v-row>
 
       <!-- access -->
-      <template v-if="shack.accesses && shack.accesses.length > 0">
+      <template v-if="(shack.accesses && shack.accesses.length > 0) || (shack.transports && shack.transports.length > 0)">
         <v-divider></v-divider>
         <v-row>
           <v-col cols="12">
             <h2 class="section-title">Accès</h2>
-            <p
-              v-for="(access, index) in shack.accesses"
-              :key="index"
-              class="section-paragraph"
-            >{{ access }}</p>
+            <template v-if="shack.accesses && shack.accesses.length > 0">
+              <h3 class="section-subtitle">Rando / Ski de rando / Raquettes</h3>
+              <p
+                v-for="(access, index) in shack.accesses"
+                :key="index"
+                class="section-paragraph"
+              >{{ access }}</p>
+            </template>
+            <template v-if="shack.transports && shack.transports.length > 0">
+              <h3 class="section-subtitle">Transports en commun</h3>
+              <p
+                v-for="(transport, index) in shack.transports"
+                :key="index"
+                class="section-paragraph"
+              >{{ transport }}</p>
+            </template>
           </v-col>
         </v-row>
       </template>
@@ -196,6 +207,11 @@ export default {
   font-family: 'Open Sans', sans-serif;
   margin-top: 4px;
   font-size: 22px;
+}
+.section-subtitle {
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 4px;
+  font-size: 17px;
 }
 .section-paragraph {
   font-family: 'Open Sans', sans-serif;
