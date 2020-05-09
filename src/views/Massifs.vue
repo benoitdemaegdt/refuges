@@ -26,9 +26,22 @@
               <v-skeleton-loader type="image"></v-skeleton-loader>
             </template>
             <template v-else>
-              <div class="py-10 pl-24">
-                <p class="massif-subtitle mb-0">{{ getSubtitle }}</p>
-                <h1 class="massif-title">{{ getTitle }}</h1>
+              <div class="pt-10 pl-24">
+                <p class="massif-subtitle mb-0">{{ shacks.length }} refuges, cabanes ou abris dans ce massif</p>
+                <h1 class="massif-title">Cabanes {{ massif.connector }} {{ massif.name }}</h1>
+                <v-select
+                  class="mt-4"
+                  style="width: 50%"
+                  v-model="filterType"
+                  :items="getTypes"
+                  multiple
+                  chips
+                  deletable-chips
+                  outlined
+                  single-line
+                  label="Type de refuge"
+                  rounded
+                ></v-select>
               </div>
               <div
                 v-for="(cabane, index) in getPageCabanes"
@@ -87,7 +100,8 @@ export default {
     useMapboxGlMap: process.env.VUE_APP_MAPBOX_GL_TOKEN,
     isLoading: true,
     massif: undefined,
-    shacks: [],
+    filterType: [],
+    allShacks: [],
     mouseOveredCabaneKey: undefined,
     mouseOveredCabaneIndex: undefined,
     cabanesPerPage: 20,
@@ -98,19 +112,24 @@ export default {
       async handler() {
         this.isLoading = true;
         this.page = 1;
+        this.filterType = [];
         this.massif = massifs.find(massif => massif.key === this.$route.params.name);
-        this.shacks = await getShacksByMassif(this.massif);
+        this.allShacks = await getShacksByMassif(this.massif);
         this.isLoading = false;
       },
       immediate: true,
     }
   },
   computed: {
-    getTitle() {
-      return `Cabanes ${this.massif.connector} ${this.massif.name}`;
+    getTypes() {
+      const types = this.allShacks.map(shack => shack.type);
+      return [...new Set(types)];
     },
-    getSubtitle() {
-      return `${this.shacks.length} refuges, cabanes ou abris dans ce massif`;
+    shacks() {
+      return this.allShacks
+      .filter(shack => {
+        return this.filterType.length === 0 ? true : this.filterType.includes(shack.type);
+      });
     },
     getPageCabanes() {
       const startIdx = (this.page - 1) * this.cabanesPerPage;
