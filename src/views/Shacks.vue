@@ -42,7 +42,7 @@
       <!-- name -->
       <v-row>
         <v-col cols="12">
-          <h1 class="main-title">{{ shack.name }}</h1>
+          <h1 class="main-title">{{ shack.name }} ({{ shack.altitude }}m)</h1>
           <p class="main-subtitle"> {{ shack.type }}, {{ shack.massif }}</p>
         </v-col>
       </v-row>
@@ -65,34 +65,57 @@
           <h2 class="section-title">Équipements</h2>
           <div class="amenities-container">
             <v-row>
-              <!-- altitude -->
-              <v-col cols="5">
+              <!-- capacity -->
+              <v-col cols="4">
                 <div class="flex-container">
-                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/mountain.png')"></v-img></div>
-                  <div class="flex-child">Altitude : {{ shack.altitude }}m</div>
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/capacity.png')"></v-img></div>
+                  <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
                 </div>
               </v-col>
-              <!-- beds -->
-              <v-col cols="7">
+              <!-- mattresses -->
+              <v-col cols="4">
                 <div class="flex-container">
-                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
-                  <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
+                  <div class="mr-3 ml-8"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
+                  <div class="flex-child">Matelas : {{ shack.mattresses ? 'oui' : 'non' }}</div>
+                </div>
+              </v-col>
+              <!-- blankets -->
+              <v-col cols="4">
+                <div class="flex-container">
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/blanket.png')"></v-img></div>
+                  <div class="flex-child">Couvertures : {{ shack.blankets ? 'oui' : 'non' }}</div>
                 </div>
               </v-col>
             </v-row>
             <v-row>
-              <!-- stove -->
-              <v-col cols="5">
+              <!-- water -->
+              <v-col cols="4">
                 <div class="flex-container">
-                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
+                  <div class="flex-child">Source à proximité : {{ shack.water ? 'oui' : 'non' }}</div>
+                </div>
+              </v-col>
+              <!-- stove -->
+              <v-col cols="4">
+                <div class="flex-container">
+                  <div class="mr-3 ml-8"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
                   <div class="flex-child">Poêle : {{ shack.stove ? 'oui' : 'non' }}</div>
                 </div>
               </v-col>
-              <!-- water -->
-              <v-col cols="7">
+              <!-- wood -->
+              <v-col cols="4">
                 <div class="flex-container">
-                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
-                  <div class="flex-child">Source : {{ shack.water ? 'oui' : 'non' }}</div>
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/wood.png')"></v-img></div>
+                  <div class="flex-child">Bois à proximité : {{ shack.wood ? 'oui' : 'non' }}</div>
+                </div>
+              </v-col>
+            </v-row>
+            <v-row>
+              <!-- toilets -->
+              <v-col cols="4">
+                <div class="flex-container">
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/toilet.png')"></v-img></div>
+                  <div class="flex-child">Toilettes : {{ shack.toilets ? 'oui' : 'non' }}</div>
                 </div>
               </v-col>
             </v-row>
@@ -185,6 +208,7 @@ export default {
 }
 .flex-container {
   display: flex;
+  justify-content: center;
 }
 .flex-child {
   flex: 1;
