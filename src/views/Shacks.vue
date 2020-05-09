@@ -49,13 +49,15 @@
       <v-divider></v-divider>
 
       <!-- about -->
-      <v-row>
-        <v-col cols="12">
-          <h2 class="section-title" color="primary">À Propos</h2>
-          <p class="section-paragraph"> {{ shack.description }}</p>
-        </v-col>
-      </v-row>
-      <v-divider></v-divider>
+      <template v-if="shack.description">
+        <v-row>
+          <v-col cols="12">
+            <h2 class="section-title" color="primary">À Propos</h2>
+            <p class="section-paragraph"> {{ shack.description }}</p>
+          </v-col>
+        </v-row>
+        <v-divider></v-divider>
+      </template>
 
       <!-- amenities -->
       <v-row>
@@ -97,19 +99,21 @@
           </div>
         </v-col>
       </v-row>
-      <v-divider></v-divider>
 
       <!-- access -->
-      <v-row>
-        <v-col cols="12">
-          <h2 class="section-title">Accès</h2>
-          <p
-            v-for="(access, index) in shack.accesses"
-            :key="index"
-            class="section-paragraph"
-          >{{ access }}</p>
-        </v-col>
-      </v-row>
+      <template v-if="shack.accesses && shack.accesses.length > 0">
+        <v-divider></v-divider>
+        <v-row>
+          <v-col cols="12">
+            <h2 class="section-title">Accès</h2>
+            <p
+              v-for="(access, index) in shack.accesses"
+              :key="index"
+              class="section-paragraph"
+            >{{ access }}</p>
+          </v-col>
+        </v-row>
+      </template>
     </template>
 
   </v-container>
