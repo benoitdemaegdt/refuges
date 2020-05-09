@@ -6,8 +6,8 @@
       justify="center"
       :style="{ backgroundImage: 'url(' + require('@/assets/images/home.png') + ')' }"
     >
-      <v-col cols="12" sm="6">
-        <h1 class="font-weight-black display1 white--text">Votre prochaine aventure en montagne<br>commence ici</h1>
+      <v-col cols="10" sm="6">
+        <h1 class="font-weight-black display-1 white--text">Votre prochaine aventure en montagne<br>commence ici</h1>
         <v-autocomplete
           class="mt-8"
           v-model="searchMassif"
@@ -34,9 +34,9 @@
       </v-col>
     </v-row>
     <!-- <div class="section">
-      <h1 class="display-4">Home</h1>
-    </div>
-    <div class="section">
+      <h2 class="display-2">Découvrez les cabanes des plus beaux massifs français</h2>
+    </div> -->
+    <!-- <div class="section">
       <h1 class="display-4">Home</h1>
     </div> -->
   </div>
