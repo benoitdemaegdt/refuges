@@ -45,7 +45,7 @@ export default {
             // create popup
             const MapboxPopup = Vue.extend(Tooltip)
 
-            const popup = new mapboxgl.Popup()
+            const popup = new mapboxgl.Popup({ closeButton: false })
               .setLngLat([shack.longitude, shack.latitude])
               .setHTML(`<div id="mapbox-popup-content-${shack.key}"></div>`)
               .addTo(this.map)
@@ -169,6 +169,10 @@ export default {
 /**
  * modify mapbox default css rules
  */
+.mapboxgl-popup {
+  z-index: 11 !important;
+}
+
 .mapboxgl-popup-content {
   background-color: transparent;
   box-shadow: none;
