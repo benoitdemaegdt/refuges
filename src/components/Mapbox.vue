@@ -22,13 +22,25 @@ export default {
     mapboxgl.accessToken = process.env.VUE_APP_MAPBOX_GL_TOKEN;
     this.map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/outdoors-v11',
+      style: 'mapbox://styles/mapbox/cjaudgl840gn32rnrepcb9b9g',
       center: [5.7167, 45.1667],
       zoom: 11,
     });
     this.map.addControl(new mapboxgl.NavigationControl({ showCompass: false }));
     this.map.addControl(new mapboxgl.FullscreenControl(), 'top-left');
     this.map.addControl(new mapboxgl.ScaleControl(), 'bottom-left');
+    // add hillshading
+    this.map.on('load', () => {
+      this.map.addSource('dem', {
+        type: 'raster-dem',
+        url: 'mapbox://mapbox.terrain-rgb'
+      });
+      this.map.addLayer({
+        id: 'hillshading',
+        source: 'dem',
+        type: 'hillshade'
+      }, 'waterway-river-canal-shadow');
+    });
   },
   watch: {
     shacks: {
