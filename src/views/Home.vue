@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <v-container fluid class="pt-0">
     <v-row
       class="section bg"
       align="center"
@@ -33,13 +33,77 @@
         </v-autocomplete>
       </v-col>
     </v-row>
-    <!-- <div class="section">
-      <h2 class="display-2">Découvrez les cabanes des plus beaux massifs français</h2>
-    </div> -->
-    <!-- <div class="section">
-      <h1 class="display-4">Home</h1>
-    </div> -->
-  </div>
+    <v-row justify="center" align="center" class="section">
+      <h2 class="home-title font-weight-black display-3">Préparez vos aventures en montagne en repérant les cabanes, abris et refuges qui abriterons vos nuits</h2>
+    </v-row>
+    <!-- vercors -->
+    <v-row>
+      <v-col cols="12" sm="6">
+        <v-img
+          height="350px"
+          max-width="450px"
+          class="home-img"
+          :src="require('@/assets/images/home/vercors.jpg?vuetify-preload')">
+        </v-img>
+      </v-col>
+      <v-col cols="12" sm="6">
+        <h3 class="home-content-title font-weight-black headline">Parcourir l'immensité du Vercors</h3>
+        <p class="mt-4 pr-12">
+          Été comme hiver, le Vercors est un fantastique terrain de jeu pour des sorties en pleine nature.
+          Il abrite en particulier la très sauvage et préservée réserve naturelle des « Hauts-Plateaux » qui s'étend sur plus de 17 000 hectares et reste à ce jour la plus grande réserve naturelle de France métropolitaine.
+        </p>
+        <p class="pr-12">
+          On y trouve plus de cinquante de cabanes, abris et refuges pouvant abriter les randonneurs pour une ou plusieurs nuits. 
+        </p>
+        <v-btn class="mt-6" text outlined @click="$router.push({ name: 'massifs', params: { name: 'vercors' }})">Voir les cabanes</v-btn>
+      </v-col>
+    </v-row>
+    <!-- belledonne -->
+    <v-row class="mt-8">
+      <v-col cols="12" sm="6">
+        <h3 class="home-content-title font-weight-black headline">Prendre de l'altitude en Belledonne</h3>
+        <p class="mt-4 pl-12">
+          Avec ses sommets enneigés, ses lacs et ses glaciers, Belledonne est un massif de moyenne montagne situé à proximité immédiate de Grenoble.
+          Ce massif est très réputé parmi les adeptes du ski de rando qui viennent y chercher de la poudreuse et des pentes raides. Les randonneurs estivaux ne sont pas en reste : le tout nouveau GR 738, long de 130km, permet de réaliser le Haute Traversée de Belledonne.
+        </p>
+        <p class="pl-12">
+          On y trouve une cinquantaine de cabanes et de refuges, répartis tout au long de la chaîne de montagne.
+        </p>
+        <v-btn class="mt-6 ml-12" text outlined @click="$router.push({ name: 'massifs', params: { name: 'belledonne' }})">Voir les cabanes</v-btn>
+      </v-col>
+      <v-col cols="12" sm="6">
+        <v-img
+          height="350px"
+          max-width="450px"
+          class="home-img"
+          :src="require('@/assets/images/home/belledonne.jpg?vuetify-preload')">
+        </v-img>
+      </v-col>
+    </v-row>
+    <!-- chartreuse -->
+    <v-row class="mt-8">
+      <v-col cols="12" sm="6">
+        <v-img
+          height="350px"
+          max-width="450px"
+          class="home-img"
+          :src="require('@/assets/images/home/chartreuse.jpg?vuetify-preload')">
+        </v-img>
+      </v-col>
+      <v-col cols="12" sm="6">
+        <h3 class="home-content-title font-weight-black headline">S'imprégner de nature en Chartreuse</h3>
+        <p class="mt-4 pr-12">
+          On vient en Chartreuse pour son accès facile, sa nature verdoyante et ses immenses expaces.
+          Entre la Chamechaude, Le cirque de Saint-Même et la réserve naturelle des Hauts de Chartreuse, ce massif regorge de merveilles.
+          À découvrir en été comme en hiver.
+        </p>
+        <p class="pr-12">
+          On y trouve une bonne dizaines de cabanes et de refuges, essentiellement concentrés aux extrémités Nord et Sud du massif.
+        </p>
+        <v-btn class="mt-6" text outlined @click="$router.push({ name: 'massifs', params: { name: 'chartreuse' }})">Voir les cabanes</v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -85,5 +149,19 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.home-title {
+  max-width: 80%;
+  text-align: center;
+}
+.home-img {
+  border-radius: 8px;
+  box-shadow: 0 3px 20px 0 rgba(0,0,0,.2);
+  margin: auto;
+}
+
+.home-content-title {
+  text-align: center;
 }
 </style>
