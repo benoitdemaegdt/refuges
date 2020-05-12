@@ -74,7 +74,7 @@
         <v-card-actions>
           <v-btn
             text
-            @click="$router.push({ name: 'shacks', params: { massif: massifKey, cabane: shack.key }})"
+            @click="goToShack(shack)"
           >détails</v-btn>
         </v-card-actions>
       </v-card>
@@ -86,19 +86,16 @@
 </template>
 
 <script>
+import ShackMixin from '@/mixins/ShackMixin.js';
+
 export default {
   name: 'ShackListItem',
   props: {
-    massifKey: {
-      type: String,
-      required: true,      
-    },
-    shack: {
-      type: Object,
-      required: true,
-    },
-  }
-}
+    massif: { type: Object, required: true },
+    shack: { type: Object, required: true },
+  },
+  mixins: [ ShackMixin ],
+};
 </script>
 
 <style scoped>

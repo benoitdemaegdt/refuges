@@ -20,7 +20,7 @@
         :z-index-offset="cabane.key === mouseOveredCabaneKey ? 100 : 0"
         >
           <l-popup :options="popupOptions">
-            <Tooltip :cabane="cabane"></Tooltip>
+            <Tooltip :cabane="cabane" :goToShack="goToShack"></Tooltip>
           </l-popup>
         </l-marker>
     </l-map>
@@ -40,6 +40,7 @@ import {
   LMarker,
 } from 'vue2-leaflet';
 import Tooltip from '@/components/Tooltip.vue';
+import ShackMixin from '@/mixins/ShackMixin.js';
 
 export default {
   name: 'Map',
@@ -53,14 +54,11 @@ export default {
     Tooltip,
   },
   props: {
-    cabanes: {
-      type: Array,
-      required: true,
-    },
-    mouseOveredCabaneKey: {
-      type: String,
-    }
+    cabanes: { type: Array, required: true },
+    massif: { type: Object, required: true },
+    mouseOveredCabaneKey: { type: String },
   },
+  mixins: [ ShackMixin ],
   data: () =>  ({
     map: undefined,
     zoom: 8,
@@ -138,6 +136,7 @@ export default {
   .leaflet-popup-content {
     margin-left: 0px !important;
     margin-right: 0px !important;
+    margin-bottom: 0px !important;
   }
 
   .leaflet-popup-content-wrapper {

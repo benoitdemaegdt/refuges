@@ -8,7 +8,7 @@
     >
     </v-img>
 
-    <v-card-text class="text--primary">
+    <v-card-text class="text--primary pb-0">
       <v-row>
         <v-col cols="12" class="card-title">
           {{ cabane.name }}
@@ -47,6 +47,9 @@
         </v-col>
       </v-row>
     </v-card-text>
+    <v-card-actions>
+      <v-btn text @click="goToShack(cabane)">détails</v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 
@@ -55,6 +58,7 @@ export default {
   name: 'Tooltip',
   props: {
     cabane: { type: Object, required: true },
+    goToShack: { type: Function, required: true },
   },
 }
 </script>
@@ -62,6 +66,10 @@ export default {
 <style scoped>
 .v-card {
   border-radius: 12px !important;
+}
+
+.v-btn {
+  font-weight: inherit;
 }
 
 .card-title {

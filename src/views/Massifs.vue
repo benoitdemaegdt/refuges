@@ -50,7 +50,7 @@
                 @mouseleave="onMouseLeave"
               >
                 <v-divider></v-divider>
-                <ShackListItem :massifKey="massif.key" :shack="cabane"></ShackListItem>
+                <ShackListItem :massif="massif" :shack="cabane"></ShackListItem>
               </div>
               <div v-if="shacks.length > cabanesPerPage" class="text-center mt-4">
                 <v-pagination v-model="page" circle color="#78909C" :length="getPages"></v-pagination>
@@ -61,11 +61,13 @@
             <div class="map-container">
               <Mapbox
                 v-if="useMapboxGlMap"
+                :massif="massif"
                 :shacks="getPageCabanes"
                 :mouseOveredShackIndex="mouseOveredCabaneIndex"
               ></Mapbox>
               <Map 
                 v-else
+                :massif="massif"
                 :cabanes="getPageCabanes"
                 :mouseOveredCabaneKey="mouseOveredCabaneKey"
               ></Map>
