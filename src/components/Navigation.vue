@@ -42,11 +42,12 @@
       </v-autocomplete>
       <v-spacer />
       <v-btn
-        href="https://github.com/benoitdemaegdt/refuges" target="_blank"
-        icon
-        class="d-none d-sm-flex">
-        <v-icon large color="primary">mdi-github</v-icon>
-      </v-btn>
+        text
+        outlined
+        rounded
+        elevation="1"
+        @click="$router.push({ name: 'about' })"
+      >À Propos</v-btn>
     </v-app-bar>
 
     <!-- navigation drawer -->
