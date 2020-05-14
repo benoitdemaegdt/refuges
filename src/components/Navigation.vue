@@ -19,6 +19,7 @@
       <v-autocomplete
         v-if="!isHomePage"
         v-model="searchNavigation"
+        @change="goToPage"
         flat
         solo
         background-color="#EEEEEE"
@@ -99,13 +100,14 @@ export default {
     search,
     massifs,
   }),
-  watch: {
-    searchNavigation: {
-      handler(newRoute) {
-        if (newRoute) {
-          this.$router.push({ path: newRoute.path });
-        }
-      },
+  methods: {
+    goToPage() {
+      if (this.$route.path !== this.searchNavigation.path) {
+        this.$router.push({ path: this.searchNavigation.path });
+        this.$nextTick(() => {
+          this.searchNavigation = undefined;
+        });
+      }
     },
   },
   computed: {
