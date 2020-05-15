@@ -3,7 +3,7 @@
     <v-row>
 
       <!-- image -->
-      <v-col cols="12" sm="5" class="pl-0">
+      <v-col cols="12" sm="5" class="pl-0" :class="shack.images.length === 0 ? 'hidden-xs-only' : ''">
         <template v-if="shack.images.length === 0">
           <v-sheet height="200px" color="#E0E0E0"></v-sheet>
         </template>
@@ -32,7 +32,7 @@
       </v-col>
 
       <!-- info -->
-      <v-col cols="12" sm="7">
+      <v-col cols="12" sm="7" class="px-0 pb-0">
         <v-card flat>
           <v-card-text>
           <div class="shack-type mb-1">{{ shack.type }}</div>
