@@ -18,6 +18,7 @@
           <template v-else-if="shack.images.length === 1">
             <v-img
               class="shack-img"
+              :height="imageHeight"
               :key="shack.key"
               :src="require('@/assets/images/' + shack.images[0] + '?vuetify-preload')">
             </v-img>
@@ -25,6 +26,7 @@
           <template v-else>
             <v-carousel
               class="shack-img"
+              :height="imageHeight"
               hide-delimiters
               show-arrows-on-hover
             >
@@ -66,53 +68,49 @@
           <div class="amenities-container">
             <v-row>
               <!-- capacity -->
-              <v-col cols="4">
+              <v-col cols="6" sm="4">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/capacity.png')"></v-img></div>
                   <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
                 </div>
               </v-col>
               <!-- mattresses -->
-              <v-col cols="4">
+              <v-col cols="6" sm="4">
                 <div class="flex-container">
-                  <div class="mr-3 ml-8"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
                   <div class="flex-child">Matelas : {{ shack.mattresses ? 'oui' : 'non' }}</div>
                 </div>
               </v-col>
               <!-- blankets -->
-              <v-col cols="4">
+              <v-col cols="6" sm="4">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/blanket.png')"></v-img></div>
                   <div class="flex-child">Couvertures : {{ shack.blankets ? 'oui' : 'non' }}</div>
                 </div>
               </v-col>
-            </v-row>
-            <v-row>
-              <!-- water -->
-              <v-col cols="4">
-                <div class="flex-container">
-                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
-                  <div class="flex-child">Source à proximité : {{ shack.water ? 'oui' : 'non' }}</div>
-                </div>
-              </v-col>
               <!-- stove -->
-              <v-col cols="4">
+              <v-col cols="6" sm="4">
                 <div class="flex-container">
-                  <div class="mr-3 ml-8"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
                   <div class="flex-child">Poêle : {{ shack.stove ? 'oui' : 'non' }}</div>
                 </div>
               </v-col>
               <!-- wood -->
-              <v-col cols="4">
+              <v-col cols="6" sm="4">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/wood.png')"></v-img></div>
                   <div class="flex-child">Bois à proximité : {{ shack.wood ? 'oui' : 'non' }}</div>
                 </div>
               </v-col>
-            </v-row>
-            <v-row>
+              <!-- water -->
+              <v-col cols="6" sm="4">
+                <div class="flex-container">
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
+                  <div class="flex-child">Source à proximité : {{ shack.water ? 'oui' : 'non' }}</div>
+                </div>
+              </v-col>
               <!-- toilets -->
-              <v-col cols="4">
+              <v-col cols="6" sm="4">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/toilet.png')"></v-img></div>
                   <div class="flex-child">Toilettes : {{ shack.toilets ? 'oui' : 'non' }}</div>
@@ -160,8 +158,12 @@ import massifs from '@/data/massifs.json';
 // services
 import { getShacksByMassif } from '@/services/MassifService';
 
+// mixins
+import LayoutMixin from '@/mixins/LayoutMixin.js';
+
 export default {
   name: 'Shack',
+  mixins: [ LayoutMixin ],
   data: () => ({
     isLoading: true,
     shack: undefined,
@@ -176,7 +178,14 @@ export default {
         this.isLoading = false;
       },
       immediate: true,
-    }
+    },
+  },
+  computed: {
+    imageHeight() {
+      const MOBILE_IMG_HEIGHT = "250px";
+      const DESKTOP_IMG_HEIGHT = "400px";
+      return this.screenWidth > 700 ? DESKTOP_IMG_HEIGHT : MOBILE_IMG_HEIGHT;
+    },
   },
 }
 </script>
@@ -184,9 +193,25 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans');
 
-.container {
-  width: 50%;
+/* If the screen size is 1101px wide or more */
+@media screen and (min-width: 1101px) {
+  .container {
+    width: 50%;
+  }
 }
+/* If the screen is between 801px and 1100x wide */
+@media (max-width: 1100px) and (min-width: 801px) {
+  .container {
+    width: 75%;
+  }
+}
+/* If the screen size is 800px wide or less */
+@media screen and (max-width: 800px) {
+  .container {
+    width: 100%;
+  }
+}
+
 
 .shack-img, .v-sheet {
   border-radius: 8px;
