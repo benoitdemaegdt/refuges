@@ -3,7 +3,7 @@
     <v-row>
 
       <!-- image -->
-      <v-col cols="5" class="pl-0">
+      <v-col cols="12" sm="5" class="pl-0">
         <template v-if="shack.images.length === 0">
           <v-sheet height="200px" color="#E0E0E0"></v-sheet>
         </template>
@@ -32,9 +32,9 @@
       </v-col>
 
       <!-- info -->
-      <v-col cols="7">
+      <v-col cols="12" sm="7">
         <v-card flat>
-          <v-card-text class="shack-info">
+          <v-card-text>
           <div class="shack-type mb-1">{{ shack.type }}</div>
           <div class="shack-name">{{ shack.name }}</div>
           <div class="shack-divider"></div>
@@ -53,8 +53,6 @@
                 <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
               </div>
             </v-col>
-          </v-row>
-          <v-row>
             <!-- stove -->
             <v-col cols="5">
               <div class="flex-container">

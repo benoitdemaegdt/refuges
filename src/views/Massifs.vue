@@ -30,8 +30,7 @@
                 <p class="massif-subtitle mb-0">{{ shacks.length }} refuges, cabanes ou abris dans ce massif</p>
                 <h1 class="massif-title">Cabanes {{ massif.connector }} {{ massif.name }}</h1>
                 <v-select
-                  class="mt-4"
-                  style="width: 50%"
+                  class="mt-4 selectShackType"
                   v-model="filterType"
                   :items="getTypes"
                   multiple
@@ -157,6 +156,25 @@ export default {
 </script>
 
 <style scoped>
+/* If the screen size is 1101px wide or more */
+@media screen and (min-width: 1101px) {
+  .selectShackType {
+    width: 50%;
+  }
+}
+/* If the screen is between 801px and 1100x wide */
+@media (max-width: 1100px) and (min-width: 701px) {
+  .selectShackType {
+    width: 75%;
+  }
+}
+/* If the screen size is 800px wide or less */
+@media screen and (max-width: 700px) {
+  .selectShackType {
+    width: 100%;
+  }
+}
+
 
 /** left column : shack list */
 .shack-list {
