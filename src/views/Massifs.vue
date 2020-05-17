@@ -1,5 +1,6 @@
 <template>
   <v-container fluid class="pt-0">
+
       <template v-if="!massif.name">
         <v-row class="text-center">
           <v-col cols="12">
@@ -18,7 +19,7 @@
 
       <template v-else>
         <v-row>
-          <v-col cols="12" md="7" class="shack-list">
+          <v-col cols="12" md="7" class="shack-list" :class="isShowingMap ? 'hidden-sm-and-down' : ''">
             <template v-if="isLoading">
               <v-skeleton-loader class="mb-6" type="list-item-two-line"></v-skeleton-loader>
               <v-skeleton-loader class="mb-6" type="image"></v-skeleton-loader>
@@ -56,7 +57,7 @@
               </div>
             </template>
           </v-col>
-          <v-col cols="5" class="map-col pa-0 hidden-sm-and-down">
+          <v-col cols="12" md="5" class="map-col pa-0" :class="isShowingMap ? '' : 'hidden-sm-and-down'">
             <div class="map-container">
               <Mapbox
                 v-if="useMapboxGlMap"
@@ -73,6 +74,19 @@
             </div>
           </v-col>
         </v-row>
+        <v-btn
+          class="hidden-md-and-up"
+          fab
+          dark
+          color="#71717E"
+          fixed
+          right
+          bottom
+          @click="isShowingMap = !isShowingMap"
+        >
+          <v-icon v-if="isShowingMap">mdi-format-list-bulleted-square</v-icon>
+          <v-icon v-else>mdi-map</v-icon>
+        </v-btn>
       </template>
 
   </v-container>
@@ -107,12 +121,14 @@ export default {
     mouseOveredCabaneIndex: undefined,
     cabanesPerPage: 20,
     page: 1,
+    isShowingMap: false,
   }),
   watch: {
     $route: {
       async handler() {
         this.isLoading = true;
         this.page = 1;
+        this.isShowingMap = false;
         this.filterType = [];
         this.massif = massifs.find(massif => massif.key === this.$route.params.name);
         this.allShacks = await getShacksByMassif(this.massif);
