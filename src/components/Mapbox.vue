@@ -32,57 +32,13 @@ export default {
     this.map.addControl(new mapboxgl.NavigationControl({ showCompass: false }));
     this.map.addControl(new mapboxgl.FullscreenControl(), 'top-left');
     this.map.addControl(new mapboxgl.ScaleControl(), 'bottom-left');
+    this.addMarkers(this.shacks);
   },
   watch: {
     shacks: {
       handler(newShacks) {
         if (newShacks) {
-          this.clearMarkers();
-          const bounds = new mapboxgl.LngLatBounds();
-          newShacks.forEach((shack) => {
-            // create marker
-            const el = document.createElement('div');
-            el.className = 'mapbox-marker';
-            el.innerHTML = `<span class="mapbox-marker-content"><b>${shack.beds}</b>&nbsp<i class="v-icon mdi mdi-bed-outline mapbox-marker-content-icon" style="transition-property: none;"></i></span>`;
-
-            // create popup
-            const MapboxPopup = Vue.extend(Tooltip)
-
-            const popup = new mapboxgl.Popup({ closeButton: false })
-              .setLngLat([shack.longitude, shack.latitude])
-              .setHTML(`<div id="mapbox-popup-content-${shack.key}"></div>`)
-              .addTo(this.map)
-
-            const MapboxPopupInstance = new MapboxPopup({
-              propsData: { cabane: shack, goToShack: this.goToShack }
-            });
-
-            MapboxPopupInstance.$mount(`#mapbox-popup-content-${shack.key}`);
-            popup._update();
-
-            // attach marker and popup to map
-            const marker = new mapboxgl.Marker(el)
-              .setLngLat([shack.longitude, shack.latitude])
-              .setPopup(popup)
-              .addTo(this.map);
-
-            // keep track of markers and popups
-            this.markers.push(marker);
-            this.popups.push(popup)
-
-            // add marker to map bounds
-            bounds.extend([shack.longitude, shack.latitude]);
-          });
-          
-          // fit map to markers
-          if (newShacks.length > 1) {
-            this.map.fitBounds(bounds, { padding: 100 });
-          } else if (newShacks.length === 1) {
-            this.map.flyTo({
-              center: [newShacks[0].longitude, newShacks[0].latitude],
-              essential: true,
-            });
-          }
+          this.addMarkers(newShacks);
         }
       },
     },
@@ -104,6 +60,54 @@ export default {
     },
   },
   methods: {
+    addMarkers(shacks) {
+      this.clearMarkers();
+      const bounds = new mapboxgl.LngLatBounds();
+      shacks.forEach((shack) => {
+        // create marker
+        const el = document.createElement('div');
+        el.className = 'mapbox-marker';
+        el.innerHTML = `<span class="mapbox-marker-content"><b>${shack.beds}</b>&nbsp<i class="v-icon mdi mdi-bed-outline mapbox-marker-content-icon" style="transition-property: none;"></i></span>`;
+
+        // create popup
+        const MapboxPopup = Vue.extend(Tooltip)
+
+        const popup = new mapboxgl.Popup({ closeButton: false })
+          .setLngLat([shack.longitude, shack.latitude])
+          .setHTML(`<div id="mapbox-popup-content-${shack.key}"></div>`)
+          .addTo(this.map)
+
+        const MapboxPopupInstance = new MapboxPopup({
+          propsData: { cabane: shack, goToShack: this.goToShack }
+        });
+
+        MapboxPopupInstance.$mount(`#mapbox-popup-content-${shack.key}`);
+        popup._update();
+
+        // attach marker and popup to map
+        const marker = new mapboxgl.Marker(el)
+          .setLngLat([shack.longitude, shack.latitude])
+          .setPopup(popup)
+          .addTo(this.map);
+
+        // keep track of markers and popups
+        this.markers.push(marker);
+        this.popups.push(popup)
+
+        // add marker to map bounds
+        bounds.extend([shack.longitude, shack.latitude]);
+      });
+      
+      // fit map to markers
+      if (shacks.length > 1) {
+        this.map.fitBounds(bounds, { padding: 100 });
+      } else if (shacks.length === 1) {
+        this.map.flyTo({
+          center: [shacks[0].longitude, shacks[0].latitude],
+          essential: true,
+        });
+      }
+    },
     clearMarkers() {
       if (this.markers.length > 0) {
         for (let i = 0; i < this.markers.length; i++) {

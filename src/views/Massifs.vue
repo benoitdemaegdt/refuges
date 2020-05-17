@@ -17,9 +17,10 @@
         </v-row>
       </template>
 
-      <template v-else>
+      <!-- desktop design (must split desktop / mobile because of mapbox resizing issue) -->
+      <template v-else-if="screenWidth > $vuetify.breakpoint.thresholds.sm">
         <v-row>
-          <v-col cols="12" md="7" class="shack-list" :class="isShowingMap ? 'hidden-sm-and-down' : ''">
+          <v-col cols="7" class="shack-list">
             <template v-if="isLoading">
               <v-skeleton-loader class="mb-6" type="list-item-two-line"></v-skeleton-loader>
               <v-skeleton-loader class="mb-6" type="image"></v-skeleton-loader>
@@ -57,8 +58,8 @@
               </div>
             </template>
           </v-col>
-          <v-col cols="12" md="5" class="map-col pa-0" :class="isShowingMap ? '' : 'hidden-sm-and-down'">
-            <div class="map-container">
+          <v-col cols="5" class="map-col pa-0">
+            <div class="map-container-desktop">
               <Mapbox
                 v-if="useMapboxGlMap"
                 :massif="massif"
@@ -74,16 +75,71 @@
             </div>
           </v-col>
         </v-row>
-        <v-btn
-          class="hidden-md-and-up"
-          fab
-          dark
-          color="#71717E"
-          fixed
-          right
-          bottom
-          @click="isShowingMap = !isShowingMap"
-        >
+      </template>
+
+      <!-- mobile design -->
+      <template v-else-if="screenWidth < $vuetify.breakpoint.thresholds.sm">
+        <v-row>
+          <!-- list -->
+          <template v-if="!isShowingMap">
+            <v-col cols="12" class="shack-list">
+              <template v-if="isLoading">
+                <v-skeleton-loader class="mb-6" type="list-item-two-line"></v-skeleton-loader>
+                <v-skeleton-loader class="mb-6" type="image"></v-skeleton-loader>
+                <v-skeleton-loader class="mb-6" type="image"></v-skeleton-loader>
+                <v-skeleton-loader type="image"></v-skeleton-loader>
+              </template>
+              <template v-else>
+                <div class="pt-10 pl-24">
+                  <p class="massif-subtitle mb-0">{{ shacks.length }} refuges, cabanes ou abris dans ce massif</p>
+                  <h1 class="massif-title">Cabanes {{ massif.connector }} {{ massif.name }}</h1>
+                  <v-select
+                    class="mt-4 selectShackType"
+                    v-model="filterType"
+                    :items="getTypes"
+                    multiple
+                    chips
+                    deletable-chips
+                    outlined
+                    single-line
+                    label="Type de refuge"
+                    rounded
+                  ></v-select>
+                </div>
+                <div
+                  v-for="(cabane, index) in getPageCabanes"
+                  :key="cabane.key"
+                  @mouseenter="onMouseEnter(cabane, index)"
+                  @mouseleave="onMouseLeave"
+                >
+                  <v-divider></v-divider>
+                  <ShackListItem :massif="massif" :shack="cabane"></ShackListItem>
+                </div>
+                <div v-if="shacks.length > cabanesPerPage" class="text-center mt-4">
+                  <v-pagination v-model="page" circle color="#78909C" :length="getPages"></v-pagination>
+                </div>
+              </template>
+            </v-col>
+          </template>
+          <!-- map -->
+          <template v-else>
+            <v-col cols="12" class="map-col pa-0">
+              <div class="map-container-mobile">
+                <Mapbox
+                  v-if="useMapboxGlMap"
+                  :massif="massif"
+                  :shacks="getPageCabanes"
+                ></Mapbox>
+                <Map 
+                  v-else
+                  :massif="massif"
+                  :cabanes="getPageCabanes"
+                ></Map>
+              </div>
+            </v-col>
+          </template>
+        </v-row>
+        <v-btn fab dark color="#71717E" fixed right bottom @click="isShowingMap = !isShowingMap">
           <v-icon v-if="isShowingMap">mdi-format-list-bulleted-square</v-icon>
           <v-icon v-else>mdi-map</v-icon>
         </v-btn>
@@ -99,6 +155,9 @@ import massifs from '@/data/massifs.json';
 // services
 import { getShacksByMassif } from '@/services/MassifService';
 
+// mixins
+import LayoutMixin from '@/mixins/LayoutMixin.js';
+
 // components
 import ShackListItem from '@/components/ShackListItem';
 import Map from '@/components/Map';
@@ -111,6 +170,7 @@ export default {
     Map,
     Mapbox,
   },
+  mixins: [ LayoutMixin ],
   data: () => ({
     useMapboxGlMap: process.env.VUE_APP_MAPBOX_GL_TOKEN,
     isLoading: true,
@@ -156,7 +216,7 @@ export default {
     getPages() {
       const modulo = this.shacks.length % this.cabanesPerPage;
       return Math.floor(this.shacks.length / this.cabanesPerPage) + (modulo && 1);
-    }
+    },
   },
   methods: {
     onMouseEnter(cabane, index) {
@@ -214,8 +274,12 @@ export default {
   right: 0;
 }
 
-.map-container {
+.map-container-desktop {
   height: calc(100vh - 64px);
+}
+
+.map-container-mobile {
+  height: calc(100vh - 56px);
 }
 
 /deep/ .v-pagination__item, /deep/ .v-pagination__navigation {
