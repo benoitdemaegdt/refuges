@@ -135,7 +135,7 @@ export default {
     searchMassif: massifs.map(massif => ({
       title: massif.name,
       subtitle: `${massif.location.region} | ${massif.location.department}`,
-      path: `/refuges/massifs/${massif.key}`,
+      path: `/massifs/${massif.key}`,
     })),
     descriptions: {
       vercors: {

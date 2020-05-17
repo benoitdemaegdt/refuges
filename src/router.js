@@ -14,7 +14,7 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     {
-      path: '/refuges',
+      path: '/',
       name: 'home',
       component: Home,
     },
@@ -24,12 +24,12 @@ const router = new VueRouter({
       component: About,
     },
     {
-      path: '/refuges/massifs/:name',
+      path: '/massifs/:name',
       name: 'massifs',
       component: Massifs,
     },
     {
-      path: '/refuges/massifs/:massif/cabanes/:cabane',
+      path: '/massifs/:massif/cabanes/:cabane',
       name: 'shacks',
       component: Shacks,
     },

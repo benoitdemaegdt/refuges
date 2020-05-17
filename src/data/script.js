@@ -12,7 +12,7 @@ const MASSIFS = JSON.parse(fs.readFileSync(path.resolve(__dirname, './massifs.js
     OUTPUT.push({
       name: massif.name,
       type: 'massif',
-      path: `/refuges/massifs/${massif.key}`,
+      path: `/massifs/${massif.key}`,
     });
   }
 
@@ -50,7 +50,7 @@ async function getData(massif) {
             data.push({
               name: line[0],
               type: `${line[2]}, ${massif.name}`,
-              path: `/refuges/massifs/${massif.key}/cabanes/${line[1]}`,
+              path: `/massifs/${massif.key}/cabanes/${line[1]}`,
             });
           }
         }
