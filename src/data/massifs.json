@@ -40,5 +40,33 @@
       "shackTabId": "0",
       "sourceTabId": "1030956970"
     }
+  },
+  {
+    "name": "Bauges",
+    "key": "bauges",
+    "connector": "des",
+    "location": {
+      "region": "Auvergne-Rhône-Alpes",
+      "department": "Savoie, Haute-Savoie"
+    },
+    "data": {
+      "sheetId": "2PACX-1vQVWprfQIwB_s0vq9pschR5ddLfHzMLZNUU4_gllxgVE0waGX7M1eMNBsELsXSj_zDKyZ8vNVFs4aoJ",
+      "shackTabId": "1398285307",
+      "sourceTabId": "411337892"
+    }
+  },
+  {
+    "name": "Ecrins",
+    "key": "ecrins",
+    "connector": "des",
+    "location": {
+      "region": "Auvergne-Rhône-Alpes, Provence-Alpes-Côte d'Azur",
+      "department": "Isère, Hautes-Alpes"
+    },
+    "data": {
+      "sheetId": "2PACX-1vRP41nH3_en-Qn4N0TtTLEHBYrqM5ZqWUndRZnMOrYPIHc6FNN0cv9jw1E-WSuskiRimy4o2vyEHrT-",
+      "shackTabId": "1815467955",
+      "sourceTabId": "633528275"
+    }
   }
 ]
