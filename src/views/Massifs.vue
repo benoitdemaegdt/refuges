@@ -170,8 +170,12 @@ export default {
     Map,
     Mapbox,
   },
-  metaInfo: {
-    title: `${this.massif.name}`,
+  metaInfo() {
+    if (this.massif && this.massif.name) {
+      return {
+        title: `${this.massif.name}`,
+      };
+    }
   },
   mixins: [ LayoutMixin ],
   data: () => ({
