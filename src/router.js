@@ -1,5 +1,6 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import VueMeta from 'vue-meta';
 
 // import views
 import Home from '@/views/Home.vue';
@@ -9,6 +10,7 @@ import Shacks from '@/views/Shacks.vue';
 import NotFound from '@/views/NotFound.vue';
 
 Vue.use(VueRouter);
+Vue.use(VueMeta);
 
 const router = new VueRouter({
   mode: 'history',

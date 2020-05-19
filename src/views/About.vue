@@ -9,6 +9,9 @@
 <script>
 export default {
   name: 'About',
+  metaInfo: {
+    title: 'À Propos',
+  },
 };
 </script>
 

@@ -170,6 +170,9 @@ export default {
     Map,
     Mapbox,
   },
+  metaInfo: {
+    title: `${this.massif.name}`,
+  },
   mixins: [ LayoutMixin ],
   data: () => ({
     useMapboxGlMap: process.env.VUE_APP_MAPBOX_GL_TOKEN,

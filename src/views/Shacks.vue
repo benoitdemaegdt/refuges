@@ -164,6 +164,9 @@ import LayoutMixin from '@/mixins/LayoutMixin.js';
 export default {
   name: 'Shack',
   mixins: [ LayoutMixin ],
+  metaInfo: {
+    title: `${this.shack.name}`,
+  },
   data: () => ({
     isLoading: true,
     shack: undefined,
