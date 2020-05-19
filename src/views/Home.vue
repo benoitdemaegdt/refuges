@@ -1,41 +1,52 @@
 <template>
   <v-container fluid class="pt-0">
-    <v-row
-      class="section bg"
-      align="center"
-      justify="center"
-      :style="{ backgroundImage: 'url(' + require('@/assets/images/home.png') + ')' }"
-    >
-      <v-col cols="10" sm="6">
-        <h1 class="font-weight-black display-1 white--text">Votre prochaine aventure en montagne<br>commence ici</h1>
-        <v-autocomplete
-          class="mt-8"
-          v-model="searchMassif"
-          flat
-          solo
-          background-color="#EEEEEE"
-          hide-details
-          no-data-text="Ce massif sera bientôt ajouté 🙂"
-          clearable
-          prepend-inner-icon="mdi-magnify"
-          label="Chercher un massif"
-          :items="searchMassif"
-          item-text="title"
-          item-value="path"
-          return-object
-        >
-          <template v-slot:item="data">
-            <v-list-item-content>
-              <v-list-item-title v-html="data.item.title"></v-list-item-title>
-              <v-list-item-subtitle v-html="data.item.subtitle"></v-list-item-subtitle>
-            </v-list-item-content>
-          </template>
-        </v-autocomplete>
-      </v-col>
+    <v-row class="section" :class="`section-height-${screenWidth < $vuetify.breakpoint.thresholds.sm ? 'mobile' : 'desktop'}`">
+      <v-img :src="require('@/assets/images/home.png?vuetify-preload')" height="100%">
+        <v-sheet color="transparent" class="overflow-y-auto" height="100%">
+          <v-row
+            class="mr-0 ml-0"
+            align="center"
+            justify="center"
+            :style="`height: ${screenWidth < $vuetify.breakpoint.thresholds.sm ? '60%' : '70%'};`"
+          >
+            <v-col cols="10" sm="6">
+              <h1 class="font-weight-black display-1 white--text">Votre prochaine aventure en montagne<br>commence ici</h1>
+              <v-autocomplete
+                class="mt-8"
+                v-model="searchMassif"
+                flat
+                solo
+                background-color="#EEEEEE"
+                hide-details
+                no-data-text="Ce massif sera bientôt ajouté 🙂"
+                clearable
+                prepend-inner-icon="mdi-magnify"
+                label="Chercher un massif"
+                :items="searchMassif"
+                item-text="title"
+                item-value="path"
+                return-object
+              >
+                <template v-slot:item="data">
+                  <v-list-item-content>
+                    <v-list-item-title v-html="data.item.title"></v-list-item-title>
+                    <v-list-item-subtitle v-html="data.item.subtitle"></v-list-item-subtitle>
+                  </v-list-item-content>
+                </template>
+              </v-autocomplete>
+            </v-col>
+          </v-row>
+        </v-sheet>
+      </v-img>
     </v-row>
-    <v-row justify="center" align="center" class="section">
+    <v-row
+      justify="center"
+      align="center"
+      class="section"
+      :class="`section-height-${screenWidth < $vuetify.breakpoint.thresholds.sm ? 'mobile' : 'desktop'}`"
+    >
       <h2
-        :class="`home-title font-weight-black display-${screenWidth < 600 ? '1' : '3'}`">
+        :class="`home-title font-weight-black display-${screenWidth < $vuetify.breakpoint.thresholds.sm ? '1' : '3'}`">
           Préparez vos aventures en montagne en repérant les cabanes, abris et refuges qui abriterons vos nuits
         </h2>
     </v-row>
@@ -171,24 +182,17 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
-  height: calc(100vh - 64px);
-}
 .section {
-  height: calc(100vh - 64px);
-  
-  /* For text formatting. */
   display: flex;
   flex-direction: column;
 }
 
-.bg {
-  height: calc(100vh - 64px); 
+.section-height-desktop {
+  height: calc(100vh - 64px);
+}
 
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.section-height-mobile {
+  height: calc(100vh - 56px);
 }
 
 /* If the screen size is 1101px wide or more */
