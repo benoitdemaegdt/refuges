@@ -4,6 +4,7 @@
 
 <script>
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
+import 'mapbox-gl/dist/mapbox-gl.css';
 import Vue from 'vue';
 import Tooltip from '@/components/Tooltip.vue';
 import ShackMixin from '@/mixins/ShackMixin.js';
