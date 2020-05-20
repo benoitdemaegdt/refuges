@@ -142,6 +142,23 @@ import LayoutMixin from '@/mixins/LayoutMixin.js';
 export default {
   name: 'Home',
   mixins: [ LayoutMixin ],
+  metaInfo() {
+    return {
+      title: 'Refuges, cabanes et abris de montagne',
+      meta: [
+        // Twitter Card
+        { name: 'twitter:title', content: 'Refuges, cabanes et abris de montagne' },
+        { name: 'twitter:description', content: 'Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !' },
+        { name: 'twitter:image', content: window.location.host + require('@/assets/images/home.png') },
+        // Facebook
+        { property: 'og:title', content: 'Refuges, cabanes et abris de montagne.' },
+        { property: 'og:site_name', content: 'Mon Petit Sommet' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:image', content: window.location.host + require('@/assets/images/home.png') },
+        { property: 'og:description', content: 'Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !' },
+      ],
+    };
+  },
   data: () => ({
     searchMassif: massifs.map(massif => ({
       title: massif.name,
