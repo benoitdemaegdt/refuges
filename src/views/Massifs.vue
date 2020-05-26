@@ -174,6 +174,21 @@ export default {
     if (this.massif && this.massif.name) {
       return {
         title: `${this.massif.name}`,
+        meta: [
+          // Facebook
+          { property: 'og:title', content: `${this.massif.name} | Mon Petit Sommet` },
+          { property: 'og:description', content: `Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !` },
+          { property: 'og:url', content: `https://monpetitsommet.netlify.app/massifs/${this.massif.key}` },
+          { property: 'og:type', content: 'website' },
+          // Twitter Card
+          { name: 'twitter:title', content: `${this.massif.name} | Mon Petit Sommet` },
+          { name: 'twitter:description', content: 'Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !' },
+        ].concat(this.massif.image ? [
+          { property: 'og:image', content: 'https://' + window.location.host + require(`@/assets/images/${this.massif.image.src}`) },
+          { property: 'og:image:width', content: this.massif.image.width },
+          { property: 'og:image:height', content: this.massif.image.height },
+          { name: 'twitter:image', content: 'https://' + window.location.host + require(`@/assets/images/${this.massif.image.src}`) },
+        ] : []),
       };
     }
   },
