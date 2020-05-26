@@ -144,18 +144,21 @@ export default {
   mixins: [ LayoutMixin ],
   metaInfo() {
     return {
-      title: 'Refuges, cabanes et abris de montagne',
+      title: 'Mon Petit Sommet',
+      titleTemplate: null,
       meta: [
+        // Facebook
+        { property: 'og:title', content: 'Mon Petit Sommet' },
+        { property: 'og:description', content: 'Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !' },
+        { property: 'og:url', content: 'https://monpetitsommet.netlify.app/' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:image', content: 'https://' + window.location.host + require('@/assets/images/home.png') },
+        { property: 'og:image:width', content: '1920' },
+        { property: 'og:image:height', content: '1440' },
         // Twitter Card
-        { name: 'twitter:title', content: 'Refuges, cabanes et abris de montagne' },
+        { name: 'twitter:title', content: 'Mon Petit Sommet' },
         { name: 'twitter:description', content: 'Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !' },
         { name: 'twitter:image', content: window.location.host + require('@/assets/images/home.png') },
-        // Facebook
-        { property: 'og:title', content: 'Refuges, cabanes et abris de montagne.' },
-        { property: 'og:site_name', content: 'Mon Petit Sommet' },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:image', content: window.location.host + require('@/assets/images/home.png') },
-        { property: 'og:description', content: 'Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !' },
       ],
     };
   },
