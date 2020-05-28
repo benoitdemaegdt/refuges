@@ -4,7 +4,7 @@
       v-if="cabane.images.length !== 0"
       class="white--text align-end"
       height="150px"
-      :src="require('@/assets/images/' + cabane.images[0])"
+      :src="getImage(cabane.images, 0, { height: 150 })"
     >
     </v-img>
 
@@ -54,8 +54,11 @@
 </template>
 
 <script>
+import ImageMixin from '@/mixins/ImageMixin.js';
+
 export default {
   name: 'Tooltip',
+  mixins: [ ImageMixin ],
   props: {
     cabane: { type: Object, required: true },
     goToShack: { type: Function, required: true },

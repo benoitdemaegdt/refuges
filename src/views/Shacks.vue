@@ -20,7 +20,7 @@
               class="shack-img"
               :height="imageHeight"
               :key="shack.key"
-              :src="require('@/assets/images/' + shack.images[0] + '?vuetify-preload')">
+              :src="getImage(shack.images, 0, { height: imageHeight })">
             </v-img>
           </template>
           <template v-else>
@@ -33,7 +33,7 @@
               <v-carousel-item
                 v-for="(image, i) in shack.images"
                 :key="i"
-                :src="require('@/assets/images/' + image + '?vuetify-preload')"
+                :src="getImage(shack.images, i, { height: imageHeight })"
               >
               </v-carousel-item>
             </v-carousel>
@@ -131,7 +131,7 @@
               <h3 class="section-subtitle">Rando / Ski de rando / Raquettes</h3>
               <p
                 v-for="(access, index) in shack.accesses"
-                :key="index"
+                :key="`access-${index}`"
                 class="section-paragraph"
               >{{ access }}</p>
             </template>
@@ -139,7 +139,7 @@
               <h3 class="section-subtitle">Transports en commun</h3>
               <p
                 v-for="(transport, index) in shack.transports"
-                :key="index"
+                :key="`transport-${index}`"
                 class="section-paragraph"
               >{{ transport }}</p>
             </template>
@@ -159,11 +159,12 @@ import massifs from '@/data/massifs.json';
 import { getShacksByMassif } from '@/services/MassifService';
 
 // mixins
+import ImageMixin from '@/mixins/ImageMixin.js';
 import LayoutMixin from '@/mixins/LayoutMixin.js';
 
 export default {
   name: 'Shack',
-  mixins: [ LayoutMixin ],
+  mixins: [ ImageMixin, LayoutMixin ],
   metaInfo() {
     if (this.shack && this.shack.name) {
       return {
@@ -189,8 +190,8 @@ export default {
   },
   computed: {
     imageHeight() {
-      const MOBILE_IMG_HEIGHT = "250px";
-      const DESKTOP_IMG_HEIGHT = "400px";
+      const MOBILE_IMG_HEIGHT = 250;
+      const DESKTOP_IMG_HEIGHT = 400;
       return this.screenWidth > 700 ? DESKTOP_IMG_HEIGHT : MOBILE_IMG_HEIGHT;
     },
   },

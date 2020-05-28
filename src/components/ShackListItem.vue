@@ -12,7 +12,8 @@
             height="200px"
             class="shack-img"
             :key="shack.key"
-            :src="require('@/assets/images/' + shack.images[0] + '?vuetify-preload')">
+            :src="getImage(shack.images, 0, { height: 200 })"
+          >
           </v-img>
         </template>
         <template v-else>
@@ -24,7 +25,7 @@
             <v-carousel-item
               v-for="(image, i) in shack.images"
               :key="i"
-              :src="require('@/assets/images/' + image + '?vuetify-preload')"
+              :src="getImage(shack.images, i, { height: 200 })"
             >
             </v-carousel-item>
           </v-carousel>
@@ -84,6 +85,7 @@
 </template>
 
 <script>
+import ImageMixin from '@/mixins/ImageMixin.js';
 import ShackMixin from '@/mixins/ShackMixin.js';
 
 export default {
@@ -92,7 +94,7 @@ export default {
     massif: { type: Object, required: true },
     shack: { type: Object, required: true },
   },
-  mixins: [ ShackMixin ],
+  mixins: [ ImageMixin, ShackMixin ],
 };
 </script>
 
