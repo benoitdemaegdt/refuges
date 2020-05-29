@@ -8,5 +8,11 @@ export default {
       }
       return require('@/assets/images/' + imageList[index] + '?vuetify-preload');
     },
+    getMetaImageUrl(imageList, index, { height }) {
+      if (imageList[index].includes('cloudinary')) {
+        return `${imageList[index].slice(0, PARAM_IDX)}h_${height * QUALITY_FACTOR},f_auto/${imageList[index].slice(PARAM_IDX)}`
+      }
+      return 'https://' + window.location.host + require(`@/assets/images/${imageList[index]}`)
+    }
   },
 };

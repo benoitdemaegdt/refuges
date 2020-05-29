@@ -169,6 +169,21 @@ export default {
     if (this.shack && this.shack.name) {
       return {
         title: `${this.shack.name}`,
+        meta: [
+          // Facebook
+          { property: 'og:title', content: `${this.shack.name} | Mon Petit Sommet` },
+          { property: 'og:description', content: `${this.shack.name} : informations, équipements, accès, fréquentation` },
+          { property: 'og:url', content: `https://monpetitsommet.netlify.app/massifs/${this.$route.params.massif}/cabanes/${this.shack.key}` },
+          { property: 'og:type', content: 'website' },
+          // Twitter Card
+          { name: 'twitter:title', content: `${this.shack.name} | Mon Petit Sommet` },
+          { name: 'twitter:description', content: `${this.shack.name} : informations, équipements, accès, fréquentation` },
+        ].concat(this.shack.images.length > 0 ? [
+          { property: 'og:image', content: this.getMetaImageUrl(this.shack.images, 0, { height: 450 }) },
+          { property: 'og:image:width', content: '600' },
+          { property: 'og:image:height', content: '450' },
+          { name: 'twitter:image', content: this.getMetaImageUrl(this.shack.images, 0, { height: 450 }) },
+        ] : []),
       };
     }
   },
@@ -183,6 +198,7 @@ export default {
         const massif = massifs.find(massif => massif.key === this.$route.params.massif);
         const shacks = await getShacksByMassif(massif);
         this.shack = shacks.find(shack => shack.key === this.$route.params.cabane);
+        console.log(this.getImage(this.shack.images, 0, { height: 450 }));
         this.isLoading = false;
       },
       immediate: true,
