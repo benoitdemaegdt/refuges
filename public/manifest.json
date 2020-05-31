@@ -1,0 +1,19 @@
+{
+  "name": "Mon Petit Sommet",
+  "short_name": "MPS",
+  "icons": [
+    {
+      "src": "./montagne.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icons/montagne-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff"
+}

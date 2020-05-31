@@ -1,8 +1,7 @@
 module.exports = {
-  "publicPath": "/",
-  "transpileDependencies": [
-    "vuetify"
-  ],
+  publicPath: "/",
+  transpileDependencies: ["vuetify"],
+  pwa: { workboxOptions: { skipWaiting: true } },
   chainWebpack: (config) => {
     config.module
       .rule("vue")
