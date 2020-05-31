@@ -30,7 +30,7 @@
             <template v-else>
               <div class="pt-10 pl-24">
                 <p class="massif-subtitle mb-0">{{ shacks.length }} refuges, cabanes ou abris dans ce massif</p>
-                <h1 class="massif-title">Cabanes {{ massif.connector }} {{ massif.name }}</h1>
+                <h1 class="massif-title">Refuges {{ massif.connector }} {{ massif.name }}</h1>
                 <v-select
                   class="mt-4 selectShackType"
                   v-model="filterType"

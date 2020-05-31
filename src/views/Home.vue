@@ -64,7 +64,7 @@
         <v-col cols="12" sm="6">
           <h3 class="home-content-title font-weight-black headline">{{ descriptions.vercors.title }}</h3>
           <p class="mt-4 pr-12">{{ descriptions.vercors.description }}</p>
-          <v-btn class="mt-6" text outlined @click="$router.push({ name: 'massifs', params: { name: 'vercors' }})">Voir les cabanes</v-btn>
+          <v-btn class="mt-6" text outlined @click="$router.push({ name: 'massifs', params: { name: 'vercors' }})">Voir les refuges</v-btn>
         </v-col>
       </v-row>
       <!-- belledonne -->
@@ -72,7 +72,7 @@
         <v-col cols="12" sm="6">
           <h3 class="home-content-title font-weight-black headline">{{ descriptions.belledonne.title }}</h3>
           <p class="mt-4 pl-12">{{ descriptions.belledonne.description }}</p>
-          <v-btn class="mt-6 ml-12" text outlined @click="$router.push({ name: 'massifs', params: { name: 'belledonne' }})">Voir les cabanes</v-btn>
+          <v-btn class="mt-6 ml-12" text outlined @click="$router.push({ name: 'massifs', params: { name: 'belledonne' }})">Voir les refuges</v-btn>
         </v-col>
         <v-col cols="12" sm="6">
           <v-img
@@ -96,7 +96,7 @@
         <v-col cols="12" sm="6">
           <h3 class="home-content-title font-weight-black headline">{{ descriptions.chartreuse.title }}</h3>
           <p class="mt-4 pr-12">{{ descriptions.chartreuse.description }}</p>
-          <v-btn class="mt-6" text outlined @click="$router.push({ name: 'massifs', params: { name: 'chartreuse' }})">Voir les cabanes</v-btn>
+          <v-btn class="mt-6" text outlined @click="$router.push({ name: 'massifs', params: { name: 'chartreuse' }})">Voir les refuges</v-btn>
         </v-col>
       </v-row>
     </template>
@@ -107,7 +107,7 @@
         <v-card-title>{{ descriptions.vercors.title }}</v-card-title>
         <v-card-text>{{ descriptions.vercors.description }}</v-card-text>
         <v-card-actions>
-          <v-btn text outlined @click="$router.push({ name: 'massifs', params: { name: 'vercors' }})">voir les cabanes</v-btn>
+          <v-btn text outlined @click="$router.push({ name: 'massifs', params: { name: 'vercors' }})">voir les refuges</v-btn>
         </v-card-actions>
       </v-card>
       <!-- belledonne -->
@@ -116,7 +116,7 @@
         <v-card-title>{{ descriptions.belledonne.title }}</v-card-title>
         <v-card-text>{{ descriptions.belledonne.description }}</v-card-text>
         <v-card-actions>
-          <v-btn text outlined @click="$router.push({ name: 'massifs', params: { name: 'belledonne' }})">voir les cabanes</v-btn>
+          <v-btn text outlined @click="$router.push({ name: 'massifs', params: { name: 'belledonne' }})">voir les refuges</v-btn>
         </v-card-actions>
       </v-card>
       <!-- chartreuse -->
@@ -125,7 +125,7 @@
         <v-card-title>{{ descriptions.chartreuse.title }}</v-card-title>
         <v-card-text>{{ descriptions.chartreuse.description }}</v-card-text>
         <v-card-actions>
-          <v-btn text outlined @click="$router.push({ name: 'massifs', params: { name: 'chartreuse' }})">voir les cabanes</v-btn>
+          <v-btn text outlined @click="$router.push({ name: 'massifs', params: { name: 'chartreuse' }})">voir les refuges</v-btn>
         </v-card-actions>
       </v-card>
     </template>
