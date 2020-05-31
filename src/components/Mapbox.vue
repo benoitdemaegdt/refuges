@@ -33,6 +33,10 @@ export default {
     this.map.addControl(new mapboxgl.NavigationControl({ showCompass: false }));
     this.map.addControl(new mapboxgl.FullscreenControl(), 'top-left');
     this.map.addControl(new mapboxgl.ScaleControl(), 'bottom-left');
+    this.map.addControl(new mapboxgl.GeolocateControl({
+      positionOptions: { enableHighAccuracy: true },
+      trackUserLocation: true,
+    }), 'top-left');
     this.addMarkers(this.shacks);
   },
   watch: {
