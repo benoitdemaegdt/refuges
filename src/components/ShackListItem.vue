@@ -3,16 +3,16 @@
     <v-row>
 
       <!-- image -->
-      <v-col cols="12" sm="5" class="pl-0" :class="shack.images.length === 0 ? 'hidden-xs-only' : ''">
-        <template v-if="shack.images.length === 0">
+      <v-col cols="12" sm="5" class="pl-0" :class="images.length === 0 ? 'hidden-xs-only' : ''">
+        <template v-if="images.length === 0">
           <v-sheet height="200px" color="#E0E0E0"></v-sheet>
         </template>
-        <template v-else-if="shack.images.length === 1">
+        <template v-else-if="images.length === 1">
           <v-img
             height="200px"
             class="shack-img"
             :key="shack.key"
-            :src="getImage(shack.images, 0, { height: 200 })"
+            :src="getImage(images, 0, { height: 200 })"
           >
           </v-img>
         </template>
@@ -23,9 +23,9 @@
             show-arrows-on-hover
           >
             <v-carousel-item
-              v-for="(image, i) in shack.images"
+              v-for="(image, i) in images"
               :key="i"
-              :src="getImage(shack.images, i, { height: 200 })"
+              :src="getImage(images, i, { height: 200 })"
             >
             </v-carousel-item>
           </v-carousel>
@@ -95,6 +95,11 @@ export default {
     shack: { type: Object, required: true },
   },
   mixins: [ ImageMixin, ShackMixin ],
+  computed: {
+    images() {
+      return this.shack.images_outdoor;
+    },
+  },
 };
 </script>
 

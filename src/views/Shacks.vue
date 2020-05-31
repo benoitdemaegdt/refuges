@@ -12,15 +12,15 @@
       <!-- images -->
       <v-row>
         <v-col cols="12">
-          <template v-if="shack.images.length === 0">
+          <template v-if="images.length === 0">
             <v-sheet height="300px" color="#E0E0E0"></v-sheet>
           </template>
-          <template v-else-if="shack.images.length === 1">
+          <template v-else-if="images.length === 1">
             <v-img
               class="shack-img"
               :height="imageHeight"
               :key="shack.key"
-              :src="getImage(shack.images, 0, { height: imageHeight })">
+              :src="getImage(images, 0, { height: imageHeight })">
             </v-img>
           </template>
           <template v-else>
@@ -31,9 +31,9 @@
               show-arrows-on-hover
             >
               <v-carousel-item
-                v-for="(image, i) in shack.images"
+                v-for="(image, i) in images"
                 :key="i"
-                :src="getImage(shack.images, i, { height: imageHeight })"
+                :src="getImage(images, i, { height: imageHeight })"
               >
               </v-carousel-item>
             </v-carousel>
@@ -178,11 +178,11 @@ export default {
           // Twitter Card
           { name: 'twitter:title', content: `${this.shack.name} | Mon Petit Sommet` },
           { name: 'twitter:description', content: `${this.shack.name} : informations, équipements, accès, fréquentation` },
-        ].concat(this.shack.images.length > 0 ? [
-          { property: 'og:image', content: this.getMetaImageUrl(this.shack.images, 0, { height: 450 }) },
+        ].concat(this.images.length > 0 ? [
+          { property: 'og:image', content: this.getMetaImageUrl(this.images, 0, { height: 450 }) },
           { property: 'og:image:width', content: '600' },
           { property: 'og:image:height', content: '450' },
-          { name: 'twitter:image', content: this.getMetaImageUrl(this.shack.images, 0, { height: 450 }) },
+          { name: 'twitter:image', content: this.getMetaImageUrl(this.images, 0, { height: 450 }) },
         ] : []),
       };
     }
@@ -198,13 +198,15 @@ export default {
         const massif = massifs.find(massif => massif.key === this.$route.params.massif);
         const shacks = await getShacksByMassif(massif);
         this.shack = shacks.find(shack => shack.key === this.$route.params.cabane);
-        console.log(this.getImage(this.shack.images, 0, { height: 450 }));
         this.isLoading = false;
       },
       immediate: true,
     },
   },
   computed: {
+    images() {
+      return [...this.shack.images_outdoor, ...this.shack.images_indoor];
+    },
     imageHeight() {
       const MOBILE_IMG_HEIGHT = 250;
       const DESKTOP_IMG_HEIGHT = 400;

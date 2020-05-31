@@ -1,10 +1,10 @@
 <template>
   <v-card class="mx-auto" max-width="250" min-width="250" flat>
     <v-img
-      v-if="cabane.images.length !== 0"
+      v-if="images.length !== 0"
       class="white--text align-end"
       height="150px"
-      :src="getImage(cabane.images, 0, { height: 150 })"
+      :src="getImage(images, 0, { height: 150 })"
     >
     </v-img>
 
@@ -62,6 +62,11 @@ export default {
   props: {
     cabane: { type: Object, required: true },
     goToShack: { type: Function, required: true },
+  },
+  computed: {
+    images() {
+      return this.cabane.images_outdoor;
+    },
   },
 }
 </script>
