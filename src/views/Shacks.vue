@@ -44,7 +44,7 @@
       <!-- name -->
       <v-row>
         <v-col cols="12">
-          <h1 class="main-title">{{ shack.name }} ({{ shack.altitude }}m)</h1>
+          <h1 class="main-title">{{ shack.name }}</h1>
           <p class="main-subtitle"> {{ shack.type }}, {{ shack.massif }}</p>
         </v-col>
       </v-row>
@@ -60,6 +60,32 @@
         </v-row>
         <v-divider></v-divider>
       </template>
+
+      <!-- informations -->
+      <v-row>
+        <v-col cols="12">
+          <h2 class="section-title">Informations</h2>
+          <div class="informations-container">
+            <v-row>
+              <!-- altitude -->
+              <v-col cols="6" sm="5">
+                <div class="flex-container">
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/mountain.png')"></v-img></div>
+                  <div class="flex-child">Altitude : {{ shack.altitude }}m</div>
+                </div>
+              </v-col>
+              <!-- gps -->
+              <v-col cols="6" sm="7">
+                <div class="flex-container">
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/pin.png')"></v-img></div>
+                  <div class="flex-child">Long, Lat : {{ shack.longitude }}, {{ shack.latitude }}</div>
+                </div>
+              </v-col>
+            </v-row> 
+          </div>
+        </v-col>
+      </v-row>
+      <v-divider></v-divider>
 
       <!-- amenities -->
       <v-row>
@@ -270,7 +296,7 @@ export default {
   margin-top: 16px;
 }
 
-.amenities-container {
+.amenities-container, .informations-container {
   margin-top: 4px;
 }
 .flex-container {
