@@ -27,7 +27,7 @@
         no-data-text="Nous ne connaissons pas encore cet endroit  😢"
         clearable
         prepend-inner-icon="mdi-magnify"
-        label="Chercher un massif, une cabane ..."
+        label="Chercher un refuge"
         class="hidden-sm-and-down"
         :items="search"
         item-text="name"

@@ -9,14 +9,6 @@ const MASSIFS = JSON.parse(fs.readFileSync(path.resolve(__dirname, './massifs.js
 (async() => {
 
   for (const massif of MASSIFS) {
-    OUTPUT.push({
-      name: massif.name,
-      type: 'massif',
-      path: `/massifs/${massif.key}`,
-    });
-  }
-
-  for (const massif of MASSIFS) {
     const shacks = await getData(massif);
     OUTPUT.push(...shacks);
   }
