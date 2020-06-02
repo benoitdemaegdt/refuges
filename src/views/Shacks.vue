@@ -196,6 +196,8 @@ export default {
       return {
         title: `${this.shack.name}`,
         meta: [
+          // Google
+          { name: 'description', content: `${this.shack.name} : informations, équipements, accès, fréquentation` },
           // Facebook
           { property: 'og:title', content: `${this.shack.name} | Mon Petit Sommet` },
           { property: 'og:description', content: `${this.shack.name} : informations, équipements, accès, fréquentation` },

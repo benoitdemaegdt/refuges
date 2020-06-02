@@ -175,6 +175,8 @@ export default {
       return {
         title: `${this.massif.name}`,
         meta: [
+          // Google
+          { name: 'description', content: `${this.massif.name} : Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !` },
           // Facebook
           { property: 'og:title', content: `${this.massif.name} | Mon Petit Sommet` },
           { property: 'og:description', content: `Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !` },

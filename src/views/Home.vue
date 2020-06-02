@@ -147,6 +147,8 @@ export default {
       title: 'Mon Petit Sommet',
       titleTemplate: null,
       meta: [
+        // Google
+        { name: 'description', content: 'Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !' },
         // Facebook
         { property: 'og:title', content: 'Mon Petit Sommet' },
         { property: 'og:description', content: 'Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !' },
