@@ -178,7 +178,7 @@ export default {
           // Facebook
           { property: 'og:title', content: `${this.massif.name} | Mon Petit Sommet` },
           { property: 'og:description', content: `Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !` },
-          { property: 'og:url', content: `https://monpetitsommet.netlify.app/massifs/${this.massif.key}` },
+          { property: 'og:url', content: `https://monpetitsommet.fr/massifs/${this.massif.key}` },
           { property: 'og:type', content: 'website' },
           // Twitter Card
           { name: 'twitter:title', content: `${this.massif.name} | Mon Petit Sommet` },

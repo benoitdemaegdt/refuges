@@ -150,7 +150,7 @@ export default {
         // Facebook
         { property: 'og:title', content: 'Mon Petit Sommet' },
         { property: 'og:description', content: 'Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !' },
-        { property: 'og:url', content: 'https://monpetitsommet.netlify.app/' },
+        { property: 'og:url', content: 'https://monpetitsommet.fr/' },
         { property: 'og:type', content: 'website' },
         { property: 'og:image', content: 'https://' + window.location.host + require('@/assets/images/home.png') },
         { property: 'og:image:width', content: '1920' },

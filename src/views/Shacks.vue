@@ -199,7 +199,7 @@ export default {
           // Facebook
           { property: 'og:title', content: `${this.shack.name} | Mon Petit Sommet` },
           { property: 'og:description', content: `${this.shack.name} : informations, équipements, accès, fréquentation` },
-          { property: 'og:url', content: `https://monpetitsommet.netlify.app/massifs/${this.$route.params.massif}/cabanes/${this.shack.key}` },
+          { property: 'og:url', content: `https://monpetitsommet.fr/massifs/${this.$route.params.massif}/cabanes/${this.shack.key}` },
           { property: 'og:type', content: 'website' },
           // Twitter Card
           { name: 'twitter:title', content: `${this.shack.name} | Mon Petit Sommet` },
