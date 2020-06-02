@@ -1,9 +1,9 @@
 {
   "name": "Mon Petit Sommet",
-  "short_name": "MPS",
+  "short_name": "Petit Sommet",
   "icons": [
     {
-      "src": "./montagne.png",
+      "src": "./img/icons/montagne-64x64.png",
       "sizes": "64x64",
       "type": "image/png"
     },
