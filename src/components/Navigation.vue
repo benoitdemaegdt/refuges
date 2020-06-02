@@ -12,7 +12,7 @@
         style="width: 300px"
         class="ml-0 pl-4"
       >
-        <router-link :to="{ name: 'home'}" class='toolbar-title'>Refuges</router-link>
+        <router-link :to="{ name: 'home'}" class='toolbar-title'>Mon Petit Sommet</router-link>
       </v-toolbar-title>
 
       <!-- search bar -->
@@ -43,6 +43,7 @@
       </v-autocomplete>
       <v-spacer />
       <v-btn
+        class="hidden-xs-only"
         text
         outlined
         rounded
