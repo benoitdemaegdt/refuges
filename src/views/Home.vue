@@ -47,7 +47,7 @@
     >
       <h2
         :class="`home-title font-weight-black display-${screenWidth < $vuetify.breakpoint.thresholds.sm ? '1' : '3'}`">
-          Préparez vos aventures en montagne en repérant les cabanes, abris et refuges qui abriterons vos nuits
+          Préparez vos aventures en montagne en repérant les cabanes, abris et refuges qui abriteront vos nuits
         </h2>
     </v-row>
     <template v-if="screenWidth > 700">
@@ -183,7 +183,7 @@ export default {
       },
       chartreuse: {
         title: `S'imprégner de nature en Chartreuse`,
-        description: `On vient en Chartreuse pour son accès facile, sa nature verdoyante et ses immenses expaces.
+        description: `On vient en Chartreuse pour son accès facile, sa nature verdoyante et ses immenses espaces.
           Entre la Chamechaude, Le cirque de Saint-Même et la réserve naturelle des Hauts de Chartreuse, ce massif regorge de merveilles.
           À découvrir en été comme en hiver.`,
       },
