@@ -9,6 +9,15 @@
 
     <template v-else>
 
+      <!-- return button -->
+      <v-row v-if="isPwa">
+        <v-col cols="12" class="pl-0 pb-0 pt-0">
+          <v-btn text @click="$router.push({ name: 'massifs', params: { name: massif.key}  })">
+            <v-icon>mdi-chevron-left</v-icon>Retour
+          </v-btn>
+        </v-col>
+      </v-row>
+
       <!-- images -->
       <v-row>
         <v-col cols="12">
@@ -217,14 +226,15 @@ export default {
   },
   data: () => ({
     isLoading: true,
+    massif: undefined,
     shack: undefined,
   }),
   watch: {
     $route: {
       async handler() {
         this.isLoading = true;
-        const massif = massifs.find(massif => massif.key === this.$route.params.massif);
-        const shacks = await getShacksByMassif(massif);
+        this.massif = massifs.find(massif => massif.key === this.$route.params.massif);
+        const shacks = await getShacksByMassif(this.massif);
         this.shack = shacks.find(shack => shack.key === this.$route.params.cabane);
         this.isLoading = false;
       },
