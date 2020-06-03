@@ -1,21 +1,16 @@
 [
   {
-    "name": "Vercors",
-    "key": "vercors",
-    "connector": "du",
+    "name": "Bauges",
+    "key": "bauges",
+    "connector": "des",
     "location": {
       "region": "Auvergne-Rhône-Alpes",
-      "department": "Isère, Drôme"
-    },
-    "image": {
-      "src": "home/vercors.jpg",
-      "width": "600",
-      "height": "450"
+      "department": "Savoie, Haute-Savoie"
     },
     "data": {
-      "sheetId": "2PACX-1vQ2XkHB35RZ3gSdKB7skqoSEJCKleKGhHQfruLugKELIq0fOjelwtDeivZ2s3icD2fMXaNmHjLw8FsR",
-      "shackTabId": "1125012792",
-      "sourceTabId": "1082649207"
+      "sheetId": "2PACX-1vQVWprfQIwB_s0vq9pschR5ddLfHzMLZNUU4_gllxgVE0waGX7M1eMNBsELsXSj_zDKyZ8vNVFs4aoJ",
+      "shackTabId": "1398285307",
+      "sourceTabId": "411337892"
     }
   },
   {
@@ -56,20 +51,20 @@
       "sourceTabId": "1030956970"
     }
   },
-  {
-    "name": "Bauges",
-    "key": "bauges",
-    "connector": "des",
+  { 
+    "name": "Dévoluy",
+    "key": "devoluy",
+    "connector": "du",
     "location": {
-      "region": "Auvergne-Rhône-Alpes",
-      "department": "Savoie, Haute-Savoie"
+      "region": "Provence-Alpes-Côte d’Azur",
+      "department": "Hautes-Alpes"
     },
     "data": {
-      "sheetId": "2PACX-1vQVWprfQIwB_s0vq9pschR5ddLfHzMLZNUU4_gllxgVE0waGX7M1eMNBsELsXSj_zDKyZ8vNVFs4aoJ",
-      "shackTabId": "1398285307",
-      "sourceTabId": "411337892"
+      "sheetId": "2PACX-1vTvEl3aEqbgu0l4nXihjdAG5oisu4pkUhfqFMjt67H3nyECB5aovMi3QEuvzd5keMdeye0PDLgQSB3n",
+      "shackTabId": "1559336524",
+      "sourceTabId": "1757464581"
     }
-  },
+  },  
   {
     "name": "Ecrins",
     "key": "ecrins",
@@ -82,6 +77,67 @@
       "sheetId": "2PACX-1vRP41nH3_en-Qn4N0TtTLEHBYrqM5ZqWUndRZnMOrYPIHc6FNN0cv9jw1E-WSuskiRimy4o2vyEHrT-",
       "shackTabId": "1815467955",
       "sourceTabId": "633528275"
+    }
+  },
+  {
+    "name": "Queyras",
+    "key": "queyras",
+    "connector": "du",
+    "location": {
+      "region": "Provence-Alpes-Côte d'Azur, Piémont",
+      "department": "Hautes-Alpes, Turin, Coni"
+    },
+    "data": {
+      "sheetId": "2PACX-1vQCrgn0_6y5gUu7Y-yW0TECTumQOF0SveuQVtObTpDGlW-L4zhzS9-IM5zu8DVmK94DXksKx_Syd-8L",
+      "shackTabId": "913655281",
+      "sourceTabId": "965657275"
+    }
+  },
+  {
+    "name": "Taillefer",
+    "key": "taillefer",
+    "connector": "du",
+    "location": {
+      "region": "Auvergne-Rhône-Alpes",
+      "department": "Isère"
+    },
+    "data": {
+      "sheetId": "2PACX-1vRglg8Xu_OqzWuf7WK2KV9Bjuew7y2O2jAIyWsAFbVL3JFU6-66jT1yH6U52-e6iG1G_GZiv6gp-w10",
+      "shackTabId": "11458584251",
+      "sourceTabId": "982501023"
+    }
+  },
+  {
+    "name": "Vanoise",
+    "key": "vanoise",
+    "connector": "de",
+    "location": {
+      "region": "Auvergne-Rhône-Alpesergne-Rhône-Alpes",
+      "department": "Savoie"
+    },
+    "data": {
+      "sheetId": "2PACX-1vSeuFy_ulnRhvAIEFEiRIl_X7KX3ZCMIUChUBTXpqTZ8QP6IvmnatJ34jPYrStQnyu2uUnHHjuTEDiP",
+      "shackTabId": "1927643803",
+      "sourceTabId": "1003563942"
+    }
+  },
+  {
+    "name": "Vercors",
+    "key": "vercors",
+    "connector": "du",
+    "location": {
+      "region": "Auvergne-Rhône-Alpes",
+      "department": "Isère, Drôme"
+    },
+    "image": {
+      "src": "home/vercors.jpg",
+      "width": "600",
+      "height": "450"
+    },
+    "data": {
+      "sheetId": "2PACX-1vQ2XkHB35RZ3gSdKB7skqoSEJCKleKGhHQfruLugKELIq0fOjelwtDeivZ2s3icD2fMXaNmHjLw8FsR",
+      "shackTabId": "1125012792",
+      "sourceTabId": "1082649207"
     }
   }
 ]
