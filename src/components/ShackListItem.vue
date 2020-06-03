@@ -86,6 +86,7 @@
 
 <script>
 import ImageMixin from '@/mixins/ImageMixin.js';
+import LayoutMixin from '@/mixins/LayoutMixin.js';
 import ShackMixin from '@/mixins/ShackMixin.js';
 
 export default {
@@ -94,7 +95,7 @@ export default {
     massif: { type: Object, required: true },
     shack: { type: Object, required: true },
   },
-  mixins: [ ImageMixin, ShackMixin ],
+  mixins: [ ImageMixin, LayoutMixin, ShackMixin ],
   computed: {
     images() {
       return this.shack.images_outdoor;
