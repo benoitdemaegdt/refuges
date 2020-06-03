@@ -3,6 +3,16 @@
   "short_name": "Petit Sommet",
   "icons": [
     {
+      "src": "./img/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
       "src": "./img/icons/montagne-64x64.png",
       "sizes": "64x64",
       "type": "image/png"
@@ -10,6 +20,11 @@
     {
       "src": "./img/icons/montagne-144x144.png",
       "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/icons/apple-touch-icon-120x120.png",
+      "sizes": "120x120",
       "type": "image/png"
     }
   ],
