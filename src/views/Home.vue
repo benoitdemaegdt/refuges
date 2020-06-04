@@ -1,7 +1,11 @@
 <template>
   <v-container fluid class="pt-0">
     <v-row class="section" :class="`section-height-${screenWidth < $vuetify.breakpoint.thresholds.sm ? 'mobile' : 'desktop'}`">
-      <v-img :src="require('@/assets/images/home.png?vuetify-preload')" height="100%">
+      <v-img
+        height="100%"
+        lazy-src="R0lGODlhCQAHAPUAABIWGhUcIhghKxslMR8rOigsMjw2MEI+OSgzQi46SDw+QT1AREhLTFBOS0JMVk1PUVtZVVRZXU5bZV5kZlhlcHFrZHtyZ3dzbI2CdGNxgGh3hmt9ind+hWt+lG6FnXGHmneUtHmYvFyP0V2Q0V+R0mCT1GOV1mqb2HCg2nqm3YGDhqGfnp+82aC82qS+2aO+3KK+3YSw44Cy7IKz7YK07Z294Jy+44W38Ii48I+/85fE9KbF5a/N66DJ9KvQ9gAAACH5BAAAAAAALAAAAAAJAAcAAAY4wFgKdTKZRCKTr6fL4WbQG28Hg7lcLJYtBPJoLqtPpvPZUCIQzCPhkEwuFYXlICAgHo3CYGEABIIAOw=="
+        :src="getImage(image, 0, { height: sreenHeight })"
+      >
         <v-sheet color="transparent" class="overflow-y-auto" height="100%">
           <v-row
             class="mr-0 ml-0"
@@ -137,11 +141,12 @@
 import massifs from '@/data/massifs.json';
 
 // mixins
+import ImageMixin from '@/mixins/ImageMixin.js';
 import LayoutMixin from '@/mixins/LayoutMixin.js';
 
 export default {
   name: 'Home',
-  mixins: [ LayoutMixin ],
+  mixins: [ ImageMixin, LayoutMixin ],
   metaInfo() {
     return {
       title: 'Mon Petit Sommet',
@@ -170,6 +175,9 @@ export default {
       subtitle: `${massif.location.region} | ${massif.location.department}`,
       path: `/massifs/${massif.key}`,
     })),
+    image: [
+      'https://res.cloudinary.com/monpetitsommet/image/upload/v1591291716/home/home_ofwjs8.png',
+    ],
     descriptions: {
       vercors: {
         title: `Parcourir l'immensité du Vercors`,
