@@ -30,6 +30,8 @@ export default {
       center: [5.7167, 45.1667],
       zoom: 11,
     });
+    this.map.dragRotate.disable();
+    this.map.touchZoomRotate.disableRotation();
     this.map.addControl(new mapboxgl.NavigationControl({ showCompass: false }));
     this.map.addControl(new mapboxgl.FullscreenControl(), 'top-left');
     this.map.addControl(new mapboxgl.ScaleControl(), 'bottom-left');
