@@ -40,6 +40,7 @@ import {
   LMarker,
 } from 'vue2-leaflet';
 import Tooltip from '@/components/Tooltip.vue';
+import LayoutMixin from '@/mixins/LayoutMixin.js';
 import ShackMixin from '@/mixins/ShackMixin.js';
 
 export default {
@@ -58,7 +59,7 @@ export default {
     massif: { type: Object, required: true },
     mouseOveredCabaneKey: { type: String },
   },
-  mixins: [ ShackMixin ],
+  mixins: [ LayoutMixin, ShackMixin ],
   data: () =>  ({
     map: undefined,
     zoom: 8,

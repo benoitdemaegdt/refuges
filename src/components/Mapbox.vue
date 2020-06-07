@@ -7,6 +7,7 @@ const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Vue from 'vue';
 import Tooltip from '@/components/Tooltip.vue';
+import LayoutMixin from '@/mixins/LayoutMixin.js';
 import ShackMixin from '@/mixins/ShackMixin.js';
 
 export default {
@@ -16,7 +17,7 @@ export default {
     massif: { type: Object, required: true },
     mouseOveredShackIndex: { type: Number },
   },
-  mixins: [ ShackMixin ],
+  mixins: [ LayoutMixin, ShackMixin ],
   data: () => ({
     map: undefined,
     markers: [],
