@@ -219,7 +219,12 @@ export default {
         this.isLoading = false;
       },
       immediate: true,
-    }
+    },
+    page: {
+      handler() {
+        window.scrollTo(0, 0);
+      },
+    },
   },
   computed: {
     getTypes() {
