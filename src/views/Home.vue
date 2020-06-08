@@ -62,7 +62,7 @@
             height="350px"
             max-width="450px"
             class="home-img"
-            :src="require('@/assets/images/home/vercors.jpg?vuetify-preload')">
+            :src="require('https://res.cloudinary.com/monpetitsommet/image/upload/v1591631199/home/vercors_lkgmgv.jpg')">
           </v-img>
         </v-col>
         <v-col cols="12" sm="6">
@@ -83,7 +83,7 @@
             height="350px"
             max-width="450px"
             class="home-img"
-            :src="require('@/assets/images/home/belledonne.jpg?vuetify-preload')">
+            :src="require('https://res.cloudinary.com/monpetitsommet/image/upload/v1591631199/home/belledonne_p8kbuc.jpg')">
           </v-img>
         </v-col>
       </v-row>
@@ -94,7 +94,7 @@
             height="350px"
             max-width="450px"
             class="home-img"
-            :src="require('@/assets/images/home/chartreuse.jpg?vuetify-preload')">
+            :src="require('https://res.cloudinary.com/monpetitsommet/image/upload/v1591631199/home/chartreuse_se4al7.jpg')">
           </v-img>
         </v-col>
         <v-col cols="12" sm="6">
@@ -107,7 +107,7 @@
     <template v-else>
       <!-- vercors -->
       <v-card flat>
-        <v-img height="200px" :src="require('@/assets/images/home/vercors.jpg?vuetify-preload')"></v-img>
+        <v-img height="200px" :src="require('https://res.cloudinary.com/monpetitsommet/image/upload/v1591631199/home/vercors_lkgmgv.jpg')"></v-img>
         <v-card-title>{{ descriptions.vercors.title }}</v-card-title>
         <v-card-text>{{ descriptions.vercors.description }}</v-card-text>
         <v-card-actions>
@@ -116,7 +116,7 @@
       </v-card>
       <!-- belledonne -->
       <v-card flat class="mt-8">
-        <v-img height="200px" :src="require('@/assets/images/home/belledonne.jpg?vuetify-preload')"></v-img>
+        <v-img height="200px" :src="require('https://res.cloudinary.com/monpetitsommet/image/upload/v1591631199/home/belledonne_p8kbuc.jpg')"></v-img>
         <v-card-title>{{ descriptions.belledonne.title }}</v-card-title>
         <v-card-text>{{ descriptions.belledonne.description }}</v-card-text>
         <v-card-actions>
@@ -125,7 +125,7 @@
       </v-card>
       <!-- chartreuse -->
       <v-card flat class="mt-8">
-        <v-img height="200px" :src="require('@/assets/images/home/chartreuse.jpg?vuetify-preload')"></v-img>
+        <v-img height="200px" :src="require('https://res.cloudinary.com/monpetitsommet/image/upload/v1591631199/home/chartreuse_se4al7.jpg')"></v-img>
         <v-card-title>{{ descriptions.chartreuse.title }}</v-card-title>
         <v-card-text>{{ descriptions.chartreuse.description }}</v-card-text>
         <v-card-actions>
