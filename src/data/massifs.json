@@ -22,7 +22,7 @@
       "department": "Isère, Savoie"
     },
     "image": {
-      "src": "home/belledonne.jpg",
+      "src": "https://res.cloudinary.com/monpetitsommet/image/upload/v1591631199/home/belledonne_p8kbuc.jpg",
       "width": "600",
       "height": "450"
     },
@@ -41,7 +41,7 @@
       "department": "Isère, Savoie"
     },
     "image": {
-      "src": "home/chartreuse.jpg",
+      "src": "https://res.cloudinary.com/monpetitsommet/image/upload/v1591631199/home/chartreuse_se4al7.jpg",
       "width": "600",
       "height": "400"
     },
@@ -130,7 +130,7 @@
       "department": "Isère, Drôme"
     },
     "image": {
-      "src": "home/vercors.jpg",
+      "src": "https://res.cloudinary.com/monpetitsommet/image/upload/v1591631199/home/vercors_lkgmgv.jpg",
       "width": "600",
       "height": "450"
     },
