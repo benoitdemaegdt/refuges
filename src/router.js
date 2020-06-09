@@ -3,11 +3,11 @@ import VueRouter from 'vue-router';
 import VueMeta from 'vue-meta';
 
 // import views
-const Home = () => import('@/views/Home.vue');
-const About = () => import('@/views/About.vue');
-const Massifs = () => import('@/views/Massifs.vue');
-const Shacks = () => import('@/views/Shacks.vue');
-const NotFound = () => import('@/views/NotFound.vue');
+const Home = () => import(/* webpackChunkName: "home" */ '@/views/Home.vue');
+const About = () => import(/* webpackChunkName: "about" */ '@/views/About.vue');
+const Massifs = () => import(/* webpackChunkName: "massifs" */ '@/views/Massifs.vue');
+const Shacks = () => import(/* webpackChunkName: "shacks" */ '@/views/Shacks.vue');
+const NotFound = () => import(/* webpackChunkName: "not-found" */ '@/views/NotFound.vue');
 
 Vue.use(VueRouter);
 Vue.use(VueMeta);
