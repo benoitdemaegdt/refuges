@@ -160,8 +160,8 @@ import LayoutMixin from '@/mixins/LayoutMixin.js';
 
 // components
 import ShackListItem from '@/components/ShackListItem';
-import Map from '@/components/Map';
-import Mapbox from '@/components/Mapbox';
+const Map = () => import(/* webpackChunkName: "leaflet" */ '@/components/Map');
+const Mapbox = () => import(/* webpackChunkName: "mapbox" */ '@/components/Mapbox');
 
 export default {
   name: 'Massifs',
