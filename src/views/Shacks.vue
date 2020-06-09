@@ -91,7 +91,7 @@
                 </div>
               </v-col>
             </v-row> 
-                        <v-row>
+            <v-row>
               <!-- phone numbers -->
               <template v-if="shack.phones.length > 0">
                 <v-col cols="6" sm="5">
