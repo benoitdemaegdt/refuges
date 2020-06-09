@@ -62,7 +62,7 @@
             height="350px"
             max-width="450px"
             class="home-img"
-            :src="require('@/assets/images/home/vercors.jpg?vuetify-preload')">
+            :src="getImage(descriptions.vercors.image, 0, { height: 200 })">
           </v-img>
         </v-col>
         <v-col cols="12" sm="6">
@@ -83,7 +83,7 @@
             height="350px"
             max-width="450px"
             class="home-img"
-            :src="require('@/assets/images/home/belledonne.jpg?vuetify-preload')">
+            :src="getImage(descriptions.belledonne.image, 0, { height: 200 })">
           </v-img>
         </v-col>
       </v-row>
@@ -94,7 +94,7 @@
             height="350px"
             max-width="450px"
             class="home-img"
-            :src="require('@/assets/images/home/chartreuse.jpg?vuetify-preload')">
+            :src="getImage(descriptions.chartreuse.image, 0, { height: 200 })">
           </v-img>
         </v-col>
         <v-col cols="12" sm="6">
@@ -107,7 +107,7 @@
     <template v-else>
       <!-- vercors -->
       <v-card flat>
-        <v-img height="200px" :src="require('@/assets/images/home/vercors.jpg?vuetify-preload')"></v-img>
+        <v-img height="200px" :src="getImage(descriptions.vercors.image, 0, { height: 200 })"></v-img>
         <v-card-title>{{ descriptions.vercors.title }}</v-card-title>
         <v-card-text>{{ descriptions.vercors.description }}</v-card-text>
         <v-card-actions>
@@ -116,7 +116,7 @@
       </v-card>
       <!-- belledonne -->
       <v-card flat class="mt-8">
-        <v-img height="200px" :src="require('@/assets/images/home/belledonne.jpg?vuetify-preload')"></v-img>
+        <v-img height="200px" :src="getImage(descriptions.belledonne.image, 0, { height: 200 })"></v-img>
         <v-card-title>{{ descriptions.belledonne.title }}</v-card-title>
         <v-card-text>{{ descriptions.belledonne.description }}</v-card-text>
         <v-card-actions>
@@ -125,7 +125,7 @@
       </v-card>
       <!-- chartreuse -->
       <v-card flat class="mt-8">
-        <v-img height="200px" :src="require('@/assets/images/home/chartreuse.jpg?vuetify-preload')"></v-img>
+        <v-img height="200px" :src="getImage(descriptions.chartreuse.image, 0, { height: 200 })"></v-img>
         <v-card-title>{{ descriptions.chartreuse.title }}</v-card-title>
         <v-card-text>{{ descriptions.chartreuse.description }}</v-card-text>
         <v-card-actions>
@@ -159,13 +159,13 @@ export default {
         { property: 'og:description', content: 'Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !' },
         { property: 'og:url', content: 'https://monpetitsommet.fr/' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:image', content: 'https://' + window.location.host + require('@/assets/images/home.png') },
+        { property: 'og:image', content: this.image },
         { property: 'og:image:width', content: '1920' },
         { property: 'og:image:height', content: '1440' },
         // Twitter Card
         { name: 'twitter:title', content: 'Mon Petit Sommet' },
         { name: 'twitter:description', content: 'Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !' },
-        { name: 'twitter:image', content: window.location.host + require('@/assets/images/home.png') },
+        { name: 'twitter:image', content: this.image },
       ],
     };
   },
@@ -175,27 +175,28 @@ export default {
       subtitle: `${massif.location.region} | ${massif.location.department}`,
       path: `/massifs/${massif.key}`,
     })),
-    image: [
-      'https://res.cloudinary.com/monpetitsommet/image/upload/v1591291716/home/home_ofwjs8.png',
-    ],
+    image: ['https://res.cloudinary.com/monpetitsommet/image/upload/v1591291716/home/home_ofwjs8.png'],
     descriptions: {
       vercors: {
         title: `Parcourir l'immensité du Vercors`,
         description: `Été comme hiver, le Vercors est un fantastique terrain de jeu pour des sorties en pleine nature.
           Il abrite en particulier la très sauvage et préservée réserve naturelle des « Hauts-Plateaux »
           qui s'étend sur plus de 17 000 hectares et reste à ce jour la plus grande réserve naturelle de France métropolitaine.`,
+        image: ['https://res.cloudinary.com/monpetitsommet/image/upload/v1591631199/home/vercors_lkgmgv.jpg'],
       },
       belledonne: {
         title: `Prendre de l'altitude en Belledonne`,
         description: `Avec ses sommets enneigés, ses lacs et ses glaciers, Belledonne est un massif de moyenne montagne situé à proximité immédiate de Grenoble.
           Ce massif est très réputé parmi les adeptes du ski de rando qui viennent y chercher de la poudreuse et des pentes raides.
           Les randonneurs estivaux ne sont pas en reste : le tout nouveau GR 738, long de 130km, permet de réaliser le Haute Traversée de Belledonne.`,
+        image: ['https://res.cloudinary.com/monpetitsommet/image/upload/v1591631199/home/belledonne_p8kbuc.jpg'],
       },
       chartreuse: {
         title: `S'imprégner de nature en Chartreuse`,
         description: `On vient en Chartreuse pour son accès facile, sa nature verdoyante et ses immenses espaces.
           Entre la Chamechaude, Le cirque de Saint-Même et la réserve naturelle des Hauts de Chartreuse, ce massif regorge de merveilles.
           À découvrir en été comme en hiver.`,
+        image: ['https://res.cloudinary.com/monpetitsommet/image/upload/v1591631199/home/chartreuse_se4al7.jpg'],
       },
     },
   }),
