@@ -159,13 +159,13 @@ export default {
         { property: 'og:description', content: 'Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !' },
         { property: 'og:url', content: 'https://monpetitsommet.fr/' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:image', content: 'https://' + window.location.host + require('@/assets/images/home.png') },
+        { property: 'og:image', content: this.image },
         { property: 'og:image:width', content: '1920' },
         { property: 'og:image:height', content: '1440' },
         // Twitter Card
         { name: 'twitter:title', content: 'Mon Petit Sommet' },
         { name: 'twitter:description', content: 'Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !' },
-        { name: 'twitter:image', content: window.location.host + require('@/assets/images/home.png') },
+        { name: 'twitter:image', content: this.image },
       ],
     };
   },
