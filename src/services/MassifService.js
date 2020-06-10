@@ -16,7 +16,7 @@ function getData(sheetId, gid) {
             ? value.split('@@').map(element => element.trim())
             : [];
         }
-        return value;
+        return value ? value : undefined;
       },
       complete(results) {
         return resolve(results.data);

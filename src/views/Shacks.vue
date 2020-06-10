@@ -128,7 +128,7 @@
                 </div>
               </v-col>
               <!-- mattresses -->
-              <template v-if="shack.mattresses !== null">
+              <template v-if="shack.mattresses !== undefined">
                 <v-col cols="6" sm="4">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
@@ -137,7 +137,7 @@
                 </v-col>
               </template>
               <!-- blankets -->
-              <template v-if="shack.blankets !== null">
+              <template v-if="shack.blankets !== undefined">
                 <v-col cols="6" sm="4">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/blanket.png')"></v-img></div>
@@ -146,7 +146,7 @@
                 </v-col>
               </template>
               <!-- stove -->
-              <template v-if="shack.stove !== null">
+              <template v-if="shack.stove !== undefined">
                 <v-col cols="6" sm="4">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
@@ -155,7 +155,7 @@
                 </v-col>
               </template>
               <!-- wood -->
-              <template v-if="shack.wood !== null">
+              <template v-if="shack.wood !== undefined">
                 <v-col cols="6" sm="4">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/wood.png')"></v-img></div>
@@ -164,7 +164,7 @@
                 </v-col>
               </template>
               <!-- water -->
-              <template v-if="shack.water !== null">
+              <template v-if="shack.water !== undefined">
                 <v-col cols="6" sm="4">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
@@ -173,7 +173,7 @@
                 </v-col>
               </template>
               <!-- toilets -->
-              <template v-if="shack.toilets !== null">
+              <template v-if="shack.toilets !== undefined">
                 <v-col cols="6" sm="4">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/toilet.png')"></v-img></div>
