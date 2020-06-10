@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { mdiBedOutline } from '@mdi/js';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-fullscreen/dist/leaflet.fullscreen.css';
 import L from "leaflet";
@@ -63,6 +64,7 @@ export default {
   },
   mixins: [ LayoutMixin, ShackMixin ],
   data: () =>  ({
+    mdiBedOutline,
     map: undefined,
     zoom: 8,
     center: latLng(45.1667, 5.7167),
@@ -125,7 +127,9 @@ export default {
         html: `
           <div class="map-label">
             <div class="${dynamicClass}">
-              <b>${cabane.beds}</b>&nbsp<i class="v-icon notranslate mdi mdi-bed-outline theme--light" style="font-size:18px; color: ${iconColor};"></i>
+              <b>${cabane.beds}</b>&nbsp<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="18" role="img" aria-hidden="true">
+                <path d="${mdiBedOutline}" fill="${iconColor}"></path>
+              </svg>
             </div>
           </div>
         `,
