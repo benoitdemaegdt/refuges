@@ -11,12 +11,12 @@ function getData(sheetId, gid) {
       dynamicTyping: true,
       skipEmptyLines: true,
       transform(value, column) {
-        if (['images_indoor', 'images_outdoor', 'accesses', 'transports'].includes(column)) {
+        if (['images_indoor', 'images_outdoor', 'accesses', 'transports', 'phones'].includes(column)) {
           return value
             ? value.split('@@').map(element => element.trim())
             : [];
         }
-        return value;
+        return value ? value : undefined;
       },
       complete(results) {
         return resolve(results.data);
