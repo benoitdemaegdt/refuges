@@ -140,8 +140,8 @@
           </template>
         </v-row>
         <v-btn fab dark color="#71717E" fixed right bottom @click="isShowingMap = !isShowingMap">
-          <v-icon v-if="isShowingMap">mdi-format-list-bulleted-square</v-icon>
-          <v-icon v-else>mdi-map</v-icon>
+          <v-icon v-if="isShowingMap">{{ mdiFormatListBulletedSquare }}</v-icon>
+          <v-icon v-else>{{ mdiMap }}</v-icon>
         </v-btn>
       </template>
 
@@ -149,6 +149,9 @@
 </template>
 
 <script>
+// icons
+import { mdiMap, mdiFormatListBulletedSquare } from '@mdi/js';
+
 // data
 import massifs from '@/data/massifs.json';
 
@@ -196,6 +199,8 @@ export default {
   },
   mixins: [ LayoutMixin ],
   data: () => ({
+    mdiMap,
+    mdiFormatListBulletedSquare,
     useMapboxGlMap: process.env.VUE_APP_MAPBOX_GL_TOKEN,
     isLoading: true,
     massif: undefined,

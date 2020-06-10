@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import { mdiBedOutline } from '@mdi/js';
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Vue from 'vue';
@@ -19,6 +20,7 @@ export default {
   },
   mixins: [ LayoutMixin, ShackMixin ],
   data: () => ({
+    mdiBedOutline,
     map: undefined,
     markers: [],
     popups: [],
@@ -75,8 +77,14 @@ export default {
         // create marker
         const el = document.createElement('div');
         el.className = 'mapbox-marker';
-        el.innerHTML = `<span class="mapbox-marker-content"><b>${shack.beds}</b>&nbsp<i class="v-icon mdi mdi-bed-outline mapbox-marker-content-icon" style="transition-property: none;"></i></span>`;
-
+        el.innerHTML = `
+        <span class="mapbox-marker-content">
+          <b>${shack.beds}</b>&nbsp<svg class="mapbox-marker-content-svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true">
+            <path class="mapbox-marker-content-svg-path-icon" d="${mdiBedOutline}"></path>
+          </svg>
+        </span>
+        </span>
+        `;
         // create popup
         const MapboxPopup = Vue.extend(Tooltip)
 
@@ -148,11 +156,18 @@ export default {
 }
 
 .mapbox-marker-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: rgb(34, 34, 34);
 }
 
-.mapbox-marker-content-icon {
-  font-size: 18px !important;
+.mapbox-marker-content-svg-icon {
+  height: 18px;
+}
+
+.mapbox-marker-content-svg-path-icon {
+  fill: rgb(34, 34, 34);
 }
 
 /**
@@ -164,8 +179,8 @@ export default {
   z-index: 10;
 }
 
-.mapbox-marker:hover .mapbox-marker-content-icon {
-  font-size: 20px !important;
+.mapbox-marker:hover .mapbox-marker-content-svg-icon {
+  height: 20px !important;
 }
 
 /**
@@ -179,6 +194,10 @@ export default {
 
 .mapbox-marker-content-hover {
   color: white !important;
+}
+
+.mapbox-marker-hover path {
+  fill: white !important;
 }
 
 /**
