@@ -77,7 +77,7 @@
           <div class="informations-container">
             <v-row>
               <!-- capacity -->
-              <v-col cols="6" sm="5">
+              <v-col cols="12" sm="6">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/capacity.png')"></v-img></div>
                   <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
@@ -85,7 +85,7 @@
               </v-col>
               <!-- phone numbers -->
               <template v-if="shack.email === undefined && shack.phones.length > 0">
-                <v-col cols="6" sm="7">
+                <v-col cols="12" sm="6">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/phone.png')"></v-img></div>
                     <div class="flex-child">{{ shack.phones.join(' / ') }} </div>
@@ -94,7 +94,7 @@
               </template>
               <!-- email address -->
               <template v-if="shack.email && shack.phones.length === 0">
-                <v-col cols="6" sm="7">
+                <v-col cols="12" sm="6">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/email.png')"></v-img></div>
                     <div class="flex-child">{{ shack.email }}</div>
@@ -105,14 +105,14 @@
             <v-row>
               <template v-if="shack.email && shack.phones.length > 0">
                 <!-- phone numbers -->
-                <v-col cols="6" sm="5">
+                <v-col cols="12" sm="6">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/phone.png')"></v-img></div>
                     <div class="flex-child">{{ shack.phones.join(' / ') }} </div>
                   </div>
                 </v-col>
                 <!-- email address -->
-                <v-col cols="6" sm="7">
+                <v-col cols="12" sm="6">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/email.png')"></v-img></div>
                     <div class="flex-child">{{ shack.email }}</div>
@@ -120,14 +120,14 @@
                 </v-col>
               </template>
               <!-- altitude -->
-              <v-col cols="6" sm="5">
+              <v-col cols="12" sm="6">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/mountain.png')"></v-img></div>
                   <div class="flex-child">Altitude : {{ shack.altitude }}m</div>
                 </div>
               </v-col>
               <!-- gps -->
-              <v-col cols="6" sm="7">
+              <v-col cols="12" sm="6">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/pin.png')"></v-img></div>
                   <div class="flex-child">Long, Lat : {{ shack.longitude }}, {{ shack.latitude }}</div>
@@ -178,7 +178,7 @@
                   <v-col cols="6" sm="4">
                     <div class="flex-container">
                       <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/wood.png')"></v-img></div>
-                      <div class="flex-child">Bois à proximité : {{ shack.wood ? 'oui' : 'non' }}</div>
+                      <div class="flex-child">Bois : {{ shack.wood ? 'oui' : 'non' }}</div>
                     </div>
                   </v-col>
                 </template>
@@ -187,7 +187,7 @@
                   <v-col cols="6" sm="4">
                     <div class="flex-container">
                       <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
-                      <div class="flex-child">Source à proximité : {{ shack.water ? 'oui' : 'non' }}</div>
+                      <div class="flex-child">Source : {{ shack.water ? 'oui' : 'non' }}</div>
                     </div>
                   </v-col>
                 </template>
