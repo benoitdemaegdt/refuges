@@ -131,7 +131,7 @@
       </v-row>
 
       <!-- amenities -->
-      <template v-if="(shack.mattresses !== undefined) || (shack.blankets !== undefined) || (shack.stove !== undefined) || (shack.wood !== undefined) || (shack.water !== undefined) || (shack.toilets !== undefined)">
+      <template v-if="!hideAmenities">
         <v-divider></v-divider>
         <v-row>
           <v-col cols="12">
@@ -291,6 +291,9 @@ export default {
       const MOBILE_IMG_HEIGHT = 250;
       const DESKTOP_IMG_HEIGHT = 400;
       return this.screenWidth > 700 ? DESKTOP_IMG_HEIGHT : MOBILE_IMG_HEIGHT;
+    },
+    hideAmenities() {
+      return ['mattresses', 'blankets', 'stove', 'wood', 'water', 'toilets'].every(amenity => this.shack[amenity] === undefined);
     },
   },
 }
