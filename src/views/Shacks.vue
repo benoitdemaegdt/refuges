@@ -77,15 +77,25 @@
           <div class="informations-container">
             <v-row>
               <!-- capacity -->
-              <v-col cols="6" sm="5">
-                <div class="flex-container">
-                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/capacity.png')"></v-img></div>
-                  <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
-                </div>
-              </v-col>
+              <template v-if="shack.phones.length > 0 ? !shack.email : shack.email">
+                <v-col cols="6" sm="5">
+                  <div class="flex-container">
+                    <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/capacity.png')"></v-img></div>
+                    <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
+                  </div>
+                </v-col>
+              </template>
+              <template v-else>
+                <v-col cols="12" sm="12">
+                  <div class="flex-container">
+                    <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/capacity.png')"></v-img></div>
+                    <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
+                  </div>
+                </v-col>
+              </template>
               <!-- phone numbers -->
-              <template v-if="shack.email === undefined && shack.phones.length > 0">
-                <v-col cols="6" sm="7">
+              <template v-if="shack.phones.length > 0">
+                <v-col cols="6" sm="5">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/phone.png')"></v-img></div>
                     <div class="flex-child">{{ shack.phones.join(' / ') }} </div>
@@ -93,25 +103,7 @@
                 </v-col>
               </template>
               <!-- email address -->
-              <template v-if="shack.email && shack.phones.length === 0">
-                <v-col cols="6" sm="7">
-                  <div class="flex-container">
-                    <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/email.png')"></v-img></div>
-                    <div class="flex-child">{{ shack.email }}</div>
-                  </div>
-                </v-col>
-              </template>
-            </v-row>
-            <v-row>
-              <template v-if="shack.email && shack.phones.length > 0">
-                <!-- phone numbers -->
-                <v-col cols="6" sm="5">
-                  <div class="flex-container">
-                    <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/phone.png')"></v-img></div>
-                    <div class="flex-child">{{ shack.phones.join(' / ') }} </div>
-                  </div>
-                </v-col>
-                <!-- email address -->
+              <template v-if="shack.email">
                 <v-col cols="6" sm="7">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/email.png')"></v-img></div>
