@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "preprocess": "node ./src/data/script.js"
+    "preprocess": "node ./src/data/script.js",
+    "build-report": "vue-cli-service build --report"
   },
   "dependencies": {
     "core-js": "^3.6.4",

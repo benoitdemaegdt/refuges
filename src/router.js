@@ -5,7 +5,7 @@ import VueMeta from 'vue-meta';
 // import views
 const Home = () => import(/* webpackChunkName: "home" */ '@/views/Home.vue');
 const About = () => import(/* webpackChunkName: "about" */ '@/views/About.vue');
-const Massifs = () => import(/* webpackChunkName: "massifs" */ '@/views/Massifs.vue');
+const Massifs = () => import(/* webpackChunkName: "massifs" */ /* webpackPrefetch: true */ '@/views/Massifs.vue');
 const Shacks = () => import(/* webpackChunkName: "shacks" */ '@/views/Shacks.vue');
 const NotFound = () => import(/* webpackChunkName: "not-found" */ '@/views/NotFound.vue');
 
