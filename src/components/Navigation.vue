@@ -111,7 +111,7 @@ export default {
   watch: {
     $route: {
       async handler() {
-        if (!this.isHomePage && !this.search.length > 0) {
+        if (!this.isHomePage && this.search.length === 0) {
           this.search = await getAllShacks();
         }
       },
