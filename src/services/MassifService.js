@@ -36,3 +36,13 @@ export async function getShacksByMassif(massif) {
   }
 }
 
+export async function getAllShacks() {
+  const SEARCH_SHEET_ID = '2PACX-1vR9BXRYiRrKj73d_4ddTG_NHXlHycIpbPGv8hvKmvANnUsbvTzPfWmCaV-9M7e54UcqLot7BcZKvyzO';
+  const SEARCH_TAB_ID = '1259933617';
+  try {
+    return await getData(SEARCH_SHEET_ID, SEARCH_TAB_ID);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
