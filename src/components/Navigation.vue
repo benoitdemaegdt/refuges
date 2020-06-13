@@ -26,7 +26,7 @@
         hide-details
         no-data-text="Nous ne connaissons pas encore cet endroit  😢"
         clearable
-        prepend-inner-icon="mdi-magnify"
+        :prepend-inner-icon="mdiMagnify"
         label="Chercher un refuge"
         class="hidden-sm-and-down"
         :items="search"
@@ -37,7 +37,7 @@
         <template v-slot:item="data">
           <v-list-item-content>
             <v-list-item-title v-html="data.item.name"></v-list-item-title>
-            <v-list-item-subtitle v-html="data.item.type"></v-list-item-subtitle>
+            <v-list-item-subtitle v-html="`${data.item.type}, ${data.item.massif}`"></v-list-item-subtitle>
           </v-list-item-content>
         </template>
       </v-autocomplete>
@@ -90,21 +90,34 @@
 
 <script>
 // icons
-import { mdiImage } from '@mdi/js';
+import { mdiImage, mdiMagnify } from '@mdi/js';
 
 // data
 import massifs from '@/data/massifs.json';
-import search from '@/data/search.json'
+
+// services
+import { getAllShacks } from '@/services/MassifService';
 
 export default {
   name: 'Navigation',
   data: () => ({
     mdiImage,
+    mdiMagnify,
     drawer: false,
     searchNavigation: undefined,
-    search,
+    search: [],
     massifs,
   }),
+  watch: {
+    $route: {
+      async handler() {
+        if (!this.isHomePage && !this.search.length > 0) {
+          this.search = await getAllShacks();
+        }
+      },
+      immediate: true,
+    },
+  },
   methods: {
     goToPage() {
       if (this.$route.path !== this.searchNavigation.path) {
