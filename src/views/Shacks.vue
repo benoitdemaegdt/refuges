@@ -131,7 +131,7 @@
       </v-row>
 
       <!-- amenities -->
-      <template v-if="!hideAmenities">
+      <template v-if="displayAmenities">
         <v-divider></v-divider>
         <v-row>
           <v-col cols="12">
@@ -199,7 +199,7 @@
       </template>
 
       <!-- access -->
-      <template v-if="(shack.accesses && shack.accesses.length > 0) || (shack.transports && shack.transports.length > 0)">
+      <template v-if="displayAccesses">
         <v-divider></v-divider>
         <v-row>
           <v-col cols="12">
@@ -292,8 +292,12 @@ export default {
       const DESKTOP_IMG_HEIGHT = 400;
       return this.screenWidth > 700 ? DESKTOP_IMG_HEIGHT : MOBILE_IMG_HEIGHT;
     },
-    hideAmenities() {
-      return ['mattresses', 'blankets', 'stove', 'wood', 'water', 'toilets'].every(amenity => this.shack[amenity] === undefined);
+    displayAmenities() {
+      const amenities = ['mattresses', 'blankets', 'stove', 'wood', 'water', 'toilets'];
+      return amenities.some(amenity => this.shack[amenity] !== undefined);
+    },
+    displayAccesses() {
+      return ['accesses', 'transports'].some(access => this.shack[access] && this.shack[access].length > 0);
     },
   },
 }
