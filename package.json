@@ -9,7 +9,6 @@
     "preprocess": "node ./src/data/script.js"
   },
   "dependencies": {
-    "@mdi/font": "^5.3.45",
     "core-js": "^3.6.4",
     "gm": "^1.23.1",
     "leaflet": "^1.6.0",
@@ -24,6 +23,7 @@
     "vuetify": "^2.2.32"
   },
   "devDependencies": {
+    "@mdi/js": "^5.3.45",
     "@vue/cli-plugin-babel": "~4.4.1",
     "@vue/cli-plugin-eslint": "~4.4.1",
     "@vue/cli-plugin-pwa": "^4.4.1",

@@ -79,7 +79,7 @@
           :key="massif.key"
           :to="{ name: 'massifs', params: { name: massif.key }}"
         >
-          <v-list-item-icon><v-icon>mdi-image</v-icon></v-list-item-icon>
+          <v-list-item-icon><v-icon>{{ mdiImage }}</v-icon></v-list-item-icon>
           <v-list-item-title> {{ massif.name }}</v-list-item-title>
         </v-list-item>
 
@@ -89,6 +89,9 @@
 </template>
 
 <script>
+// icons
+import { mdiImage } from '@mdi/js';
+
 // data
 import massifs from '@/data/massifs.json';
 import search from '@/data/search.json'
@@ -96,6 +99,7 @@ import search from '@/data/search.json'
 export default {
   name: 'Navigation',
   data: () => ({
+    mdiImage,
     drawer: false,
     searchNavigation: undefined,
     search,

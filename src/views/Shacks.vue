@@ -13,7 +13,7 @@
       <v-row v-if="isPwa">
         <v-col cols="12" class="pl-0 pb-0 pt-0">
           <v-btn text @click="$router.push({ name: 'massifs', params: { name: massif.key}  })">
-            <v-icon>mdi-chevron-left</v-icon>Retour
+            <v-icon>{{ mdiChevronLeft }}</v-icon>Retour
           </v-btn>
         </v-col>
       </v-row>
@@ -229,6 +229,9 @@
 </template>
 
 <script>
+// icons
+import { mdiChevronLeft } from '@mdi/js';
+
 // data
 import massifs from '@/data/massifs.json';
 
@@ -267,6 +270,7 @@ export default {
     }
   },
   data: () => ({
+    mdiChevronLeft,
     isLoading: true,
     massif: undefined,
     shack: undefined,
