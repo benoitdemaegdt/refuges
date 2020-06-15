@@ -77,22 +77,15 @@
           <div class="informations-container">
             <v-row>
               <!-- capacity -->
-              <template v-if="shack.phones.length > 0 ? !shack.email : shack.email">
-                <v-col cols="6" sm="5">
-                  <div class="flex-container">
-                    <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/capacity.png')"></v-img></div>
-                    <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
-                  </div>
-                </v-col>
-              </template>
-              <template v-else>
-                <v-col cols="12" sm="12">
-                  <div class="flex-container">
-                    <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/capacity.png')"></v-img></div>
-                    <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
-                  </div>
-                </v-col>
-              </template>
+              <v-col
+                :cols="(shack.phones.length > 0) && (shack.email) ? '12' : '6'"
+                :sm="(shack.phones.length > 0) && (shack.email) ? '12' : '5'"
+              >
+                <div class="flex-container">
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/capacity.png')"></v-img></div>
+                  <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
+                </div>
+              </v-col>
               <!-- phone numbers -->
               <template v-if="shack.phones.length > 0">
                 <v-col cols="6" sm="5">
