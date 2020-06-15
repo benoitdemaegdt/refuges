@@ -24,7 +24,7 @@
                 hide-details
                 no-data-text="Ce massif sera bientôt ajouté 🙂"
                 clearable
-                prepend-inner-icon="mdi-magnify"
+                :prepend-inner-icon="mdiMagnify"
                 label="Chercher un massif"
                 :items="searchMassif"
                 item-text="title"
@@ -146,6 +146,9 @@
 </template>
 
 <script>
+// icons
+import { mdiMagnify } from '@mdi/js';
+
 // data
 import massifs from '@/data/massifs.json';
 
@@ -179,6 +182,7 @@ export default {
     };
   },
   data: () => ({
+    mdiMagnify,
     searchMassif: massifs.map(massif => ({
       title: massif.name,
       subtitle: `${massif.location.region} | ${massif.location.department}`,
