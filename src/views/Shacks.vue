@@ -76,18 +76,14 @@
           <h2 class="section-title">Informations</h2>
           <div class="informations-container">
             <v-row>
-              <!-- altitude -->
-              <v-col cols="6" sm="5">
+              <!-- capacity -->
+              <v-col
+                :cols="(shack.phones.length > 0) === !!shack.email ? '12' : '6'"
+                :sm="(shack.phones.length > 0) === !!shack.email ? '12' : '5'"
+              >
                 <div class="flex-container">
-                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/mountain.png')"></v-img></div>
-                  <div class="flex-child">Altitude : {{ shack.altitude }}m</div>
-                </div>
-              </v-col>
-              <!-- gps -->
-              <v-col cols="6" sm="7">
-                <div class="flex-container">
-                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/pin.png')"></v-img></div>
-                  <div class="flex-child">Long, Lat : {{ shack.longitude }}, {{ shack.latitude }}</div>
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/capacity.png')"></v-img></div>
+                  <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
                 </div>
               </v-col>
               <!-- phone numbers -->
@@ -108,86 +104,95 @@
                   </div>
                 </v-col>
               </template>
+              <!-- altitude -->
+              <v-col cols="6" sm="5">
+                <div class="flex-container">
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/mountain.png')"></v-img></div>
+                  <div class="flex-child">Altitude : {{ shack.altitude }}m</div>
+                </div>
+              </v-col>
+              <!-- gps -->
+              <v-col cols="6" sm="7">
+                <div class="flex-container">
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/pin.png')"></v-img></div>
+                  <div class="flex-child">Long, Lat : {{ shack.longitude }}, {{ shack.latitude }}</div>
+                </div>
+              </v-col>
             </v-row> 
           </div>
         </v-col>
       </v-row>
-      <v-divider></v-divider>
 
       <!-- amenities -->
-      <v-row>
-        <v-col cols="12">
-          <h2 class="section-title">Équipements</h2>
-          <div class="amenities-container">
-            <v-row>
-              <!-- capacity -->
-              <v-col cols="6" sm="4">
-                <div class="flex-container">
-                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/capacity.png')"></v-img></div>
-                  <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
-                </div>
-              </v-col>
-              <!-- mattresses -->
-              <template v-if="shack.mattresses !== undefined">
-                <v-col cols="6" sm="4">
-                  <div class="flex-container">
-                    <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
-                    <div class="flex-child">Matelas : {{ shack.mattresses ? 'oui' : 'non' }}</div>
-                  </div>
-                </v-col>
-              </template>
-              <!-- blankets -->
-              <template v-if="shack.blankets !== undefined">
-                <v-col cols="6" sm="4">
-                  <div class="flex-container">
-                    <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/blanket.png')"></v-img></div>
-                    <div class="flex-child">Couvertures : {{ shack.blankets ? 'oui' : 'non' }}</div>
-                  </div>
-                </v-col>
-              </template>
-              <!-- stove -->
-              <template v-if="shack.stove !== undefined">
-                <v-col cols="6" sm="4">
-                  <div class="flex-container">
-                    <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
-                    <div class="flex-child">Poêle : {{ shack.stove ? 'oui' : 'non' }}</div>
-                  </div>
-                </v-col>
-              </template>
-              <!-- wood -->
-              <template v-if="shack.wood !== undefined">
-                <v-col cols="6" sm="4">
-                  <div class="flex-container">
-                    <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/wood.png')"></v-img></div>
-                    <div class="flex-child">Bois à proximité : {{ shack.wood ? 'oui' : 'non' }}</div>
-                  </div>
-                </v-col>
-              </template>
-              <!-- water -->
-              <template v-if="shack.water !== undefined">
-                <v-col cols="6" sm="4">
-                  <div class="flex-container">
-                    <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
-                    <div class="flex-child">Source à proximité : {{ shack.water ? 'oui' : 'non' }}</div>
-                  </div>
-                </v-col>
-              </template>
-              <!-- toilets -->
-              <template v-if="shack.toilets !== undefined">
-                <v-col cols="6" sm="4">
-                  <div class="flex-container">
-                    <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/toilet.png')"></v-img></div>
-                    <div class="flex-child">Toilettes : {{ shack.toilets ? 'oui' : 'non' }}</div>
-                  </div>
-                </v-col>
-              </template>
-            </v-row>
-          </div>
-        </v-col>
-      </v-row>
+      <template v-if="displayAmenities">
+        <v-divider></v-divider>
+        <v-row>
+          <v-col cols="12">
+            <h2 class="section-title">Équipements</h2>
+            <div class="amenities-container">
+              <v-row>
+                <!-- mattresses -->
+                <template v-if="shack.mattresses !== undefined">
+                  <v-col cols="6" sm="4">
+                    <div class="flex-container">
+                      <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
+                      <div class="flex-child">Matelas : {{ shack.mattresses ? 'oui' : 'non' }}</div>
+                    </div>
+                  </v-col>
+                </template>
+                <!-- blankets -->
+                <template v-if="shack.blankets !== undefined">
+                  <v-col cols="6" sm="4">
+                    <div class="flex-container">
+                      <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/blanket.png')"></v-img></div>
+                      <div class="flex-child">Couvertures : {{ shack.blankets ? 'oui' : 'non' }}</div>
+                    </div>
+                  </v-col>
+                </template>
+                <!-- stove -->
+                <template v-if="shack.stove !== undefined">
+                  <v-col cols="6" sm="4">
+                    <div class="flex-container">
+                      <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
+                      <div class="flex-child">Poêle : {{ shack.stove ? 'oui' : 'non' }}</div>
+                    </div>
+                  </v-col>
+                </template>
+                <!-- wood -->
+                <template v-if="shack.wood !== undefined">
+                  <v-col cols="6" sm="4">
+                    <div class="flex-container">
+                      <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/wood.png')"></v-img></div>
+                      <div class="flex-child">Bois à proximité : {{ shack.wood ? 'oui' : 'non' }}</div>
+                    </div>
+                  </v-col>
+                </template>
+                <!-- water -->
+                <template v-if="shack.water !== undefined">
+                  <v-col cols="6" sm="4">
+                    <div class="flex-container">
+                      <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
+                      <div class="flex-child">Source à proximité : {{ shack.water ? 'oui' : 'non' }}</div>
+                    </div>
+                  </v-col>
+                </template>
+                <!-- toilets -->
+                <template v-if="shack.toilets !== undefined">
+                  <v-col cols="6" sm="4">
+                    <div class="flex-container">
+                      <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/toilet.png')"></v-img></div>
+                      <div class="flex-child">Toilettes : {{ shack.toilets ? 'oui' : 'non' }}</div>
+                    </div>
+                  </v-col>
+                </template>
+              </v-row>
+            </div>
+          </v-col>
+        </v-row>
+      </template>
 
       <!-- access -->
-      <template v-if="(shack.accesses && shack.accesses.length > 0) || (shack.transports && shack.transports.length > 0)">
+      <template v-if="displayAccesses">
         <v-divider></v-divider>
         <v-row>
           <v-col cols="12">
@@ -283,6 +288,13 @@ export default {
       const MOBILE_IMG_HEIGHT = 250;
       const DESKTOP_IMG_HEIGHT = 400;
       return this.screenWidth > 700 ? DESKTOP_IMG_HEIGHT : MOBILE_IMG_HEIGHT;
+    },
+    displayAmenities() {
+      const amenities = ['mattresses', 'blankets', 'stove', 'wood', 'water', 'toilets'];
+      return amenities.some(amenity => this.shack[amenity] !== undefined);
+    },
+    displayAccesses() {
+      return ['accesses', 'transports'].some(access => this.shack[access] && this.shack[access].length > 0);
     },
   },
 }
