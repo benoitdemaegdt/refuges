@@ -78,8 +78,8 @@
             <v-row>
               <!-- capacity -->
               <v-col
-                :cols="(shack.phones.length > 0) === (shack.email !== undefined) ? '12' : '6'"
-                :sm="(shack.phones.length > 0) === (shack.email !== undefined) ? '12' : '5'"
+                :cols="(shack.phones.length > 0) === !!shack.email ? '12' : '6'"
+                :sm="(shack.phones.length > 0) === !!shack.email ? '12' : '5'"
               >
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/capacity.png')"></v-img></div>
