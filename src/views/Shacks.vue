@@ -78,7 +78,7 @@
             <v-row>
               <!-- capacity -->
               <v-col
-                :cols="(shack.phones.length > 0) === !!shack.email ? '12' : '6'"
+                :cols="12"
                 :sm="(shack.phones.length > 0) === !!shack.email ? '12' : '5'"
               >
                 <div class="flex-container">
@@ -88,7 +88,7 @@
               </v-col>
               <!-- phone numbers -->
               <template v-if="shack.phones.length > 0">
-                <v-col cols="6" sm="5">
+                <v-col cols="12" sm="5">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/phone.png')"></v-img></div>
                     <div class="flex-child">{{ shack.phones.join(' / ') }} </div>
@@ -97,7 +97,7 @@
               </template>
               <!-- email address -->
               <template v-if="shack.email">
-                <v-col cols="6" sm="7">
+                <v-col cols="12" sm="7">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/email.png')"></v-img></div>
                     <div class="flex-child">{{ shack.email }}</div>
@@ -105,14 +105,14 @@
                 </v-col>
               </template>
               <!-- altitude -->
-              <v-col cols="6" sm="5">
+              <v-col cols="12" sm="5">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/mountain.png')"></v-img></div>
                   <div class="flex-child">Altitude : {{ shack.altitude }}m</div>
                 </div>
               </v-col>
               <!-- gps -->
-              <v-col cols="6" sm="7">
+              <v-col cols="12" sm="7">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/pin.png')"></v-img></div>
                   <div class="flex-child">Long, Lat : {{ shack.longitude }}, {{ shack.latitude }}</div>
