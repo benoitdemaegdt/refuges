@@ -100,7 +100,7 @@
                 <v-col cols="12" sm="7">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/email.png')"></v-img></div>
-                    <div class="flex-child">{{ shack.email }}</div>
+                    <div class="flex-child-breakable">{{ shack.email }}</div>
                   </div>
                 </v-col>
               </template>
@@ -363,6 +363,10 @@ export default {
 }
 .flex-child {
   flex: 1;
+}
+.flex-child-breakable {
+  flex: 1;
+  word-break: break-all;
 }
 
 </style>
