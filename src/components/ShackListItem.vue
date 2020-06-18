@@ -55,19 +55,23 @@
               </div>
             </v-col>
             <!-- stove -->
-            <v-col cols="5">
-              <div class="flex-container">
-                <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
-                <div class="flex-child">Poêle : {{ shack.stove ? 'oui' : 'non' }}</div>
-              </div>
-            </v-col>
+            <template v-if="shack.stove">
+              <v-col cols="5">
+                <div class="flex-container">
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
+                  <div class="flex-child">Poêle</div>
+                </div>
+              </v-col>
+            </template>
             <!-- water -->
-            <v-col cols="7">
-              <div class="flex-container">
-                <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
-                <div class="flex-child">Source : {{ shack.water ? 'oui' : 'non' }}</div>
-              </div>
-            </v-col>
+            <template v-if="shack.water">
+              <v-col cols="7">
+                <div class="flex-container">
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
+                  <div class="flex-child">Source</div>
+                </div>
+              </v-col>
+            </template>
           </v-row>
         </v-card-text>
         <v-card-actions>
