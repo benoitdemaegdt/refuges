@@ -8,7 +8,7 @@
     >
     </v-img>
 
-    <v-card-text class="text--primary pb-0">
+    <v-card-text @click="goToShack(cabane)" class="text--primary pb-4">
       <v-row>
         <v-col cols="12" class="card-title">
           {{ cabane.name }}
@@ -51,9 +51,6 @@
         </template>
       </v-row>
     </v-card-text>
-    <v-card-actions>
-      <v-btn text @click="goToShack(cabane)">détails</v-btn>
-    </v-card-actions>
   </v-card>
 </template>
 
@@ -78,10 +75,6 @@ export default {
 <style scoped>
 .v-card {
   border-radius: 12px !important;
-}
-
-.v-btn {
-  font-weight: inherit;
 }
 
 .card-title {
