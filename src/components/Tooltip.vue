@@ -32,19 +32,23 @@
       </v-row>
       <v-row>
         <!-- stove -->
-        <v-col cols="6">
-          <div class="flex-container">
-            <div class="flex-child"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
-            <div class="flex-child">{{ cabane.stove ? 'oui' : 'non' }}</div>
-          </div>
-        </v-col>
+        <template v-if="cabane.stove">
+          <v-col cols="6">
+            <div class="flex-container">
+              <div class="flex-child"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
+              <div class="flex-child">Poêle</div>
+            </div>
+          </v-col>
+        </template>
         <!-- water -->
-        <v-col cols="6">
-          <div class="flex-container">
-            <div class="flex-child"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
-            <div class="flex-child">{{ cabane.water ? 'oui' : 'non' }}</div>
-          </div>
-        </v-col>
+        <template v-if="cabane.water">
+          <v-col cols="6">
+            <div class="flex-container">
+              <div class="flex-child"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
+              <div class="flex-child">Source</div>
+            </div>
+          </v-col>
+        </template>
       </v-row>
     </v-card-text>
     <v-card-actions>
