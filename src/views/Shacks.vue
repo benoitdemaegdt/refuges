@@ -154,7 +154,7 @@
                   <v-col cols="6" sm="4">
                     <div class="flex-container">
                       <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
-                      <div :class="[shack.stove ? 'flex-child' : 'flex-child-strikethrough']">Poêle</div>
+                      <div :class="shack.stove ? 'flex-child' : 'flex-child-strikethrough'">Poêle</div>
                     </div>
                   </v-col>
                 </template>
