@@ -34,8 +34,7 @@
 
       <!-- info -->
       <v-col cols="12" sm="7" class="px-0 pb-0">
-        <v-card flat>
-          <v-card-text>
+        <v-card-text flat @click="goToShack(shack)">
           <div class="shack-type mb-1">{{ shack.type }}</div>
           <div class="shack-name">{{ shack.name }}</div>
           <div class="shack-divider"></div>
@@ -74,13 +73,6 @@
             </template>
           </v-row>
         </v-card-text>
-        <v-card-actions>
-          <v-btn
-            text
-            @click="goToShack(shack)"
-          >détails</v-btn>
-        </v-card-actions>
-      </v-card>
 
       </v-col>
     </v-row>
