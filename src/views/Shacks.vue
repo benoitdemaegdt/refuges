@@ -78,7 +78,7 @@
             <v-row>
               <!-- capacity -->
               <v-col
-                :cols="(shack.phones.length > 0) === !!shack.email ? '12' : '6'"
+                :cols="12"
                 :sm="(shack.phones.length > 0) === !!shack.email ? '12' : '5'"
               >
                 <div class="flex-container">
@@ -88,7 +88,7 @@
               </v-col>
               <!-- phone numbers -->
               <template v-if="shack.phones.length > 0">
-                <v-col cols="6" sm="5">
+                <v-col cols="12" sm="5">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/phone.png')"></v-img></div>
                     <div class="flex-child">{{ shack.phones.join(' / ') }} </div>
@@ -97,22 +97,22 @@
               </template>
               <!-- email address -->
               <template v-if="shack.email">
-                <v-col cols="6" sm="7">
+                <v-col cols="12" sm="7">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/email.png')"></v-img></div>
-                    <div class="flex-child">{{ shack.email }}</div>
+                    <div class="flex-child-breakable">{{ shack.email }}</div>
                   </div>
                 </v-col>
               </template>
               <!-- altitude -->
-              <v-col cols="6" sm="5">
+              <v-col cols="12" sm="5">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/mountain.png')"></v-img></div>
                   <div class="flex-child">Altitude : {{ shack.altitude }}m</div>
                 </div>
               </v-col>
               <!-- gps -->
-              <v-col cols="6" sm="7">
+              <v-col cols="12" sm="7">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/pin.png')"></v-img></div>
                   <div class="flex-child">Long, Lat : {{ shack.longitude }}, {{ shack.latitude }}</div>
@@ -136,7 +136,7 @@
                   <v-col cols="6" sm="4">
                     <div class="flex-container">
                       <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
-                      <div class="flex-child">Matelas : {{ shack.mattresses ? 'oui' : 'non' }}</div>
+                      <div :class="shack.mattresses ? 'flex-child' : 'flex-child-strikethrough'">Matelas</div>
                     </div>
                   </v-col>
                 </template>
@@ -145,7 +145,7 @@
                   <v-col cols="6" sm="4">
                     <div class="flex-container">
                       <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/blanket.png')"></v-img></div>
-                      <div class="flex-child">Couvertures : {{ shack.blankets ? 'oui' : 'non' }}</div>
+                      <div :class="shack.blankets ? 'flex-child' : 'flex-child-strikethrough'">Couvertures</div>
                     </div>
                   </v-col>
                 </template>
@@ -154,7 +154,7 @@
                   <v-col cols="6" sm="4">
                     <div class="flex-container">
                       <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
-                      <div class="flex-child">Poêle : {{ shack.stove ? 'oui' : 'non' }}</div>
+                      <div :class="shack.stove ? 'flex-child' : 'flex-child-strikethrough'">Poêle</div>
                     </div>
                   </v-col>
                 </template>
@@ -163,7 +163,7 @@
                   <v-col cols="6" sm="4">
                     <div class="flex-container">
                       <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/wood.png')"></v-img></div>
-                      <div class="flex-child">Bois à proximité : {{ shack.wood ? 'oui' : 'non' }}</div>
+                      <div :class="shack.wood ? 'flex-child' : 'flex-child-strikethrough'">Bois</div>
                     </div>
                   </v-col>
                 </template>
@@ -172,7 +172,7 @@
                   <v-col cols="6" sm="4">
                     <div class="flex-container">
                       <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
-                      <div class="flex-child">Source à proximité : {{ shack.water ? 'oui' : 'non' }}</div>
+                      <div :class="shack.water ? 'flex-child' : 'flex-child-strikethrough'">Source</div>
                     </div>
                   </v-col>
                 </template>
@@ -181,7 +181,7 @@
                   <v-col cols="6" sm="4">
                     <div class="flex-container">
                       <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/toilet.png')"></v-img></div>
-                      <div class="flex-child">Toilettes : {{ shack.toilets ? 'oui' : 'non' }}</div>
+                      <div :class="shack.toilets ? 'flex-child' : 'flex-child-strikethrough'">Toilettes</div>
                     </div>
                   </v-col>
                 </template>
@@ -363,6 +363,14 @@ export default {
 }
 .flex-child {
   flex: 1;
+}
+.flex-child-breakable {
+  flex: 1;
+  word-break: break-all;
+}
+.flex-child-strikethrough {
+  flex: 1;
+  text-decoration: line-through;
 }
 
 </style>
