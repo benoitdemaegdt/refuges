@@ -136,7 +136,7 @@
                   <v-col cols="6" sm="4">
                     <div class="flex-container">
                       <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
-                      <div class="flex-child">Matelas : {{ shack.mattresses ? 'oui' : 'non' }}</div>
+                      <div v-bind:class="[shack.mattresses ? 'flex-child' : 'flex-child-strikethrough']">Matelas</div>
                     </div>
                   </v-col>
                 </template>
@@ -145,7 +145,7 @@
                   <v-col cols="6" sm="4">
                     <div class="flex-container">
                       <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/blanket.png')"></v-img></div>
-                      <div class="flex-child">Couvertures : {{ shack.blankets ? 'oui' : 'non' }}</div>
+                      <div v-bind:class="[shack.blankets ? 'flex-child' : 'flex-child-strikethrough']">Couvertures</div>
                     </div>
                   </v-col>
                 </template>
@@ -154,7 +154,7 @@
                   <v-col cols="6" sm="4">
                     <div class="flex-container">
                       <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
-                      <div class="flex-child">Poêle : {{ shack.stove ? 'oui' : 'non' }}</div>
+                      <div v-bind:class="[shack.stove ? 'flex-child' : 'flex-child-strikethrough']">Poêle</div>
                     </div>
                   </v-col>
                 </template>
@@ -163,7 +163,7 @@
                   <v-col cols="6" sm="4">
                     <div class="flex-container">
                       <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/wood.png')"></v-img></div>
-                      <div class="flex-child">Bois à proximité : {{ shack.wood ? 'oui' : 'non' }}</div>
+                      <div v-bind:class="[shack.wood ? 'flex-child' : 'flex-child-strikethrough']">Bois</div>
                     </div>
                   </v-col>
                 </template>
@@ -172,7 +172,7 @@
                   <v-col cols="6" sm="4">
                     <div class="flex-container">
                       <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
-                      <div class="flex-child">Source à proximité : {{ shack.water ? 'oui' : 'non' }}</div>
+                      <div v-bind:class="[shack.water ? 'flex-child' : 'flex-child-strikethrough']">Source</div>
                     </div>
                   </v-col>
                 </template>
@@ -181,7 +181,7 @@
                   <v-col cols="6" sm="4">
                     <div class="flex-container">
                       <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/toilet.png')"></v-img></div>
-                      <div class="flex-child">Toilettes : {{ shack.toilets ? 'oui' : 'non' }}</div>
+                      <div v-bind:class="[shack.toilets ? 'flex-child' : 'flex-child-strikethrough']">Toilettes</div>
                     </div>
                   </v-col>
                 </template>
@@ -367,6 +367,10 @@ export default {
 .flex-child-breakable {
   flex: 1;
   word-break: break-all;
+}
+.flex-child-strikethrough {
+  flex: 1;
+  text-decoration: line-through;
 }
 
 </style>
