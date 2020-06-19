@@ -34,7 +34,11 @@
 
       <!-- info -->
       <v-col cols="12" sm="7" class="px-0 pb-0">
-        <v-card-text flat @click="goToShack(shack)">
+        <v-card-text
+          flat 
+          @click="goToShack(shack)"
+          class="pointer"
+          >
           <div class="shack-type mb-1">{{ shack.type }}</div>
           <div class="shack-name">{{ shack.name }}</div>
           <div class="shack-divider"></div>
@@ -139,6 +143,10 @@ export default {
 
 .flex-child {
   flex: 1;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 </style>

@@ -8,7 +8,8 @@
     >
     </v-img>
 
-    <v-card-text @click="goToShack(cabane)" class="text--primary pb-4">
+    <v-card-text 
+      @click="goToShack(cabane)" class="pointer">
       <v-row>
         <v-col cols="12" class="card-title">
           {{ cabane.name }}
@@ -94,5 +95,9 @@ export default {
 
 .flex-child:last-child {
   margin-right: 25px;
-} 
+}
+
+.pointer {
+  cursor: pointer;
+}
 </style>
