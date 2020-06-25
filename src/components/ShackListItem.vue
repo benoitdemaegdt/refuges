@@ -37,7 +37,7 @@
         <v-card
           flat 
           height="200px"
-          @click="goToShack(shack)"
+          @click.native="goToShack(shack)"
           class="pointer">
           <v-card-text>
             <div class="shack-type mb-1">{{ shack.type }}</div>
