@@ -185,8 +185,8 @@ export default {
     mdiMagnify,
     searchMassif: massifs.map(massif => ({
       title: massif.name,
+      key: massif.key,
       subtitle: `${massif.location.region} | ${massif.location.department}`,
-      path: `/massifs/${massif.key}`,
     })),
     image: ['https://res.cloudinary.com/monpetitsommet/image/upload/v1591291716/home/home_ofwjs8.png'],
     descriptions: {
@@ -217,7 +217,7 @@ export default {
     searchMassif: {
       handler(newRoute) {
         if (newRoute) {
-          this.$router.push({ path: newRoute.path });
+          this.$router.push({ name: 'massifs', params: { name: newRoute.key }})
         }
       },
     },
