@@ -38,6 +38,9 @@
               :height="imageHeight"
               hide-delimiters
               show-arrows-on-hover
+              cycle
+              interval='4000'
+              progress
             >
               <v-carousel-item
                 v-for="(image, i) in images"
