@@ -121,7 +121,10 @@ export default {
   methods: {
     goToPage() {
       if (this.$route.path !== this.searchNavigation.path) {
-        this.$router.push({ path: this.searchNavigation.path });
+        this.$router.push({
+          name: 'shacks',
+          params: { massif: this.searchNavigation.massif_key, cabane: this.searchNavigation.key },
+        });
         this.$nextTick(() => {
           this.searchNavigation = undefined;
         });
