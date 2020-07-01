@@ -12,7 +12,7 @@
       <!-- return button -->
       <v-row v-if="isPwa">
         <v-col cols="12" class="pl-0 pb-0 pt-0">
-          <v-btn text @click="$router.push({ name: 'massifs', params: { name: massif.key}  })">
+          <v-btn text @click="$router.push({ name: 'shackList', params: { massif: massif.key}  })">
             <v-icon>{{ mdiChevronLeft }}</v-icon>Retour
           </v-btn>
         </v-col>
@@ -256,7 +256,7 @@ export default {
           // Facebook
           { property: 'og:title', content: `${this.shack.name} | Mon Petit Sommet` },
           { property: 'og:description', content: `${this.shack.name} : informations, équipements, accès, fréquentation` },
-          { property: 'og:url', content: `https://monpetitsommet.fr/massifs/${this.$route.params.massif}/cabanes/${this.shack.key}` },
+          { property: 'og:url', content: `https://monpetitsommet.fr/massifs/${this.$route.params.massif}/refuges/${this.shack.key}` },
           { property: 'og:type', content: 'website' },
           // Twitter Card
           { name: 'twitter:title', content: `${this.shack.name} | Mon Petit Sommet` },
@@ -282,7 +282,7 @@ export default {
         this.isLoading = true;
         this.massif = massifs.find(massif => massif.key === this.$route.params.massif);
         const shacks = await getShacksByMassif(this.massif);
-        this.shack = shacks.find(shack => shack.key === this.$route.params.cabane);
+        this.shack = shacks.find(shack => shack.key === this.$route.params.refuge);
         this.isLoading = false;
       },
       immediate: true,

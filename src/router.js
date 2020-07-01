@@ -29,13 +29,13 @@ const router = new VueRouter({
       component: About,
     },
     {
-      path: '/massifs/:name/refuges',
-      name: 'massifs',
+      path: '/massifs/:massif/refuges',
+      name: 'shackList',
       component: Massifs,
     },
     {
-      path: '/massifs/:massif/refuges/:cabane',
-      name: 'shacks',
+      path: '/massifs/:massif/refuges/:refuge',
+      name: 'shackDetails',
       component: Shacks,
     },
     {
