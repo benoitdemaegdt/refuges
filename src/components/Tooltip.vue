@@ -37,23 +37,19 @@
       </v-row>
       <v-row>
         <!-- stove -->
-        <template v-if="cabane.stove">
-          <v-col cols="6">
-            <div class="flex-container">
-              <div class="flex-child"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
-              <div class="flex-child">Poêle</div>
-            </div>
-          </v-col>
-        </template>
+        <v-col cols="6">
+          <div class="flex-container">
+            <div class="flex-child"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
+            <div :class="cabane.stove ? 'flex-child' : 'flex-child-strikethrough'">Poêle</div>
+          </div>
+        </v-col>
         <!-- water -->
-        <template v-if="cabane.water">
-          <v-col cols="6">
-            <div class="flex-container">
-              <div class="flex-child"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
-              <div class="flex-child">Source</div>
-            </div>
-          </v-col>
-        </template>
+        <v-col cols="6">
+          <div class="flex-container">
+            <div class="flex-child"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
+            <div :class="cabane.water ? 'flex-child' : 'flex-child-strikethrough'">Source</div>
+          </div>
+        </v-col>
       </v-row>
     </v-card-text>
   </v-card>
@@ -96,6 +92,11 @@ export default {
 .flex-child {
   flex: 1;
 } 
+
+.flex-child-strikethrough {
+  flex: 2;
+  text-decoration: line-through;
+}
 
 .flex-child:last-child {
   margin-right: 25px;
