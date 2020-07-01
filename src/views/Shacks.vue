@@ -91,7 +91,13 @@
                 <v-col cols="12" sm="5">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/phone.png')"></v-img></div>
-                    <div class="flex-child">{{ shack.phones.join(' / ') }} </div>
+                    <div class="flex-child">
+                      <a :href="'tel:'+shack.phones[0]"> {{ shack.phones[0] }}</a>
+                      <template v-if="shack.phones.length > 1">
+                        <a> / </a>
+                        <a :href="'tel:'+shack.phones[1]"> {{ shack.phones[1] }}</a>
+                      </template>
+                    </div>
                   </div>
                 </v-col>
               </template>
