@@ -1,5 +1,10 @@
 <template>
-  <v-card class="mx-auto" max-width="250" min-width="250" flat>
+  <v-card
+    class="pointer" 
+    max-width="250"
+    min-width="250" 
+    flat
+    @click.native="goToShack(cabane)">
     <v-img
       v-if="images.length !== 0"
       class="white--text align-end"
@@ -8,8 +13,7 @@
     >
     </v-img>
 
-    <v-card-text 
-      @click="goToShack(cabane)" class="pointer">
+    <v-card-text>
       <v-row>
         <v-col cols="12" class="card-title">
           {{ cabane.name }}
