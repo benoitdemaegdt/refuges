@@ -109,7 +109,7 @@
       <v-card flat>
         <v-img 
           height="200px"
-          :lazy-src="getPreloadImage(descriptions.vercors.image, 0, { height: 200 })"></v-img>
+          :lazy-src="getPreloadImage(descriptions.vercors.image, 0, { height: 200 })"
           :src="getImage(descriptions.vercors.image, 0, { height: 200 })"></v-img>
         <v-card-title>{{ descriptions.vercors.title }}</v-card-title>
         <v-card-text>{{ descriptions.vercors.description }}</v-card-text>
@@ -121,7 +121,7 @@
       <v-card flat class="mt-8">
         <v-img 
           height="200px"
-          :lazy-src="getPreloadImage(descriptions.belledonne.image, 0, { height: 200 })"></v-img>
+          :lazy-src="getPreloadImage(descriptions.belledonne.image, 0, { height: 200 })"
           :src="getImage(descriptions.belledonne.image, 0, { height: 200 })"></v-img>
         <v-card-title>{{ descriptions.belledonne.title }}</v-card-title>
         <v-card-text>{{ descriptions.belledonne.description }}</v-card-text>
@@ -133,7 +133,7 @@
       <v-card flat class="mt-8">
         <v-img 
           height="200px"
-          :lazy-src="getPreloadImage(descriptions.chartreuse.image, 0, { height: 200 })"></v-img>
+          :lazy-src="getPreloadImage(descriptions.chartreuse.image, 0, { height: 200 })"
           :src="getImage(descriptions.chartreuse.image, 0, { height: 200 })"></v-img>
         <v-card-title>{{ descriptions.chartreuse.title }}</v-card-title>
         <v-card-text>{{ descriptions.chartreuse.description }}</v-card-text>
