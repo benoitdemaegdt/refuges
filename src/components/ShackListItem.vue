@@ -12,6 +12,7 @@
             height="200px"
             class="shack-img"
             :key="shack.key"
+            :lazy-src="getPreloadImage(images, 0, { height: 200 })"
             :src="getImage(images, 0, { height: 200 })"
           >
           </v-img>
@@ -25,6 +26,7 @@
             <v-carousel-item
               v-for="(image, i) in images"
               :key="i"
+              :lazy-src="getPreloadImage(images, i, { height: 200 })"
               :src="getImage(images, i, { height: 200 })"
             >
             </v-carousel-item>

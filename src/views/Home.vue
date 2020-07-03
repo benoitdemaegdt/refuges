@@ -3,7 +3,7 @@
     <v-row class="section" :class="`section-height-${screenWidth < $vuetify.breakpoint.thresholds.sm ? 'mobile' : 'desktop'}`">
       <v-img
         height="100%"
-        lazy-src="R0lGODlhCQAHAPUAABIWGhUcIhghKxslMR8rOigsMjw2MEI+OSgzQi46SDw+QT1AREhLTFBOS0JMVk1PUVtZVVRZXU5bZV5kZlhlcHFrZHtyZ3dzbI2CdGNxgGh3hmt9ind+hWt+lG6FnXGHmneUtHmYvFyP0V2Q0V+R0mCT1GOV1mqb2HCg2nqm3YGDhqGfnp+82aC82qS+2aO+3KK+3YSw44Cy7IKz7YK07Z294Jy+44W38Ii48I+/85fE9KbF5a/N66DJ9KvQ9gAAACH5BAAAAAAALAAAAAAJAAcAAAY4wFgKdTKZRCKTr6fL4WbQG28Hg7lcLJYtBPJoLqtPpvPZUCIQzCPhkEwuFYXlICAgHo3CYGEABIIAOw=="
+        :lazy-src="getPreloadImage(image, 0, { height: sreenHeight })"
         :src="getImage(image, 0, { height: sreenHeight })"
       >
         <v-sheet color="transparent" class="overflow-y-auto" height="100%">
@@ -107,7 +107,10 @@
     <template v-else>
       <!-- vercors -->
       <v-card flat>
-        <v-img height="200px" :src="getImage(descriptions.vercors.image, 0, { height: 200 })"></v-img>
+        <v-img 
+          height="200px"
+          :lazy-src="getPreloadImage(descriptions.vercors.image, 0, { height: 200 })"></v-img>
+          :src="getImage(descriptions.vercors.image, 0, { height: 200 })"></v-img>
         <v-card-title>{{ descriptions.vercors.title }}</v-card-title>
         <v-card-text>{{ descriptions.vercors.description }}</v-card-text>
         <v-card-actions>
@@ -116,7 +119,10 @@
       </v-card>
       <!-- belledonne -->
       <v-card flat class="mt-8">
-        <v-img height="200px" :src="getImage(descriptions.belledonne.image, 0, { height: 200 })"></v-img>
+        <v-img 
+          height="200px"
+          :lazy-src="getPreloadImage(descriptions.belledonne.image, 0, { height: 200 })"></v-img>
+          :src="getImage(descriptions.belledonne.image, 0, { height: 200 })"></v-img>
         <v-card-title>{{ descriptions.belledonne.title }}</v-card-title>
         <v-card-text>{{ descriptions.belledonne.description }}</v-card-text>
         <v-card-actions>
@@ -125,7 +131,10 @@
       </v-card>
       <!-- chartreuse -->
       <v-card flat class="mt-8">
-        <v-img height="200px" :src="getImage(descriptions.chartreuse.image, 0, { height: 200 })"></v-img>
+        <v-img 
+          height="200px"
+          :lazy-src="getPreloadImage(descriptions.chartreuse.image, 0, { height: 200 })"></v-img>
+          :src="getImage(descriptions.chartreuse.image, 0, { height: 200 })"></v-img>
         <v-card-title>{{ descriptions.chartreuse.title }}</v-card-title>
         <v-card-text>{{ descriptions.chartreuse.description }}</v-card-text>
         <v-card-actions>
