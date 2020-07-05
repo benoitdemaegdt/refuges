@@ -123,12 +123,12 @@
     }
   },
   {
-    "name": "Pyrénées centrales",
-    "key": "pyrenees-centrales",
-    "connector": "des",
+    "name": "Bigorre",
+    "key": "bigorre",
+    "connector": "de",
     "location": {
       "region": "Occitanie",
-      "department": "Hautes-Pyrénées, Ariège, Haute-Garonne"
+      "department": "Hautes-Pyrénées"
     },
     "data": {
       "sheetId": "1sHiHXqGC43HzvVGXZj2UBV-Rc7Li4kzCBYTAskBv-dA"
