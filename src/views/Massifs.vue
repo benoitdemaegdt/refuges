@@ -208,7 +208,7 @@ export default {
     allShacks: [],
     mouseOveredCabaneKey: undefined,
     mouseOveredCabaneIndex: undefined,
-    cabanesPerPage: 20,
+    cabanesPerPage: 40,
     page: 1,
     isShowingMap: false,
   }),
