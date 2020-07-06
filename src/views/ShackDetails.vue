@@ -244,7 +244,7 @@ import ImageMixin from '@/mixins/ImageMixin.js';
 import LayoutMixin from '@/mixins/LayoutMixin.js';
 
 export default {
-  name: 'Shack',
+  name: 'ShackDetails',
   mixins: [ ImageMixin, LayoutMixin ],
   metaInfo() {
     if (this.shack && this.shack.name) {

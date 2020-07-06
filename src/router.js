@@ -5,8 +5,8 @@ import VueMeta from 'vue-meta';
 // import views
 const Home = () => import(/* webpackChunkName: "home" */ '@/views/Home.vue');
 const About = () => import(/* webpackChunkName: "about" */ '@/views/About.vue');
-const Massifs = () => import(/* webpackChunkName: "massifs" */ /* webpackPrefetch: true */ '@/views/Massifs.vue');
-const Shacks = () => import(/* webpackChunkName: "shacks" */ '@/views/Shacks.vue');
+const ShackList = () => import(/* webpackChunkName: "shackList" */ /* webpackPrefetch: true */ '@/views/ShackList.vue');
+const ShackDetails = () => import(/* webpackChunkName: "shackDetails" */ '@/views/ShackDetails.vue');
 const NotFound = () => import(/* webpackChunkName: "not-found" */ '@/views/NotFound.vue');
 
 Vue.use(VueRouter);
@@ -31,12 +31,12 @@ const router = new VueRouter({
     {
       path: '/massifs/:massif/refuges',
       name: 'shackList',
-      component: Massifs,
+      component: ShackList,
     },
     {
       path: '/massifs/:massif/refuges/:refuge',
       name: 'shackDetails',
-      component: Shacks,
+      component: ShackDetails,
     },
     {
       path: '*',

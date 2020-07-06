@@ -167,7 +167,7 @@ const Map = () => import(/* webpackChunkName: "leaflet" */ '@/components/Map');
 const Mapbox = () => import(/* webpackChunkName: "mapbox" */ '@/components/Mapbox');
 
 export default {
-  name: 'Massifs',
+  name: 'ShackList',
   components: {
     ShackListItem,
     Map,
