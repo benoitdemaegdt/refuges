@@ -262,10 +262,10 @@ export default {
           { name: 'twitter:title', content: `${this.shack.name} | Mon Petit Sommet` },
           { name: 'twitter:description', content: `${this.shack.name} : informations, équipements, accès, fréquentation` },
         ].concat(this.images.length > 0 ? [
-          { property: 'og:image', content: this.getMetaImageUrl(this.images, 0, { height: 450 }) },
+          { property: 'og:image', content: this.getImage(this.images, 0, { height: 450 }) },
           { property: 'og:image:width', content: '600' },
           { property: 'og:image:height', content: '450' },
-          { name: 'twitter:image', content: this.getMetaImageUrl(this.images, 0, { height: 450 }) },
+          { name: 'twitter:image', content: this.getImage(this.images, 0, { height: 450 }) },
         ] : []),
       };
     }

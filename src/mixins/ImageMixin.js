@@ -11,11 +11,6 @@ export default {
       if (imageList[index].includes('cloudinary')) {
         return `${imageList[index].slice(0, PARAM_IDX)}h_${height * QUALITY_FACTOR},f_auto,e_blur:10000,q_1/${imageList[index].slice(PARAM_IDX)}`;
       }
-    },
-    getMetaImageUrl(imageList, index, { height }) {
-      if (imageList[index].includes('cloudinary')) {
-        return `${imageList[index].slice(0, PARAM_IDX)}h_${height * QUALITY_FACTOR},f_auto/${imageList[index].slice(PARAM_IDX)}`;
-      }
     }
   },
 };
