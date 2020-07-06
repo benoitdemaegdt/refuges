@@ -121,5 +121,17 @@
     "data": {
       "sheetId": "1Z5pmYvoLjMBuSSitS3m3a94Gl2xxLQW2ll_hoaOxQko"
     }
+  },
+  {
+    "name": "Bigorre",
+    "key": "bigorre",
+    "connector": "de",
+    "location": {
+      "region": "Occitanie",
+      "department": "Hautes-Pyrénées"
+    },
+    "data": {
+      "sheetId": "1sHiHXqGC43HzvVGXZj2UBV-Rc7Li4kzCBYTAskBv-dA"
+    }
   }
 ]

@@ -1,5 +1,10 @@
 <template>
-  <v-card class="mx-auto" max-width="250" min-width="250" flat>
+  <v-card
+    class="pointer" 
+    max-width="250"
+    min-width="250" 
+    flat
+    @click.native="goToShack(cabane)">
     <v-img
       v-if="images.length !== 0"
       class="white--text align-end"
@@ -8,7 +13,7 @@
     >
     </v-img>
 
-    <v-card-text class="text--primary pb-0">
+    <v-card-text>
       <v-row>
         <v-col cols="12" class="card-title">
           {{ cabane.name }}
@@ -35,21 +40,18 @@
         <v-col cols="6">
           <div class="flex-container">
             <div class="flex-child"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
-            <div class="flex-child">{{ cabane.stove ? 'oui' : 'non' }}</div>
+            <div :class="cabane.stove ? 'flex-child' : 'flex-child-strikethrough'">Poêle</div>
           </div>
         </v-col>
         <!-- water -->
         <v-col cols="6">
           <div class="flex-container">
             <div class="flex-child"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
-            <div class="flex-child">{{ cabane.water ? 'oui' : 'non' }}</div>
+            <div :class="cabane.water ? 'flex-child' : 'flex-child-strikethrough'">Source</div>
           </div>
         </v-col>
       </v-row>
     </v-card-text>
-    <v-card-actions>
-      <v-btn text @click="goToShack(cabane)">détails</v-btn>
-    </v-card-actions>
   </v-card>
 </template>
 
@@ -76,10 +78,6 @@ export default {
   border-radius: 12px !important;
 }
 
-.v-btn {
-  font-weight: inherit;
-}
-
 .card-title {
   padding-top: 0px !important;
 }
@@ -95,7 +93,16 @@ export default {
   flex: 1;
 } 
 
+.flex-child-strikethrough {
+  flex: 2;
+  text-decoration: line-through;
+}
+
 .flex-child:last-child {
   margin-right: 25px;
-} 
+}
+
+.pointer {
+  cursor: pointer;
+}
 </style>

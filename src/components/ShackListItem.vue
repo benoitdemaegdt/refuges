@@ -12,6 +12,7 @@
             height="200px"
             class="shack-img"
             :key="shack.key"
+            :lazy-src="getImage(images, 0, { height: 200, type: 'preload' })"
             :src="getImage(images, 0, { height: 200 })"
           >
           </v-img>
@@ -25,6 +26,7 @@
             <v-carousel-item
               v-for="(image, i) in images"
               :key="i"
+              :lazy-src="getImage(images, i, { height: 200, type: 'preload' })"
               :src="getImage(images, i, { height: 200 })"
             >
             </v-carousel-item>
@@ -34,50 +36,47 @@
 
       <!-- info -->
       <v-col cols="12" sm="7" class="px-0 pb-0">
-        <v-card flat>
+        <v-card
+          flat 
+          height="200px"
+          @click.native="goToShack(shack)"
+          class="pointer">
           <v-card-text>
-          <div class="shack-type mb-1">{{ shack.type }}</div>
-          <div class="shack-name">{{ shack.name }}</div>
-          <div class="shack-divider"></div>
-          <v-row>
-            <!-- altitude -->
-            <v-col cols="5">
-              <div class="flex-container">
-                <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/mountain.png')"></v-img></div>
-                <div class="flex-child">Altitude : {{ shack.altitude }}m</div>
-              </div>
-            </v-col>
-            <!-- beds -->
-            <v-col cols="7">
-              <div class="flex-container">
-                <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
-                <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
-              </div>
-            </v-col>
-            <!-- stove -->
-            <v-col cols="5">
-              <div class="flex-container">
-                <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
-                <div class="flex-child">Poêle : {{ shack.stove ? 'oui' : 'non' }}</div>
-              </div>
-            </v-col>
-            <!-- water -->
-            <v-col cols="7">
-              <div class="flex-container">
-                <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
-                <div class="flex-child">Source : {{ shack.water ? 'oui' : 'non' }}</div>
-              </div>
-            </v-col>
-          </v-row>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn
-            text
-            @click="goToShack(shack)"
-          >détails</v-btn>
-        </v-card-actions>
-      </v-card>
-
+            <div class="shack-type mb-1">{{ shack.type }}</div>
+            <div class="shack-name">{{ shack.name }}</div>
+            <div class="shack-divider"></div>
+            <v-row>
+              <!-- altitude -->
+              <v-col cols="5">
+                <div class="flex-container">
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/mountain.png')"></v-img></div>
+                  <div class="flex-child">Altitude : {{ shack.altitude }}m</div>
+                </div>
+              </v-col>
+              <!-- beds -->
+              <v-col cols="7">
+                <div class="flex-container">
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
+                  <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
+                </div>
+              </v-col>
+              <!-- stove -->
+              <v-col cols="5">
+                <div class="flex-container">
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/stove.png')"></v-img></div>
+                  <div :class="shack.stove ? 'flex-child' : 'flex-child-strikethrough'">Poêle</div>
+                </div>
+              </v-col>
+              <!-- water -->
+              <v-col cols="7">
+                <div class="flex-container">
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
+                  <div :class="shack.water ? 'flex-child' : 'flex-child-strikethrough'">Source</div>
+                </div>
+              </v-col>
+            </v-row>
+          </v-card-text>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
@@ -143,6 +142,15 @@ export default {
 
 .flex-child {
   flex: 1;
+}
+
+.flex-child-strikethrough {
+  flex: 1;
+  text-decoration: line-through;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 </style>
