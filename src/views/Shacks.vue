@@ -94,10 +94,10 @@
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/phone.png')"></v-img></div>
                     <div class="flex-child">
-                      <a :href="`tel: ${shack.phones[0]}`"> {{ shack.phones[0] }}</a>
+                      <a :href="`tel:${shack.phones[0]}`"> {{ shack.phones[0] }}</a>
                       <template v-if="shack.phones.length > 1">
                         <a> / </a>
-                        <a :href="`tel: ${shack.phones[1]}`"> {{ shack.phones[1] }}</a>
+                        <a :href="`tel:${shack.phones[1]}`"> {{ shack.phones[1] }}</a>
                       </template>
                     </div>
                   </div>
@@ -108,7 +108,7 @@
                 <v-col cols="12" sm="7">
                   <div class="flex-container">
                     <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/email.png')"></v-img></div>
-                    <a class="flex-child-breakable" :href="`mailto: ${shack.email}`">{{ shack.email }}</a>
+                    <a class="flex-child-breakable" :href="`mailto:${shack.email}`">{{ shack.email }}</a>
                   </div>
                 </v-col>
               </template>
