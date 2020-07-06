@@ -14,7 +14,7 @@ export default {
     },
     getParams(imageType) {
       if (!Object.keys(PARAMETERS).includes(imageType)) return '';
-      return PARAMETERS[imageType].joint(',');
+      return PARAMETERS[imageType].join(',');
     }
   },
 };
