@@ -29,7 +29,7 @@
               class="shack-img"
               :height="imageHeight"
               :key="shack.key"
-              :lazy-src="getPreloadImage(images, 0, { height: imageHeight })"
+              :lazy-src="getImage(images, 0, { height: imageHeight, type: 'preload' })"
               :src="getImage(images, 0, { height: imageHeight })">
             </v-img>
           </template>
@@ -43,7 +43,7 @@
               <v-carousel-item
                 v-for="(image, i) in images"
                 :key="i"
-                :lazy-src="getPreloadImage(images, i, { height: imageHeight })"
+                :lazy-src="getImage(images, i, { height: imageHeight, type: 'preload' })"
                 :src="getImage(images, i, { height: imageHeight })"
               >
               </v-carousel-item>
