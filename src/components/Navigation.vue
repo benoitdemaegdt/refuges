@@ -7,40 +7,43 @@
       elevation="1"
       color="white"
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" color="primary"/>
-      <v-toolbar-title
-        style="width: 300px"
-        class="ml-0 pl-4"
-      >
-        <router-link :to="{ name: 'home'}" class='toolbar-title'>Mon Petit Sommet</router-link>
-      </v-toolbar-title>
+      <v-col cols="6" md="3">
+        <v-row align="center">
+          <v-app-bar-nav-icon @click.stop="drawer = !drawer" color="primary"/>
+          <v-toolbar-title class="ml-0 pl-4">
+            <router-link :to="{ name: 'home'}" class='toolbar-title'>Mon Petit Sommet</router-link>
+          </v-toolbar-title>
+        </v-row>
+      </v-col>
 
       <!-- search bar -->
-      <v-autocomplete
-        v-if="!isHomePage"
-        v-model="searchNavigation"
-        @change="goToPage"
-        flat
-        solo
-        background-color="#EEEEEE"
-        hide-details
-        no-data-text="Nous ne connaissons pas encore cet endroit  😢"
-        clearable
-        :prepend-inner-icon="mdiMagnify"
-        label="Chercher un refuge"
-        class="hidden-sm-and-down"
-        :items="search"
-        item-text="name"
-        item-value="path"
-        return-object
-      >
-        <template v-slot:item="data">
-          <v-list-item-content>
-            <v-list-item-title v-html="data.item.name"></v-list-item-title>
-            <v-list-item-subtitle v-html="`${data.item.type}, ${data.item.massif}`"></v-list-item-subtitle>
-          </v-list-item-content>
-        </template>
-      </v-autocomplete>
+      <v-col cols="0" md="6">
+        <v-autocomplete
+          v-if="!isHomePage"
+          v-model="searchNavigation"
+          @change="goToPage"
+          flat
+          solo
+          background-color="#EEEEEE"
+          hide-details
+          no-data-text="Nous ne connaissons pas encore cet endroit  😢"
+          clearable
+          :prepend-inner-icon="mdiMagnify"
+          label="Chercher un refuge"
+          class="hidden-sm-and-down"
+          :items="search"
+          item-text="name"
+          item-value="path"
+          return-object
+        >
+          <template v-slot:item="data">
+            <v-list-item-content>
+              <v-list-item-title v-html="data.item.name"></v-list-item-title>
+              <v-list-item-subtitle v-html="`${data.item.type}, ${data.item.massif}`"></v-list-item-subtitle>
+            </v-list-item-content>
+          </template>
+        </v-autocomplete>
+      </v-col>
       <v-spacer />
       <v-btn
         class="hidden-xs-only"
