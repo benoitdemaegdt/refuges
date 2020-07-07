@@ -84,7 +84,7 @@
                 :sm="(shack.phones.length > 0) === !!shack.email ? '12' : '5'"
               >
                 <div class="flex-container">
-                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/capacity.png')"></v-img></div>
+                  <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
                   <div class="flex-child">Capacité : {{ shack.beds }} personnes</div>
                 </div>
               </v-col>
@@ -143,7 +143,7 @@
                 <template v-if="shack.mattresses !== undefined">
                   <v-col cols="6" sm="4">
                     <div class="flex-container">
-                      <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/bed.png')"></v-img></div>
+                      <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/mattress.png')"></v-img></div>
                       <div :class="shack.mattresses ? 'flex-child' : 'flex-child-strikethrough'">Matelas</div>
                     </div>
                   </v-col>
