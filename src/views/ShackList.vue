@@ -167,7 +167,7 @@ const Map = () => import(/* webpackChunkName: "leaflet" */ '@/components/Map');
 const Mapbox = () => import(/* webpackChunkName: "mapbox" */ '@/components/Mapbox');
 
 export default {
-  name: 'Massifs',
+  name: 'ShackList',
   components: {
     ShackListItem,
     Map,
@@ -219,7 +219,7 @@ export default {
         this.page = 1;
         this.isShowingMap = false;
         this.filterType = [];
-        this.massif = massifs.find(massif => massif.key === this.$route.params.name);
+        this.massif = massifs.find(massif => massif.key === this.$route.params.massif);
         this.allShacks = await getShacksByMassif(this.massif);
         this.isLoading = false;
       },

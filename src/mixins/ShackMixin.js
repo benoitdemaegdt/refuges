@@ -2,9 +2,9 @@ export default {
   methods: {
     goToShack(shack) {
       if (this.isPwa) {
-        this.$router.push({ name: 'shacks', params: { massif: this.massif.key, cabane: shack.key }});
+        this.$router.push({ name: 'shackDetails', params: { massif: this.massif.key, refuge: shack.key }});
       } else {
-        const route = this.$router.resolve({ name: 'shacks', params: { massif: this.massif.key, cabane: shack.key }});
+        const route = this.$router.resolve({ name: 'shackDetails', params: { massif: this.massif.key, refuge: shack.key }});
         window.open(route.href, '_blank');
       }
     },

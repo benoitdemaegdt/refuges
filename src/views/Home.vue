@@ -24,7 +24,7 @@
                 hide-details
                 no-data-text="Ce massif sera bientôt ajouté 🙂"
                 clearable
-                prepend-inner-icon="mdi-magnify"
+                :prepend-inner-icon="mdiMagnify"
                 label="Chercher un massif"
                 :items="searchMassif"
                 item-text="title"
@@ -68,7 +68,7 @@
         <v-col cols="12" sm="6">
           <h3 class="home-content-title font-weight-black headline">{{ descriptions.vercors.title }}</h3>
           <p class="mt-4 pr-12">{{ descriptions.vercors.description }}</p>
-          <v-btn class="mt-6" text outlined @click="$router.push({ name: 'massifs', params: { name: 'vercors' }})">Voir les refuges</v-btn>
+          <v-btn class="mt-6" text outlined @click="$router.push({ name: 'shackList', params: { massif: 'vercors' }})">Voir les refuges</v-btn>
         </v-col>
       </v-row>
       <!-- belledonne -->
@@ -76,7 +76,7 @@
         <v-col cols="12" sm="6">
           <h3 class="home-content-title font-weight-black headline">{{ descriptions.belledonne.title }}</h3>
           <p class="mt-4 pl-12">{{ descriptions.belledonne.description }}</p>
-          <v-btn class="mt-6 ml-12" text outlined @click="$router.push({ name: 'massifs', params: { name: 'belledonne' }})">Voir les refuges</v-btn>
+          <v-btn class="mt-6 ml-12" text outlined @click="$router.push({ name: 'shackList', params: { massif: 'belledonne' }})">Voir les refuges</v-btn>
         </v-col>
         <v-col cols="12" sm="6">
           <v-img
@@ -100,7 +100,7 @@
         <v-col cols="12" sm="6">
           <h3 class="home-content-title font-weight-black headline">{{ descriptions.chartreuse.title }}</h3>
           <p class="mt-4 pr-12">{{ descriptions.chartreuse.description }}</p>
-          <v-btn class="mt-6" text outlined @click="$router.push({ name: 'massifs', params: { name: 'chartreuse' }})">Voir les refuges</v-btn>
+          <v-btn class="mt-6" text outlined @click="$router.push({ name: 'shackList', params: { massif: 'chartreuse' }})">Voir les refuges</v-btn>
         </v-col>
       </v-row>
     </template>
@@ -114,7 +114,7 @@
         <v-card-title>{{ descriptions.vercors.title }}</v-card-title>
         <v-card-text>{{ descriptions.vercors.description }}</v-card-text>
         <v-card-actions>
-          <v-btn text outlined @click="$router.push({ name: 'massifs', params: { name: 'vercors' }})">voir les refuges</v-btn>
+          <v-btn text outlined @click="$router.push({ name: 'shackList', params: { massif: 'vercors' }})">voir les refuges</v-btn>
         </v-card-actions>
       </v-card>
       <!-- belledonne -->
@@ -126,7 +126,7 @@
         <v-card-title>{{ descriptions.belledonne.title }}</v-card-title>
         <v-card-text>{{ descriptions.belledonne.description }}</v-card-text>
         <v-card-actions>
-          <v-btn text outlined @click="$router.push({ name: 'massifs', params: { name: 'belledonne' }})">voir les refuges</v-btn>
+          <v-btn text outlined @click="$router.push({ name: 'shackList', params: { massif: 'belledonne' }})">voir les refuges</v-btn>
         </v-card-actions>
       </v-card>
       <!-- chartreuse -->
@@ -138,7 +138,7 @@
         <v-card-title>{{ descriptions.chartreuse.title }}</v-card-title>
         <v-card-text>{{ descriptions.chartreuse.description }}</v-card-text>
         <v-card-actions>
-          <v-btn text outlined @click="$router.push({ name: 'massifs', params: { name: 'chartreuse' }})">voir les refuges</v-btn>
+          <v-btn text outlined @click="$router.push({ name: 'shackList', params: { massif: 'chartreuse' }})">voir les refuges</v-btn>
         </v-card-actions>
       </v-card>
     </template>
@@ -146,6 +146,9 @@
 </template>
 
 <script>
+// icons
+import { mdiMagnify } from '@mdi/js';
+
 // data
 import massifs from '@/data/massifs.json';
 
@@ -179,10 +182,11 @@ export default {
     };
   },
   data: () => ({
+    mdiMagnify,
     searchMassif: massifs.map(massif => ({
       title: massif.name,
+      key: massif.key,
       subtitle: `${massif.location.region} | ${massif.location.department}`,
-      path: `/massifs/${massif.key}`,
     })),
     image: ['https://res.cloudinary.com/monpetitsommet/image/upload/v1591291716/home/home_ofwjs8.png'],
     descriptions: {
@@ -213,7 +217,7 @@ export default {
     searchMassif: {
       handler(newRoute) {
         if (newRoute) {
-          this.$router.push({ path: newRoute.path });
+          this.$router.push({ name: 'shackList', params: { massif: newRoute.key }})
         }
       },
     },

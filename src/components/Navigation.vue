@@ -77,7 +77,7 @@
           v-for="massif in massifs"
           color='primary'
           :key="massif.key"
-          :to="{ name: 'massifs', params: { name: massif.key }}"
+          :to="{ name: 'shackList', params: { massif: massif.key }}"
         >
           <v-list-item-icon><v-icon>{{ mdiImage }}</v-icon></v-list-item-icon>
           <v-list-item-title> {{ massif.name }}</v-list-item-title>
@@ -121,7 +121,10 @@ export default {
   methods: {
     goToPage() {
       if (this.$route.path !== this.searchNavigation.path) {
-        this.$router.push({ path: this.searchNavigation.path });
+        this.$router.push({
+          name: 'shackDetails',
+          params: { massif: this.searchNavigation.massif_key, refuge: this.searchNavigation.key },
+        });
         this.$nextTick(() => {
           this.searchNavigation = undefined;
         });
