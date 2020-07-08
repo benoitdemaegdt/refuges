@@ -4,6 +4,7 @@
     "key": "bauges",
     "connector": "des",
     "location": {
+      "mountain_range": "Alpes",
       "region": "Auvergne-Rhône-Alpes",
       "department": "Savoie, Haute-Savoie"
     },
@@ -16,6 +17,7 @@
     "key": "belledonne",
     "connector": "de",
     "location": {
+      "mountain_range": "Alpes",
       "region": "Auvergne-Rhône-Alpes",
       "department": "Isère, Savoie"
     },
@@ -33,6 +35,7 @@
     "key": "chartreuse",
     "connector": "de",
     "location": {
+      "mountain_range": "Alpes",
       "region": "Auvergne-Rhône-Alpes",
       "department": "Isère, Savoie"
     },
@@ -50,6 +53,7 @@
     "key": "devoluy",
     "connector": "du",
     "location": {
+      "mountain_range": "Alpes",
       "region": "Provence-Alpes-Côte d’Azur",
       "department": "Hautes-Alpes"
     },
@@ -62,6 +66,7 @@
     "key": "ecrins",
     "connector": "des",
     "location": {
+      "mountain_range": "Alpes",
       "region": "Auvergne-Rhône-Alpes, Provence-Alpes-Côte d'Azur",
       "department": "Isère, Hautes-Alpes"
     },
@@ -74,6 +79,7 @@
     "key": "queyras",
     "connector": "du",
     "location": {
+      "mountain_range": "Alpes",
       "region": "Provence-Alpes-Côte d'Azur, Piémont",
       "department": "Hautes-Alpes, Turin, Coni"
     },
@@ -86,6 +92,7 @@
     "key": "taillefer",
     "connector": "du",
     "location": {
+      "mountain_range": "Alpes",
       "region": "Auvergne-Rhône-Alpes",
       "department": "Isère"
     },
@@ -98,6 +105,7 @@
     "key": "vanoise",
     "connector": "de",
     "location": {
+      "mountain_range": "Alpes",
       "region": "Auvergne-Rhône-Alpesergne-Rhône-Alpes",
       "department": "Savoie"
     },
@@ -110,6 +118,7 @@
     "key": "vercors",
     "connector": "du",
     "location": {
+      "mountain_range": "Alpes",
       "region": "Auvergne-Rhône-Alpes",
       "department": "Isère, Drôme"
     },
@@ -127,6 +136,7 @@
     "key": "bigorre",
     "connector": "de",
     "location": {
+      "mountain_range": "Pyrénées",
       "region": "Occitanie",
       "department": "Hautes-Pyrénées"
     },

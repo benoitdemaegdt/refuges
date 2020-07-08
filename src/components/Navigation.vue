@@ -76,15 +76,41 @@
       <!-- massifs -->
       <v-list nav>
 
-        <v-list-item
-          v-for="massif in massifs"
-          color='primary'
-          :key="massif.key"
-          :to="{ name: 'shackList', params: { massif: massif.key }}"
-        >
-          <v-list-item-icon><v-icon>{{ mdiImage }}</v-icon></v-list-item-icon>
-          <v-list-item-title> {{ massif.name }}</v-list-item-title>
-        </v-list-item>
+        <!-- alpes -->
+        <v-list-group>
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Alpes</v-list-item-title>
+            </v-list-item-content>
+          </template>
+          <v-list-item
+            v-for="massif in alpes"
+            color='primary'
+            :key="massif.key"
+            :to="{ name: 'shackList', params: { massif: massif.key }}"
+          >
+            <v-list-item-icon><v-icon>{{ mdiImage }}</v-icon></v-list-item-icon>
+            <v-list-item-title> {{ massif.name }}</v-list-item-title>
+          </v-list-item>
+        </v-list-group>
+
+        <!-- pyrénées -->
+        <v-list-group>
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>Pyrénées</v-list-item-title>
+            </v-list-item-content>
+          </template>
+          <v-list-item
+            v-for="massif in pyrenees"
+            color='primary'
+            :key="massif.key"
+            :to="{ name: 'shackList', params: { massif: massif.key }}"
+          >
+            <v-list-item-icon><v-icon>{{ mdiImage }}</v-icon></v-list-item-icon>
+            <v-list-item-title> {{ massif.name }}</v-list-item-title>
+          </v-list-item>
+        </v-list-group>
 
       </v-list>
     </v-navigation-drawer>
@@ -137,6 +163,12 @@ export default {
   computed: {
     isHomePage() {
       return this.$route.name === 'home';
+    },
+    alpes() {
+      return this.massifs.filter(massif => massif.location.mountain_range === "Alpes");
+    },
+    pyrenees() {
+      return this.massifs.filter(massif => massif.location.mountain_range === "Pyrénées");
     },
   },
 };
