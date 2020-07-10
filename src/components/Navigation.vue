@@ -7,7 +7,7 @@
       elevation="1"
       color="white"
     >
-      <v-col cols="6" md="3">
+      <v-col cols="12" md="3">
         <v-row align="center">
           <v-app-bar-nav-icon @click.stop="drawer = !drawer" color="primary"/>
           <v-toolbar-title class="ml-0 pl-4">
