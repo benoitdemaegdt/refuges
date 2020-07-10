@@ -7,40 +7,43 @@
       elevation="1"
       color="white"
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" color="primary"/>
-      <v-toolbar-title
-        style="width: 300px"
-        class="ml-0 pl-4"
-      >
-        <router-link :to="{ name: 'home'}" class='toolbar-title'>Mon Petit Sommet</router-link>
-      </v-toolbar-title>
+      <v-col cols="12" md="3">
+        <v-row align="center">
+          <v-app-bar-nav-icon @click.stop="drawer = !drawer" color="primary"/>
+          <v-toolbar-title class="ml-0 pl-4">
+            <router-link :to="{ name: 'home'}" class='toolbar-title'>Mon Petit Sommet</router-link>
+          </v-toolbar-title>
+        </v-row>
+      </v-col>
 
       <!-- search bar -->
-      <v-autocomplete
-        v-if="!isHomePage"
-        v-model="searchNavigation"
-        @change="goToPage"
-        flat
-        solo
-        background-color="#EEEEEE"
-        hide-details
-        no-data-text="Nous ne connaissons pas encore cet endroit  😢"
-        clearable
-        :prepend-inner-icon="mdiMagnify"
-        label="Chercher un refuge"
-        class="hidden-sm-and-down"
-        :items="search"
-        item-text="name"
-        item-value="path"
-        return-object
-      >
-        <template v-slot:item="data">
-          <v-list-item-content>
-            <v-list-item-title v-html="data.item.name"></v-list-item-title>
-            <v-list-item-subtitle v-html="`${data.item.type}, ${data.item.massif}`"></v-list-item-subtitle>
-          </v-list-item-content>
-        </template>
-      </v-autocomplete>
+      <v-col cols="0" md="6">
+        <v-autocomplete
+          v-if="!isHomePage"
+          v-model="searchNavigation"
+          @change="goToPage"
+          flat
+          solo
+          background-color="#EEEEEE"
+          hide-details
+          no-data-text="Nous ne connaissons pas encore cet endroit  😢"
+          clearable
+          :prepend-inner-icon="mdiMagnify"
+          label="Chercher un refuge"
+          class="hidden-sm-and-down"
+          :items="search"
+          item-text="name"
+          item-value="path"
+          return-object
+        >
+          <template v-slot:item="data">
+            <v-list-item-content>
+              <v-list-item-title v-html="data.item.name"></v-list-item-title>
+              <v-list-item-subtitle v-html="`${data.item.type}, ${data.item.massif}`"></v-list-item-subtitle>
+            </v-list-item-content>
+          </template>
+        </v-autocomplete>
+      </v-col>
       <v-spacer />
       <v-btn
         class="hidden-xs-only"
@@ -72,17 +75,24 @@
 
       <!-- massifs -->
       <v-list nav>
-
-        <v-list-item
-          v-for="massif in massifs"
-          color='primary'
-          :key="massif.key"
-          :to="{ name: 'shackList', params: { massif: massif.key }}"
-        >
-          <v-list-item-icon><v-icon>{{ mdiImage }}</v-icon></v-list-item-icon>
-          <v-list-item-title> {{ massif.name }}</v-list-item-title>
-        </v-list-item>
-
+        <v-list-group
+          v-for="range in mountainRanges"
+          :key="range">
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>{{ range }}</v-list-item-title>
+            </v-list-item-content>
+          </template>
+          <v-list-item
+            v-for="massif in massifsByRange(range)"
+            color='primary'
+            :key="massif.key"
+            :to="{ name: 'shackList', params: { massif: massif.key }}"
+          >
+            <v-list-item-icon><v-icon>{{ mdiImage }}</v-icon></v-list-item-icon>
+            <v-list-item-title> {{ massif.name }}</v-list-item-title>
+          </v-list-item>
+        </v-list-group>
       </v-list>
     </v-navigation-drawer>
   </nav>
@@ -130,10 +140,16 @@ export default {
         });
       }
     },
+    massifsByRange(mountainRange) {
+      return this.massifs.filter(massif => massif.location.mountain_range === mountainRange);
+    },
   },
   computed: {
     isHomePage() {
       return this.$route.name === 'home';
+    },
+    mountainRanges() {
+      return [...new Set(this.massifs.map(massif => massif.location.mountain_range))];
     },
   },
 };

@@ -25,7 +25,7 @@
                 no-data-text="Ce massif sera bientôt ajouté 🙂"
                 clearable
                 :prepend-inner-icon="mdiMagnify"
-                label="Chercher un massif"
+                label="Choisir un massif"
                 :items="searchMassif"
                 item-text="title"
                 item-value="path"
