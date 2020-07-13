@@ -1,7 +1,7 @@
 <template>
   <div style="height: 100%;">
     <div id="map" style="height: 70%; width: 100%"></div>
-    <div id="graph" style="height: 30%; width: 100%">
+    <div ref="graph" style="height: 30%; width: 100%">
       <highcharts :options="chartOptions"></highcharts>
     </div>
   </div>
@@ -11,6 +11,9 @@
 // data (TODO: store this data elsewhere)
 import { elevation } from '@/data/bauges/elevation.json';
 import path from '@/data/bauges/path.json';
+
+// mixins
+import MapboxMixin from '@/mixins/MapboxMixin.js';
 
 // components
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
@@ -26,78 +29,15 @@ export default {
   components: {
     highcharts: Chart,
   },
+  mixins: [ MapboxMixin ],
   data: () => ({
     elevation: [],
-    chartOptions: {
-      title: { text: null },
-      legend: { enabled: false },
-      credits: { enabled: false },
-      chart: { height: 250 },
-      annotations: [
-        {
-          labels: [
-            {
-              point: { xAxis: 0, yAxis: 0, x: 16, y: 2021.2 },
-              text: 'Pointe de la Chaurionde'
-            },
-            {
-              point: { xAxis: 0, yAxis: 0, x: 38.1, y: 1501 },
-              text: 'Refuge de la Combe'
-            },
-            {
-              point: { xAxis: 0, yAxis: 0, x: 64, y: 1534 },
-              text: 'Semnoz'
-            },
-          ]
-        }
-      ],
-      xAxis: {
-        labels: { format: '{value} km' },
-        minRange: 5,
-        title: { text: 'Distance' },
-        accessibility: { rangeDescription: 'Range: 0 to 187.8km.' }
-      },
-      yAxis: {
-        startOnTick: true,
-        endOnTick: false,
-        maxPadding: 0.35,
-        title: { text: null },
-        labels: { format: '{value} m' }
-      },
-      tooltip: {
-        headerFormat: 'Distance: {point.x:.1f} km<br>',
-        pointFormat: 'Altitude: {point.y} m',
-        shared: true
-      },
-      series: [
-        {
-          color: '#78909C',
-          marker: { enabled: false },
-          threshold: null,
-          data: elevation,
-        },
-      ],
-    },
+    chartHeight: undefined,
   }),
   mounted() {
-    mapboxgl.accessToken = process.env.VUE_APP_MAPBOX_GL_TOKEN;
-    // set up map
-    this.map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/benoitdemaegdt/cka2hsqkq3k5r1iobsq729rh3',
-      center: [5.7167, 45.1667],
-      zoom: 11,
-      attributionControl: false,
-    });
-    this.map.dragRotate.disable();
-    this.map.touchZoomRotate.disableRotation();
-    this.map.addControl(new mapboxgl.NavigationControl({ showCompass: false }));
-    this.map.addControl(new mapboxgl.FullscreenControl(), 'top-left');
-    this.map.addControl(new mapboxgl.ScaleControl(), 'bottom-left');
-    this.map.addControl(new mapboxgl.GeolocateControl({
-      positionOptions: { enableHighAccuracy: true },
-      trackUserLocation: true,
-    }), 'top-left');
+    this.chartHeight = this.$refs['graph'].clientHeight;
+    // create map
+    this.createMap();
     // display trek
     this.map.on('load', () => {
       this.map.addSource('trek', {
@@ -108,14 +48,8 @@ export default {
         id: 'trek',
         type: 'line',
         source: 'trek',
-        layout: {
-          'line-join': 'round',
-          'line-cap': 'round'
-        },
-        paint: {
-          'line-color': '#D81B60',
-          'line-width': 3
-        }
+        layout: { 'line-join': 'round', 'line-cap': 'round' },
+        paint: { 'line-color': '#D81B60', 'line-width': 3 }
       });
       // fit bounds
       const coordinates = path.features[0].geometry.coordinates;
@@ -126,6 +60,59 @@ export default {
       this.map.fitBounds(bounds, { padding: 20 });
     });
   },
+  computed: {
+    chartOptions() {
+      return {
+        title: { text: null },
+        legend: { enabled: false },
+        credits: { enabled: false },
+        chart: { height: this.chartHeight },
+        annotations: [
+          {
+            labels: [
+              {
+                point: { xAxis: 0, yAxis: 0, x: 16, y: 2021.2 },
+                text: 'Pointe de la Chaurionde'
+              },
+              {
+                point: { xAxis: 0, yAxis: 0, x: 38.1, y: 1501 },
+                text: 'Refuge de la Combe'
+              },
+              {
+                point: { xAxis: 0, yAxis: 0, x: 64, y: 1534 },
+                text: 'Semnoz'
+              },
+            ]
+          }
+        ],
+        xAxis: {
+          labels: { format: '{value} km' },
+          minRange: 5,
+          title: { text: null },
+        },
+        yAxis: {
+          startOnTick: true,
+          endOnTick: false,
+          maxPadding: 0.35,
+          title: { text: null },
+          labels: { format: '{value} m' }
+        },
+        tooltip: {
+          headerFormat: 'Distance: {point.x:.1f} km<br>',
+          pointFormat: 'Altitude: {point.y} m',
+          shared: true
+        },
+        series: [
+          {
+            color: '#78909C',
+            marker: { enabled: false },
+            threshold: null,
+            data: elevation,
+          },
+        ],
+      };
+    },
+  }
 }
 </script>
 

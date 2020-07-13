@@ -29,8 +29,35 @@
             </v-row>
             <v-img height="350px" class="trek-img" key="bauges" :src="require('@/assets/bauges.jpg')"></v-img>
           <h2>Étape 1 : de Frontenex au chalet d'Orisan</h2>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            It has survived not only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+            containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+            versions of Lorem Ipsum.
+          </p>
           <h2>Étape 2 : du chalet d'orisan à la pointe de la Chaurionde</h2>
-          <h2>Étape 2 : de la pointe de la Chaurionde au col d'orgeval</h2>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            It has survived not only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+            containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+            versions of Lorem Ipsum.
+          </p>
+          <h2>Étape 3 : de la pointe de la Chaurionde au col d'orgeval</h2>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            It has survived not only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+            containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
+            versions of Lorem Ipsum.
+          </p>
         </div>
       </v-col>
       <v-col cols="6" class="map-col pa-0">
