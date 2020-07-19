@@ -1,6 +1,9 @@
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
 export default {
+  data: () => ({
+    map: undefined,
+  }),
   methods: {
     createMap() {
       mapboxgl.accessToken = process.env.VUE_APP_MAPBOX_GL_TOKEN;

@@ -9,7 +9,6 @@
 
 <script>
 // data (TODO: store this data elsewhere)
-import { elevation } from '@/data/bauges/elevation.json';
 import path from '@/data/bauges/path.json';
 
 // mixins
@@ -31,8 +30,9 @@ export default {
   },
   mixins: [ MapboxMixin ],
   data: () => ({
-    elevation: [],
     chartHeight: undefined,
+    hoveredGraphPointIndex: undefined,
+    popup: undefined
   }),
   mounted() {
     this.chartHeight = this.$refs['graph'].clientHeight;
@@ -54,14 +54,32 @@ export default {
       // fit bounds
       const coordinates = path.features[0].geometry.coordinates;
       const bounds = coordinates.reduce((bounds, coord) => {
-        return bounds.extend(coord);
-      }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
+        return bounds.extend(coord.slice(0,-1));
+      }, new mapboxgl.LngLatBounds(coordinates[0].slice(0,-1), coordinates[0].slice(0,-1)));
  
       this.map.fitBounds(bounds, { padding: 20 });
     });
   },
+  watch: {
+    hoveredGraphPointIndex: {
+      handler(newIndex) {
+        if (newIndex !== undefined) {
+          if (this.popup) this.popup.remove();
+          const coordinates = path.features[0].geometry.coordinates[newIndex].slice(0,-2);
+          const distance = path.features[0].geometry.coordinates[newIndex].slice(-1)[0];
+          this.popup = new mapboxgl.Popup({ closeOnClick: false, closeButton: false })
+            .setLngLat(coordinates)
+            .setHTML(`<h1>distance: ${Math.round(distance * 100) / 100} km</h1>`)
+            .addTo(this.map);
+        } else {
+          this.popup.remove();
+        }
+      },
+    },
+  },
   computed: {
     chartOptions() {
+      const self = this;
       return {
         title: { text: null },
         legend: { enabled: false },
@@ -71,15 +89,15 @@ export default {
           {
             labels: [
               {
-                point: { xAxis: 0, yAxis: 0, x: 16, y: 2021.2 },
+                point: { xAxis: 0, yAxis: 0, x: 13, y: 2130 },
                 text: 'Pointe de la Chaurionde'
               },
               {
-                point: { xAxis: 0, yAxis: 0, x: 38.1, y: 1501 },
+                point: { xAxis: 0, yAxis: 0, x: 31.2, y: 1646 },
                 text: 'Refuge de la Combe'
               },
               {
-                point: { xAxis: 0, yAxis: 0, x: 64, y: 1534 },
+                point: { xAxis: 0, yAxis: 0, x: 51.5, y: 1675 },
                 text: 'Semnoz'
               },
             ]
@@ -107,7 +125,17 @@ export default {
             color: '#78909C',
             marker: { enabled: false },
             threshold: null,
-            data: elevation,
+            data: path.features[0].geometry.coordinates.map(coord => coord.slice(2).reverse()),
+            point: {
+              events: {
+                mouseOver( { target: { index } }) {
+                  self.hoveredGraphPointIndex = index;
+                },
+                mouseOut() {
+                  self.hoveredGraphPointIndex = undefined;
+                },
+              },
+            },
           },
         ],
       };
