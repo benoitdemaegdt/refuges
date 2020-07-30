@@ -62,7 +62,7 @@
       </v-col>
       <v-col cols="6" class="map-col pa-0">
         <div class="map-container-desktop">
-          <TrekMap/>
+          <TrekMap :coordinates="trek.coordinates"/>
         </div>
       </v-col>
     </v-row>
@@ -70,6 +70,9 @@
 </template>
 
 <script>
+import trek from '@/data/bauges/bauges.json';
+
+// components
 import TrekMap from '@/components/TrekMap';
 
 export default {
@@ -77,7 +80,9 @@ export default {
   components: {
     TrekMap,
   },
-  data: () => ({}),
+  data: () => ({
+    trek
+  }),
 };
 </script>
 

@@ -8,9 +8,6 @@
 </template>
 
 <script>
-// data (TODO: store this data elsewhere)
-import trek from '@/data/bauges/bauges.json';
-
 // mixins
 import MapboxMixin from '@/mixins/MapboxMixin.js';
 
@@ -27,6 +24,9 @@ export default {
   name: 'TrekMap',
   components: {
     highcharts: Chart,
+  },
+  props: {
+    coordinates: { type: Array, required: true },
   },
   mixins: [ MapboxMixin ],
   data: () => ({
@@ -46,7 +46,7 @@ export default {
           type: 'Feature',
           geometry: {
             type: 'LineString',
-            coordinates: trek.coordinates,
+            coordinates: this.coordinates,
           },
         },
       });
@@ -58,7 +58,7 @@ export default {
         paint: { 'line-color': '#D81B60', 'line-width': 3 }
       });
       // fit bounds
-      const coordinates = trek.coordinates;
+      const coordinates = this.coordinates;
       const bounds = coordinates.reduce((bounds, coord) => {
         return bounds.extend(coord.slice(0,-1));
       }, new mapboxgl.LngLatBounds(coordinates[0].slice(0,-1), coordinates[0].slice(0,-1)));
@@ -71,8 +71,8 @@ export default {
       handler(newIndex) {
         if (newIndex !== undefined) {
           if (this.popup) this.popup.remove();
-          const coordinates = trek.coordinates[newIndex].slice(0,-2);
-          const distance = trek.coordinates[newIndex].slice(-1)[0];
+          const coordinates = this.coordinates[newIndex].slice(0,-2);
+          const distance = this.coordinates[newIndex].slice(-1)[0];
           this.popup = new mapboxgl.Popup({ closeOnClick: false, closeButton: false })
             .setLngLat(coordinates)
             .setHTML(`<h1>distance: ${Math.round(distance * 100) / 100} km</h1>`)
@@ -131,7 +131,7 @@ export default {
             color: '#78909C',
             marker: { enabled: false },
             threshold: null,
-            data: trek.coordinates.map(coord => coord.slice(2).reverse()),
+            data: this.coordinates.map(coord => coord.slice(2).reverse()),
             point: {
               events: {
                 mouseOver( { target: { index } }) {
