@@ -9,7 +9,7 @@
 
 <script>
 // data (TODO: store this data elsewhere)
-import path from '@/data/bauges/path.json';
+import trek from '@/data/bauges/bauges.json';
 
 // mixins
 import MapboxMixin from '@/mixins/MapboxMixin.js';
@@ -42,7 +42,13 @@ export default {
     this.map.on('load', () => {
       this.map.addSource('trek', {
         type: 'geojson',
-        data: path.features[0],
+        data: {
+          type: 'Feature',
+          geometry: {
+            type: 'LineString',
+            coordinates: trek.coordinates,
+          },
+        },
       });
       this.map.addLayer({
         id: 'trek',
@@ -52,7 +58,7 @@ export default {
         paint: { 'line-color': '#D81B60', 'line-width': 3 }
       });
       // fit bounds
-      const coordinates = path.features[0].geometry.coordinates;
+      const coordinates = trek.coordinates;
       const bounds = coordinates.reduce((bounds, coord) => {
         return bounds.extend(coord.slice(0,-1));
       }, new mapboxgl.LngLatBounds(coordinates[0].slice(0,-1), coordinates[0].slice(0,-1)));
@@ -65,8 +71,8 @@ export default {
       handler(newIndex) {
         if (newIndex !== undefined) {
           if (this.popup) this.popup.remove();
-          const coordinates = path.features[0].geometry.coordinates[newIndex].slice(0,-2);
-          const distance = path.features[0].geometry.coordinates[newIndex].slice(-1)[0];
+          const coordinates = trek.coordinates[newIndex].slice(0,-2);
+          const distance = trek.coordinates[newIndex].slice(-1)[0];
           this.popup = new mapboxgl.Popup({ closeOnClick: false, closeButton: false })
             .setLngLat(coordinates)
             .setHTML(`<h1>distance: ${Math.round(distance * 100) / 100} km</h1>`)
@@ -125,7 +131,7 @@ export default {
             color: '#78909C',
             marker: { enabled: false },
             threshold: null,
-            data: path.features[0].geometry.coordinates.map(coord => coord.slice(2).reverse()),
+            data: trek.coordinates.map(coord => coord.slice(2).reverse()),
             point: {
               events: {
                 mouseOver( { target: { index } }) {
