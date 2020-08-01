@@ -27,6 +27,7 @@ export default {
   },
   props: {
     coordinates: { type: Array, required: true },
+    pointsOfInterest: { type: Array, required: true },
   },
   mixins: [ MapboxMixin ],
   data: () => ({
@@ -93,20 +94,10 @@ export default {
         chart: { height: this.chartHeight },
         annotations: [
           {
-            labels: [
-              {
-                point: { xAxis: 0, yAxis: 0, x: 13, y: 2130 },
-                text: 'Pointe de la Chaurionde'
-              },
-              {
-                point: { xAxis: 0, yAxis: 0, x: 31.2, y: 1646 },
-                text: 'Refuge de la Combe'
-              },
-              {
-                point: { xAxis: 0, yAxis: 0, x: 51.5, y: 1675 },
-                text: 'Semnoz'
-              },
-            ]
+            labels: this.pointsOfInterest.map(poi => ({
+              point: { xAxis: 0, yAxis: 0, x: poi.distance, y: poi.elevation },
+              text: poi.name,
+            })),
           }
         ],
         xAxis: {

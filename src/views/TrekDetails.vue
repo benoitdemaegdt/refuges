@@ -43,7 +43,7 @@
         </v-col>
         <v-col cols="6" class="map-col pa-0">
           <div class="map-container-desktop">
-            <TrekMap :coordinates="trek.coordinates"/>
+            <TrekMap :coordinates="trek.coordinates" :pointsOfInterest="trek.pointsOfInterest"/>
           </div>
         </v-col>
       </v-row>
