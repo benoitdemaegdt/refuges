@@ -74,9 +74,18 @@ export default {
           if (this.popup) this.popup.remove();
           const coordinates = this.coordinates[newIndex].slice(0,-2);
           const distance = this.coordinates[newIndex].slice(-1)[0];
+          const elevation = this.coordinates.slice(0, newIndex).reduce((cumulativeElevation, currentPoint, index) => {
+            if (index === 0) return cumulativeElevation;
+            const currentElevation = this.coordinates[index].slice(-2, -1)[0];
+            const previousElevation = this.coordinates[index - 1].slice(-2, -1)[0];
+            return cumulativeElevation + Math.max((currentElevation - previousElevation), 0);
+          }, 0);
           this.popup = new mapboxgl.Popup({ closeOnClick: false, closeButton: false })
             .setLngLat(coordinates)
-            .setHTML(`<h1>distance: ${Math.round(distance * 100) / 100} km</h1>`)
+            .setHTML(`
+              <b>Distance: ${Math.round(distance * 100) / 100} km</b><br>
+              <b>Dénivelé: ${Math.round(elevation * 100) / 100} m</b>
+            `)
             .addTo(this.map);
         } else {
           this.popup.remove();
