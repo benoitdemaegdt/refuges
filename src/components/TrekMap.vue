@@ -113,9 +113,12 @@ export default {
           labels: { format: '{value} m' }
         },
         tooltip: {
-          headerFormat: 'Distance: {point.x:.1f} km<br>',
-          pointFormat: 'Altitude: {point.y} m',
-          shared: true
+          formatter() {
+            return `
+              <b>Distance: ${Math.round(this.x * 100) / 100} km</b><br>
+              <b>Altitude: ${Math.round(this.y)} m</b>
+            `;
+          }
         },
         series: [
           {
