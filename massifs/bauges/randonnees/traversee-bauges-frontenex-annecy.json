@@ -10,6 +10,23 @@
     "text": "This is an introduction.",
     "image": "bauges.jpg"
   },
+  "pointsOfInterest": [
+    {
+      "name": "Pointe de la Chaurionde",
+      "distance": 13,
+      "elevation": 2130
+    },
+    {
+      "name": "Refuge de la Combe",
+      "distance": 31.2,
+      "elevation": 1646
+    },
+    {
+      "name": "Le Semnoz",
+      "distance": 51.5,
+      "elevation": 1675
+    }
+  ],
   "steps": [
     {
       "title": "Approche",
