@@ -58,6 +58,17 @@ export default {
         layout: { 'line-join': 'round', 'line-cap': 'round' },
         paint: { 'line-color': '#D81B60', 'line-width': 3 }
       });
+      // start and finish markers
+      var start = document.createElement('div');
+      start.className = 'mapbox-marker-start';
+      new mapboxgl.Marker(start)
+        .setLngLat(this.coordinates[0].slice(0, 2))
+        .addTo(this.map);
+      var finish = document.createElement('div');
+      finish.className = 'mapbox-marker-finish';
+      new mapboxgl.Marker(finish)
+        .setLngLat(this.coordinates[this.coordinates.length - 1].slice(0, 2))
+        .addTo(this.map);
       // fit bounds
       const coordinates = this.coordinates;
       const bounds = coordinates.reduce((bounds, coord) => {
@@ -156,5 +167,25 @@ export default {
 <style>
 .mapboxgl-ctrl-logo {
   display: none !important;
+}
+
+.mapbox-marker-start {
+  background-color: #00C853;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.mapbox-marker-finish {
+  background-color: #EF5350;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
 }
 </style>
