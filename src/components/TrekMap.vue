@@ -59,16 +59,8 @@ export default {
         paint: { 'line-color': '#D81B60', 'line-width': 3 }
       });
       // start and finish markers
-      var start = document.createElement('div');
-      start.className = 'mapbox-marker-start';
-      new mapboxgl.Marker(start)
-        .setLngLat(this.coordinates[0].slice(0, 2))
-        .addTo(this.map);
-      var finish = document.createElement('div');
-      finish.className = 'mapbox-marker-finish';
-      new mapboxgl.Marker(finish)
-        .setLngLat(this.coordinates[this.coordinates.length - 1].slice(0, 2))
-        .addTo(this.map);
+      this.createMarker('mapbox-marker-start', this.coordinates[0].slice(0, 2));
+      this.createMarker('mapbox-marker-finish', this.coordinates[this.coordinates.length - 1].slice(0, 2));
       // fit bounds
       const coordinates = this.coordinates;
       const bounds = coordinates.reduce((bounds, coord) => {
@@ -160,7 +152,16 @@ export default {
         ],
       };
     },
-  }
+  },
+  methods: {
+    createMarker(markerClass, coordinates) {
+      const marker = document.createElement('div');
+      marker.className = markerClass;
+      new mapboxgl.Marker(marker)
+        .setLngLat(coordinates)
+        .addTo(this.map);
+    },
+  },
 }
 </script>
 
@@ -174,8 +175,8 @@ export default {
   border-style: solid;
   border-width: 1px;
   border-color: black;
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
 }
 
@@ -184,8 +185,8 @@ export default {
   border-style: solid;
   border-width: 1px;
   border-color: black;
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
 }
 </style>
