@@ -69,13 +69,20 @@ export default {
     trek: undefined,
     isError: false,
   }),
-  async created() {
-    // TODO: this should be dynamic
-    try {
-      this.trek = await getTrekData('bauges', 'traversee-bauges-frontenex-annecy'); 
-    } catch (error) {
-      this.isError = true;
-    }
+  watch: {
+    $route: {
+      async handler() {
+        try {
+          this.isError = false;
+          const massif = this.$route.params.massif;
+          const trek = this.$route.params.randonnee;
+          this.trek = await getTrekData(massif, trek); 
+        } catch (error) {
+          this.isError = true;
+        }
+      },
+      immediate: true,
+    },
   },
   methods: {
     getImage(file){
