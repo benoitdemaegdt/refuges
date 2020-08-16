@@ -30,10 +30,9 @@ inquirer
     const massif = answers.massif;
     const title = answers.title;
     const key = slugify(answers.title);
-    // TODO: edit bauges/randonnees.json if necessary
-    const outputFile = { title, key };
-    const outputSource = path.resolve(__dirname, `../massifs/${massif}/randonnees/${key}.json`);
-    fs.writeFileSync(outputSource, JSON.stringify(outputFile, null, 2));
+    const trekObject = buildTrekObject({ title, key });
+    updateMassifTreksFile(massif, trekObject);
+    createTrekFile(massif, key, trekObject);
   });
 
 
@@ -82,6 +81,36 @@ inquirer
 // });
 
 /**
+ * update massifs/<MASSIF_NAME>/randonnees.json file
+ */
+function updateMassifTreksFile(massif, { title, key, summary }) {
+  const source = path.resolve(__dirname, `../massifs/${massif}/randonnees.json`);
+  const massifTreks = JSON.parse(fs.readFileSync(source, 'utf8'));
+  checkTrekUnicity(massifTreks, key);
+  massifTreks.push({ title, key, summary });
+  fs.writeFileSync(source, JSON.stringify(massifTreks, null, 2));
+}
+
+/**
+ * check trek unicity
+ */
+function checkTrekUnicity(massifTreks, newTrekKey) {
+  const trekList = massifTreks.map(trek => trek.key);
+  if (trekList.includes(newTrekKey)) {
+    console.log('Error : this trek already exists.\n', massifTreks.find(trek => trek.key === newTrekKey));
+    process.exit(1);
+  }
+}
+
+/**
+ * create massifs/<MASSIF_NAME>/randonnees/<TREK_KEY>.json file
+ */
+function createTrekFile(massif, key, trekObject) {
+  const source = path.resolve(__dirname, `../massifs/${massif}/randonnees/${key}.json`);
+  fs.writeFileSync(source, JSON.stringify(trekObject, null, 2));
+}
+
+/**
  * check NodeJS major version is >= 10
  */
 function checkNodeVersion() {
@@ -115,4 +144,27 @@ function slugify(str) {
     .replace(/\s+/g, '-')           // Replace spaces with -
     .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
     .replace(/\-\-+/g, '-');        // Replace multiple - with single -
+}
+
+/**
+ * build trek object with monpetitsommet.fr format
+ */
+function buildTrekObject({ title, key }) {
+  // TODO: read gpx file and process data
+  return {
+    title,
+    key,
+    summary: {
+      distance: 0, // TODO
+      elevation: 0, // TODO
+      duration: 0, // TODO
+    },
+    introduction: {
+      text: '',
+      image: '',
+    },
+    pointsOfInterest: [],
+    steps: [],
+    coordinates: [], // TODO
+  };
 }
