@@ -23,7 +23,7 @@
     "vuetify": "^2.3.9"
   },
   "devDependencies": {
-    "@mdi/js": "^5.4.55",
+    "@mdi/js": "^5.5.55",
     "@vue/cli-plugin-babel": "~4.5.4",
     "@vue/cli-plugin-eslint": "~4.5.3",
     "@vue/cli-plugin-pwa": "^4.5.4",
