@@ -11,6 +11,9 @@
   "dependencies": {
     "@tmcw/togeojson": "^4.1.0",
     "@turf/turf": "^5.1.6",
-    "inquirer": "^7.3.3"
+    "cli-progress": "^3.8.2",
+    "inquirer": "^7.3.3",
+    "lodash": "^4.17.20",
+    "xmldom": "^0.3.0"
   }
 }

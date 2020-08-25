@@ -6,9 +6,12 @@
  */
 const fs = require('fs');
 const path = require('path');
+const _ = require('lodash')
+const DOMParser = require('xmldom').DOMParser;
 const inquirer = require('inquirer');
-// const tj = require("@tmcw/togeojson");
-// const turf = require('@turf/turf');
+const tj = require('@tmcw/togeojson');
+const turf = require('@turf/turf');
+const cliProgress = require('cli-progress');
 
 checkNodeVersion();
 const massifs = getAllMassifs();
@@ -19,66 +22,36 @@ inquirer
       type: 'list',
       name: 'massif',
       message: 'Dans quel massif voulez vous ajouter une rando ?',
-      choices: [...massifs, 'vercors', 'charteuse', 'hey'],
+      choices: massifs,
     },
     {
+      type: 'input',
       name: 'title',
       message: 'Nom de la randonnée ?',
+    },
+    {
+      type: 'number',
+      name: 'stepCount',
+      message: "Combien d'étapes ?",
+      default: 0,
+    },
+    {
+      type: 'number',
+      name: 'pointOfInterestCount',
+      message: "Combien de points d'intérêt ?",
+      default: 0,
     },
   ])
   .then(answers => {
     const massif = answers.massif;
     const title = answers.title;
+    const stepCount = answers.stepCount;
+    const pointOfInterestCount = answers.pointOfInterestCount
     const key = slugify(answers.title);
-    const trekObject = buildTrekObject({ title, key });
+    const trekObject = buildTrekObject({ title, key, stepCount, pointOfInterestCount });
     updateMassifTreksFile(massif, trekObject);
     createTrekFile(massif, key, trekObject);
   });
-
-
-
-// // INPUT FILE
-// const inputGeoJson = require('./input.json');
-
-// const coordinates = bauges.features[0].geometry.coordinates;
-
-// const result = {
-//   "type": "FeatureCollection",
-//   "features": [
-//     {
-//       "type": "Feature",
-//       "geometry": {
-//         "type": "LineString",
-//         "coordinates": []
-//       },
-//     },
-//   ],
-// };
-
-// var from = {
-//   "type": "Feature",
-//   "properties": {},
-//   "geometry": {
-//     "type": "Point",
-//     "coordinates": coordinates[0].slice(0,-1)
-//   }
-// };
-
-// coordinates.forEach((coordinate, index) => {
-//   console.log(`processing coordinates ${index}`);
-//   const altitude = coordinate.pop()
-//   const to = {
-//     "type": "Feature",
-//     "properties": {},
-//     "geometry": {
-//       "type": "Point",
-//       "coordinates": coordinate
-//     }
-//   };
-//   var sliced = turf.lineSlice(from, to, bauges.features[0]);
-//   const distance = turf.length(sliced, {units: 'kilometers'});
-//   result.features[0].geometry.coordinates.push([...coordinate, altitude, distance])
-// });
 
 /**
  * update massifs/<MASSIF_NAME>/randonnees.json file
@@ -149,22 +122,79 @@ function slugify(str) {
 /**
  * build trek object with monpetitsommet.fr format
  */
-function buildTrekObject({ title, key }) {
-  // TODO: read gpx file and process data
+function buildTrekObject({ title, key, stepCount, pointOfInterestCount }) {
+  const trekPoints = [];
+  const trekCoordinates = getTrekCoordinates();
+  const progressBar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
+  progressBar.start(trekCoordinates.length, 0);
+  for (let index = 0; index < trekCoordinates.length; index++) {
+    progressBar.update(index + 1);
+    let distanceFromBeginning = computePointDistance(trekCoordinates, index);
+    let elevationSinceBeginning = computePointElevation(trekCoordinates, index);
+    trekPoints.push([...trekCoordinates[index], distanceFromBeginning, elevationSinceBeginning]);
+  }
+  progressBar.stop();
   return {
     title,
     key,
     summary: {
-      distance: 0, // TODO
-      elevation: 0, // TODO
-      duration: 0, // TODO
+      distance: _.last(trekPoints)[3],
+      elevation: _.last(trekPoints)[4],
+      duration: 0,
     },
     introduction: {
       text: '',
       image: '',
     },
-    pointsOfInterest: [],
-    steps: [],
-    coordinates: [], // TODO
+    pointsOfInterest: new Array(pointOfInterestCount).fill({ name: '', distance: 0, elevation: 0 }),
+    steps: new Array(stepCount).fill({ title: '', text: '' }),
+    coordinates: trekPoints,
   };
+}
+
+/**
+ * parse input.gpx file and return array of 3D coordinates
+ * -> [[6.31358, 45.63063, 322.85507202148], [6.31313, 45.63055, 323.08053588867], ...]
+ */
+function getTrekCoordinates() {
+  const source = path.resolve(__dirname, 'input.gpx');
+  const kml = new DOMParser().parseFromString(fs.readFileSync(source, 'utf8'));
+  const geojson = tj.gpx(kml);
+  return _.get(geojson, 'features[0].geometry.coordinates');
+}
+
+/**
+ * compute distance between two points along a line/path
+ */
+function computePointDistance(trekCoordinates, index) {
+  const from = {
+    type: 'Feature',
+    properties: {},
+    geometry: { type: 'Point', coordinates: trekCoordinates[0].slice(0, 2) },
+  };
+  const to = {
+    type: "Feature",
+    properties: {},
+    geometry: { type: 'Point', coordinates: trekCoordinates[index].slice(0, 2) },
+  };
+  const line = {
+    type: 'Feature',
+    geometry: { type: 'LineString', coordinates: trekCoordinates },
+  };
+  const slicedLine = turf.lineSlice(from, to, line);
+  const distance = turf.length(slicedLine, { units: 'kilometers' });
+  return Math.round(distance * 100) / 100;
+}
+
+/**
+ * compute cumulative elevation up to a given point
+ */
+function computePointElevation(trekCoordinates, index) {
+  const elevation = trekCoordinates.slice(0, index).reduce((cumulativeElevation, _currentPoint, idx) => {
+    if (idx === 0) return cumulativeElevation;
+    const currentElevation = _.last(trekCoordinates[idx]);
+    const previousElevation = _.last(trekCoordinates[idx - 1]);
+    return cumulativeElevation + Math.max((currentElevation - previousElevation), 0);
+  }, 0);
+  return Math.round(elevation * 100) / 100;
 }
