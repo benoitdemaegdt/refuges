@@ -26,14 +26,14 @@ export default {
     highcharts: Chart,
   },
   props: {
-    coordinates: { type: Array, required: true },
+    coordinates: { type: Array, required: true }, // [long, lat, alt, dist, elevation]
     pointsOfInterest: { type: Array, required: true },
   },
   mixins: [ MapboxMixin ],
   data: () => ({
     chartHeight: undefined,
     hoveredGraphPointIndex: undefined,
-    popup: undefined
+    marker: undefined,
   }),
   mounted() {
     this.chartHeight = this.$refs['graph'].clientHeight;
@@ -45,10 +45,7 @@ export default {
         type: 'geojson',
         data: {
           type: 'Feature',
-          geometry: {
-            type: 'LineString',
-            coordinates: this.coordinates,
-          },
+          geometry: { type: 'LineString', coordinates: this.coordinates.map(coord => coord.slice(0, 2)) },
         },
       });
       this.map.addLayer({
@@ -64,8 +61,8 @@ export default {
       // fit bounds
       const coordinates = this.coordinates;
       const bounds = coordinates.reduce((bounds, coord) => {
-        return bounds.extend(coord.slice(0,-1));
-      }, new mapboxgl.LngLatBounds(coordinates[0].slice(0,-1), coordinates[0].slice(0,-1)));
+        return bounds.extend(coord.slice(0, 2));
+      }, new mapboxgl.LngLatBounds(coordinates[0].slice(0, 2), coordinates[0].slice(0, 2)));
  
       this.map.fitBounds(bounds, { padding: 20 });
     });
@@ -74,24 +71,15 @@ export default {
     hoveredGraphPointIndex: {
       handler(newIndex) {
         if (newIndex !== undefined) {
-          if (this.popup) this.popup.remove();
-          const coordinates = this.coordinates[newIndex].slice(0,-2);
-          const distance = this.coordinates[newIndex].slice(-1)[0];
-          const elevation = this.coordinates.slice(0, newIndex).reduce((cumulativeElevation, currentPoint, index) => {
-            if (index === 0) return cumulativeElevation;
-            const currentElevation = this.coordinates[index].slice(-2, -1)[0];
-            const previousElevation = this.coordinates[index - 1].slice(-2, -1)[0];
-            return cumulativeElevation + Math.max((currentElevation - previousElevation), 0);
-          }, 0);
-          this.popup = new mapboxgl.Popup({ closeOnClick: false, closeButton: false })
+          if (this.marker) this.marker.remove();
+          const coordinates = this.coordinates[newIndex].slice(0, 2);
+          const newMarker = document.createElement('div');
+          newMarker.className = 'mapbox-marker-dynamic';
+          this.marker = new mapboxgl.Marker(newMarker)
             .setLngLat(coordinates)
-            .setHTML(`
-              <b>Distance: ${Math.round(distance * 100) / 100} km</b><br>
-              <b>Dénivelé: ${Math.round(elevation * 100) / 100} m</b>
-            `)
             .addTo(this.map);
         } else {
-          this.popup.remove();
+          this.marker.remove();
         }
       },
     },
@@ -127,8 +115,8 @@ export default {
         tooltip: {
           formatter() {
             return `
-              <b>Distance: ${Math.round(this.x * 100) / 100} km</b><br>
-              <b>Altitude: ${Math.round(this.y)} m</b>
+              <b>Distance : ${Math.round(this.x * 100) / 100} km</b><br>
+              <b>Dénivelé : ${Math.round(self.coordinates[self.hoveredGraphPointIndex][4])} m</b>
             `;
           }
         },
@@ -137,7 +125,7 @@ export default {
             color: '#78909C',
             marker: { enabled: false },
             threshold: null,
-            data: this.coordinates.map(coord => coord.slice(2).reverse()),
+            data: this.coordinates.map(coord => [coord[3], coord[2]]),
             point: {
               events: {
                 mouseOver( { target: { index } }) {
@@ -187,6 +175,16 @@ export default {
   border-color: black;
   width: 13px;
   height: 13px;
+  border-radius: 50%;
+}
+
+.mapbox-marker-dynamic {
+  background-color: #1E88E5;
+  border-style: solid;
+  border-width: 2px;
+  border-color: white;
+	height: 15px;
+	width: 15px;
   border-radius: 50%;
 }
 </style>
