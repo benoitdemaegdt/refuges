@@ -11,6 +11,9 @@
         <v-col cols="6">
           <div class="pt-10 pl-24">
             <h1 class="trek-title">{{ trek.title}}</h1>
+            <p>{{ trek.introduction.text }}</p>
+            <v-img height="350px" class="trek-img" key="bauges" :src="getImage(trek.introduction.image)"></v-img>
+            <h2>En Bref</h2>
             <v-row>
               <!-- distance -->
               <v-col cols="4">
@@ -34,9 +37,9 @@
                 </div>
               </v-col>
             </v-row>
-            <v-img height="350px" class="trek-img" key="bauges" :src="getImage(trek.introduction.image)"></v-img>
+            <h2>Le Topo</h2>
             <div v-for="step in trek.steps" :key="step.title">
-              <h2>{{ step.title }}</h2>
+              <h3>{{ step.title }}</h3>
               <p>{{ step.text }}</p>
             </div>
           </div>
