@@ -35,7 +35,11 @@
     {
       "title": "Étape 1 : de Frontenex au chalet d'Orisan",
       "text": "Autant s'y préparer : cette randonnée attaque directement dans le dur avec une première étape très physique. À la gare de Frontenex (320m) suivre la route pour rejoindre le village de Cléry (620m), facilement identifiable sur les hauteurs grâce à son église. Poursuivre sur la route vers le lieu-dit 'Vers le Néant'. Sortir de la zone habitée par un chemin forestier que l'on quitte rapidement pour suivre un sentier de randonnée qui remonte un torrent (Ruisseau de la Combe). Commence alors une montée longue et raide dans la forêt. Après plus de 1000m de dénivelé, on débouche sur un alpage et on découvre le chalet d'orisan (1580m) ainsi qu'une superbe vue sur toute la vallée d'Albertville. Attention, ce chalet est occupé par un berger et son troupeau en période estivale : présence probable de chiens de protection (patou).",
-      "image": ""
+      "image": "",
+      "coordinates": {
+        "startIndex": 0,
+        "endIndex": 419
+      }
     },
     {
       "title": "Étape 2 : du chalet d'Orisan à la pointe de la Chaurionde",
