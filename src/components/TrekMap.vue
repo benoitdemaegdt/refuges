@@ -28,6 +28,7 @@ export default {
   props: {
     coordinates: { type: Array, required: true }, // [long, lat, alt, dist, elevation]
     pointsOfInterest: { type: Array, required: true },
+    zoomIndexes: { type: Object, required: false }, // {startIndex, endIndex}
   },
   mixins: [ MapboxMixin ],
   data: () => ({
@@ -80,6 +81,20 @@ export default {
             .addTo(this.map);
         } else {
           this.marker.remove();
+        }
+      },
+    },
+    zoomIndexes: {
+      handler(newZoomIndexes) {
+        if (newZoomIndexes !== undefined) {
+          const coordinates = this.coordinates.slice(newZoomIndexes.startIndex, newZoomIndexes.endIndex);
+          const bounds = coordinates.reduce((bounds, coord) => {
+            return bounds.extend(coord.slice(0, 2));
+          }, new mapboxgl.LngLatBounds(coordinates[0].slice(0, 2), coordinates[0].slice(0, 2)));
+    
+          this.map.fitBounds(bounds, { padding: 20 });
+
+          this.$emit('zooming-done');
         }
       },
     },

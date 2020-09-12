@@ -39,14 +39,34 @@
             </v-row>
             <h2>Le Topo</h2>
             <div v-for="step in trek.steps" :key="step.title">
-              <h3>{{ step.title }}</h3>
+              <div class="title">
+                <h3>{{ step.title }}</h3>
+                <div v-if="step.coordinates" class="ml-2">
+                  <v-tooltip top>
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-icon
+                        color="black"
+                        v-bind="attrs"
+                        v-on="on"
+                        @click="setZoomIndexes(step.coordinates)">{{ mdiEyeOutline }}
+                      </v-icon>
+                    </template>
+                    <span>Zoomer sur cette étape</span>
+                  </v-tooltip>
+                </div>
+              </div>
               <p>{{ step.text }}</p>
             </div>
           </div>
         </v-col>
         <v-col cols="6" class="map-col pa-0">
           <div class="map-container-desktop">
-            <TrekMap :coordinates="trek.coordinates" :pointsOfInterest="trek.pointsOfInterest"/>
+            <TrekMap
+              :coordinates="trek.coordinates"
+              :pointsOfInterest="trek.pointsOfInterest"
+              :zoomIndexes="zoomIndexes"
+              @zooming-done="resetZoomIndexes"
+            />
           </div>
         </v-col>
       </v-row>
@@ -55,6 +75,9 @@
 </template>
 
 <script>
+// icons
+import { mdiEyeOutline } from '@mdi/js';
+
 // components
 import TrekDetailsSkeleton from '@/components/skeletons/TrekDetailsSkeleton';
 import TrekMap from '@/components/TrekMap';
@@ -69,6 +92,8 @@ export default {
     TrekMap,
   },
   data: () => ({
+    mdiEyeOutline,
+    zoomIndexes: undefined,
     trek: undefined,
     isError: false,
   }),
@@ -90,12 +115,22 @@ export default {
   methods: {
     getImage(file){
       return require('@/assets/' + file);
+    },
+    setZoomIndexes(zoomIndexes) {
+      this.zoomIndexes = zoomIndexes;
+    },
+    resetZoomIndexes() {
+      this.zoomIndexes = undefined;
     }
   }
 };
 </script>
 
 <style scoped>
+.title {
+  display: flex;
+}
+
 /** right column : map */
 .map-col {
   position: fixed;
