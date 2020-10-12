@@ -41,7 +41,7 @@
             <div v-for="step in trek.steps" :key="step.title">
               <div class="title">
                 <h3>{{ step.title }}</h3>
-                <div v-if="step.coordinates" class="ml-2">
+                <div v-if="step.coordinates">
                   <v-tooltip top>
                     <template v-slot:activator="{ on }">
                       <v-btn
@@ -50,7 +50,7 @@
                         v-on="on"
                         @click="setZoomIndexes(step.coordinates)"
                       >
-                        <v-icon>{{ mdiEyeOutline }}</v-icon>
+                        <v-icon>{{ mdiMagnifyPlusOutline }}</v-icon>
                       </v-btn>
                       <v-icon></v-icon>
                     </template>
@@ -79,7 +79,7 @@
 
 <script>
 // icons
-import { mdiEyeOutline } from '@mdi/js';
+import { mdiMagnifyPlusOutline } from '@mdi/js';
 
 // components
 import TrekDetailsSkeleton from '@/components/skeletons/TrekDetailsSkeleton';
@@ -95,7 +95,7 @@ export default {
     TrekMap,
   },
   data: () => ({
-    mdiEyeOutline,
+    mdiMagnifyPlusOutline,
     zoomIndexes: undefined,
     trek: undefined,
     isError: false,
