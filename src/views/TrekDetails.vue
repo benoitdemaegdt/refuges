@@ -43,13 +43,16 @@
                 <h3>{{ step.title }}</h3>
                 <div v-if="step.coordinates" class="ml-2">
                   <v-tooltip top>
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-icon
+                    <template v-slot:activator="{ on }">
+                      <v-btn
+                        icon
                         color="black"
-                        v-bind="attrs"
                         v-on="on"
-                        @click="setZoomIndexes(step.coordinates)">{{ mdiEyeOutline }}
-                      </v-icon>
+                        @click="setZoomIndexes(step.coordinates)"
+                      >
+                        <v-icon>{{ mdiEyeOutline }}</v-icon>
+                      </v-btn>
+                      <v-icon></v-icon>
                     </template>
                     <span>Zoomer sur cette étape</span>
                   </v-tooltip>
@@ -104,7 +107,7 @@ export default {
           this.isError = false;
           const massif = this.$route.params.massif;
           const trek = this.$route.params.randonnee;
-          this.trek = await getTrekData(massif, trek); 
+          this.trek = await getTrekData(massif, trek);
         } catch (error) {
           this.isError = true;
         }
