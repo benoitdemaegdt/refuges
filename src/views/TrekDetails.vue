@@ -9,6 +9,7 @@
     <template v-else>
       <v-row>
 
+        <v-col v-if="!isMobile || !isShowingMap" :cols="leftCols">
           <div class="pt-10 pl-24">
             <h1 class="trek-title">{{ trek.title}}</h1>
             <p>{{ trek.introduction.text }}</p>
@@ -63,6 +64,7 @@
           </div>
         </v-col>
 
+        <v-col v-if="!isMobile || isShowingMap" :cols="leftCols" class="map-col pa-0">
           <div class="map-container-desktop">
             <TrekMap
               :coordinates="trek.coordinates"
@@ -74,17 +76,25 @@
         </v-col>
 
       </v-row>
+
+      <v-btn v-if="isMobile" fab dark color="#71717E" fixed right bottom @click="isShowingMap = !isShowingMap">
+        <v-icon v-if="isShowingMap">{{ mdiFormatListBulletedSquare }}</v-icon>
+        <v-icon v-else>{{ mdiMap }}</v-icon>
+      </v-btn>
     </template>
   </v-container>
 </template>
 
 <script>
 // icons
-import { mdiMagnifyPlusOutline } from '@mdi/js';
+import { mdiMagnifyPlusOutline, mdiMap, mdiFormatListBulletedSquare } from '@mdi/js';
 
 // components
 import TrekDetailsSkeleton from '@/components/skeletons/TrekDetailsSkeleton';
 import TrekMap from '@/components/TrekMap';
+
+// mixin
+import LayoutMixin from '@/mixins/LayoutMixin.js';
 
 // services
 import { getTrekData } from '@/services/TrekService';
@@ -95,10 +105,14 @@ export default {
     TrekDetailsSkeleton,
     TrekMap,
   },
+  mixins: [ LayoutMixin ],
   data: () => ({
     mdiMagnifyPlusOutline,
+    mdiMap,
+    mdiFormatListBulletedSquare,
     zoomIndexes: undefined,
     trek: undefined,
+    isShowingMap: false,
     isError: false,
   }),
   watch: {
@@ -115,6 +129,16 @@ export default {
       },
       immediate: true,
     },
+  },
+  computed: {
+    leftCols() {
+      if (!this.isMobile) return 6;
+      return this.isShowingMap ? 0 : 12;
+    },
+    rightCols() {
+      if (!this.isMobile) return 6;
+      return this.isShowingMap ? 12 : 0;
+    }
   },
   methods: {
     getImage(file){
