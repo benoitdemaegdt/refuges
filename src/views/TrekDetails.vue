@@ -33,7 +33,7 @@
               <v-col cols="4">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/mountain.png')"></v-img></div>
-                  <div class="flex-child">D+ : {{ trek.summary.elevation }}m</div>
+                  <div class="flex-child">D+ : {{ Math.round(trek.summary.elevation) }}m</div>
                 </div>
               </v-col>
             </v-row>
