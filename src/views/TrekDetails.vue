@@ -8,7 +8,7 @@
     </template>
     <template v-else>
       <v-row>
-        <v-col cols="6">
+
           <div class="pt-10 pl-24">
             <h1 class="trek-title">{{ trek.title}}</h1>
             <p>{{ trek.introduction.text }}</p>
@@ -39,9 +39,9 @@
             </v-row>
             <h2>Le Topo</h2>
             <div v-for="step in trek.steps" :key="step.title">
-              <div class="title">
-                <h3>{{ step.title }}</h3>
-                <div v-if="step.coordinates">
+              <div>
+                <h3 class="title-text">{{ step.title }}</h3>
+                <div class="title-zoom" v-if="step.coordinates">
                   <v-tooltip top>
                     <template v-slot:activator="{ on }">
                       <v-btn
@@ -62,7 +62,7 @@
             </div>
           </div>
         </v-col>
-        <v-col cols="6" class="map-col pa-0">
+
           <div class="map-container-desktop">
             <TrekMap
               :coordinates="trek.coordinates"
@@ -72,6 +72,7 @@
             />
           </div>
         </v-col>
+
       </v-row>
     </template>
   </v-container>
@@ -130,8 +131,9 @@ export default {
 </script>
 
 <style scoped>
-.title {
-  display: flex;
+
+.title-text, .title-zoom {
+  display:inline;
 }
 
 /** right column : map */
