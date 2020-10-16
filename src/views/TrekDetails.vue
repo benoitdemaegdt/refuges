@@ -41,7 +41,14 @@
             <h2>Le Topo</h2>
             <div v-for="step in trek.steps" :key="step.title">
               <h3>
-                <span class="step-title" @click="setZoomIndexes(step.coordinates)">{{ step.title }}</span>
+                <v-tooltip top :disabled="isMobile">
+                  <template v-slot:activator="{ on }">
+                    <span class="step-title" v-on="on" @click="setZoomIndexes(step.coordinates)">
+                      {{ step.title }}
+                    </span>
+                  </template>
+                  <span>Zoomer sur cette étape <v-icon small dark>{{ mdiMagnifyPlusOutline }}</v-icon></span>
+                </v-tooltip>
               </h3>
               <p>{{ step.text }}</p>
             </div>
@@ -129,6 +136,7 @@ export default {
       return require('@/assets/' + file);
     },
     setZoomIndexes(zoomIndexes) {
+      if (this.isMobile) return;
       this.zoomIndexes = zoomIndexes;
     },
     resetZoomIndexes() {
