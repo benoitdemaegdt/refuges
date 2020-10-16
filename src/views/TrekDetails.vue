@@ -40,25 +40,9 @@
             </v-row>
             <h2>Le Topo</h2>
             <div v-for="step in trek.steps" :key="step.title">
-              <div>
-                <h3 class="title-text">{{ step.title }}</h3>
-                <div class="title-zoom" v-if="step.coordinates">
-                  <v-tooltip top>
-                    <template v-slot:activator="{ on }">
-                      <v-btn
-                        icon
-                        color="black"
-                        v-on="on"
-                        @click="setZoomIndexes(step.coordinates)"
-                      >
-                        <v-icon>{{ mdiMagnifyPlusOutline }}</v-icon>
-                      </v-btn>
-                      <v-icon></v-icon>
-                    </template>
-                    <span>Zoomer sur cette étape</span>
-                  </v-tooltip>
-                </div>
-              </div>
+              <h3>
+                <span class="step-title" @click="setZoomIndexes(step.coordinates)">{{ step.title }}</span>
+              </h3>
               <p>{{ step.text }}</p>
             </div>
           </div>
@@ -156,8 +140,11 @@ export default {
 
 <style scoped>
 
-.title-text, .title-zoom {
-  display:inline;
+.step-title {
+  cursor: pointer;
+}
+.step-title:hover {
+  border-bottom: 2px solid black;
 }
 
 /** right column : map */
