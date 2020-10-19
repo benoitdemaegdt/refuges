@@ -19,7 +19,7 @@
       <!-- search bar -->
       <v-col cols="0" md="6">
         <v-autocomplete
-          v-if="!isHomePage"
+          v-if="isShackPage"
           v-model="searchNavigation"
           @change="goToPage"
           flat
@@ -147,6 +147,9 @@ export default {
   computed: {
     isHomePage() {
       return this.$route.name === 'home';
+    },
+    isShackPage() {
+      return ['shackList', 'shackDetails'].includes(this.$route.name);
     },
     mountainRanges() {
       return [...new Set(this.massifs.map(massif => massif.location.mountain_range))];
