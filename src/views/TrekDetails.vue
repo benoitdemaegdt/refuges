@@ -10,11 +10,11 @@
       <v-row>
 
         <v-col v-if="!isMobile || !isShowingMap" :cols="leftCols">
-          <div class="pt-10 pl-24">
+          <div class="pl-24">
             <h1 class="trek-title">{{ trek.title}}</h1>
-            <p>{{ trek.introduction.text }}</p>
+            <p class="trek-intro">{{ trek.introduction.text }}</p>
             <v-img height="350px" class="trek-img" key="bauges" :src="getImage(trek.introduction.image)"></v-img>
-            <h2>En Bref</h2>
+            <h2><span class="highlight">En Bref</span></h2>
             <v-row>
               <!-- distance -->
               <v-col cols="4">
@@ -38,19 +38,23 @@
                 </div>
               </v-col>
             </v-row>
-            <h2>Le Topo</h2>
+            <h2><span class="highlight">Le Topo</span></h2>
             <div v-for="step in trek.steps" :key="step.title">
               <h3>
-                <v-tooltip top :disabled="isMobile">
+                <v-tooltip top :disabled="isMobile || !step.coordinates">
                   <template v-slot:activator="{ on }">
-                    <span class="step-title" v-on="on" @click="setZoomIndexes(step.coordinates)">
+                    <span
+                      :class="{ 'step-title': !isMobile && step.coordinates  }"
+                      v-on="on"
+                      @click="setZoomIndexes(step.coordinates)"
+                    >
                       {{ step.title }}
                     </span>
                   </template>
                   <span>Zoomer sur cette étape <v-icon small dark>{{ mdiMagnifyPlusOutline }}</v-icon></span>
                 </v-tooltip>
               </h3>
-              <p>{{ step.text }}</p>
+              <p class="step-text">{{ step.text }}</p>
             </div>
           </div>
         </v-col>
@@ -148,11 +152,19 @@ export default {
 
 <style scoped>
 
+.highlight {
+  background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #C8E6C9 50%);
+}
+
 .step-title {
   cursor: pointer;
 }
 .step-title:hover {
   border-bottom: 2px solid black;
+}
+
+.trek-intro, .step-text {
+  text-align: justify;
 }
 
 /** right column : map */
