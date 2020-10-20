@@ -124,6 +124,30 @@ export default {
     TrekMap,
   },
   mixins: [ LayoutMixin ],
+  metaInfo() {
+    if (this.trek && this.trek.title) {
+      return {
+        title: `${this.trek.title}`,
+        meta: [
+          // Google
+          { name: 'description', content: `${this.trek.introduction.text}` },
+          // Facebook
+          { property: 'og:title', content: `${this.trek.title}` },
+          { property: 'og:description', content: `${this.trek.introduction.text}` },
+          { property: 'og:url', content: `https://monpetitsommet.fr/massifs/${this.$route.params.massif}/randonnees/${this.trek.key}` },
+          { property: 'og:type', content: 'website' },
+          // Twitter Card
+          { name: 'twitter:title', content: `${this.trek.title}` },
+          { name: 'twitter:description', content: `${this.trek.introduction.text}` },
+        ].concat(this.trek.introduction.image !== undefined ? [
+          { property: 'og:image', content: this.getImage(this.trek.introduction.image, 0, { height: 450 }) },
+          { property: 'og:image:width', content: '600' },
+          { property: 'og:image:height', content: '450' },
+          { name: 'twitter:image', content: this.getImage(this.trek.introduction.image, 0, { height: 450 }) },
+        ] : []),
+      };
+    }
+  },
   data: () => ({
     mdiMagnifyPlusOutline,
     mdiMap,
