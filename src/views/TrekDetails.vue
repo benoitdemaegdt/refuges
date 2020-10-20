@@ -37,11 +37,13 @@
                   <div class="flex-child">D+ : {{ Math.round(trek.summary.elevation) }}m</div>
                 </div>
               </v-col>
-              <!-- cotation -->
+              <!-- rating -->
               <v-col cols="4" v-if="trek.summary.rating !== undefined">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/hook.png')"></v-img></div>
-                  <div class="flex-child">Cotation : {{ trek.summary.rating }}</div>
+                  <div class="flex-child">
+                    <a href="http://www.rando-marche.fr/_88181_2_les-cotations" target="_blank">Cotation : {{ trek.summary.rating }}</a>
+                  </div>
                 </div>
               </v-col>
               <!-- water -->
@@ -178,6 +180,14 @@ export default {
 </script>
 
 <style scoped>
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom: 1px solid black;
+}
 
 .highlight {
   background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #C8E6C9 50%);
