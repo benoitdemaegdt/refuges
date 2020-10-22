@@ -13,7 +13,7 @@
           <div class="pl-24">
             <h1 class="trek-title">{{ trek.title}}</h1>
             <p class="trek-intro">{{ trek.introduction.text }}</p>
-            <v-img height="350px" class="trek-img" :src="getImage([trek.introduction.image], 0, { height: 350 })"></v-img>
+            <v-img max-height="350px" class="trek-img" :src="getImage([trek.introduction.image], 0, { height: 350 })"></v-img>
             <h2><span class="highlight">En Bref</span></h2>
             <v-row>
               <!-- distance -->
@@ -79,7 +79,7 @@
               </h3>
               <p class="step-text">{{ step.text }}</p>
               <figure v-if="step.image" class="mb-4">
-                <v-img height="350px" class="trek-img" :src="getImage([step.image], 0, { height: 350 })"></v-img>
+                <v-img max-height="350px" class="trek-img" :src="getImage([step.image], 0, { height: 350 })"></v-img>
                 <figcaption class="caption">{{ step.caption }}</figcaption>
               </figure>
             </div>
