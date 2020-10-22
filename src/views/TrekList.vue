@@ -24,14 +24,16 @@
                     <v-col cols="6" v-if="trek.summary.distance !== undefined">
                       <div class="flex-container">
                         <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/distance.png')"></v-img></div>
-                        <div class="flex-child">Distance : {{ trek.summary.distance }}km</div>
+                        <div v-if="!isMobile" class="flex-child">Distance : {{ trek.summary.distance }}km</div>
+                        <div v-else class="flex-child">{{ trek.summary.distance }}km</div>
                       </div>
                     </v-col>
                     <!-- duration -->
                     <v-col cols="6" v-if="trek.summary.duration !== undefined">
                       <div class="flex-container">
                         <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/temps.png')"></v-img></div>
-                        <div class="flex-child">Durée : {{ trek.summary.duration }}</div>
+                        <div v-if="!isMobile" class="flex-child">Durée : {{ trek.summary.duration }}</div>
+                        <div v-else class="flex-child">{{ trek.summary.duration }}</div>
                       </div>
                     </v-col>
                     <!-- elevation -->
@@ -82,6 +84,9 @@
 // services
 import { getTrekList } from '@/services/TrekService.js';
 
+// mixin
+import LayoutMixin from '@/mixins/LayoutMixin.js';
+
 // components
 import TrekListSkeleton from '@/components/skeletons/TrekListSkeleton';
 
@@ -93,6 +98,7 @@ export default {
   components: {
     TrekListSkeleton,
   },
+  mixins: [ LayoutMixin ],
   data: () => ({
     mdiChevronUp,
     mdiChevronDown,

@@ -17,28 +17,30 @@
             <h2><span class="highlight">En Bref</span></h2>
             <v-row>
               <!-- distance -->
-              <v-col cols="4" v-if="trek.summary.distance !== undefined">
+              <v-col cols="6" sm="4" v-if="trek.summary.distance !== undefined">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/distance.png')"></v-img></div>
-                  <div class="flex-child">Distance : {{ trek.summary.distance }}km</div>
+                  <div v-if="!isMobile" class="flex-child">Distance : {{ trek.summary.distance }}km</div>
+                  <div v-else class="flex-child">{{ trek.summary.distance }}km</div>
                 </div>
               </v-col>
               <!-- duration -->
-              <v-col cols="4" v-if="trek.summary.duration !== undefined">
+              <v-col cols="6" sm="4" v-if="trek.summary.duration !== undefined">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/temps.png')"></v-img></div>
-                  <div class="flex-child">Durée : {{ trek.summary.duration }}</div>
+                  <div v-if="!isMobile" class="flex-child">Durée : {{ trek.summary.duration }}</div>
+                  <div v-else class="flex-child">{{ trek.summary.duration }}</div>
                 </div>
               </v-col>
               <!-- elevation -->
-              <v-col cols="4" v-if="trek.summary.elevation !== undefined">
+              <v-col cols="6" sm="4" v-if="trek.summary.elevation !== undefined">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/mountain.png')"></v-img></div>
                   <div class="flex-child">D+ : {{ Math.round(trek.summary.elevation) }}m</div>
                 </div>
               </v-col>
               <!-- rating -->
-              <v-col cols="4" v-if="trek.summary.rating !== undefined">
+              <v-col cols="6" sm="4" v-if="trek.summary.rating !== undefined">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/hook.png')"></v-img></div>
                   <div class="flex-child">
@@ -47,14 +49,14 @@
                 </div>
               </v-col>
               <!-- water -->
-              <v-col cols="4" v-if="trek.summary.water !== undefined">
+              <v-col cols="6" sm="4" v-if="trek.summary.water !== undefined">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/water.png')"></v-img></div>
                   <div class="flex-child">Eau : {{ trek.summary.water | booleanToFrench }}</div>
                 </div>
               </v-col>
               <!-- tent -->
-              <v-col cols="4" v-if="trek.summary.tent !== undefined">
+              <v-col cols="6" sm="4" v-if="trek.summary.tent !== undefined">
                 <div class="flex-container">
                   <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/tent.png')"></v-img></div>
                   <div class="flex-child">Bivouac : {{ trek.summary.tent | booleanToFrench }}</div>
