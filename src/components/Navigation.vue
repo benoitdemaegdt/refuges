@@ -77,21 +77,32 @@
       <v-list nav>
         <v-list-group
           v-for="range in mountainRanges"
-          :key="range">
+          :key="range"
+        >
           <template v-slot:activator>
-            <v-list-item-content>
-              <v-list-item-title>{{ range }}</v-list-item-title>
-            </v-list-item-content>
+            <v-list-item-title>{{ range }}</v-list-item-title>
           </template>
-          <v-list-item
+          <v-list-group
             v-for="massif in massifsByRange(range)"
             color='primary'
             :key="massif.key"
-            :to="{ name: 'shackList', params: { massif: massif.key }}"
+            sub-group
           >
-            <v-list-item-icon><v-icon>{{ mdiImage }}</v-icon></v-list-item-icon>
-            <v-list-item-title> {{ massif.name }}</v-list-item-title>
-          </v-list-item>
+            <template v-slot:activator>
+              <v-list-item-content>
+                <v-list-item-title>{{ massif.name }}</v-list-item-title>
+              </v-list-item-content>
+            </template>
+            <v-list-item
+              v-for="activity in massif.activities"
+              :key="activity"
+              :to="{ name: activitiesConfig[activity].routeName, params: { massif: massif.key }}"
+              link
+            >
+              <v-list-item-title>{{activitiesConfig[activity].title}}</v-list-item-title>
+              <v-list-item-icon><v-icon v-text="activitiesConfig[activity].icon"></v-icon></v-list-item-icon>
+            </v-list-item>
+          </v-list-group>
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
@@ -100,7 +111,7 @@
 
 <script>
 // icons
-import { mdiImage, mdiMagnify } from '@mdi/js';
+import { mdiHomeOutline, mdiWalk, mdiMagnify } from '@mdi/js';
 
 // data
 import massifs from '@/data/massifs.json';
@@ -111,12 +122,17 @@ import { getAllShacks } from '@/services/MassifService';
 export default {
   name: 'Navigation',
   data: () => ({
-    mdiImage,
     mdiMagnify,
+    mdiHomeOutline,
+    mdiWalk,
     drawer: false,
     searchNavigation: undefined,
     search: [],
     massifs,
+    activitiesConfig: {
+      shack: { title: 'Refuges', icon: mdiHomeOutline, routeName: 'shackList' },
+      trek: { title: 'Randonnées', icon: mdiWalk, routeName: 'trekList' },
+    },
   }),
   watch: {
     $route: {

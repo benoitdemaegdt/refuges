@@ -8,3 +8,12 @@ export async function getTrekData(massif, trek) {
   }
   return res.json();
 }
+
+export async function getTrekList(massif) {
+  const res = await fetch(`${BASE_URL}massifs/${massif}/randonnees.json`);
+  if (!res.ok) {
+    console.log('res :>> ', res);
+    throw new Error(res.status);
+  }
+  return res.json();
+}

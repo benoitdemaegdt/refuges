@@ -7,6 +7,7 @@ const Home = () => import(/* webpackChunkName: "home" */ '@/views/Home.vue');
 const About = () => import(/* webpackChunkName: "about" */ '@/views/About.vue');
 const ShackList = () => import(/* webpackChunkName: "shackList" */ /* webpackPrefetch: true */ '@/views/ShackList.vue');
 const ShackDetails = () => import(/* webpackChunkName: "shackDetails" */ '@/views/ShackDetails.vue');
+const TrekList = () => import(/* webpackChunkName: "trekList" */ /* webpackPrefetch: true */ '@/views/TrekList.vue');
 const TrekDetails = () => import(/* webpackChunkName: "trekDetails" */ '@/views/TrekDetails.vue');
 const NotFound = () => import(/* webpackChunkName: "not-found" */ '@/views/NotFound.vue');
 
@@ -38,6 +39,11 @@ const router = new VueRouter({
       path: '/massifs/:massif/refuges/:refuge',
       name: 'shackDetails',
       component: ShackDetails,
+    },
+    {
+      path: '/massifs/:massif/randonnees/',
+      name: 'trekList',
+      component: TrekList,
     },
     {
       path: '/massifs/:massif/randonnees/:randonnee',
