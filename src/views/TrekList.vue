@@ -12,14 +12,14 @@
       </template>
 
       <template v-else>
-        <h1 class="display-2 text-center mt-6">{{ trekList.length }} randonnées dans ce massif</h1>
+        <h1 class="display-2 text-center mt-6 mb-6">{{ trekList.length }} randonnées dans ce massif</h1>
         <v-row>
           <v-col v-for="trek in trekList" :key="trek.key" cols="12" sm="4">
               <v-card max-width="400">
-                <v-img height="200px" :src="trek.key"></v-img>
+                <v-img height="200px" :src="trek.introduction.image"></v-img>
                 <v-card-title>{{ trek.title }}</v-card-title>
                 <v-card-text class="text--primary">
-                  <p>{{ trek.intro }}</p>
+                  <p>{{ trek.introduction.text }}</p>
                 </v-card-text>
                 <v-card-actions>
                   <v-btn text @click="goToTrekDetails(trek)">Voir</v-btn>
