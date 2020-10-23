@@ -12,7 +12,7 @@
       </template>
 
       <template v-else>
-        <h1 class="display-2 text-center mt-6 mb-6">{{ trekList.length }} randonnées dans ce massif</h1>
+        <h1 class="display-2 text-center mt-6 mb-6">{{ title }}</h1>
         <v-row>
           <v-col v-for="trek in trekList" :key="trek.key" cols="12" sm="4">
               <v-card max-width="400">
@@ -134,6 +134,13 @@ export default {
     massif: undefined,
     isLoading: false,
   }),
+  computed: {
+    title() {
+      return this.trekList.length > 1
+        ? `${this.trekList.length} randonnées dans ce massif`
+        : `${this.trekList.length} randonnée dans ce massif`
+    },
+  },
   watch: {
     $route: {
       async handler() {
