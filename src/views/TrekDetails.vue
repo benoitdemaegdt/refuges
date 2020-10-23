@@ -134,7 +134,6 @@ export default {
   metaInfo() {
     if (this.trek && this.trek.title) {
       return {
-        title: `${this.trek.title}`,
         meta: [
           // Google
           { name: 'description', content: `${this.trek.introduction.text}` },

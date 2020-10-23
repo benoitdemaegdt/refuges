@@ -107,7 +107,7 @@
     <template v-else>
       <!-- vercors -->
       <v-card flat>
-        <v-img 
+        <v-img
           height="200px"
           :lazy-src="getImage(descriptions.vercors.image, 0, { height: 200, type: 'preload' })"
           :src="getImage(descriptions.vercors.image, 0, { height: 200 })"></v-img>
@@ -119,7 +119,7 @@
       </v-card>
       <!-- belledonne -->
       <v-card flat class="mt-8">
-        <v-img 
+        <v-img
           height="200px"
           :lazy-src="getImage(descriptions.belledonne.image, 0, { height: 200, type: 'preload' })"
           :src="getImage(descriptions.belledonne.image, 0, { height: 200 })"></v-img>
@@ -131,7 +131,7 @@
       </v-card>
       <!-- chartreuse -->
       <v-card flat class="mt-8">
-        <v-img 
+        <v-img
           height="200px"
           :lazy-src="getImage(descriptions.chartreuse.image, 0, { height: 200, type: 'preload' })"
           :src="getImage(descriptions.chartreuse.image, 0, { height: 200 })"></v-img>
@@ -161,7 +161,6 @@ export default {
   mixins: [ ImageMixin, LayoutMixin ],
   metaInfo() {
     return {
-      title: 'Mon Petit Sommet',
       titleTemplate: null,
       meta: [
         // Google

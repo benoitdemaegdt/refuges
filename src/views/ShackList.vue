@@ -66,7 +66,7 @@
                 :shacks="getPageCabanes"
                 :mouseOveredShackIndex="mouseOveredCabaneIndex"
               ></Mapbox>
-              <Map 
+              <Map
                 v-else
                 :massif="massif"
                 :cabanes="getPageCabanes"
@@ -130,7 +130,7 @@
                   :massif="massif"
                   :shacks="getPageCabanes"
                 ></Mapbox>
-                <Map 
+                <Map
                   v-else
                   :massif="massif"
                   :cabanes="getPageCabanes"
@@ -176,7 +176,6 @@ export default {
   metaInfo() {
     if (this.massif && this.massif.name) {
       return {
-        title: `${this.massif.name}`,
         meta: [
           // Google
           { name: 'description', content: `${this.massif.name} : Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !` },
