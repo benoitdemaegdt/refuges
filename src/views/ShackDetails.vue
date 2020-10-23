@@ -126,7 +126,7 @@
                   <div class="flex-child">Long, Lat : {{ shack.longitude }}, {{ shack.latitude }}</div>
                 </div>
               </v-col>
-            </v-row> 
+            </v-row>
           </div>
         </v-col>
       </v-row>
@@ -249,7 +249,6 @@ export default {
   metaInfo() {
     if (this.shack && this.shack.name) {
       return {
-        title: `${this.shack.name}`,
         meta: [
           // Google
           { name: 'description', content: `${this.shack.name} : informations, équipements, accès, fréquentation` },

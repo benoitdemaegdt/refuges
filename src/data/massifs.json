@@ -10,7 +10,8 @@
     },
     "data": {
       "sheetId": "1rdpk3f9RbymUtcHAPLPy9rnAdZTZrVwodg5KmiqR8Xs"
-    }
+    },
+    "activities": ["shack", "trek"]
   },
   {
     "name": "Belledonne",
@@ -28,9 +29,10 @@
     },
     "data": {
       "sheetId": "1-rBMkCrld6dAe66txfGxDpwp8PXj1hTddmrQSkolTHk"
-    }
+    },
+    "activities": ["shack"]
   },
-  { 
+  {
     "name": "Chartreuse",
     "key": "chartreuse",
     "connector": "de",
@@ -46,9 +48,10 @@
     },
     "data": {
       "sheetId": "1y2ZgAfJk8uNvaYhsmQiZL-8kNGKiN9rMGzXyDC86y8I"
-    }
+    },
+    "activities": ["shack"]
   },
-  { 
+  {
     "name": "Dévoluy",
     "key": "devoluy",
     "connector": "du",
@@ -59,8 +62,9 @@
     },
     "data": {
       "sheetId": "1XytJEwvlnJyTPS5NH653DSuKjvQXcrNkG2g-drZwgMk"
-    }
-  },  
+    },
+    "activities": ["shack"]
+  },
   {
     "name": "Ecrins",
     "key": "ecrins",
@@ -72,7 +76,8 @@
     },
     "data": {
       "sheetId": "1f1IuLe7nO7lOhFCXk7-g17k-Iby1ZekMo_w6ynpjZe8"
-    }
+    },
+    "activities": ["shack"]
   },
   {
     "name": "Queyras",
@@ -85,7 +90,8 @@
     },
     "data": {
       "sheetId": "1CgBRCjcCMy_JQLN74TohLtkU2SJe-poEwrMLLN9ygD8"
-    }
+    },
+    "activities": ["shack"]
   },
   {
     "name": "Taillefer",
@@ -98,7 +104,8 @@
     },
     "data": {
       "sheetId": "1_xa4a42TFijhsIl7qt394OMvlRNBBoq6m1VwDefvmec"
-    }
+    },
+    "activities": ["shack"]
   },
   {
     "name": "Vanoise",
@@ -111,7 +118,8 @@
     },
     "data": {
       "sheetId": "1wKzjldjxeG8AgBwIzcfrkTkJJQIgTusRRL9nf8ryA_o"
-    }
+    },
+    "activities": ["shack"]
   },
   {
     "name": "Vercors",
@@ -129,7 +137,8 @@
     },
     "data": {
       "sheetId": "1Z5pmYvoLjMBuSSitS3m3a94Gl2xxLQW2ll_hoaOxQko"
-    }
+    },
+    "activities": ["shack"]
   },
   {
     "name": "Bigorre",
@@ -142,6 +151,7 @@
     },
     "data": {
       "sheetId": "1sHiHXqGC43HzvVGXZj2UBV-Rc7Li4kzCBYTAskBv-dA"
-    }
+    },
+    "activities": ["shack"]
   }
 ]

@@ -15,7 +15,7 @@ import Navigation from '@/components/Navigation.vue';
 export default {
   name: 'App',
   metaInfo: {
-    titleTemplate: '%s | Mon Petit Sommet'
+    titleTemplate: 'Mon Petit Sommet'
   },
   components: {
     Navigation,
