@@ -142,7 +142,6 @@ export default {
         try {
           this.massif = massifs.find(massif => massif.key === this.$route.params.massif);
           this.trekList = await getTrekList(this.$route.params.massif);
-          console.log('trekList :>> ', this.trekList);
         } catch (error) {
           this.isError = true;
         }
