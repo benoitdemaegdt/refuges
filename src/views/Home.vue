@@ -1,6 +1,38 @@
 <template>
   <v-container fluid class="pt-0">
-    <v-row class="section" :class="`section-height-${screenWidth < $vuetify.breakpoint.thresholds.sm ? 'mobile' : 'desktop'}`">
+    <v-row
+      class="section"
+      :class="`section-height-${screenWidth < $vuetify.breakpoint.thresholds.sm ? 'mobile' : 'desktop'}`"
+      align="center"
+      justify="center"
+    >
+      <!-- <div class="test">
+        <v-row>
+          <v-col cols="6">
+            <v-img max-width="350px" height="100%" :src="getImage(image, 0, { height: sreenHeight })"></v-img>
+          </v-col>
+          <v-col cols="6">
+            <h1>Préparez votre aventure en montagne</h1>
+            <p>test test test test test test test test</p>
+          </v-col>
+        </v-row>
+      </div> -->
+      <div class="test">
+        <div class="child1">
+          <v-img width="100%" height="100%" :src="getImage(image, 0, { height: sreenHeight })"></v-img>
+        </div>
+        <div class="child2">
+          <div class="child3">
+            <h1 class="test-title">Préparez votre prochaine aventure en montagne</h1>
+            <h2 class="test-subtitle">Découvrez les topos détaillés d'aventures sportives en montagne. Parfois engagées. Souvent mémorables. Toujours loin des foules.</h2>
+            <div class="cta">
+              <v-btn outlined color="white">voir les topos →</v-btn>
+            </div>
+          </div>
+        </div>
+      </div>
+    </v-row>
+    <!-- <v-row class="section" :class="`section-height-${screenWidth < $vuetify.breakpoint.thresholds.sm ? 'mobile' : 'desktop'}`">
       <v-img
         height="100%"
         :lazy-src="getImage(image, 0, { height: sreenHeight, type: 'preload' })"
@@ -42,7 +74,7 @@
           </v-row>
         </v-sheet>
       </v-img>
-    </v-row>
+    </v-row> -->
     <v-row
       justify="center"
       align="center"
@@ -225,6 +257,57 @@ export default {
 </script>
 
 <style scoped>
+.test {
+  position: relative;
+  display: flex;
+  margin: 0 auto;
+  height: 85%;
+  width: 85%;
+}
+
+.child1 {
+  position: absolute;
+  width: 38%;
+  height: 100%;
+  /* margin-left: 8%; */
+  top: 0;
+  z-index: 2;
+  left: 7%;
+  background: blue;
+}
+
+.child2 {
+  width: 100%;
+  height: 80%;
+  margin: auto;
+  z-index: 1;
+  background: rgb(31, 55, 76);
+  color: white;
+}
+
+.child3 {
+  float: right;
+  padding: 5% 5% 5% 0%;
+  width: 45%;
+  height: 100%;
+}
+
+.test-title {
+  font-size: 40px;
+  font-family: "Recoleta";
+}
+
+.test-subtitle {
+  margin-top: 20px;
+  font-size: 26px;
+  font-family: "MrEaves";
+  font-weight: 50;
+}
+
+.cta {
+  margin-top: 30px;
+}
+
 .section {
   display: flex;
   flex-direction: column;
