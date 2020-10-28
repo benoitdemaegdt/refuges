@@ -40,4 +40,8 @@ export default {
       url('./assets/fonts/MrEavesXLModOT-Reg.ttf') format('truetype');
   font-style: normal;
 }
+
+h1, h2, h3  {
+  font-family: "Recoleta";
+}
 </style>
