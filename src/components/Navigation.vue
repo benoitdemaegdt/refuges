@@ -15,9 +15,25 @@
         <router-link :to="{ name: 'home'}" class='toolbar-title'>Mon Petit Sommet</router-link>
       </v-toolbar-title>
       <v-spacer />
-      <div class="tab">Blog</div>
-      <div class="tab" @click="$router.push({ name: 'about' })">À Propos</div>
-      <div class="tab">Contact</div>
+      <template v-if="!isMobile">
+        <div v-for="tab in tabs" :key="tab.name" class="tab" @click="tab.clickAction">
+          {{ tab.name}}
+        </div>
+      </template>
+      <template v-else>
+        <v-menu left bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn icon v-bind="attrs" v-on="on">
+              <v-icon>{{ mdiDotsVertical }}</v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item v-for="tab in tabs" :key="tab.name" @click="tab.clickAction">
+              <v-list-item-title>{{ tab.name}}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </template>
     </v-app-bar>
 
     <!-- navigation drawer -->
@@ -76,22 +92,32 @@
 
 <script>
 // icons
-import { mdiHomeOutline, mdiWalk } from '@mdi/js';
+import { mdiHomeOutline, mdiWalk, mdiDotsVertical } from '@mdi/js';
 
 // data
 import massifs from '@/data/massifs.json';
 
+// mixin
+import LayoutMixin from '@/mixins/LayoutMixin.js';
+
 export default {
   name: 'Navigation',
-  data: () => ({
+  mixins: [ LayoutMixin ],
+  data: (vm) => ({
     mdiHomeOutline,
     mdiWalk,
+    mdiDotsVertical,
     drawer: false,
     massifs,
     activitiesConfig: {
       shack: { title: 'Refuges', icon: mdiHomeOutline, routeName: 'shackList' },
       trek: { title: 'Randonnées', icon: mdiWalk, routeName: 'trekList' },
     },
+    tabs: [
+      { name: 'Blog', clickAction: () => { console.log('Blog does not exist yet'); } },
+      { name: 'À Propos', clickAction: () => { vm.$router.push({ name: 'about' }); } },
+      { name: 'Contact', clickAction: () => { console.log('Contact page does not exist yet'); } },
+    ]
   }),
   methods: {
     massifsByRange(mountainRange) {
