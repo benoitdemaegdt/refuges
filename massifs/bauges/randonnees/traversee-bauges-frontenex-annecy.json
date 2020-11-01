@@ -1,5 +1,5 @@
 {
-  "title": "Traversée des Bauges (Frontenex -> Annecy)",
+  "title": "Traversée des Bauges",
   "key": "traversee-bauges-frontenex-annecy",
   "summary": {
     "distance": 66.8,
@@ -7,7 +7,9 @@
     "duration": "3 à 4 jours",
     "rating": "T2",
     "water": true,
-    "tent": true
+    "tent": true,
+    "from": "Frontenex",
+    "to": "Annecy"
   },
   "introduction": {
     "text": "Situé entre Chambéry et Annecy, le massif des Bauges est un massif de moyenne montagne (point culminant à 2217m) encore méconnu du grand public. Faire le traversée des Bauges, c'est s'engager dans une randonnée exigeante, physique mais peu technique. On croisera des forêts, des petits villages, de nombreux alpages, et quelques sommets qui offrent une vue inégalables sur le lac d'Annecy. D'ailleurs, quoi de mieux que de terminer cette randonnée par une baignade dans le lac ...",
