@@ -1,205 +1,98 @@
 <template>
   <v-container fluid class="pt-0">
-    <v-row
+
+    <v-row class="section" align="center">
+      <v-row class="landing-main-row" :style="`height: ${isMobile ? '100' : '90'}%;`" align="center" justify="center" no-gutters>
+        <div class="image" v-if="!isMobile">
+          <v-img  width="100%" height="100%" :src="getImage(image, 0, { height: sreenHeight })"></v-img>
+        </div>
+        <v-col cols="12" md="11" class="landing-second-row" :style="`height: ${isMobile ? '90' : '80'}%;`" no-gutters>
+          <v-row align="center" justify="center" style="height: 100%;" no-gutters>
+            <v-col cols="11" md="5" offset-md="6" no-gutters>
+              <h1 :style="mainTitleStyle">Préparez votre prochaine aventure en montagne</h1>
+              <p :style="subTitleStyle">Découvrez les topos détaillés d'aventures sportives en montagne. Parfois engagées. Souvent loin des foules. Toujours mémorables.</p>
+              <v-btn class="mt-8" outlined large color="white">voir les topos →</v-btn>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+    </v-row>
+    <!-- <v-row
       class="section"
       :class="`section-height-${screenWidth < $vuetify.breakpoint.thresholds.sm ? 'mobile' : 'desktop'}`"
       align="center"
       justify="center"
     >
-      <!-- <div class="test">
-        <v-row>
-          <v-col cols="6">
-            <v-img max-width="350px" height="100%" :src="getImage(image, 0, { height: sreenHeight })"></v-img>
-          </v-col>
-          <v-col cols="6">
-            <h1>Préparez votre aventure en montagne</h1>
-            <p>test test test test test test test test</p>
-          </v-col>
-        </v-row>
-      </div> -->
       <div class="test">
         <div class="child1">
-          <v-img width="100%" height="100%" :src="getImage(image, 0, { height: sreenHeight })"></v-img>
+          <v-img v-if="!isMobile" width="100%" height="100%" :src="getImage(image, 0, { height: sreenHeight })"></v-img>
         </div>
         <div class="child2">
           <div class="child3">
             <h1 class="test-title">Préparez votre prochaine aventure en montagne</h1>
-            <h2 class="test-subtitle">Découvrez les topos détaillés d'aventures sportives en montagne. Parfois engagées. Souvent mémorables. Toujours loin des foules.</h2>
+            <p class="test-subtitle">Découvrez les topos détaillés d'aventures sportives en montagne. Parfois engagées. Souvent loin des foules. Toujours mémorables.</p>
             <div class="cta">
-              <v-btn outlined color="white">voir les topos →</v-btn>
+              <v-btn outlined large color="white">voir les topos →</v-btn>
             </div>
           </div>
         </div>
       </div>
-    </v-row>
-    <!-- <v-row class="section" :class="`section-height-${screenWidth < $vuetify.breakpoint.thresholds.sm ? 'mobile' : 'desktop'}`">
-      <v-img
-        height="100%"
-        :lazy-src="getImage(image, 0, { height: sreenHeight, type: 'preload' })"
-        :src="getImage(image, 0, { height: sreenHeight })"
-      >
-        <v-sheet color="transparent" class="overflow-y-auto" height="100%">
-          <v-row
-            class="mr-0 ml-0"
-            align="center"
-            justify="center"
-            :style="`height: ${screenWidth < $vuetify.breakpoint.thresholds.sm ? '60%' : '70%'};`"
-          >
-            <v-col cols="10" sm="6">
-              <h1 class="font-weight-black display-1 white--text">Votre prochaine aventure en montagne<br>commence ici</h1>
-              <v-autocomplete
-                class="mt-8"
-                v-model="searchMassif"
-                flat
-                solo
-                background-color="#EEEEEE"
-                hide-details
-                no-data-text="Ce massif sera bientôt ajouté 🙂"
-                clearable
-                :prepend-inner-icon="mdiMagnify"
-                label="Choisir un massif"
-                :items="searchMassif"
-                item-text="title"
-                item-value="path"
-                return-object
-              >
-                <template v-slot:item="data">
-                  <v-list-item-content>
-                    <v-list-item-title v-html="data.item.title"></v-list-item-title>
-                    <v-list-item-subtitle v-html="data.item.subtitle"></v-list-item-subtitle>
-                  </v-list-item-content>
-                </template>
-              </v-autocomplete>
-            </v-col>
-          </v-row>
-        </v-sheet>
-      </v-img>
     </v-row> -->
-    <v-row
-      justify="center"
-      align="center"
-      class="section"
+
+    <!-- <v-row
+      class="section mt-8"
       :class="`section-height-${screenWidth < $vuetify.breakpoint.thresholds.sm ? 'mobile' : 'desktop'}`"
+      align="center"
     >
-      <h2
-        :class="`home-title font-weight-black display-${screenWidth < $vuetify.breakpoint.thresholds.sm ? '1' : '3'}`">
-          Préparez vos aventures en montagne en repérant les cabanes, abris et refuges qui abriteront vos nuits
-        </h2>
+      <h2 class="mb-8">Traversez un massif en autonomie</h2>
+      <v-col v-for="trek in trekList" :key="trek.key" cols="12" sm="4">
+        <TrekListItem :trek="trek" :isExpandable="false" />
+      </v-col>
     </v-row>
-    <template v-if="screenWidth > 700">
-      <!-- vercors -->
-      <v-row>
-        <v-col cols="12" sm="6">
-          <v-img
-            height="350px"
-            max-width="450px"
-            class="home-img"
-            :src="getImage(descriptions.vercors.image, 0, { height: 200 })">
-          </v-img>
-        </v-col>
-        <v-col cols="12" sm="6">
-          <h3 class="home-content-title font-weight-black headline">{{ descriptions.vercors.title }}</h3>
-          <p class="mt-4 pr-12">{{ descriptions.vercors.description }}</p>
-          <v-btn class="mt-6" text outlined @click="$router.push({ name: 'shackList', params: { massif: 'vercors' }})">Voir les refuges</v-btn>
-        </v-col>
-      </v-row>
-      <!-- belledonne -->
-      <v-row class="mt-12">
-        <v-col cols="12" sm="6">
-          <h3 class="home-content-title font-weight-black headline">{{ descriptions.belledonne.title }}</h3>
-          <p class="mt-4 pl-12">{{ descriptions.belledonne.description }}</p>
-          <v-btn class="mt-6 ml-12" text outlined @click="$router.push({ name: 'shackList', params: { massif: 'belledonne' }})">Voir les refuges</v-btn>
-        </v-col>
-        <v-col cols="12" sm="6">
-          <v-img
-            height="350px"
-            max-width="450px"
-            class="home-img"
-            :src="getImage(descriptions.belledonne.image, 0, { height: 200 })">
-          </v-img>
-        </v-col>
-      </v-row>
-      <!-- chartreuse -->
-      <v-row class="mt-12">
-        <v-col cols="12" sm="6">
-          <v-img
-            height="350px"
-            max-width="450px"
-            class="home-img"
-            :src="getImage(descriptions.chartreuse.image, 0, { height: 200 })">
-          </v-img>
-        </v-col>
-        <v-col cols="12" sm="6">
-          <h3 class="home-content-title font-weight-black headline">{{ descriptions.chartreuse.title }}</h3>
-          <p class="mt-4 pr-12">{{ descriptions.chartreuse.description }}</p>
-          <v-btn class="mt-6" text outlined @click="$router.push({ name: 'shackList', params: { massif: 'chartreuse' }})">Voir les refuges</v-btn>
-        </v-col>
-      </v-row>
-    </template>
-    <template v-else>
-      <!-- vercors -->
-      <v-card flat>
-        <v-img
-          height="200px"
-          :lazy-src="getImage(descriptions.vercors.image, 0, { height: 200, type: 'preload' })"
-          :src="getImage(descriptions.vercors.image, 0, { height: 200 })"></v-img>
-        <v-card-title>{{ descriptions.vercors.title }}</v-card-title>
-        <v-card-text>{{ descriptions.vercors.description }}</v-card-text>
-        <v-card-actions>
-          <v-btn text outlined @click="$router.push({ name: 'shackList', params: { massif: 'vercors' }})">voir les refuges</v-btn>
-        </v-card-actions>
-      </v-card>
-      <!-- belledonne -->
-      <v-card flat class="mt-8">
-        <v-img
-          height="200px"
-          :lazy-src="getImage(descriptions.belledonne.image, 0, { height: 200, type: 'preload' })"
-          :src="getImage(descriptions.belledonne.image, 0, { height: 200 })"></v-img>
-        <v-card-title>{{ descriptions.belledonne.title }}</v-card-title>
-        <v-card-text>{{ descriptions.belledonne.description }}</v-card-text>
-        <v-card-actions>
-          <v-btn text outlined @click="$router.push({ name: 'shackList', params: { massif: 'belledonne' }})">voir les refuges</v-btn>
-        </v-card-actions>
-      </v-card>
-      <!-- chartreuse -->
-      <v-card flat class="mt-8">
-        <v-img
-          height="200px"
-          :lazy-src="getImage(descriptions.chartreuse.image, 0, { height: 200, type: 'preload' })"
-          :src="getImage(descriptions.chartreuse.image, 0, { height: 200 })"></v-img>
-        <v-card-title>{{ descriptions.chartreuse.title }}</v-card-title>
-        <v-card-text>{{ descriptions.chartreuse.description }}</v-card-text>
-        <v-card-actions>
-          <v-btn text outlined @click="$router.push({ name: 'shackList', params: { massif: 'chartreuse' }})">voir les refuges</v-btn>
-        </v-card-actions>
-      </v-card>
-    </template>
+
+    <v-row
+      class="section mt-8"
+      :class="`section-height-${screenWidth < $vuetify.breakpoint.thresholds.sm ? 'mobile' : 'desktop'}`"
+      align="center"
+    >
+      <h2>Dormez en refuge ou en cabane non gardée</h2>
+      <p>hello, this is a test</p>
+    </v-row>
+
+    <v-row
+      class="section mt-8"
+      :class="`section-height-${screenWidth < $vuetify.breakpoint.thresholds.sm ? 'mobile' : 'desktop'}`"
+      align="center"
+    >
+      <h2>Recevez par emails nos dernières aventures</h2>
+    </v-row> -->
+
   </v-container>
 </template>
 
 <script>
-// icons
-import { mdiMagnify } from '@mdi/js';
-
-// data
-import massifs from '@/data/massifs.json';
-
 // mixins
 import ImageMixin from '@/mixins/ImageMixin.js';
 import LayoutMixin from '@/mixins/LayoutMixin.js';
 
+// components
+// import TrekListItem from '@/components/TrekListItem.vue'
+
 export default {
   name: 'Home',
+  components: {
+    // TrekListItem,
+  },
   mixins: [ ImageMixin, LayoutMixin ],
   metaInfo() {
     return {
       titleTemplate: null,
       meta: [
         // Google
-        { name: 'description', content: 'Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !' },
+        { name: 'description', content: "Découvrez les topos détaillés d'aventures sportives en montagne. Parfois engagées. Souvent loin des foules. Toujours mémorables." },
         // Facebook
         { property: 'og:title', content: 'Mon Petit Sommet' },
-        { property: 'og:description', content: 'Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !' },
+        { property: 'og:description', content: "Découvrez les topos détaillés d'aventures sportives en montagne. Parfois engagées. Souvent loin des foules. Toujours mémorables." },
         { property: 'og:url', content: 'https://monpetitsommet.fr/' },
         { property: 'og:type', content: 'website' },
         { property: 'og:image', content: this.image },
@@ -207,146 +100,73 @@ export default {
         { property: 'og:image:height', content: '1440' },
         // Twitter Card
         { name: 'twitter:title', content: 'Mon Petit Sommet' },
-        { name: 'twitter:description', content: 'Préparez votre randonnée en repérant les cabanes, abris et refuges de montagne !' },
+        { name: 'twitter:description', content: "Découvrez les topos détaillés d'aventures sportives en montagne. Parfois engagées. Souvent loin des foules. Toujours mémorables." },
         { name: 'twitter:image', content: this.image },
       ],
     };
   },
   data: () => ({
-    mdiMagnify,
-    searchMassif: massifs.map(massif => ({
-      title: massif.name,
-      key: massif.key,
-      subtitle: `${massif.location.region} | ${massif.location.department}`,
-    })),
     image: ['https://res.cloudinary.com/monpetitsommet/image/upload/v1591291716/home/home_ofwjs8.png'],
-    descriptions: {
-      vercors: {
-        title: `Parcourir l'immensité du Vercors`,
-        description: `Été comme hiver, le Vercors est un fantastique terrain de jeu pour des sorties en pleine nature.
-          Il abrite en particulier la très sauvage et préservée réserve naturelle des « Hauts-Plateaux »
-          qui s'étend sur plus de 17 000 hectares et reste à ce jour la plus grande réserve naturelle de France métropolitaine.`,
-        image: ['https://res.cloudinary.com/monpetitsommet/image/upload/v1591631199/home/vercors_lkgmgv.jpg'],
-      },
-      belledonne: {
-        title: `Prendre de l'altitude en Belledonne`,
-        description: `Avec ses sommets enneigés, ses lacs et ses glaciers, Belledonne est un massif de moyenne montagne situé à proximité immédiate de Grenoble.
-          Ce massif est très réputé parmi les adeptes du ski de rando qui viennent y chercher de la poudreuse et des pentes raides.
-          Les randonneurs estivaux ne sont pas en reste : le tout nouveau GR 738, long de 130km, permet de réaliser le Haute Traversée de Belledonne.`,
-        image: ['https://res.cloudinary.com/monpetitsommet/image/upload/v1591631199/home/belledonne_p8kbuc.jpg'],
-      },
-      chartreuse: {
-        title: `S'imprégner de nature en Chartreuse`,
-        description: `On vient en Chartreuse pour son accès facile, sa nature verdoyante et ses immenses espaces.
-          Entre la Chamechaude, Le cirque de Saint-Même et la réserve naturelle des Hauts de Chartreuse, ce massif regorge de merveilles.
-          À découvrir en été comme en hiver.`,
-        image: ['https://res.cloudinary.com/monpetitsommet/image/upload/v1591631199/home/chartreuse_se4al7.jpg'],
-      },
-    },
-  }),
-  watch: {
-    searchMassif: {
-      handler(newRoute) {
-        if (newRoute) {
-          this.$router.push({ name: 'shackList', params: { massif: newRoute.key }})
+    trekList: [
+      {
+        "title": "Traversée des Bauges (Frontenex -> Annecy)",
+        "key": "traversee-bauges-frontenex-annecy",
+        "massif": "bauges",
+        "summary": { "distance": 66.8, "elevation": 5150.15, "duration": "3 à 4 jours", "rating": "T2" },
+        "introduction": {
+          "image": "https://res.cloudinary.com/monpetitsommet/image/upload/v1603218138/bauges/randonnees/traversee-bauges-frontenex-annecy/intro_ppjy7g.jpg"
         }
       },
+    ],
+  }),
+  computed: {
+    mainTitleStyle() {
+      const baseStyle = { 'color': 'white' };
+      const responsiveStyle = this.screenWidth < this.$vuetify.breakpoint.thresholds.xs
+        ? { 'font-size': '35px' }
+        : { 'font-size': '45px' };
+      return {
+        ...baseStyle,
+        ...responsiveStyle,
+      };
     },
+    subTitleStyle() {
+      const baseStyle = { 'color': 'white', 'font-family': 'MrEaves', 'font-weight': '50', 'margin-top': '20px' };
+      const responsiveStyle = this.screenWidth < this.$vuetify.breakpoint.thresholds.xs
+        ? { 'font-size': '20px' }
+        : { 'font-size': '26px' };
+      return {
+        ...baseStyle,
+        ...responsiveStyle,
+      };
+    }
   },
 }
 </script>
 
 <style scoped>
-.test {
-  position: relative;
-  display: flex;
-  margin: 0 auto;
-  height: 85%;
-  width: 85%;
-}
-
-.child1 {
-  position: absolute;
-  width: 38%;
-  height: 100%;
-  /* margin-left: 8%; */
-  top: 0;
-  z-index: 2;
-  left: 7%;
-  background: blue;
-}
-
-.child2 {
-  width: 100%;
-  height: 80%;
-  margin: auto;
-  z-index: 1;
-  background: rgb(31, 55, 76);
-  color: white;
-}
-
-.child3 {
-  float: right;
-  padding: 5% 5% 5% 0%;
-  width: 45%;
-  height: 100%;
-}
-
-.test-title {
-  font-size: 40px;
-  font-family: "Recoleta";
-}
-
-.test-subtitle {
-  margin-top: 20px;
-  font-size: 26px;
-  font-family: "MrEaves";
-  font-weight: 50;
-}
-
-.cta {
-  margin-top: 30px;
-}
 
 .section {
-  display: flex;
-  flex-direction: column;
+  height: calc(100vh - 48px);
 }
 
-.section-height-desktop {
-  height: calc(100vh - 64px);
+.landing-main-row {
+  position: relative;
 }
 
-.section-height-mobile {
-  height: calc(100vh - 56px);
+.landing-second-row {
+  background-color: rgb(31, 55, 76);
 }
 
-/* If the screen size is 1101px wide or more */
-@media screen and (min-width: 801px) {
-  .home-title {
-    max-width: 80%;
-    text-align: center;
-  }
-}
-/* If the screen size is 800px wide or less */
-@media screen and (max-width: 800px) {
-  .home-title {
-    max-width: 95%;
-    text-align: center;
-  }
+.image {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  height: 100%;
+  width: 35%;
 }
 
 .v-card__title {
   word-break: normal;
-}
-
-.home-img {
-  border-radius: 8px;
-  box-shadow: 0 3px 20px 0 rgba(0,0,0,.2);
-  margin: auto;
-}
-
-.home-content-title {
-  text-align: center;
 }
 </style>
