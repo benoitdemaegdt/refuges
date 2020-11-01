@@ -35,17 +35,17 @@
     <v-row  class="my-8" justify="center" no-gutters>
       <h2>Dormez en refuge ou en cabane non gardée</h2>
     </v-row>
-    <v-row justify="center" no-gutters>
+    <v-row justify="center">
       <v-col v-for="shack in shackList" :key="shack.key" cols="12" sm="4">
-        <v-row no-gutters justify="center">
-          <!-- TODO -->
+        <v-row justify="center">
+          <ShackListItem vertical :shack="shack" :massif="shack.massif" />
         </v-row>
       </v-col>
     </v-row>
 
     <!-- 4th section -->
     <v-row class="my-8" justify="center" no-gutters>
-      <h2>Découvrez de nouvelles aventures</h2>
+      <h2>Découvrez vos prochaines aventures</h2>
     </v-row>
 
   </v-container>
@@ -57,12 +57,14 @@ import ImageMixin from '@/mixins/ImageMixin.js';
 import LayoutMixin from '@/mixins/LayoutMixin.js';
 
 // components
-import TrekListItem from '@/components/TrekListItem.vue'
+import TrekListItem from '@/components/TrekListItem.vue';
+import ShackListItem from '@/components/shackListItem/ShackListItem.vue';
 
 export default {
   name: 'Home',
   components: {
     TrekListItem,
+    ShackListItem,
   },
   mixins: [ ImageMixin, LayoutMixin ],
   metaInfo() {
@@ -90,16 +92,47 @@ export default {
     image: ['https://res.cloudinary.com/monpetitsommet/image/upload/v1591291716/home/home_ofwjs8.png'],
     trekList: [
       {
-        "title": "Traversée des Bauges (Frontenex -> Annecy)",
-        "key": "traversee-bauges-frontenex-annecy",
-        "massif": "bauges",
-        "summary": { "distance": 66.8, "elevation": 5150.15, "duration": "3 à 4 jours", "rating": "T2" },
-        "introduction": {
-          "image": "https://res.cloudinary.com/monpetitsommet/image/upload/v1603218138/bauges/randonnees/traversee-bauges-frontenex-annecy/intro_ppjy7g.jpg"
+        title: 'Traversée des Bauges (Frontenex → Annecy)',
+        key: 'traversee-bauges-frontenex-annecy',
+        massif: 'bauges',
+        summary: { distance: 66.8, elevation: 5150.15, duration: '3 à 4 jours', rating: "T2" },
+        introduction: {
+          image: 'https://res.cloudinary.com/monpetitsommet/image/upload/v1603218138/bauges/randonnees/traversee-bauges-frontenex-annecy/intro_ppjy7g.jpg'
         }
       },
     ],
-    shackList: [],
+    shackList: [
+      {
+        name: 'Refuge de la Jasse du Play',
+        type: 'cabane non gardée, Vercors',
+        key: 'refuge-de-la-jasse-du-play',
+        massif: 'vercors',
+        images_outdoor: [
+          'https://res.cloudinary.com/monpetitsommet/image/upload/h_800,f_auto/v1591018140/vercors/refuge-de-la-jasse-du-play-1_gw7gif.jpg',
+        ],
+        altitude: 1629, beds: 10, stove: true, water: true,
+      },
+      {
+        name: 'Cabane des Aiguillettes',
+        key: 'cabane-des-aiguillettes',
+        type: 'cabane non gardée, Vercors',
+        massif: 'vercors',
+        images_outdoor: [
+          'https://res.cloudinary.com/monpetitsommet/image/upload/h_800,f_auto/v1591018111/vercors/cabane-des-aiguillettes-1_i9komu.jpg',
+        ],
+        altitude: 1880, beds: 4, stove: false, water: true,
+      },
+      {
+        name: 'Cabane des Chaumailloux',
+        key: 'cabane-pnrv-des-chaumailloux',
+        type: 'cabane non gardée, Vercors',
+        massif: 'vercors',
+        images_outdoor: [
+          'https://res.cloudinary.com/monpetitsommet/image/upload/h_800,f_auto/v1591018146/vercors/cabane-pnrv-des-chaumailloux-1_ujyt32.jpg',
+        ],
+        altitude: 1665, beds: 19, stove: true, water: true,
+      },
+    ],
   }),
   computed: {
     mainTitleStyle() {

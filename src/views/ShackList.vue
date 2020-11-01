@@ -162,7 +162,8 @@ import { getShacksByMassif } from '@/services/MassifService';
 import LayoutMixin from '@/mixins/LayoutMixin.js';
 
 // components
-import ShackListItem from '@/components/ShackListItem';
+import ShackListItem from '@/components/shackListItem/ShackListItem.vue';
+
 const Map = () => import(/* webpackChunkName: "leaflet" */ '@/components/Map');
 const Mapbox = () => import(/* webpackChunkName: "mapbox" */ '@/components/Mapbox');
 
