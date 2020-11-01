@@ -1,6 +1,7 @@
 <template>
   <v-container fluid class="pt-0">
 
+    <!-- first section -->
     <v-row class="section" align="center">
       <v-row class="landing-main-row" :style="`height: ${isMobile ? '100' : '90'}%;`" align="center" justify="center" no-gutters>
         <div class="image" v-if="!isMobile">
@@ -17,55 +18,35 @@
         </v-col>
       </v-row>
     </v-row>
-    <!-- <v-row
-      class="section"
-      :class="`section-height-${screenWidth < $vuetify.breakpoint.thresholds.sm ? 'mobile' : 'desktop'}`"
-      align="center"
-      justify="center"
-    >
-      <div class="test">
-        <div class="child1">
-          <v-img v-if="!isMobile" width="100%" height="100%" :src="getImage(image, 0, { height: sreenHeight })"></v-img>
-        </div>
-        <div class="child2">
-          <div class="child3">
-            <h1 class="test-title">Préparez votre prochaine aventure en montagne</h1>
-            <p class="test-subtitle">Découvrez les topos détaillés d'aventures sportives en montagne. Parfois engagées. Souvent loin des foules. Toujours mémorables.</p>
-            <div class="cta">
-              <v-btn outlined large color="white">voir les topos →</v-btn>
-            </div>
-          </div>
-        </div>
-      </div>
-    </v-row> -->
 
-    <!-- <v-row
-      class="section mt-8"
-      :class="`section-height-${screenWidth < $vuetify.breakpoint.thresholds.sm ? 'mobile' : 'desktop'}`"
-      align="center"
-    >
-      <h2 class="mb-8">Traversez un massif en autonomie</h2>
+    <!-- second section -->
+    <v-row  class="my-8" justify="center" no-gutters>
+      <h2>Traversez un massif en autonomie</h2>
+    </v-row>
+    <v-row justify="center" no-gutters>
       <v-col v-for="trek in trekList" :key="trek.key" cols="12" sm="4">
-        <TrekListItem :trek="trek" :isExpandable="false" />
+        <v-row no-gutters justify="center">
+          <TrekListItem :trek="trek" :isExpandable="false" />
+        </v-row>
       </v-col>
     </v-row>
 
-    <v-row
-      class="section mt-8"
-      :class="`section-height-${screenWidth < $vuetify.breakpoint.thresholds.sm ? 'mobile' : 'desktop'}`"
-      align="center"
-    >
+    <!-- third section -->
+    <v-row  class="my-8" justify="center" no-gutters>
       <h2>Dormez en refuge ou en cabane non gardée</h2>
-      <p>hello, this is a test</p>
+    </v-row>
+    <v-row justify="center" no-gutters>
+      <v-col v-for="shack in shackList" :key="shack.key" cols="12" sm="4">
+        <v-row no-gutters justify="center">
+          <!-- TODO -->
+        </v-row>
+      </v-col>
     </v-row>
 
-    <v-row
-      class="section mt-8"
-      :class="`section-height-${screenWidth < $vuetify.breakpoint.thresholds.sm ? 'mobile' : 'desktop'}`"
-      align="center"
-    >
-      <h2>Recevez par emails nos dernières aventures</h2>
-    </v-row> -->
+    <!-- 4th section -->
+    <v-row class="my-8" justify="center" no-gutters>
+      <h2>Découvrez de nouvelles aventures</h2>
+    </v-row>
 
   </v-container>
 </template>
@@ -76,12 +57,12 @@ import ImageMixin from '@/mixins/ImageMixin.js';
 import LayoutMixin from '@/mixins/LayoutMixin.js';
 
 // components
-// import TrekListItem from '@/components/TrekListItem.vue'
+import TrekListItem from '@/components/TrekListItem.vue'
 
 export default {
   name: 'Home',
   components: {
-    // TrekListItem,
+    TrekListItem,
   },
   mixins: [ ImageMixin, LayoutMixin ],
   metaInfo() {
@@ -118,6 +99,7 @@ export default {
         }
       },
     ],
+    shackList: [],
   }),
   computed: {
     mainTitleStyle() {
@@ -145,6 +127,9 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  font-size: 40px;
+}
 
 .section {
   height: calc(100vh - 48px);
