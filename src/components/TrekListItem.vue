@@ -2,6 +2,7 @@
   <v-card :max-width="isMobile ? 350 : 400">
     <v-img height="230px" :src="getImage([trek.introduction.image], 0, { height: 450 })"></v-img>
     <v-card-title>{{ trek.title }}</v-card-title>
+    <v-card-subtitle>De {{ trek.summary.from }} à {{ trek.summary.to }}</v-card-subtitle>
     <v-card-text class="text--primary">
       <v-row>
         <!-- distance -->

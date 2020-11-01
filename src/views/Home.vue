@@ -21,7 +21,17 @@
 
     <!-- second section -->
     <v-row  class="my-8" justify="center" no-gutters>
-      <h2>Traversez un massif en autonomie</h2>
+      <h2 class="section-title">Randonnez en autonomie sur plusieurs jours</h2>
+    </v-row>
+    <v-row  class="my-4" justify="center" no-gutters>
+      <v-col cols="11" md="9">
+        <p class="section-subtitle">
+          Des randonnées, il y en a pour tout le monde et pour tous les goûts. On laissera ici de côté les sorties familiales
+          pour ne présenter que des topos détaillés de randonnées exigeantes. Plus de 1500m de dénivelé par jour en moyenne, de la distance,
+          des itinéraires parfois techniques ou peu visibles et toujours au moins une nuit en montagne. Car quoi de plus dépaysant que
+          d'installer son bivouac au soleil tombant en attendant les étoiles ...
+        </p>
+      </v-col>
     </v-row>
     <v-row justify="center" no-gutters>
       <v-col v-for="trek in trekList" :key="trek.key" cols="12" sm="4">
@@ -33,19 +43,28 @@
 
     <!-- third section -->
     <v-row  class="my-8" justify="center" no-gutters>
-      <h2>Dormez en refuge ou en cabane non gardée</h2>
+      <h2 class="section-title">Dormez en refuge ou en cabane non gardée</h2>
+    </v-row>
+    <v-row  class="my-4" justify="center" no-gutters>
+      <v-col cols="11" md="9">
+        <p class="section-subtitle">
+          En plus des refuges, on trouve de nombreuses cabanes non gardées dans les massifs français. Il s'agit la plupart du temps
+          d'abris très sommaires, ouverts été comme hiver afin d'accueillir les randonneurs de passage. Passer une nuit
+          dans l'une de ces cabanes est une occasion unique de vivre une expérience inoubliable en plein coeur de la nature.
+        </p>
+      </v-col>
     </v-row>
     <v-row justify="center">
       <v-col v-for="shack in shackList" :key="shack.key" cols="12" sm="4">
         <v-row justify="center">
-          <ShackListItem vertical :shack="shack" :massif="shack.massif" />
+          <ShackListItem vertical :shack="shack" />
         </v-row>
       </v-col>
     </v-row>
 
     <!-- 4th section -->
     <v-row class="my-8" justify="center" no-gutters>
-      <h2>Découvrez vos prochaines aventures</h2>
+      <h2 class="section-title">Découvrez vos prochaines aventures</h2>
     </v-row>
 
   </v-container>
@@ -92,10 +111,10 @@ export default {
     image: ['https://res.cloudinary.com/monpetitsommet/image/upload/v1591291716/home/home_ofwjs8.png'],
     trekList: [
       {
-        title: 'Traversée des Bauges (Frontenex → Annecy)',
+        title: 'Traversée des Bauges',
         key: 'traversee-bauges-frontenex-annecy',
         massif: 'bauges',
-        summary: { distance: 66.8, elevation: 5150.15, duration: '3 à 4 jours', rating: "T2" },
+        summary: { distance: 66.8, elevation: 5150.15, duration: '3 à 4 jours', rating: "T2", from: 'Frontenex', to: 'Annecy' },
         introduction: {
           image: 'https://res.cloudinary.com/monpetitsommet/image/upload/v1603218138/bauges/randonnees/traversee-bauges-frontenex-annecy/intro_ppjy7g.jpg'
         }
@@ -160,8 +179,14 @@ export default {
 </script>
 
 <style scoped>
-h2 {
+.section-title {
   font-size: 40px;
+}
+
+.section-subtitle {
+  font-family: 'MrEaves';
+  font-size: 23px;
+  text-align: justify;
 }
 
 .section {
