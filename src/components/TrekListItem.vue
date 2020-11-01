@@ -1,6 +1,6 @@
 <template>
   <v-card max-width="400">
-    <v-img height="200px" :src="getImage([trek.introduction.image], 0, { height: 450 })"></v-img>
+    <v-img height="230px" :src="getImage([trek.introduction.image], 0, { height: 450 })"></v-img>
     <v-card-title>{{ trek.title }}</v-card-title>
     <v-card-text class="text--primary">
       <v-row>
@@ -40,10 +40,12 @@
     </v-card-text>
     <v-card-actions>
       <v-btn text @click="goToTrekDetails(trek)">Voir</v-btn>
-      <v-spacer></v-spacer>
-      <v-btn icon @click="showIntro = !showIntro">
-        <v-icon>{{ showIntro ? mdiChevronUp : mdiChevronDown }}</v-icon>
-      </v-btn>
+      <template v-if="isExpandable">
+        <v-spacer></v-spacer>
+        <v-btn icon @click="showIntro = !showIntro">
+          <v-icon>{{ showIntro ? mdiChevronUp : mdiChevronDown }}</v-icon>
+        </v-btn>
+      </template>
     </v-card-actions>
 
     <v-expand-transition>
@@ -69,6 +71,7 @@ export default {
   name: 'TrekListItem',
   props: {
     trek: { type: Object, required: true },
+    isExpandable: { type: Boolean, default: true },
   },
   mixins: [ ImageMixin, LayoutMixin ],
   data: () => ({
@@ -78,7 +81,8 @@ export default {
   }),
   methods: {
     goToTrekDetails(trek) {
-      this.$router.push({ name: 'trekDetails', params: { massif: this.$route.params.massif, randonnee: trek.key }});
+      const massif = this.trek.massif || this.$route.params.massif;
+      this.$router.push({ name: 'trekDetails', params: { massif, randonnee: trek.key }});
     },
   },
 }
@@ -103,5 +107,9 @@ a {
 
 a:hover {
   border-bottom: 1px solid black;
+}
+
+.v-card__title {
+  word-break: normal;
 }
 </style>
