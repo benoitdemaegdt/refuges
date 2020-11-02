@@ -4,7 +4,9 @@ import VueMeta from 'vue-meta';
 
 // import views
 const Home = () => import(/* webpackChunkName: "home" */ '@/views/Home.vue');
+const Blog = () => import(/* webpackChunkName: "blog" */ '@/views/Blog.vue');
 const About = () => import(/* webpackChunkName: "about" */ '@/views/About.vue');
+const Contact = () => import(/* webpackChunkName: "contact" */ '@/views/Contact.vue');
 const ShackList = () => import(/* webpackChunkName: "shackList" */ /* webpackPrefetch: true */ '@/views/ShackList.vue');
 const ShackDetails = () => import(/* webpackChunkName: "shackDetails" */ '@/views/ShackDetails.vue');
 const TrekList = () => import(/* webpackChunkName: "trekList" */ /* webpackPrefetch: true */ '@/views/TrekList.vue');
@@ -26,9 +28,19 @@ const router = new VueRouter({
       component: Home,
     },
     {
+      path: '/blog',
+      name: 'blog',
+      component: Blog,
+    },
+    {
       path: '/a-propos',
       name: 'about',
       component: About,
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: Contact,
     },
     {
       path: '/massifs/:massif/refuges',

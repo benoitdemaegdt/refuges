@@ -114,9 +114,9 @@ export default {
       trek: { title: 'Randonnées', icon: mdiWalk, routeName: 'trekList' },
     },
     tabs: [
-      { name: 'Blog', clickAction: { name: 'about' } },
+      { name: 'Blog', clickAction: { name: 'blog' } },
       { name: 'À Propos', clickAction: { name: 'about' } },
-      { name: 'Contact', clickAction: { name: 'about' } },
+      { name: 'Contact', clickAction: { name: 'contact' } },
     ]
   }),
   methods: {
