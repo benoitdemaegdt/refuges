@@ -33,14 +33,14 @@
           <div class="flex-container">
             <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/hook.png')"></v-img></div>
             <div class="flex-child">
-              <a href="http://www.rando-marche.fr/_88181_2_les-cotations" target="_blank">Cotation : {{ trek.summary.rating }}</a>
+              <a href="http://www.rando-marche.fr/_88181_2_les-cotations" target="_blank" class="external-link">Cotation : {{ trek.summary.rating }}</a>
             </div>
           </div>
         </v-col>
       </v-row>
     </v-card-text>
     <v-card-actions>
-      <v-btn text @click="goToTrekDetails(trek)">Voir</v-btn>
+      <v-btn text :to="{ name: 'trekDetails', params: { massif, randonnee: trek.key }}">Voir</v-btn>
       <template v-if="isExpandable">
         <v-spacer></v-spacer>
         <v-btn icon @click="showIntro = !showIntro">
@@ -80,10 +80,9 @@ export default {
     mdiChevronDown,
     showIntro: false,
   }),
-  methods: {
-    goToTrekDetails(trek) {
-      const massif = this.trek.massif || this.$route.params.massif;
-      this.$router.push({ name: 'trekDetails', params: { massif, randonnee: trek.key }});
+  computed: {
+    massif() {
+      return this.trek.massif || this.$route.params.massif;
     },
   },
 }
@@ -102,11 +101,11 @@ export default {
   flex: 1;
 }
 
-a {
+.external-link {
   text-decoration: none;
 }
 
-a:hover {
+.external-link:hover {
   border-bottom: 1px solid black;
 }
 

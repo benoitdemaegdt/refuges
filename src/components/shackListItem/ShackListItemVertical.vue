@@ -37,7 +37,7 @@
     </v-card-text>
 
     <v-card-actions>
-      <v-btn text @click="goToShackDetails()">Voir</v-btn>
+      <v-btn text :to="{ name: 'shackDetails', params: { massif, refuge: shack.key }}">Voir</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -56,11 +56,8 @@ export default {
     images() {
       return this.shack.images_outdoor;
     },
-  },
-  methods: {
-    goToShackDetails() {
-      const massif = this.shack.massif || this.$route.params.massif;
-      this.$router.push({ name: 'shackDetails', params: { massif, refuge: this.shack.key }});
+    massif() {
+      return this.shack.massif || this.$route.params.massif;
     },
   },
 };

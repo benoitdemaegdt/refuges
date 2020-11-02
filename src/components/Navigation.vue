@@ -16,9 +16,9 @@
       </v-toolbar-title>
       <v-spacer />
       <template v-if="!isMobile">
-        <div v-for="tab in tabs" :key="tab.name" class="tab" @click="tab.clickAction">
+        <router-link v-for="tab in tabs" :key="tab.name" :to="tab.clickAction" class='tab'>
           {{ tab.name}}
-        </div>
+        </router-link>
       </template>
       <template v-else>
         <v-menu left bottom>
@@ -28,7 +28,7 @@
             </v-btn>
           </template>
           <v-list>
-            <v-list-item v-for="tab in tabs" :key="tab.name" @click="tab.clickAction">
+            <v-list-item v-for="tab in tabs" :key="tab.name" :to="tab.clickAction">
               <v-list-item-title>{{ tab.name}}</v-list-item-title>
             </v-list-item>
           </v-list>
@@ -103,7 +103,7 @@ import LayoutMixin from '@/mixins/LayoutMixin.js';
 export default {
   name: 'Navigation',
   mixins: [ LayoutMixin ],
-  data: (vm) => ({
+  data: () => ({
     mdiHomeOutline,
     mdiWalk,
     mdiDotsVertical,
@@ -114,9 +114,9 @@ export default {
       trek: { title: 'Randonnées', icon: mdiWalk, routeName: 'trekList' },
     },
     tabs: [
-      { name: 'Blog', clickAction: () => { console.log('Blog does not exist yet'); } },
-      { name: 'À Propos', clickAction: () => { vm.$router.push({ name: 'about' }); } },
-      { name: 'Contact', clickAction: () => { console.log('Contact page does not exist yet'); } },
+      { name: 'Blog', clickAction: { name: 'about' } },
+      { name: 'À Propos', clickAction: { name: 'about' } },
+      { name: 'Contact', clickAction: { name: 'about' } },
     ]
   }),
   methods: {
@@ -143,6 +143,7 @@ export default {
 }
 
 .tab {
+  text-decoration: none;
   font-family: "MrEaves";
   font-size: 19px;
   padding: 8px 16px 8px 16px;
