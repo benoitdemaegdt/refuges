@@ -108,7 +108,7 @@ export default {
     };
   },
   data: () => ({
-    image: ['https://res.cloudinary.com/monpetitsommet/image/upload/v1591291716/home/home_ofwjs8.png'],
+    image: ['https://res.cloudinary.com/monpetitsommet/image/upload/v1604305406/vercors/randonnees/traversee-vercors-balcon-est/intro_xhbx3y.png'],
     trekList: [
       {
         title: 'Traversée des Bauges',
@@ -118,6 +118,15 @@ export default {
         introduction: {
           image: 'https://res.cloudinary.com/monpetitsommet/image/upload/v1603218138/bauges/randonnees/traversee-bauges-frontenex-annecy/intro_ppjy7g.jpg'
         }
+      },
+      {
+        title: 'Traversée du Vercors (Balcon Est)',
+        key: 'traversee-du-vercors-balcon-est',
+        massif: 'vercors',
+        summary: { distance: 46.02, elevation: 5110.85, duration: '2 à 3 jours', rating: 'T3', from: 'Clelles', to: 'Villard-de-Lans' },
+        introduction: {
+          image: 'https://res.cloudinary.com/monpetitsommet/image/upload/v1604305406/vercors/randonnees/traversee-vercors-balcon-est/intro_xhbx3y.png'
+        },
       },
     ],
     shackList: [
