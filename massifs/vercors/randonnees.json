@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Traversée du Vercors (Balcon Est)",
+    "key": "traversee-du-vercors-balcon-est",
+    "summary": {
+      "distance": 46.02,
+      "elevation": 5110.85,
+      "duration": "2 à 3 jours",
+      "rating": "T3",
+      "water": true,
+      "tent": false,
+      "from": "Clelles",
+      "to": "Villard-de-Lans"
+    },
+    "introduction": {
+      "text": "",
+      "image": "https://res.cloudinary.com/monpetitsommet/image/upload/v1604305406/vercors/randonnees/traversee-vercors-balcon-est/intro_xhbx3y.png"
+    }
+  }
+]
