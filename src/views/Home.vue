@@ -67,10 +67,34 @@
       <h2 class="section-title">Découvrez vos prochaines aventures</h2>
     </v-row>
 
+    <!-- footer -->
+    <v-footer padless light>
+      <v-card flat tile class="grey lighten-3 text-center" width="100%">
+        <v-card-text>
+          <v-btn v-for="icon in footerIcons" :key="icon" class="mx-4" icon>
+            <v-icon size="24px">{{ icon }}</v-icon>
+          </v-btn>
+        </v-card-text>
+
+        <v-card-text class="pt-0">
+          Grâce à Mon Petit Sommet, Découvrez les topos détaillés d'aventures sportives en montagne.
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-text>
+          {{ new Date().getFullYear() }} — <strong>Mon Petit Sommet</strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
+
   </v-container>
 </template>
 
 <script>
+// icons
+import { mdiFacebook, mdiTwitter, mdiInstagram } from '@mdi/js';
+
 // mixins
 import ImageMixin from '@/mixins/ImageMixin.js';
 import LayoutMixin from '@/mixins/LayoutMixin.js';
@@ -161,6 +185,7 @@ export default {
         altitude: 1665, beds: 19, stove: true, water: true,
       },
     ],
+    footerIcons: [ mdiFacebook, mdiTwitter, mdiInstagram ],
   }),
   computed: {
     mainTitleStyle() {
