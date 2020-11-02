@@ -22,7 +22,7 @@
     "vue-meta": "^2.4.0",
     "vue-router": "^3.4.8",
     "vue2-leaflet": "^2.6.0",
-    "vuetify": "^2.3.15"
+    "vuetify": "^2.3.16"
   },
   "devDependencies": {
     "@mdi/js": "^5.8.55",
