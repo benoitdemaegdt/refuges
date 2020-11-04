@@ -77,7 +77,7 @@
         </v-card-text>
 
         <v-card-text class="pt-0">
-          Grâce à Mon Petit Sommet, Découvrez les topos détaillés d'aventures sportives en montagne.
+          Grâce à Mon Petit Sommet, découvrez les topos détaillés d'aventures sportives en montagne.
         </v-card-text>
 
         <v-divider></v-divider>

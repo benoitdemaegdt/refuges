@@ -1,10 +1,10 @@
 <template>
   <v-container>
     <v-row justify="center" align="center">
-      <h1>Vous souhaitez contacter Mon Petit Sommet ?</h1>
+      <h1>Vous souhaitez contacter l'équipe de Mon Petit Sommet ?</h1>
     </v-row>
     <v-row justify="center" align="center">
-      <p>Vous pouvez envoyez en email à xxxx@gmail.com</p>
+      <p>Envoyez simplement un email à <a href="mailto:contact@monpetitsommet.fr">contact@monpetitsommet.fr</a></p>
     </v-row>
   </v-container>
 </template>
