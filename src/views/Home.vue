@@ -12,7 +12,7 @@
             <v-col cols="11" md="5" offset-md="6" no-gutters>
               <h1 :style="mainTitleStyle">Préparez votre prochaine aventure en montagne</h1>
               <p :style="mainSubtitleStyle">Découvrez les topos détaillés d'aventures sportives en montagne. Parfois engagées. Souvent loin des foules. Toujours mémorables.</p>
-              <v-btn class="mt-8" outlined large color="white">voir les topos →</v-btn>
+              <v-btn class="mt-8" outlined large color="white" @click="scrollToTreks">voir les topos →</v-btn>
             </v-col>
           </v-row>
         </v-col>
@@ -20,7 +20,7 @@
     </v-row>
 
     <!-- second section -->
-    <v-row  class="mt-8 mb-4" justify="center" no-gutters>
+    <v-row  class="mt-8 mb-4" justify="center" id="trekSection" no-gutters>
       <h2 :style="sectionTitleStyle">Randonnez en autonomie sur plusieurs jours</h2>
     </v-row>
     <v-row justify="center" class="mb-4" no-gutters>
@@ -231,6 +231,14 @@ export default {
         ...baseStyle,
         ...responsiveStyle,
       };
+    },
+  },
+  methods: {
+    scrollToTreks() {
+      const element = document.getElementById('trekSection');
+      const yOffset = -50;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({top: y, behavior: 'smooth'});
     },
   },
 }
