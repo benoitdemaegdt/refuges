@@ -66,6 +66,17 @@
     <v-row class="my-8" justify="center" no-gutters>
       <h2 class="section-title">Découvrez vos prochaines aventures</h2>
     </v-row>
+    <v-row  class="my-4" justify="center" no-gutters>
+      <v-col cols="12" md="9">
+        <p class="section-subtitle">
+          Randonnées, bivouac, escalade, alpinisme, ski de rando et même snowkite : des aventures en montagne il y en a pour tous les goûts !
+          Inscrivez vous à la newsletter de Mon Petit Sommet pour recevoir directement dans votre boite mail les dernières sorties publiées sur le site.
+        </p>
+      </v-col>
+    </v-row>
+    <v-row class="my-8" justify="center" no-gutters>
+      <iframe src="https://monpetitsommet.substack.com/embed" width="700px" height="250" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+    </v-row>
 
     <!-- footer -->
     <v-footer padless light>
