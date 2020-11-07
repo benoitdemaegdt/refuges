@@ -74,7 +74,7 @@
         </p>
       </v-col>
     </v-row>
-    <v-row class="my-4" justify="center" no-gutters>
+    <v-row class="mt-4 mb-8" justify="center" no-gutters>
       <iframe src="https://monpetitsommet.substack.com/embed" width="700px" height="250" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
     </v-row>
 
@@ -82,13 +82,9 @@
     <v-footer padless light>
       <v-card flat tile class="grey lighten-3 text-center" width="100%">
         <v-card-text>
-          <v-btn v-for="icon in footerIcons" :key="icon" class="mx-4" icon>
-            <v-icon size="24px">{{ icon }}</v-icon>
+          <v-btn v-for="link in footerLinks" :key="link.name" text rounded :to="link.clickAction" class="mx-4">
+            {{ link.name }}
           </v-btn>
-        </v-card-text>
-
-        <v-card-text class="pt-0">
-          Grâce à Mon Petit Sommet, découvrez les topos détaillés d'aventures sportives en montagne.
         </v-card-text>
 
         <v-divider></v-divider>
@@ -103,9 +99,6 @@
 </template>
 
 <script>
-// icons
-import { mdiFacebook, mdiTwitter, mdiInstagram } from '@mdi/js';
-
 // mixins
 import ImageMixin from '@/mixins/ImageMixin.js';
 import LayoutMixin from '@/mixins/LayoutMixin.js';
@@ -196,7 +189,12 @@ export default {
         altitude: 1665, beds: 19, stove: true, water: true,
       },
     ],
-    footerIcons: [ mdiFacebook, mdiTwitter, mdiInstagram ],
+    footerLinks: [
+      { name: 'CGU', clickAction: { name: 'legal' } },
+      { name: 'Blog', clickAction: { name: 'blog' } },
+      { name: 'À Propos', clickAction: { name: 'about' } },
+      { name: 'Contact', clickAction: { name: 'contact' } },
+    ]
   }),
   computed: {
     mainTitleStyle() {
