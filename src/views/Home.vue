@@ -11,7 +11,7 @@
           <v-row align="center" justify="center" style="height: 100%;" no-gutters>
             <v-col cols="11" md="5" offset-md="6" no-gutters>
               <h1 :style="mainTitleStyle">Préparez votre prochaine aventure en montagne</h1>
-              <p :style="subTitleStyle">Découvrez les topos détaillés d'aventures sportives en montagne. Parfois engagées. Souvent loin des foules. Toujours mémorables.</p>
+              <p :style="mainSubtitleStyle">Découvrez les topos détaillés d'aventures sportives en montagne. Parfois engagées. Souvent loin des foules. Toujours mémorables.</p>
               <v-btn class="mt-8" outlined large color="white">voir les topos →</v-btn>
             </v-col>
           </v-row>
@@ -20,34 +20,34 @@
     </v-row>
 
     <!-- second section -->
-    <v-row  class="my-8" justify="center" no-gutters>
-      <h2 class="section-title">Randonnez en autonomie sur plusieurs jours</h2>
+    <v-row  class="mt-8 mb-4" justify="center" no-gutters>
+      <h2 :style="sectionTitleStyle">Randonnez en autonomie sur plusieurs jours</h2>
     </v-row>
-    <v-row  class="my-4" justify="center" no-gutters>
-      <v-col cols="11" md="9">
-        <p class="section-subtitle">
+    <v-row justify="center" class="mb-4" no-gutters>
+      <v-col cols="12" md="9">
+        <p :style="sectionSubtitleStyle">
           Des randonnées, il y en a pour tout le monde et pour tous les goûts. On laissera ici de côté les sorties familiales
           pour ne présenter que des topos détaillés de randonnées exigeantes. Plus de 1500m de dénivelé par jour en moyenne, de la distance,
           des itinéraires parfois techniques ou peu visibles et toujours au moins une nuit en montagne. Car quoi de plus dépaysant que
-          d'installer son bivouac au soleil tombant en attendant les étoiles ...
+          d'installer son bivouac au soleil tombant en attendant les étoiles...
         </p>
       </v-col>
     </v-row>
-    <v-row justify="center" no-gutters>
+    <v-row justify="center">
       <v-col v-for="trek in trekList" :key="trek.key" cols="12" sm="4">
-        <v-row no-gutters justify="center">
+        <v-row justify="center">
           <TrekListItem :trek="trek" :isExpandable="false" />
         </v-row>
       </v-col>
     </v-row>
 
     <!-- third section -->
-    <v-row  class="my-8" justify="center" no-gutters>
-      <h2 class="section-title">Dormez en refuge ou en cabane non gardée</h2>
+    <v-row  class="mt-8 mb-4" justify="center" no-gutters>
+      <h2 :style="sectionTitleStyle">Dormez en refuge ou en cabane non gardée</h2>
     </v-row>
-    <v-row  class="my-4" justify="center" no-gutters>
-      <v-col cols="11" md="9">
-        <p class="section-subtitle">
+    <v-row justify="center" class="mb-4" no-gutters>
+      <v-col cols="12" md="9">
+        <p :style="sectionSubtitleStyle">
           En plus des refuges, on trouve de nombreuses cabanes non gardées dans les massifs français. Il s'agit la plupart du temps
           d'abris très sommaires, ouverts été comme hiver afin d'accueillir les randonneurs de passage. Passer une nuit
           dans l'une de ces cabanes est une occasion unique de vivre une expérience inoubliable en plein coeur de la nature.
@@ -63,18 +63,18 @@
     </v-row>
 
     <!-- 4th section -->
-    <v-row class="my-8" justify="center" no-gutters>
-      <h2 class="section-title">Découvrez vos prochaines aventures</h2>
+    <v-row class="mt-8 mb-4" justify="center" no-gutters>
+      <h2 :style="sectionTitleStyle">Découvrez vos prochaines aventures</h2>
     </v-row>
-    <v-row  class="my-4" justify="center" no-gutters>
+    <v-row justify="center" no-gutters>
       <v-col cols="12" md="9">
-        <p class="section-subtitle">
+        <p :style="sectionSubtitleStyle">
           Randonnées, bivouac, escalade, alpinisme, ski de rando et même snowkite : des aventures en montagne il y en a pour tous les goûts !
           Inscrivez vous à la newsletter de Mon Petit Sommet pour recevoir directement dans votre boite mail les dernières sorties publiées sur le site.
         </p>
       </v-col>
     </v-row>
-    <v-row class="my-8" justify="center" no-gutters>
+    <v-row class="my-4" justify="center" no-gutters>
       <iframe src="https://monpetitsommet.substack.com/embed" width="700px" height="250" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
     </v-row>
 
@@ -209,7 +209,7 @@ export default {
         ...responsiveStyle,
       };
     },
-    subTitleStyle() {
+    mainSubtitleStyle() {
       const baseStyle = { 'color': 'white', 'font-family': 'MrEaves', 'font-weight': '50', 'margin-top': '20px' };
       const responsiveStyle = this.screenWidth < this.$vuetify.breakpoint.thresholds.xs
         ? { 'font-size': '20px' }
@@ -218,22 +218,27 @@ export default {
         ...baseStyle,
         ...responsiveStyle,
       };
-    }
+    },
+    sectionTitleStyle() {
+      return this.screenWidth < this.$vuetify.breakpoint.thresholds.xs
+        ? { 'font-size': '35px' }
+        : { 'font-size': '45px' };
+    },
+    sectionSubtitleStyle() {
+      const baseStyle = { 'font-family': 'MrEaves', 'text-align': 'justify' };
+      const responsiveStyle = this.screenWidth < this.$vuetify.breakpoint.thresholds.xs
+        ? { 'font-size': '20px' }
+        : { 'font-size': '24px' };
+      return {
+        ...baseStyle,
+        ...responsiveStyle,
+      };
+    },
   },
 }
 </script>
 
 <style scoped>
-.section-title {
-  font-size: 40px;
-}
-
-.section-subtitle {
-  font-family: 'MrEaves';
-  font-size: 23px;
-  text-align: justify;
-}
-
 .section {
   height: calc(100vh - 48px);
 }

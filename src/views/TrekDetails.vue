@@ -89,7 +89,7 @@
         </v-col>
 
         <v-col v-if="!isMobile || isShowingMap" :cols="leftCols" class="map-col pa-0">
-          <div class="map-container-desktop">
+          <div class="map-container">
             <TrekMap
               :coordinates="trek.coordinates"
               :pointsOfInterest="trek.pointsOfInterest"
@@ -243,8 +243,8 @@ a:hover {
   right: 0;
 }
 
-.map-container-desktop {
-  height: calc(100vh - 64px);
+.map-container {
+  height: calc(100vh - 48px);
 }
 
 .trek-title {
