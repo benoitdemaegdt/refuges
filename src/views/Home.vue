@@ -28,7 +28,7 @@
         <p :style="sectionSubtitleStyle">
           Des randonnées, il y en a pour tout le monde et pour tous les goûts. On laissera ici de côté les sorties familiales
           pour ne présenter que des topos détaillés de randonnées exigeantes. Plus de 1500m de dénivelé par jour en moyenne, de la distance,
-          des itinéraires parfois techniques ou peu visibles et toujours au moins une nuit en montagne. Car quoi de plus dépaysant que
+          des itinéraires parfois techniques ou accidentés et toujours au moins une nuit en montagne. Car quoi de plus dépaysant que
           d'installer son bivouac au soleil tombant en attendant les étoiles...
         </p>
       </v-col>
