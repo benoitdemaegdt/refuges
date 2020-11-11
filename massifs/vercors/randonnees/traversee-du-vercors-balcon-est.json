@@ -18,12 +18,12 @@
   "pointsOfInterest": [
     {
       "name": "Grand Veymont",
-      "distance": 9.74,
+      "distance": 9.67,
       "elevation": 2341
     },
     {
       "name": "Grande Moucherolle",
-      "distance": 33.12,
+      "distance": 31.29,
       "elevation": 2284
     }
   ],
@@ -55,11 +55,11 @@
       },
       "coordinates": {
         "startIndex": 312,
-        "endIndex": 557
+        "endIndex": 552
       }
     },
     {
-      "title": "du Grand Veymont à l'abri de la Peyrouse",
+      "title": "Du Grand Veymont à l'abri de la Peyrouse",
       "text": "Au sommet du Grand Veymont, descendre par la face Nord (opposée à celle par laquelle on est arrivé) pour rejoindre le Pas de la Ville (1925m). Continuer alors la descente en prenant à droite un passage assez raide. Attention à ne pas trop descendre : dès que possible prendre à gauche pour rejoindre le fameux Balcon Est du Vercors. On va suivre ce chemin situé juste sous les magnifiques falaises du Vercors sur plusieurs kilomètres. Impossible de se perdre, il faut juste suivre ce chemin ! Attention à ne pas manquer un des rares points de ravitaillement en eau de ce sentier, au niveau de la Fontaine de Berrièves. Celle ci est indiquée par un panneau et des peintures sur la roche. Continuer sur les balcons Est jusqu'à rejoindre une cabane, <router-link :to=\"{ name: 'shackDetails', params: { massif: 'vercors', refuge: 'abri-de-la-peyrouse' }}\">l'abris de la Peyrouse</router-link>. Possibilité d'y dormir : présence d'un lit superposé en bois et d'une table.",
       "image": {
         "url": "https://res.cloudinary.com/monpetitsommet/image/upload/v1604995719/vercors/randonnees/traversee-vercors-balcon-est/step_3_dkvzm3.jpg",
@@ -67,8 +67,8 @@
         "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAf/AABEIAAgACgMBEQACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/AMf9nr/gsN4++Avhy48GfETwfrXxe8JTj+1tC1SbX9Sh17R7m8e0aeK91Fp9UlGlhT9qGn32nXVmZb1ZodX0uPzbGX82yfi3L8HmH9o47LIQnNU41alGXtF+6T5Kqpy9nayuuWlOSlZv2bk+Z/Q5pleNr4F4Ohiq0qFNycZWSt7XWUJ2Upe9aMlOcLJPSpFKy+lR/wAF4vhIwDTfB7Vo5mAMqf8ACXQ/JIRl0/5FNvutkfebp949a/VYeI/DThFvMrNxi2vaKNm0m1yuV4/4Xqtmfn8+FMyjOUfqsvdlJawu9G1q7K787K/Y/wD/2Q=="
       },
       "coordinates": {
-        "startIndex": 557,
-        "endIndex": 1546
+        "startIndex": 552,
+        "endIndex": 1056
       }
     },
     {
@@ -80,8 +80,8 @@
         "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAf/AABEIAAgACgMBEQACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APsfxx/wVw/Yk0/w1qWr6T4P8QahPp2n3j6boNw0GjQ3t/DG0lnplu8C3txbx3c/mB5oNKuVtC5la2miEjj9XfF/EWQYGVbH4rKcHSjf2cMO5wqVZJOTp0qVWhUU5y0XLBSbSc5NJWf57/q3leY11TwsMxrzm1zvFKNaMIu0VOcqdam4xV3rKSS0irto/EK6/wCC4X7Tj3Nw9t8Pv2c9Pt3nla3sJfCOs3kllC0jGK0ku38cq909tGVhe5dVadkMrAFiK+FqeMnF85znTx8Y05TlKnH2cPdhJtxjrZ6RaWqT7o+ljwFw5CMYSwilKMVGUnVV5SirOT9/dtXP/9k="
       },
       "coordinates": {
-        "startIndex": 1546,
-        "endIndex": 1792
+        "startIndex": 1056,
+        "endIndex": 1304
       }
     },
     {
@@ -93,16 +93,16 @@
         "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAf/AABEIAAgACgMBEQACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/ANLUP2m/jvHpGsXg8A/Bi4CQLIssPwx06S400RyAm3QyeNr1JLx7coLpYr2WeGX7S0NgHs7qC0+yx3j3/aWLWHnVo1VWqU4QdHMsQoYWClFVKtadNxjiI2ej5eRae87qD+Ywng5TwVBVY+3p+zjUlUVXBYeUsRO0nThSU4ylQd0ua0nO32VdyXomj/8ABRfQbXSNKtdd+GHwuGuW2m2NvrIg0TSIYRqsNrFHqIhhaG6aKIXizeXE11cmNMKZ5iPMb16fH/B0qcJSxGfVJShGUqlGriXSqSaTc6TdRN05P3oXSfK1dI8apwRxXGpUjCOTQhGclCFWjh/axipNRjUtBr2kVZTs2uZOzsf/2Q=="
       },
       "coordinates": {
-        "startIndex": 1792,
-        "endIndex": 2365
+        "startIndex": 1304,
+        "endIndex": 1658
       }
     },
     {
       "title": "De la cabane de Roybon à Villard-de-Lans",
       "text": "Depuis la Cabane de Roybon, continuer la descente sur un chemin large et emprunté. On retrouve très rapidement la civilisation en entrant dans Villard-de-Lans, la destination de cette randonnée. On peut ensuite facilement rejoindre Grenoble en prenant le bus Transisère 5100.",
       "coordinates": {
-        "startIndex": 2365,
-        "endIndex": 2510
+        "startIndex": 1658,
+        "endIndex": 1804
       }
     }
   ],
