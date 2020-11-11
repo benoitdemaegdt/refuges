@@ -81,8 +81,8 @@
               </h3>
               <p class="step-text">{{ step.text }}</p>
               <figure v-if="step.image" class="mb-4">
-                <v-img max-height="350px" class="trek-img" :src="getImage([step.image], 0, { height: 350 })"></v-img>
-                <figcaption class="caption">{{ step.caption }}</figcaption>
+                <v-img max-height="350px" class="trek-img" :src="getImage([step.image.url], 0, { height: 350 })" :lazy-src="step.image.placeholder"></v-img>
+                <figcaption class="caption">{{ step.image.caption }}</figcaption>
               </figure>
             </div>
           </div>
