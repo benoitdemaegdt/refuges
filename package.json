@@ -10,9 +10,9 @@
     "build-report": "vue-cli-service build --report"
   },
   "dependencies": {
-    "core-js": "^3.6.4",
+    "core-js": "^3.7.0",
     "gm": "^1.23.1",
-    "highcharts": "^8.1.2",
+    "highcharts": "^8.2.2",
     "highcharts-vue": "^1.3.5",
     "leaflet": "^1.7.1",
     "leaflet-fullscreen": "^1.0.2",
@@ -20,21 +20,21 @@
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.12",
     "vue-meta": "^2.4.0",
-    "vue-router": "^3.4.7",
+    "vue-router": "^3.4.9",
     "vue2-leaflet": "^2.6.0",
-    "vuetify": "^2.3.15"
+    "vuetify": "^2.3.16"
   },
   "devDependencies": {
-    "@mdi/js": "^5.7.55",
-    "@vue/cli-plugin-babel": "~4.5.7",
-    "@vue/cli-plugin-eslint": "~4.5.7",
-    "@vue/cli-plugin-pwa": "^4.5.7",
-    "@vue/cli-service": "~4.5.7",
+    "@mdi/js": "^5.8.55",
+    "@vue/cli-plugin-babel": "~4.5.8",
+    "@vue/cli-plugin-eslint": "~4.5.8",
+    "@vue/cli-plugin-pwa": "^4.5.8",
+    "@vue/cli-service": "~4.5.8",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "sass": "^1.27.0",
-    "sass-loader": "^10.0.3",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.0.5",
     "vue-cli-plugin-vuetify": "~2.0.7",
     "vue-template-compiler": "^2.6.12",
     "vuetify-loader": "^1.6.0"
