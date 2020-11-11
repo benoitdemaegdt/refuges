@@ -22,3 +22,26 @@ export default {
   },
 };
 </script>
+
+<style>
+@font-face {
+  font-family: 'Recoleta';
+  src: local('Recoleta Bold'), local('Recoleta-Bold'),
+      url('./assets/fonts/Recoleta-Bold.woff2') format('woff2'),
+      url('./assets/fonts/Recoleta-Bold.woff') format('woff'),
+      url('./assets/fonts/Recoleta-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MrEaves';
+  src: local('MrEaves'), local('MrEaves'),
+      url('./assets/fonts/MrEavesXLModOT-Reg.ttf') format('truetype');
+  font-style: normal;
+}
+
+h1, h2, h3  {
+  font-family: "Recoleta";
+}
+</style>

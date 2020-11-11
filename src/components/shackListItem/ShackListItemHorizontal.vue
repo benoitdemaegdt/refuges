@@ -37,7 +37,7 @@
       <!-- info -->
       <v-col cols="12" sm="7" class="px-0 pb-0">
         <v-card
-          flat 
+          flat
           height="200px"
           @click.native="goToShack(shack)"
           class="pointer">
@@ -80,7 +80,6 @@
       </v-col>
     </v-row>
   </v-container>
-
 </template>
 
 <script>
@@ -100,7 +99,7 @@ export default {
       return this.shack.images_outdoor;
     },
   },
-};
+}
 </script>
 
 <style scoped>

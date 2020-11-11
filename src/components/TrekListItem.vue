@@ -1,7 +1,8 @@
 <template>
-  <v-card max-width="400">
-    <v-img height="200px" :src="getImage([trek.introduction.image], 0, { height: 450 })"></v-img>
+  <v-card :max-width="isMobile ? 350 : 400">
+    <v-img height="230px" :src="getImage([trek.introduction.image], 0, { height: 450 })"></v-img>
     <v-card-title>{{ trek.title }}</v-card-title>
+    <v-card-subtitle>De {{ trek.summary.from }} à {{ trek.summary.to }}</v-card-subtitle>
     <v-card-text class="text--primary">
       <v-row>
         <!-- distance -->
@@ -32,18 +33,20 @@
           <div class="flex-container">
             <div class="mr-3"><v-img height="25px" width="25px" :src="require('@/assets/icons/hook.png')"></v-img></div>
             <div class="flex-child">
-              <a href="http://www.rando-marche.fr/_88181_2_les-cotations" target="_blank">Cotation : {{ trek.summary.rating }}</a>
+              <a href="http://www.rando-marche.fr/_88181_2_les-cotations" target="_blank" class="external-link">Cotation : {{ trek.summary.rating }}</a>
             </div>
           </div>
         </v-col>
       </v-row>
     </v-card-text>
     <v-card-actions>
-      <v-btn text @click="goToTrekDetails(trek)">Voir</v-btn>
-      <v-spacer></v-spacer>
-      <v-btn icon @click="showIntro = !showIntro">
-        <v-icon>{{ showIntro ? mdiChevronUp : mdiChevronDown }}</v-icon>
-      </v-btn>
+      <v-btn text :to="{ name: 'trekDetails', params: { massif, randonnee: trek.key }}">Voir</v-btn>
+      <template v-if="isExpandable">
+        <v-spacer></v-spacer>
+        <v-btn icon @click="showIntro = !showIntro">
+          <v-icon>{{ showIntro ? mdiChevronUp : mdiChevronDown }}</v-icon>
+        </v-btn>
+      </template>
     </v-card-actions>
 
     <v-expand-transition>
@@ -69,6 +72,7 @@ export default {
   name: 'TrekListItem',
   props: {
     trek: { type: Object, required: true },
+    isExpandable: { type: Boolean, default: true },
   },
   mixins: [ ImageMixin, LayoutMixin ],
   data: () => ({
@@ -76,9 +80,9 @@ export default {
     mdiChevronDown,
     showIntro: false,
   }),
-  methods: {
-    goToTrekDetails(trek) {
-      this.$router.push({ name: 'trekDetails', params: { massif: this.$route.params.massif, randonnee: trek.key }});
+  computed: {
+    massif() {
+      return this.trek.massif || this.$route.params.massif;
     },
   },
 }
@@ -97,11 +101,15 @@ export default {
   flex: 1;
 }
 
-a {
+.external-link {
   text-decoration: none;
 }
 
-a:hover {
+.external-link:hover {
   border-bottom: 1px solid black;
+}
+
+.v-card__title {
+  word-break: normal;
 }
 </style>

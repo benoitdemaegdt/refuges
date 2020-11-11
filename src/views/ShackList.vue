@@ -59,7 +59,7 @@
             </template>
           </v-col>
           <v-col cols="5" class="map-col pa-0">
-            <div class="map-container-desktop">
+            <div class="map-container">
               <Mapbox
                 v-if="useMapboxGlMap"
                 :massif="massif"
@@ -124,7 +124,7 @@
           <!-- map -->
           <template v-else>
             <v-col cols="12" class="map-col pa-0">
-              <div class="map-container-mobile">
+              <div class="map-container">
                 <Mapbox
                   v-if="useMapboxGlMap"
                   :massif="massif"
@@ -162,7 +162,8 @@ import { getShacksByMassif } from '@/services/MassifService';
 import LayoutMixin from '@/mixins/LayoutMixin.js';
 
 // components
-import ShackListItem from '@/components/ShackListItem';
+import ShackListItem from '@/components/shackListItem/ShackListItem.vue';
+
 const Map = () => import(/* webpackChunkName: "leaflet" */ '@/components/Map');
 const Mapbox = () => import(/* webpackChunkName: "mapbox" */ '@/components/Mapbox');
 
@@ -307,12 +308,8 @@ export default {
   right: 0;
 }
 
-.map-container-desktop {
-  height: calc(100vh - 64px);
-}
-
-.map-container-mobile {
-  height: calc(100vh - 56px);
+.map-container {
+  height: calc(100vh - 48px);
 }
 
 /deep/ .v-pagination__item, /deep/ .v-pagination__navigation {

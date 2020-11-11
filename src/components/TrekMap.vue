@@ -73,6 +73,10 @@ export default {
         if (newIndex !== undefined) {
           if (this.marker) this.marker.remove();
           const coordinates = this.coordinates[newIndex].slice(0, 2);
+          // console.log(' ');
+          // console.log('newIndex :>> ', newIndex);
+          // console.log('this.coordinates[newIndex] :>> ', this.coordinates[newIndex]);
+          // console.log(' ');
           const newMarker = document.createElement('div');
           newMarker.className = 'mapbox-marker-dynamic';
           this.marker = new mapboxgl.Marker(newMarker)

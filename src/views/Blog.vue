@@ -1,7 +1,10 @@
 <template>
   <v-container>
     <v-row justify="center" align="center">
-      <h1>Mon Petit Sommet, qu'est-ce que c'est ?</h1>
+      <h1>Le Blog de Mon Petit Sommet n'est pas encore disponible !</h1>
+    </v-row>
+    <v-row justify="center" align="center">
+      <p>Revenez dans quelques semaines pour découvrir des articles en tout genre sur les aventures en montagne.</p>
     </v-row>
   </v-container>
 </template>

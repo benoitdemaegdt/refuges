@@ -1,7 +1,10 @@
 <template>
   <v-container>
     <v-row justify="center" align="center">
-      <h1>Mon Petit Sommet, qu'est-ce que c'est ?</h1>
+      <h1>Vous souhaitez contacter l'équipe de Mon Petit Sommet ?</h1>
+    </v-row>
+    <v-row justify="center" align="center">
+      <p>Envoyez simplement un email à <a href="mailto:contact@monpetitsommet.fr">contact@monpetitsommet.fr</a></p>
     </v-row>
   </v-container>
 </template>

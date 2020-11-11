@@ -11,7 +11,8 @@
 
         <v-col v-if="!isMobile || !isShowingMap" :cols="leftCols">
           <div class="pl-24">
-            <h1 class="trek-title">{{ trek.title}}</h1>
+            <h1 class="trek-title" :style="trekTitleStyle">{{ trek.title}}</h1>
+            <p class="trek-from-to" :style="trekFromToStyle">De {{ trek.summary.from }} à {{ trek.summary.to }}</p>
             <p class="trek-intro">{{ trek.introduction.text }}</p>
             <v-img max-height="350px" class="trek-img" :src="getImage([trek.introduction.image], 0, { height: 350 })"></v-img>
             <h2><span class="highlight">En Bref</span></h2>
@@ -63,13 +64,13 @@
                 </div>
               </v-col>
             </v-row>
-            <h2><span class="highlight">Le Topo</span></h2>
+            <h2><span class="highlight">Le Topo détaillé</span></h2>
             <div v-for="step in trek.steps" :key="step.title">
-              <h3>
+              <h3 class="step-title">
                 <v-tooltip top :disabled="isMobile || !step.coordinates">
                   <template v-slot:activator="{ on }">
                     <span
-                      :class="{ 'step-title': !isMobile && step.coordinates  }"
+                      :class="{ 'step-title-action': !isMobile && step.coordinates  }"
                       v-on="on"
                       @click="setZoomIndexes(step.coordinates)"
                     >
@@ -89,7 +90,7 @@
         </v-col>
 
         <v-col v-if="!isMobile || isShowingMap" :cols="leftCols" class="map-col pa-0">
-          <div class="map-container-desktop">
+          <div class="map-container">
             <TrekMap
               :coordinates="trek.coordinates"
               :pointsOfInterest="trek.pointsOfInterest"
@@ -186,6 +187,16 @@ export default {
     rightCols() {
       if (!this.isMobile) return 6;
       return this.isShowingMap ? 12 : 0;
+    },
+    trekTitleStyle() {
+      return this.screenWidth < this.$vuetify.breakpoint.thresholds.xs
+        ? { 'font-size': '30px' }
+        : { 'font-size': '35px' };
+    },
+    trekFromToStyle() {
+      return this.screenWidth < this.$vuetify.breakpoint.thresholds.xs
+        ? { 'font-size': '22px' }
+        : { 'font-size': '25px' };
     }
   },
   methods: {
@@ -220,10 +231,10 @@ a:hover {
   background: linear-gradient(180deg,rgba(255,255,255,0) 50%, #C8E6C9 50%);
 }
 
-.step-title {
+.step-title-action {
   cursor: pointer;
 }
-.step-title:hover {
+.step-title-action:hover {
   border-bottom: 2px solid black;
 }
 
@@ -243,17 +254,24 @@ a:hover {
   right: 0;
 }
 
-.map-container-desktop {
-  height: calc(100vh - 64px);
+.map-container {
+  height: calc(100vh - 48px);
 }
 
 .trek-title {
-  font-size: 28px;
   color: #222222;
+}
+
+.trek-from-to {
+  font-family: 'MrEaves';
 }
 
 .trek-img, .v-sheet {
   border-radius: 8px;
+}
+
+.step-title {
+  font-size: 22px;
 }
 
 .flex-container {

@@ -8,11 +8,11 @@
     <template v-else>
 
       <template v-if="isError">
-        <h1 class="display-2 text-center mt-6">Nous n'avons pas encore de randonnées dans ce massif 😢</h1>
+        <h1 class="text-center mt-6">Nous n'avons pas encore de randonnées dans ce massif 😢</h1>
       </template>
 
       <template v-else>
-        <h1 class="display-2 text-center mt-6 mb-6">{{ title }}</h1>
+        <h1 class="text-center mt-6 mb-6">{{ title }}</h1>
         <v-row>
           <v-col v-for="trek in trekList" :key="trek.key" cols="12" sm="4">
             <TrekListItem :trek="trek"/>
