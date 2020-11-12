@@ -80,7 +80,7 @@
                   <span>Zoomer sur cette étape <v-icon small dark>{{ mdiMagnifyPlusOutline }}</v-icon></span>
                 </v-tooltip>
               </h3>
-              <p class="step-text">{{ step.text }}</p>
+              <component :is="getStepText(step)" v-bind="$props"/>
               <figure v-if="step.image" class="mb-4">
                 <v-img max-height="350px" class="trek-img" :src="getImage([step.image.url], 0, { height: 350 })" :lazy-src="step.image.placeholder"></v-img>
                 <figcaption class="caption">{{ step.image.caption }}</figcaption>
@@ -206,7 +206,19 @@ export default {
     },
     resetZoomIndexes() {
       this.zoomIndexes = undefined;
-    }
+    },
+    getStepText(step) {
+      let html = `<p class="step-text">${step.text}</p>`;
+      if (step.links) {
+        for (const link of step.links) {
+          html = html.replace(link.text, `<router-link class="step-text-link" :to="{ massif: '${link.params.massif}', refuge: '${link.params.refuge}'}">${link.text}</router-link>`);
+        }
+      }
+      return {
+        template: html,
+        props: this.$options.props,
+      };
+    },
   },
   filters: {
     booleanToFrench(value) {
@@ -272,6 +284,12 @@ a:hover {
 
 .step-title {
   font-size: 22px;
+}
+
+/deep/ .step-text-link {
+  text-decoration: none;
+  border-bottom: 2px solid #009b50;
+  color: #009b50;
 }
 
 .flex-container {
