@@ -1,7 +1,7 @@
 <template>
   <div style="height: 100%;">
-    <div id="map" style="height: 70%; width: 100%"></div>
-    <div ref="graph" style="height: 30%; width: 100%">
+    <div id="map" style="height: 66.5%; width: 100%"></div>
+    <div ref="graph" style="height: 33.5%; width: 100%">
       <highcharts :options="chartOptions"></highcharts>
     </div>
   </div>
@@ -104,6 +104,7 @@ export default {
   },
   computed: {
     chartOptions() {
+      console.log(this.pointsOfInterest[0]);
       const self = this;
       return {
         title: { text: null },
