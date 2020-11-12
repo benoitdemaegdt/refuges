@@ -60,7 +60,13 @@
     },
     {
       "title": "Du Grand Veymont à l'abri de la Peyrouse",
-      "text": "Au sommet du Grand Veymont, descendre par la face Nord (opposée à celle par laquelle on est arrivé) pour rejoindre le Pas de la Ville (1925m). Continuer alors la descente en prenant à droite un passage assez raide. Attention à ne pas trop descendre : dès que possible prendre à gauche pour rejoindre le fameux Balcon Est du Vercors. On va suivre ce chemin situé juste sous les magnifiques falaises du Vercors sur plusieurs kilomètres. Impossible de se perdre, il faut juste suivre ce chemin ! Attention à ne pas manquer un des rares points de ravitaillement en eau de ce sentier, au niveau de la Fontaine de Berrièves. Celle ci est indiquée par un panneau et des peintures sur la roche. Continuer sur les balcons Est jusqu'à rejoindre une cabane, <router-link :to=\"{ name: 'shackDetails', params: { massif: 'vercors', refuge: 'abri-de-la-peyrouse' }}\">l'abris de la Peyrouse</router-link>. Possibilité d'y dormir : présence d'un lit superposé en bois et d'une table.",
+      "text": "Au sommet du Grand Veymont, descendre par la face Nord (opposée à celle par laquelle on est arrivé) pour rejoindre le Pas de la Ville (1925m). Continuer alors la descente en prenant à droite un passage assez raide. Attention à ne pas trop descendre : dès que possible prendre à gauche pour rejoindre le fameux Balcon Est du Vercors. On va suivre ce chemin situé juste sous les magnifiques falaises du Vercors sur plusieurs kilomètres. Impossible de se perdre, il faut juste suivre ce chemin ! Attention à ne pas manquer un des rares points de ravitaillement en eau de ce sentier, au niveau de la Fontaine de Berrièves. Celle ci est indiquée par un panneau et des peintures sur la roche. Continuer sur les balcons Est jusqu'à rejoindre une cabane, l'abris de la Peyrouse. Possibilité d'y dormir : présence d'un lit superposé en bois et d'une table.",
+      "links": [
+        {
+          "text": "l'abris de la Peyrouse",
+          "params": { "massif": "vercors", "refuge": "abri-de-la-peyrouse" }
+        }
+      ],
       "image": {
         "url": "https://res.cloudinary.com/monpetitsommet/image/upload/v1604995719/vercors/randonnees/traversee-vercors-balcon-est/step_3_dkvzm3.jpg",
         "caption": "Le sentier des Balcons Est longe la majestueuse barre du Vercors, juste sous les falaises.",
@@ -86,7 +92,13 @@
     },
     {
       "title": "De la Grande Moucherolle à la cabane de Roybon",
-      "text": "Traverser le sommet de la Grande Moucherolle sur une crête pas bien large et assez aérienne. La suite du chemin est bien visible en contrebas. Le rejoindre en descendant prudemment dans un pierrier un peu instable. Filer alors jusqu'au Col des Deux Soeurs (2056m). On continue toujours en prenant le sentier cairné au plus près de la falaise. On arrive rapidement au sommet de La Petite Soeur-Sophie (2162m). Belle vue sur toute la vallée de Villard-de-Lans. Continuer alors jusqu'à rejoindre un sentier en balcon beaucoup plus évident et marqué. La randonnée redevient alors facile, le sentier s'éloigne progressivement de la falaise et permet en quelques kilomètres de rejoindre la <router-link :to=\"{ name: 'shackDetails', params: { massif: 'vercors', refuge: 'cabane-des-clots-ou-de-roybon' }}\">Cabane de Roybon</router-link>, sous le Col Vert. Présence d'une source juste avant d'arriver à la Cabane.",
+      "text": "Traverser le sommet de la Grande Moucherolle sur une crête pas bien large et assez aérienne. La suite du chemin est bien visible en contrebas. Le rejoindre en descendant prudemment dans un pierrier un peu instable. Filer alors jusqu'au Col des Deux Soeurs (2056m). On continue toujours en prenant le sentier cairné au plus près de la falaise. On arrive rapidement au sommet de La Petite Soeur-Sophie (2162m). Belle vue sur toute la vallée de Villard-de-Lans. Continuer alors jusqu'à rejoindre un sentier en balcon beaucoup plus évident et marqué. La randonnée redevient alors facile, le sentier s'éloigne progressivement de la falaise et permet en quelques kilomètres de rejoindre la Cabane de Roybon, sous le Col Vert. Présence d'une source juste avant d'arriver à la Cabane.",
+      "links": [
+        {
+          "text": "Cabane de Roybon",
+          "params": { "massif": "vercors", "refuge": "cabane-des-clots-ou-de-roybon" }
+        }
+      ],
       "image": {
         "url": "https://res.cloudinary.com/monpetitsommet/image/upload/v1604995725/vercors/randonnees/traversee-vercors-balcon-est/step_5_rqks9i.jpg",
         "caption": "Le col des Deux-Soeurs, avec à gauche la Petite soeur Sophie (2162m) et à droite la Grande soeur Agathe (2194m).",
