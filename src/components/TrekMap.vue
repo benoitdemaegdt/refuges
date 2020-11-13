@@ -104,7 +104,6 @@ export default {
   },
   computed: {
     chartOptions() {
-      console.log(this.pointsOfInterest[0]);
       const self = this;
       return {
         title: { text: null },

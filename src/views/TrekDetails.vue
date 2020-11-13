@@ -211,7 +211,7 @@ export default {
       let html = `<p class="step-text">${step.text}</p>`;
       if (step.links) {
         for (const link of step.links) {
-          html = html.replace(link.text, `<router-link class="step-text-link" :to="{ massif: '${link.params.massif}', refuge: '${link.params.refuge}'}">${link.text}</router-link>`);
+          html = html.replace(link.text, `<router-link class="step-text-link" :to="{ name: 'shackDetails', params: { massif: '${link.params.massif}', refuge: '${link.params.refuge}' } }">${link.text}</router-link>`);
         }
       }
       return {
