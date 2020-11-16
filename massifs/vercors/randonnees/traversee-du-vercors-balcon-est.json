@@ -12,8 +12,12 @@
     "to": "Villard-de-Lans"
   },
   "introduction": {
-    "text": "",
-    "image": "https://res.cloudinary.com/monpetitsommet/image/upload/v1604305406/vercors/randonnees/traversee-vercors-balcon-est/intro_xhbx3y.png"
+    "text": "La traversée du Vercors (Balcon Est) est certainement l'une des plus belles et majestueuses randonnées de ce massif. L'itinéraire est varié et sportif : une bonne distance, deux sommets (le Grand Veymont et la Grande Moucherolle), des passages techniques et exposés, des secteurs denses en animaux sauvages. Le tout pour une inoubliable aventure en montagne.",
+    "image": {
+      "url": "https://res.cloudinary.com/monpetitsommet/image/upload/v1604305406/vercors/randonnees/traversee-vercors-balcon-est/intro_xhbx3y.png",
+      "caption": "Vue sur les balcons Est du Vercors depuis la Grande Moucherolle",
+      "placeholder": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAAAklEQVR4AewaftIAAAEGSURBVAXBTUsCQRzA4d/MTiYtRaReMrRDEHTsI/ZpOkUfoFtBUQZFBJ6kfMHWxDVX3d3Z+c/0POrq5itsNiV5KVgXsM5TVYKIJ4SAUooo0pjuSYtNIeRVwFaBwnqsdYgIIQS01hgTYc6amnUZsJUQ0LhgsM7gfQClUCpCaY257/UR5yjXSyK7oKYc9ZqhcbDHOJmTR0eIrmOS8QDlclZpwmqRsF1MuTxv0+we8/TwihPPaaeNkdUQX63Jkin7uqAsU7K5Z+gzPj/eieIWo58l+u35kXQyoHOoueg0KKrASz8hjmOMZPzNhmTpL2Y0SdDlLsuZ5rr/jVc7OCfc3vWIEIp8i4jlH3xtnbCCjz9oAAAAAElFTkSuQmCC"
+    }
   },
   "pointsOfInterest": [
     {
@@ -37,7 +41,7 @@
       "text": "Depuis la Richardière, prendre tout droit (plein ouest, vers les montagnes) sur la piste jusqu'à rejoindre un chalet moderne, le Foyer de Ski de fond. Dépasser ce chalet pour rejoindre un embranchement : on prendra alors la piste du milieu, celle qui monte en biais (un panneau indique Col de l'Aupet), elle fait presque immédiatement une épingle. Continuer tout droit, passer un ruisseau (très souvent à sec) et atteindre une clairière / parking. Traverser cette clairière et prendre juste après à droite un chemin de randonnée qui monte en forêt. C'est le début d'une belle montée jusqu'au col de l'Aupet (1650m). Prendre le chemin à plat qui part sur la gauche, sans oublier de profiter de la vue magnifique sur le Mont Aiguille (tendez l'oreille, on entend souvent les grimpeurs qui l'escalade !). Suivre ce chemin en balcon jusqu'à pouvoir monter dans un gros pierrier (forte probabilité de voir des bouquetins ! Attention aux pierres qu'ils peuvent faire tomber) assez raide permettant de rejoindre le Pas de la Selle (1870m).",
       "image": {
         "url": "https://res.cloudinary.com/monpetitsommet/image/upload/v1604995709/vercors/randonnees/traversee-vercors-balcon-est/step_1_qttchl.jpg",
-        "caption": "L'imposant Mont Aiguille, une des spet merveilles du Dauphiné",
+        "caption": "L'imposant Mont Aiguille, une des sept merveilles du Dauphiné",
         "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAf/AABEIAAgACgMBEQACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/AN344/8ABdDw7oOsweD/ANnfw98Ubi1j8Sakusav4g0Xwz4cS0vFsYEm8M6Jb6mfGT2i6ZdNe3eoz6te6XcJJ5KWI+zp58vTmvHGV0qCq0MXSlR9lGUq8U06kaluRxhUpKq05SjH3KTcp/C7avx8LlOJVScK+GnGaqSh7KTXLCUb88HKDlBNWTalU0i02rnkrf8ABxb4v0knSrzwemq3emE6fdamf7JU6jc2Z+zT35W31CCBTeSxtcYgghhHmYjijTag+TpceKtSp1VhGlVpwqJTup2nFSXMvY6S195dHc75YKipNcs3ZtXU6dnZ2uv3m3Y//9k="
       },
       "coordinates": {

@@ -13,7 +13,11 @@
   },
   "introduction": {
     "text": "Situé entre Chambéry et Annecy, le massif des Bauges est un massif de moyenne montagne (point culminant à 2217m) encore méconnu du grand public. Faire le traversée des Bauges, c'est s'engager dans une randonnée exigeante, physique mais peu technique. On croisera des forêts, des petits villages, de nombreux alpages, et quelques sommets qui offrent une vue inégalables sur le lac d'Annecy. D'ailleurs, quoi de mieux que de terminer cette randonnée par une baignade dans le lac ...",
-    "image": "https://res.cloudinary.com/monpetitsommet/image/upload/v1603218138/bauges/randonnees/traversee-bauges-frontenex-annecy/intro_ppjy7g.jpg"
+    "image": {
+      "url": "https://res.cloudinary.com/monpetitsommet/image/upload/v1603218138/bauges/randonnees/traversee-bauges-frontenex-annecy/intro_ppjy7g.jpg",
+      "caption": "Vue sur la lac d'Annecy depuis la pointe de la Chaurionde",
+      "placeholder": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAf/AABEIAAgACgMBEQACEQEDEQH/xAGiAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgsQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+gEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoLEQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/APFP2lv+Co3gL4Q6tpWg/D74A/B3XvE1/IA2lT6Dr0nh3Qbm5xbxf27d63f2F3FNB5Q1N9OSbVLcfaraxv7nS7qC+sn/AHnJvpEcR5hgcVTr08x9nB+zp5hOrhqFCtClFzVSnSpYavVqU5ylOnOtH6nUrRh/s8bOniD8Hfhvga+LhUhh6NClz83suTEVIxlNJSvUnXpxap8qlTi41qak25uavCX6CeHP+CmHj8eHtBFx8FfBZuBo2lic2PjWG1sTMLGDzTZ2tn4H1a0trUvuNvBa6rqdtDDsjg1C9iVbmT8axP0jIQxGIjUrUXUjXqxm40oKLmqklJpVsFOqldOyqznUS0nOUrt/fR4IwMIxhzz92KjrXxd/dVtfZTVK+mvs1yfye7Y//9k="
+    }
   },
   "pointsOfInterest": [
     {
