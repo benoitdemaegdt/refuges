@@ -14,7 +14,10 @@
             <h1 class="trek-title" :style="trekTitleStyle">{{ trek.title}}</h1>
             <p class="trek-from-to" :style="trekFromToStyle">De {{ trek.summary.from }} à {{ trek.summary.to }}</p>
             <p class="trek-intro">{{ trek.introduction.text }}</p>
-            <v-img max-height="350px" class="trek-img" :src="getImage([trek.introduction.image], 0, { height: 350 })"></v-img>
+            <figure v-if="trek.introduction.image.url">
+              <v-img max-height="350px" class="trek-img" :src="getImage([trek.introduction.image.url], 0, { height: 350 })" :lazy-src="trek.introduction.image.placeholder"></v-img>
+              <figcaption class="caption">{{ trek.introduction.image.caption }}</figcaption>
+            </figure>
             <h2><span class="highlight">En Bref</span></h2>
             <v-row>
               <!-- distance -->
