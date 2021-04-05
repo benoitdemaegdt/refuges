@@ -10,7 +10,7 @@
     "build-report": "vue-cli-service build --report"
   },
   "dependencies": {
-    "core-js": "^3.8.2",
+    "core-js": "^3.10.0",
     "gm": "^1.23.1",
     "highcharts": "^8.2.2",
     "highcharts-vue": "^1.3.5",
