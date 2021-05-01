@@ -2,7 +2,7 @@
  * this script takes a gpx file and returns a monpetitsommet.fr json file
  * how to use it ?
  * - copy/paste your gpx input inside "input.gpx"
- * - run : "node trek.js" and see the generated file in the proper massif folder
+ * - run : "node scripts/trek.js" and see the generated file in the proper massif folder
  */
 const fs = require('fs');
 const path = require('path');
